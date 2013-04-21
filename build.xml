@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ResourceProcessVisulaization" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
+	<description>
+	</description>
+
+	
+	<property name="src" location="src" />
+	<property name="src.main" location="${src}/main" />
+	<property name="src.test" location="${src}/test" />
+	<property name="target" location="target" />
+	<property name="build" location="${target}/classes" />
+	<property name="dist" location="${target}/dist" />
+	<property name="lib" location="lib" />
+	<property name="lib.default" location="${lib}/default" />
+	<property name="lib.test" location="${lib}/test" />
+
+
+	<target name="init">
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+
+	<target name="compile" depends="init,retrieve" description="compile the source ">
+		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path" >
+			<src path="${src}" />
+			<src path="${lib.default}" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+
+		<war destfile="${dist}/wars/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
+			<classes dir="${build}" />
+		</war>
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${target}" />
+	</target>
+
+	<target name="retrieve" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve pattern="${lib}/[conf]/[artifact].[ext]" />
+		<ivy:cachepath pathid="compile.path"/>
+	</target>
+
+</project>
