@@ -36,5 +36,7 @@
 
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="3.8.2" conf="test->default"/>
+		<dependency org="org.apache.myfaces.core" name="myfaces-impl" rev="2.0.0-beta-3"/>
+	<!--	<dependency org="com.sun.faces" name="mojarra-jsf-api" rev="2.0.0-b04"/> -->
 	</dependencies>
 </ivy-module>
