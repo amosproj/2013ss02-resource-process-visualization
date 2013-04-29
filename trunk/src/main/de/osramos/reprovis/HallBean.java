@@ -29,12 +29,10 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class HallBean {
 	
-	private FactoryBean parent;
 	private int id;
 	private String name;
 	
-	public HallBean(int id, FactoryBean parent){
-		this.parent = parent;
+	public HallBean(int id){
 		this.id = id;
 		this.name = HallDAO.getName(id);
 	}
@@ -48,11 +46,11 @@ public class HallBean {
 	}
 	
 	public FactoryBean getFactory(){
-		return parent;
+		return HallDAO.getFactory(id);
 	}
 	
 	public TrafficLight getStatus(){
-		return TrafficLight.green;
+		return HallDAO.getStatus(id);
 	}
 	
 	public List<LineBean> getLines(){

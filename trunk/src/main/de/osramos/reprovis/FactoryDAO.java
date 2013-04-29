@@ -19,155 +19,76 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.osramos.reprovis.MasterData.Company;
 
 public class FactoryDAO {
 
-	public static String getCity(int id){
-		return null;	
-	}
-	
-	public static String getCountry(int id){
-		return null;
-	}
+	public static String getCity(int id) {
 
-	public static String getGpsLocation(int id){
-		return null;
-	}
-	
-	public static String getName(int id){
-		// String query = "Select name from  " + tableName;
-
-		// set mock data
-		String name = "";
-		if (name.equals("Ingolstadt")) {
-			name = "AudiIngolstadt1";
-		} else if (name.equals("Neckarsulm")) {
-			name = "AudiNeckarsulm1";
+		if (id == 1) {
+			return "Ingolstadt";
+		} else if (id == 2) {
+			return "Neckarsulm";
 		}
-		return null;
+		return "TestCity" + id;
+	}
+
+	public static String getCountry(int id) {
+		if ((id == 1) || (id == 2)) {
+			return "Germany";
+		}
+
+		return "TestCountry" + id;
+	}
+
+	/*
+	 * public static String getGpsLocation(int id) { return null; }
+	 */
+
+	public static String getName(int id) {
+
+		if (id == 1) {
+			return "AudiIngolstadt1";
+		} else if (id == 2) {
+			return "AudiNeckarsulm1";
+		}
+		return "AudiFactory" + id;
 	}
 
 	public static Company getCompany(int id) {
-		// TODO Auto-generated method stub
+		if ((id == 1) || (id == 2))
+		{
+			return Company.Audi;
+		}
+		int i = id % 4;
+		switch (i) {
+		case 0:
+			return Company.Audi;
+		case 1:
+			return Company.Seat;
+		case 2:
+			return Company.Volkswagen;
+		case 3:
+			return Company.Skoda;
+		}
 		return null;
 	}
-	
-	public static List<Integer> getFactoryIds(){
-		
-		//get List by conf file/ DB
-		
-		List<Integer> l = new ArrayList<Integer>();
-		l.add(1);
-		l.add(2);
+
+	public static List<Integer> getFactoryIds() {
+
+		// get List by conf file/ DB
+
+		List<Integer> l = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7,8));
 		return l;
-		
-	}
-	
-/*	private String name;
-	private String country; // later: private Country country;
-	private String gpsLocation;
-	private String city;
-	private List<String> productionHalls; // later: private List<Hall>
-											// productionHalls;
-
-	public String getName() {
-
-		return name;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public String getCity() {
-
-		return city;
-	}
-
-	public String getGpsLocation() {
-		return gpsLocation;
-	}
-
-	public List<String> getProductionHalls() {
-		return productionHalls;
-	}*/
-
-/*	private void initName(String tableName) {
-		// TODO get data
-		// String query = "Select name from  " + tableName;
-
-		// set mock data
-		if (tableName.equals("Ingolstadt")) {
-			name = "AudiIngolstadt1";
-		} else if (tableName.equals("Neckarsulm")) {
-			name = "AudiNeckarsulm1";
-		}
 
 	}
 
-	private void initCountry(String tableName) {
-		// TODO get data
-		// String query = "Select country from  " + tableName;
 
-		// set mock data
-
-		country = "Germany";
-	}
-
-	private void initCity(String tableName) {
-		// TODO get data
-		// String query = "Select city from  " + tableName;
-
-		// set mock data
-		if (tableName.equals("Ingolstadt")) {
-			city = "Ingolstadt";
-		} else if (tableName.equals("Neckarsulm")) {
-			city = "Neckarsulm";
-		}
-
-	}
-
-	private void initGpsLocation(String tableName) {
-		if (tableName.equals("Ingolstadt")) {
-			gpsLocation = "48.78302°N 11.41373°E";
-		} else if (tableName.equals("Neckarsulm")) {
-			gpsLocation= "49.19396°N 9.22174°E";
-		}
-	}
-
-	private void initProductionHalls(String tableName) {
-		productionHalls = new ArrayList<String>();
-		productionHalls.add("Hall 1");
-		productionHalls.add("Hall 2");
-	}*/
-
-/*	public FactoryDAO(String id) {
-		// Find Database by Factory
-		String tablename = null;
-		if (id.equals("Ingolstadt")) {
-			tablename = "Ingolstadt";
-		} else if (id.equals("Neckarsulm")) {
-			tablename = "Neckarsulm";
-		}
-
-		initCity(tablename);
-		initCountry(tablename);
-		initGpsLocation(tablename);
-		initName(tablename);
-		initProductionHalls(tablename);
-	}*/
-	
-
-	
-	
-
-	
 
 }
