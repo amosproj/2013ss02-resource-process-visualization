@@ -30,7 +30,7 @@
 <body>
 <% // later: get all Factories, display information for each factory%>
 
-<a href="Factory?id=Neckarsulm">display Factory 1</a>
-<a href="Factory?id=Ingolstadt">display Factory 2</a>
+<a href="Factory?id=1">display Factory 1</a>
+<a href="Factory?id=2">display Factory 2</a>
 </body>
 </html>

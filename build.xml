@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>	
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
@@ -19,14 +19,16 @@
  - License along with this program. If not, see
  - <http://www.gnu.org/licenses/>.
  -->
-<project name="ResourceProcessVisulaization" xmlns:ivy="antlib:org.apache.ivy.ant"  default="dist" basedir=".">
+<project name="ResourceProcessVisulaization" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
 	<description>
 	</description>
 
-	
+
 	<property name="src" location="src" />
 	<property name="src.main" location="${src}/main" />
 	<property name="src.test" location="${src}/test" />
+	<property name="src.web" location="${src}/webapp" />
+	<property name="src.resources" location="${src}/resources" />
 	<property name="target" location="target" />
 	<property name="build" location="${target}/classes" />
 	<property name="dist" location="${target}/dist" />
@@ -36,13 +38,14 @@
 
 
 	<target name="init">
+		<antcall target="clean" />
 		<mkdir dir="${build}" />
 		<mkdir dir="${dist}" />
 	</target>
 
 
-	<target name="compile" depends="init,retrieve" description="compile the source ">
-		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path" >
+	<target name="compile" depends="init,retrieve">
+		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path">
 			<src path="${src}" />
 			<src path="${lib.default}" />
 		</javac>
@@ -52,6 +55,7 @@
 
 		<war destfile="${dist}/wars/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
 			<classes dir="${build}" />
+			<fileset dir="${src.web}" />
 		</war>
 	</target>
 
@@ -61,7 +65,11 @@
 
 	<target name="retrieve" description="--> retrieve dependencies with ivy">
 		<ivy:retrieve pattern="${lib}/[conf]/[artifact].[ext]" />
-		<ivy:cachepath pathid="compile.path"/>
+		<ivy:cachepath pathid="compile.path" />
+	</target>
+
+	<target name="package_release" depends="dist" description="create root.war for weekly delivery">
+		<copy file="${dist}/wars/reprovis.war" toFile="./ROOT.war" overwrite="true"/>
 	</target>
 
 </project>
