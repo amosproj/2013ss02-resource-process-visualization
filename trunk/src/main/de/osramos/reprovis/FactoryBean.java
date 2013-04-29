@@ -39,7 +39,7 @@ public class FactoryBean {
 /*	private String city;*/
 	private Company company;
 	private GlobalBean parent;
-	private String[] models;
+	private String[] carModels;
 	private int sizeOfStaff;
 	private int numOfVehicles;
 
@@ -59,8 +59,8 @@ public class FactoryBean {
 		return numOfVehicles;
 	}
 	
-	public String[] getModels(){
-		return models;
+	public String[] getCarModels(){
+		return carModels;
 	}
 	
 /*	public String getCity(){
@@ -92,7 +92,9 @@ public class FactoryBean {
 /*		city = FactoryDAO.getCity(id);*/
 /*		gpsLocation = FactoryDAO.getGpsLocation(id);*/
 		company = FactoryDAO.getCompany(id);
-		
+		carModels = FactoryDAO.getCarModels(id);
+		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+		numOfVehicles = FactoryDAO.getNumOfVehicles(id);
 	}
 
 
