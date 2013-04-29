@@ -37,6 +37,6 @@
 	<dependencies>
 
 		<!-- Test dependencies -->
-		<dependency org="junit" name="junit" rev="3.8.2" conf="test->default"/>
+		<dependency org="junit" name="junit" rev="4.9" conf="test->default"/>
 	</dependencies>
 </ivy-module>

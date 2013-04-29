@@ -76,7 +76,7 @@ public class FactoryBean {
 	}
 	
 	public GlobalBean getGlobal(){
-		return parent;
+		return  GlobalBean.getGlobal();
 	}
 	
 	public int getId() {
@@ -119,11 +119,11 @@ public class FactoryBean {
 	
 	public List<HallBean> getHalls(){
 		
-		List<Integer> hallIds = HallDAO.getHalls(id);
+		List<Integer> hallIds = HallDAO.getHallIds(id);
 		List<HallBean> halls = new ArrayList<HallBean>();
 		
-		for(int id : hallIds){
-			halls.add(new HallBean(id, this));
+		for(int hallId : hallIds){
+			halls.add(new HallBean(hallId));
 		}
 		return halls;
 	}

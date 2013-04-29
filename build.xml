@@ -23,6 +23,8 @@
 	<description>
 	</description>
 
+	
+	
 
 	<property name="src" location="src" />
 	<property name="src.main" location="${src}/main" />
@@ -35,6 +37,16 @@
 	<property name="lib" location="lib" />
 	<property name="lib.default" location="${lib}/default" />
 	<property name="lib.test" location="${lib}/test" />
+
+
+	<property environment="env" />
+	<!-- set up your CATALINA_HOME environment variable !!! -->
+	<property name="tomcat" location="${env.CATALINA_HOME}" />
+	<property name="tomcat.web" location="${tomcat}/webapps" />
+	<property name="tomcat.bin" location="${tomcat}/bin" />
+	
+
+
 
 
 	<target name="init">
@@ -69,7 +81,25 @@
 	</target>
 
 	<target name="package_release" depends="dist" description="create root.war for weekly delivery">
-		<copy file="${dist}/wars/reprovis.war" toFile="./ROOT.war" overwrite="true"/>
+		<copy file="${dist}/wars/reprovis.war" toFile="./ROOT.war" overwrite="true" />
 	</target>
 
+	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
+		<copy file="${dist}/wars/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
+	</target>
+
+
+	
+	<!--target name="tomcat_start">
+	    <java jar="${tomcat.bin}/bootstrap.jar" fork="true">
+	        <jvmarg value="-Dcatalina.home=${tomcat}"/>
+	    </java>
+	</target>
+	 
+	<target name="tomcat_stop">
+	    <java jar="${tomcat.bin}/bootstrap.jar" fork="true">
+	        <jvmarg value="-Dcatalina.home=${tomcat}"/>
+	        <arg line="stop"/>
+	    </java>
+	</target-->
 </project>

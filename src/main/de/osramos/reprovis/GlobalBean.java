@@ -27,6 +27,17 @@ import java.util.List;
 
 public class GlobalBean {
 
+	private static GlobalBean global;
+	
+	private GlobalBean(){
+	}
+	
+	public static GlobalBean getGlobal(){
+		if (global == null){
+			global = new GlobalBean();
+		}
+		return global;
+	}
 
 	public List<FactoryBean> getFactories(){
 		
