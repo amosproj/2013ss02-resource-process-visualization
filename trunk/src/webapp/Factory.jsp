@@ -31,7 +31,7 @@
 <body>
 	<h1>Audi Factory</h1>
 	<%
-		String id = request.getParameter("id");;
+		int id = Integer.parseInt(request.getParameter("id"));
  		FactoryBean f = new FactoryBean(id);
 /* 		out.println(f.getName());
 		out.println(f.getCountry());
@@ -44,14 +44,14 @@
 		<tr>
 			<th>Name</th>
 			<th>Country</th>
-			<th>City</th>
-			<th>GPS Location</th>
+			<th>Company</th>
+			<th>Status</th>
 		</tr>
 		<tr>
 			<td><%out.println(f.getName()); %></td>
 			<td><%out.println(f.getCountry()); %></td>
-			<td><%out.println(f.getCity()); %></td>
-			<td><%out.println(f.getGpsLocation()); %></td>
+			<td><%out.println(f.getCompany()); %></td>
+			<td><%out.println(f.getStatus()); %></td>
 		</tr>
 	</table>
 </body>

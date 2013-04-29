@@ -25,9 +25,52 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.osramos.reprovis.MasterData.Company;
+
 public class FactoryDAO {
 
-	private String name;
+	public static String getCity(int id){
+		return null;	
+	}
+	
+	public static String getCountry(int id){
+		return null;
+	}
+
+	public static String getGpsLocation(int id){
+		return null;
+	}
+	
+	public static String getName(int id){
+		// String query = "Select name from  " + tableName;
+
+		// set mock data
+		String name = "";
+		if (name.equals("Ingolstadt")) {
+			name = "AudiIngolstadt1";
+		} else if (name.equals("Neckarsulm")) {
+			name = "AudiNeckarsulm1";
+		}
+		return null;
+	}
+
+	public static Company getCompany(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public static List<Integer> getFactoryIds(){
+		
+		//get List by conf file/ DB
+		
+		List<Integer> l = new ArrayList<Integer>();
+		l.add(1);
+		l.add(2);
+		return l;
+		
+	}
+	
+/*	private String name;
 	private String country; // later: private Country country;
 	private String gpsLocation;
 	private String city;
@@ -54,9 +97,9 @@ public class FactoryDAO {
 
 	public List<String> getProductionHalls() {
 		return productionHalls;
-	}
+	}*/
 
-	private void initName(String tableName) {
+/*	private void initName(String tableName) {
 		// TODO get data
 		// String query = "Select name from  " + tableName;
 
@@ -103,9 +146,9 @@ public class FactoryDAO {
 		productionHalls = new ArrayList<String>();
 		productionHalls.add("Hall 1");
 		productionHalls.add("Hall 2");
-	}
+	}*/
 
-	public FactoryDAO(String id) {
+/*	public FactoryDAO(String id) {
 		// Find Database by Factory
 		String tablename = null;
 		if (id.equals("Ingolstadt")) {
@@ -119,6 +162,12 @@ public class FactoryDAO {
 		initGpsLocation(tablename);
 		initName(tablename);
 		initProductionHalls(tablename);
-	}
+	}*/
+	
+
+	
+	
+
+	
 
 }
