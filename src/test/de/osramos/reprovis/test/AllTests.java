@@ -21,13 +21,14 @@
 
 package de.osramos.reprovis.test;
 
-import org.junit.*;
+import org.junit.runner.*;
+import org.junit.runners.*;
 
+@RunWith(Suite.class)
+@Suite.SuiteClasses({ de.osramos.reprovis.test.FactoryBeanTest.class,
+		de.osramos.reprovis.test.BOTests.class
+})
 
-public class LineBeanTest {
+public class AllTests {
 
-	@Test
-	public void LineTest(){
-		
-	}
 }

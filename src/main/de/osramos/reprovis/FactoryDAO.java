@@ -89,6 +89,18 @@ public class FactoryDAO {
 
 	}
 
+	public static String[] getCarModels(int id) {
+		return new String[]{"Q7", "R8"};
+	}
+
+	public static int getSizeOfStaff(int id) {
+		return 500;
+	}
+
+	public static int getNumOfVehicles(int id) {
+		return 200;
+	}
+
 
 
 }
