@@ -19,12 +19,9 @@
  - License along with this program. If not, see
  - <http://www.gnu.org/licenses/>.
  -->
-<project name="ResourceProcessVisulaization" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
+<project name="ResourceProcessVisualization" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
 	<description>
 	</description>
-
-	
-	
 
 	<property name="src" location="src" />
 	<property name="src.main" location="${src}/main" />
@@ -33,7 +30,6 @@
 	<property name="src.resources" location="${src}/resources" />
 	<property name="target" location="target" />
 	<property name="build" location="${target}/classes" />
-	<property name="dist" location="${target}/dist" />
 	<property name="lib" location="lib" />
 	<property name="lib.default" location="${lib}/default" />
 	<property name="lib.test" location="${lib}/test" />
@@ -45,14 +41,11 @@
 	<property name="tomcat.web" location="${tomcat}/webapps" />
 	<property name="tomcat.bin" location="${tomcat}/bin" />
 	
-
-
-
-
 	<target name="init">
 		<antcall target="clean" />
 		<mkdir dir="${build}" />
-		<mkdir dir="${dist}" />
+		<mkdir dir="${lib}" />
+		<mkdir dir="${lib.default}" />
 	</target>
 
 
@@ -65,9 +58,10 @@
 
 	<target name="dist" depends="compile" description="generate the distribution">
 
-		<war destfile="${dist}/wars/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
+		<war destfile="${target}/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
 			<classes dir="${build}" />
 			<fileset dir="${src.web}" />
+			<lib dir="${lib.default}"/>
 		</war>
 	</target>
 
@@ -81,11 +75,11 @@
 	</target>
 
 	<target name="package_release" depends="dist" description="create root.war for weekly delivery">
-		<copy file="${dist}/wars/reprovis.war" toFile="./ROOT.war" overwrite="true" />
+		<copy file="${target}/reprovis.war" toFile="./ROOT.war" overwrite="true" />
 	</target>
 
 	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
-		<copy file="${dist}/wars/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
+		<copy file="${target}/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
 	</target>
 
 
