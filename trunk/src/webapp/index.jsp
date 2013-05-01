@@ -65,7 +65,8 @@
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 	<![endif]-->
 	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-	<script src="./js/worldmap.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="./css/amos_webapp-custom.css" rel="stylesheet">
   </head>
 
   <body>
@@ -118,33 +119,10 @@
 	  
 	  <div>
 	      <div id="map"></div>
-		<script>
-
-			var map = L.map('map').setView([48.762201, 11.425374], 5);
-
-			L.tileLayer('http://{s}.tile.cloudmade.com/941204b6a0ac4efe9938a21535446d28/997/256/{z}/{x}/{y}.png', {
-				maxZoom: 18,
-				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-			}).addTo(map);
-
-			
-			L.marker([48.762201, 11.425374]).addTo(map)
-				.bindPopup("<b>Hello Ingolstadt!</b><br /><br />This is the company headquarters of AUDI.<br />"+
-				          "In the upcoming releases, more functionality will be added here. Please come back soon for more! ;-)").openPopup();
-
-			var popup = L.popup();
-
-			function onMapClick(e) {
-				popup
-					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
-					.openOn(map);
-			}
-
-			map.on('click', onMapClick);
-
-		</script>
-		  
+		  <script src="./js/amos_webapp-worldmap.js"></script>
+		  <div id="dataLayer">
+			<p>Additional data will be displayed here.</p>
+		  </div>
 	  </div>
 
       <!-- Example row of columns -->
@@ -177,7 +155,6 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js/jquery-1.9.1.min.js"></script>
     <script src="./js/bootstrap-transition.js"></script>
     <script src="./js/bootstrap-alert.js"></script>
     <script src="./js/bootstrap-modal.js"></script>
