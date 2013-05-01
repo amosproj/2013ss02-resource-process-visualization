@@ -23,18 +23,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
 
-<%
-	// We only allow access to this template via request.
-	// If there is none, exit here.
-	// @TODO: Only allow access if post parameter was submitted
-	if(request.getParameter("fid") == null)
-		return;
-	
-	// Process the post data here
-    int id = Integer.parseInt(request.getParameter("fid"));
-%>
 <% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
-Hi! You just clicked the factory with the ID <%= factory.getId() %><br />
 <table>
 <tr>
 	<td>Name</td>
@@ -43,6 +32,26 @@ Hi! You just clicked the factory with the ID <%= factory.getId() %><br />
 <tr>
 	<td>Country</td>
 	<td><%= factory.getCountry() %></td>
+</tr>
+<tr>
+	<td>Car Models</td>
+	<td><% 
+	String[] carNames = factory.getCarModels();
+	if(carNames.length > 0){
+		out.print(carNames[0]);
+	}
+	for(int i = 1; i < carNames.length; ++i){
+		out.print(", " + carNames[i]);
+	}
+	%></td>
+</tr>
+<tr>
+	<td>Vehicle output</td>
+	<td><%= factory.getNumOfVehicles() %></td>
+</tr>
+<tr>
+	<td>Staff</td>
+	<td><%= factory.getSizeOfStaff() %></td>
 </tr>
 </table>
 <a href="javascript:showGlobalMap()">Go back to global view</a>
