@@ -123,6 +123,20 @@ function factoryZoom(el) {
     });
 }
 
+function hallZoom(hallId){
+	$.ajax({
+		url: "/hall",
+		type: "POST",
+		data: {hid: hallId},
+		success: function(response, textStatus, jqXHR){
+			$("#canvas #dataLayer").html(response);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			notAvailable();
+		}
+	});
+}
+
 function notAvailable() {
     $("#feature-announcement").modal("show");
 }
