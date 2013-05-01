@@ -1,3 +1,4 @@
+﻿<!DOCTYPE html>
 <!-- 
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
@@ -17,12 +18,22 @@
  - You should have received a copy of the GNU Affero General Public
  - License along with this program. If not, see
  - <http://www.gnu.org/licenses/>.
+ -
+ - *************** PLEASE NOTE ****************
+ - ********************************************
+ - ***									    ***
+ - *** do NOT change the first line of this ***
+ - *** document (DOCTYPE html), otherwise   ***
+ - *** the Internet Explorer will turn into ***
+ - *** quirks mode and cause problems.      ***
+ - ***									    ***
+ - *************** PLEASE NOTE ****************
+ - ********************************************
  -->
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 	
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -33,16 +44,6 @@
 
     <!-- CSS Framework -->
     <link href="./css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-	  
-	  #map {
-		height: 400px;
-	  }
-    </style>
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -55,7 +56,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="./ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="./ico/favicon.png">
+    <link rel="shortcut icon" href="./img/favicon.ico">
 	
 	<!-- WORLDMAP Framework -->
 	<!-- Include leaflet open-source javascript library for mobile friendly interactive maps -->
@@ -83,22 +84,22 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="javascript:notAvailable()">About</a></li>
+              <li><a href="javascript:notAvailable()">Contact</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="javascript:notAvailable()">Action</a></li>
+                  <li><a href="javascript:notAvailable()">Another action</a></li>
+                  <li><a href="javascript:notAvailable()">Something else here</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="javascript:notAvailable()">Separated link</a></li>
+                  <li><a href="javascript:notAvailable()">One more separated link</a></li>
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
+            <form class="navbar-form pull-right" onSubmit="notAvailable()">
               <input class="span2" type="text" placeholder="Email">
               <input class="span2" type="password" placeholder="Password">
               <button type="submit" class="btn">Sign in</button>
@@ -108,23 +109,27 @@
       </div>
     </div>
 
-    <div class="container">
-	<h1>OSRAMOS AUDI Resource Hierarchy Visualization</h1>
-	<p>
-		Hello world! This is a first version of the OSRAMOS Audi Resource Hierarchy Visualization project.<br />
-		Feel free to click, discover and explore everything which is already implemented.<br />
-		Functionality which is not part of the current release is marked properly.
-	</p>
-	<!--<p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>-->
-	  
-	  <div>
-	      <div id="map"></div>
-		  <script src="./js/amos_webapp-worldmap.js"></script>
-		  <div id="dataLayer">
-			<p>Additional data will be displayed here.</p>
-		  </div>
-	  </div>
+	<div id="feature-announcement" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-header">
+			Feature Announcement
+		</div>
+		<div class="modal-body">
+			This feature will be available in the upcoming releases. Please stay tuned!
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+		</div>
+	</div>
 
+    <div class="container">
+	<h1>OSRAMOS AUDI Resource Hierarchy Visualization</h1>	  
+	  <div id="canvas">
+	      <div id="map"></div>
+		  <div id="dataLayer"></div>
+	  </div>
+	  
+	  <script src="./js/amos_webapp-worldmap.js"></script>
+	  
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">

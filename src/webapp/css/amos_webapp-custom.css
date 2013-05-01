@@ -1,4 +1,4 @@
-/*
+﻿/*
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
  -
@@ -21,16 +21,17 @@
 
 body {
 	overflow-x: hidden;
+	padding-top: 60px;
+	padding-bottom: 40px;
 }
 
-#dataLayer {
-	position: absolute;
-	right: -51%;
-	top: 190px;
-	width: 50%;
+#canvas, #map {
 	height: 400px;
-	background-color: rgba(255, 255, 255, 0.95);
-	border-left: 1px solid #ddd;
+}
+
+.companyImgSmall, .flagImgSmall {
+	width: 50px;
+	height: 30px;
 }
 
 .statusIcon {
