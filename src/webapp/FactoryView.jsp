@@ -21,6 +21,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="de.osramos.reprovis.FactoryBean" %>
 
 <%
 	// We only allow access to this template via request.
@@ -32,6 +33,16 @@
 	// Process the post data here
     int id = Integer.parseInt(request.getParameter("fid"));
 %>
-
-Hi! You just clicked the factory with the ID <%= id %><br />
+<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
+Hi! You just clicked the factory with the ID <%= factory.getId() %><br />
+<table>
+<tr>
+	<td>Name</td>
+	<td><%= factory.getName() %></td>
+</tr>
+<tr>
+	<td>Country</td>
+	<td><%= factory.getCountry() %></td>
+</tr>
+</table>
 <a href="javascript:showGlobalMap()">Go back to global view</a>
