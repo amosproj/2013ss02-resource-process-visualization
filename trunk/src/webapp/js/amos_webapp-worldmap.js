@@ -33,7 +33,7 @@ var pluginName = "worldMap",
 	};
 
 // Hardcoded data; will be pulled dynamically in further releases
-var data = {
+/*var data = {
 	factories: [
 		{"fid": 1, "fName": "Werk Ingolstadt", "lat": 48.762201, "lon": 11.425374, "active": true,
 		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bavaria.png" />',
@@ -43,7 +43,8 @@ var data = {
 		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bawu.png" />',
 		 "statusImg": '<span class="statusIcon statusIconWarning">&nbsp;</span>'}
 	]
-};
+};*/
+var data = {};
 
 // Add tile layer to map (the actual map images)
 L.tileLayer('http://{s}.tile.cloudmade.com/'+pluginConf['apikey']+'/'+pluginConf['style']+'/256/{z}/{x}/{y}.png', {
@@ -61,18 +62,22 @@ function factoryPopup(factory) {
 	return result;
 }
 
-// Draw factories into map
-for(var i=0; i<data.factories.length; i++) {
-	var obj = data.factories[i];
-	for(var key in obj) {
-		var markerObj = L.marker([data.factories[i].lat, data.factories[i].lon]).addTo(map)
-						.bindPopup(data.factories[i].hardTpl);
+jQuery.getJSON('/factory', function(factories){
+	data.factories = factories;
+	// Draw factories into map
+	for(var i=0; i<data.factories.length; i++) {
+		var obj = data.factories[i];
+		for(var key in obj) {
+			var markerObj = L.marker([data.factories[i].lat, data.factories[i].lon]).addTo(map)
+							.bindPopup(data.factories[i].hardTpl);
 
-        markerObj.bindPopup(factoryPopup(data.factories[i]), {offset: new L.Point(0,-10), autoPanPadding: new L.Point(10,30)});
-		if(data.factories[i].active == true || data.factories[i].active == 1)
-			markerObj.openPopup();
+	        markerObj.bindPopup(factoryPopup(data.factories[i]), {offset: new L.Point(0,-10), autoPanPadding: new L.Point(10,30)});
+			if(data.factories[i].active == true || data.factories[i].active == 1)
+				markerObj.openPopup();
+		}
 	}
-}
+});
+
 
 function onMapClick(e) {	
     // map.panTo(e.latlng);
@@ -93,7 +98,7 @@ function showGlobalMap() {
 function factoryZoom(el) {
 	var factoryID = parseInt($("#"+el).attr("fid"));	
     var request = $.ajax({
-        url: "./FactoryView.jsp",
+        url: "./factory",
         type: "post",
         data: { fid: factoryID }
     });

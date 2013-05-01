@@ -36,7 +36,7 @@ public class GlobalServlet extends HttpServlet {
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		req.getSession().setAttribute("factories", factories);
+		req.setAttribute("factories", factories);
 		getServletContext().getRequestDispatcher("/config.jsp").forward(req, res);
 	}
 

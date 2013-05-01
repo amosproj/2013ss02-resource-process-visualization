@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.Factory" %>
 <%@ page import="de.osramos.reprovis.ProductionHall" %>
 <%@ page import="de.osramos.reprovis.Line" %>
@@ -15,7 +15,7 @@
 <body>
 <ul>
 	<%! @SuppressWarnings("unchecked") %>
-	<% for(Factory f: (ArrayList<Factory>)session.getAttribute("factories")){ %>
+	<% for(Factory f: (ArrayList<Factory>)request.getAttribute("factories")){ %>
 	<li>
 		<%= f.getName() %>
 		<ul>
