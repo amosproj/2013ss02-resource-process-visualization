@@ -83,6 +83,10 @@ body {
 	stroke: black;
 }
 
+.hallplan path:hover{
+	cursor: pointer;
+}
+
 .statusHallOk {
 	fill: darkgreen;
 }
