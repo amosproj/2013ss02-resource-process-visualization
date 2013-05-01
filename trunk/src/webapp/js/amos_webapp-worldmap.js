@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
  -
@@ -29,30 +29,37 @@ var pluginName = "worldMap",
 		style: '997',
 		center: [0,0],
 		maxZoom : 18,
+		startHeight: 400
 	};
 
 // Hardcoded data; will be pulled dynamically in further releases
 var data = {
 	factories: [
-		{"fid": 1, "fName": "Ingolstadt", "lat": 48.762201, "lon": 11.425374, "active": true,
-		 "hardTpl": '<p style="text-align: center;"><img width="50" src="./img/logo_audi-small.png" />&nbsp;<img width="50" src="./img/flag_germany-bavaria.png" />'+
-			'</p><hr /><h4>Werk Ingolstadt</h4>Status: <span class="statusIcon statusIconOk">&nbsp;</span><hr />'+
-			'<p style="text-align: center;"><p>Ingolstadt, Deutschland<br />Seit 1949<br />35.386 Mitarbeiter</p></p>'+
-			'<p><a class="btn mapDetailBtn" href="#" id="fid-1">View details &raquo;</a></p>'},
+		{"fid": 1, "fName": "Werk Ingolstadt", "lat": 48.762201, "lon": 11.425374, "active": true,
+		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bavaria.png" />',
+		 "statusImg": '<span class="statusIcon statusIconOk">&nbsp;</span>'},
 			  
-		{"fid": 2, "fName": "Neckarsulm", "lat": 49.192780, "lon": 9.2261100, "active": false,
-		"hardTpl": '<p style="text-align: center;"><img width="50" src="./img/logo_audi-small.png" />&nbsp;<img width="50" src="./img/flag_germany-bawu.png" />'+
-			'</p><hr /><h4>Werk Neckarsulm</h4>Status: <span class="statusIcon statusIconWarning">&nbsp;</span><hr />'+
-			'<p style="text-align: center;"><p>Neckarsulm, Deutschland<br />Seit 1880<br />14.764 Mitarbeiter</p></p>'+
-			'<p><a class="btn mapDetailBtn" href="#" id="fid-2">View details &raquo;</a></p>'}
+		{"fid": 2, "fName": "Werk Neckarsulm", "lat": 49.192780, "lon": 9.2261100, "active": false,
+		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bawu.png" />',
+		 "statusImg": '<span class="statusIcon statusIconWarning">&nbsp;</span>'}
 	]
 };
 
 // Add tile layer to map (the actual map images)
 L.tileLayer('http://{s}.tile.cloudmade.com/'+pluginConf['apikey']+'/'+pluginConf['style']+'/256/{z}/{x}/{y}.png', {
 	maxZoom: pluginConf['maxZoom'],
-	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+	attribution: ''
 }).addTo(map);
+
+function factoryPopup(factory) {
+	var result = '<div><p style="text-align: center;">'+factory.companyImg+'&nbsp;'+factory.flagImg+
+	             '</p><hr /><h4>'+factory.fName+'</h4>Status: '+factory.statusImg+'<hr />'+
+				 '<p style="text-align: center;"><p>Ingolstadt, Deutschland<br />Seit 1949<br />35.386 Mitarbeiter</p>'+
+				 '<a href="#" onClick="factoryZoom(this.id)" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="btn factoryBtn">View details &raquo;</a>'
+				 '</p></div>';	
+				 
+	return result;
+}
 
 // Draw factories into map
 for(var i=0; i<data.factories.length; i++) {
@@ -60,27 +67,57 @@ for(var i=0; i<data.factories.length; i++) {
 	for(var key in obj) {
 		var markerObj = L.marker([data.factories[i].lat, data.factories[i].lon]).addTo(map)
 						.bindPopup(data.factories[i].hardTpl);
-						
+
+        markerObj.bindPopup(factoryPopup(data.factories[i]), {offset: new L.Point(0,-10), autoPanPadding: new L.Point(10,30)});
 		if(data.factories[i].active == true || data.factories[i].active == 1)
 			markerObj.openPopup();
 	}
 }
 
-var popup = L.popup();
-
 function onMapClick(e) {	
-	// Hide the information layer
-	$("#dataLayer").stop(true, true).animate({right:"-51%"}, 750);
-	alert(jQuery("#map .btn").attr("class"));
+    // map.panTo(e.latlng);
 }
 
+// Bind click handler to map
 map.on('click', onMapClick);
 
-// jQuery additionals
-$(function() {
-	$( ".mapDetailBtn" ).click(function( event ) {
-		alert(jQuery("#map .btn").attr("class"));
-		event.preventDefault();
-		jQuery("#dataLayer").stop(true, true).animate({right:"1%"}, 750);
+
+function showGlobalMap() {
+	$("#canvas").animate({height: pluginConf.startHeight}, 500);
+	$("#canvas #map").animate({height: pluginConf.startHeight}, 500);
+	$("#canvas #dataLayer").animate({height: "0px", display: "none"}, 500, function() {
+		$("#canvas #dataLayer").css({display: "none"});
 	});
-});
+}
+
+function factoryZoom(el) {
+	var factoryID = parseInt($("#"+el).attr("fid"));	
+    var request = $.ajax({
+        url: "./FactoryView.jsp",
+        type: "post",
+        data: { fid: factoryID }
+    });
+	
+	// callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+	    $("#canvas #map").animate({height: "0px"}, 500);
+		
+		$("#canvas #dataLayer").css({display: "block", height: "300px"});
+		$("#canvas").animate({height: "300px"}, 500);
+		
+        $("#canvas #dataLayer").html(response);
+    });
+
+    // callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        notAvailable();
+		console.error(
+            "The following error occured: "+
+            textStatus, errorThrown
+        );
+    });
+}
+
+function notAvailable() {
+    $("#feature-announcement").modal("show");
+}
