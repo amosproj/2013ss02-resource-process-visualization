@@ -38,5 +38,9 @@
 
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="4.9" conf="test->default"/>
+		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf="test->default"/>
+		<dependency org="org.codehaus.jackson" name="jackson-jaxrs" rev="1.9.12" conf="default"/>
+	    <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.0-beta5" conf="default"/>
+	    <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.0-beta5" conf="default"/>
 	</dependencies>
 </ivy-module>
