@@ -1,4 +1,4 @@
-﻿/*
+/*
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
  -
@@ -72,4 +72,25 @@ body {
 	background: -ms-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
+}
+
+.hallplan {
+	display: block;
+	float: right;
+}
+
+.hallplan path{
+	stroke: black;
+}
+
+.statusHallOk {
+	fill: darkgreen;
+}
+
+.statusHallWarning {
+	fill: darkorange;
+}
+
+.statusHallCritical {
+	fill: darkred;
 }
