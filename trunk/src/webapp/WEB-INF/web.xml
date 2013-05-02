@@ -43,7 +43,7 @@
 		<url-pattern>/Factory</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 		<servlet-name>FactoryView</servlet-name>
 		<jsp-file>/FactoryView.jsp</jsp-file>
 	</servlet>
@@ -51,5 +51,25 @@
 	<servlet-mapping>
 		<servlet-name>FactoryView</servlet-name>
 		<url-pattern>/FactoryView</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>factoryServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.FactoryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>factoryServlet</servlet-name>
+		<url-pattern>/factory</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>hallServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.HallServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>hallServlet</servlet-name>
+		<url-pattern>/hall</url-pattern>
 	</servlet-mapping>
 </web-app>
