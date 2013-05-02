@@ -62,7 +62,7 @@ function factoryPopup(factory) {
 	return result;
 }
 
-jQuery.getJSON('/factory', function(factories){
+jQuery.getJSON('./factory', function(factories){
 	data.factories = factories;
 	// Draw factories into map
 	for(var i=0; i<data.factories.length; i++) {
@@ -125,7 +125,7 @@ function factoryZoom(el) {
 
 function hallZoom(hallId){
 	$.ajax({
-		url: "/hall",
+		url: "./hall",
 		type: "POST",
 		data: {hid: hallId},
 		success: function(response, textStatus, jqXHR){
