@@ -3,7 +3,6 @@ package de.osramos.reprovis.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.GlobalBean;
 
-@WebServlet(name="factoryServlet", urlPatterns={"/factory"})
 public class FactoryServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 6222012527441265856L;
