@@ -30,4 +30,6 @@ public class LineBeanTest {
 	public void LineTest(){
 		
 	}
+
+	
 }

@@ -14,9 +14,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=Reprovis&amp;ivyXmlPath=ivy.xml&amp;confs=default"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=Reprovis&amp;ivyXmlPath=ivy.xml&amp;confs=test"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=Reprovis&amp;ivyXmlPath=ivy.xml&amp;confs=provided"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=default"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=test"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=provided"/>
 	<classpathentry kind="lib" path="lib/test/junit.jar"/>
 	<classpathentry kind="lib" path="lib/default/jackson-mapper-asl.jar"/>
 	<classpathentry kind="lib" path="lib/default/jackson-core-asl.jar"/>

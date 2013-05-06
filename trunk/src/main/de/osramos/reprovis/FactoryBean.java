@@ -107,10 +107,20 @@ public class FactoryBean {
 		for(HallBean hall: halls){
 			// aggregate to worst status
 			if ( status == TrafficLight.green){
-				status = hall.getStatus();
+				try {
+					status = hall.getStatus();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else if (status == TrafficLight.yellow){
-				if (hall.getStatus() == TrafficLight.red){
-					status = TrafficLight.red;
+				try {
+					if (hall.getStatus() == TrafficLight.red){
+						status = TrafficLight.red;
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}

@@ -21,27 +21,57 @@
 
 package de.osramos.reprovis.test;
 
+import java.util.List;
+
 import org.junit.*;
 
 import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.HallBean;
+import de.osramos.reprovis.HierarchieElementBean;
 import static org.junit.Assert.*;
 
 public class HallBeanTest {
-	
+
 	@Test
-	public void HallTest(){
+	public void HallTest() throws Exception {
 		HallBean hall = new HallBean(1);
-		assertNotNull(hall.getFactory());
-		assertNotNull(hall.getName());
+
+		assertNotNull(hall.getChilds());
 		assertNotNull(hall.getStatus());
+		assertNull(hall.getParent());
+		assertNotNull(hall.getName());
+		assertNotNull(hall.getSizeOfStaff());
+		assertNotNull(hall.getProductionCapacity());
+
 	}
 
 	@Test
-	public void HallFactoryTest(){
+	public void HallFactoryTest() {
 		FactoryBean f = new FactoryBean(1);
 		HallBean h = f.getHalls().get(0);
-		
-		assertEquals(f.getId(), h.getFactory().getId());
+
+		assertEquals(f.getId(), h.getChilds().get(0).getParent().getId());
 	}
+
+	@Test
+	public void ChildTest() {
+		HallBean hall = new HallBean(1);
+		List<HierarchieElementBean> lines = hall.getChilds();
+		assertTrue(lines.size() > 0);
+		assertNotNull(lines.get(0));
+	}
+	
+	@Test
+	public void HallTestPrint() throws Exception {
+		HallBean hall = new HallBean(1);
+
+		System.out.println(hall.getChilds().size());
+		System.out.println(hall.getStatus());
+		System.out.println(hall.getParent());
+		System.out.println(hall.getName());
+		System.out.println(hall.getSizeOfStaff());
+		System.out.println(hall.getProductionCapacity());
+
+	}
+	
 }
