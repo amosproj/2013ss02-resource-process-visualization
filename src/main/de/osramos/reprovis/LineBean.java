@@ -22,11 +22,34 @@
 
 package de.osramos.reprovis;
 
+import de.osramos.reprovis.MasterData.TrafficLight;
 
-public class LineBean {
 
-	public LineBean(int id){
+
+
+public class LineBean extends HierarchieElementBean {
+
+	String name;
+	
+	
+	public LineBean(int id) {
+		super(id);
+		name = LineDAO.getName(id);
 		
 	}
+
+	@Override
+	protected void initChilds() throws Exception  {
+		childs = null;
+		throw new Exception("Element has no Childs");
+		
+	}
+
+	@Override
+	protected TrafficLight getDistinctStatus(){
+		return LineDAO.getStatus(id);
+		
+	}
+
 
 }

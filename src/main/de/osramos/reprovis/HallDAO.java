@@ -9,7 +9,7 @@ public class HallDAO {
 
 	public static List<Integer> getHallIds(int FactoryId) {
 		
-		int n = FactoryId%3 +2;
+		int n = FactoryId %3 +2;
 		List<Integer> l = new ArrayList<Integer>();
 		
 		for (int i = 0; i < n; i++)
@@ -38,6 +38,16 @@ public class HallDAO {
 	public static FactoryBean getFactory(int id) {
 
 		return new FactoryBean( (int) (id/10) );
+	}
+
+	public static int getSizeOfStaff(int id) {
+		// TODO Auto-generated method stub
+		return 300;
+	}
+
+	public static int getProductionCapacity() {
+		// TODO Auto-generated method stub
+		return 8000;
 	}
 	
 

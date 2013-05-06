@@ -25,27 +25,50 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 
-public class HallBean {
+public class HallBean extends HierarchieElementBean {
 	
-	private int id;
+	
 	private String name;
+	private int sizeOfStaff;
+	private int productionCapacity;
 	
-	public HallBean(int id){
-		this.id = id;
-		this.name = HallDAO.getName(id);
+	
+	public HallBean(int id) {
+		super(id);
+		
+		name = HallDAO.getName(id);
+		sizeOfStaff = HallDAO.getSizeOfStaff(id); 
+		productionCapacity = HallDAO.getProductionCapacity();
 	}
 
 	public String getName(){
 		return name;
 	}
 	
-	public int getId() {
-		return id;
+	public int getSizeOfStaff(){
+		return sizeOfStaff;
 	}
 	
-	public FactoryBean getFactory(){
+	public int getProductionCapacity(){
+		return productionCapacity;
+	}
+
+	@Override
+	protected void initChilds()  {
+		List<Integer> lineIds = LineDAO.getLineIds(id);
+		childs = new ArrayList<>();
+		for(int id : lineIds){
+			LineBean lineBean = new LineBean(id);
+			try {
+				lineBean.setParent(this);
+			} catch (Exception e) {}
+			childs.add(lineBean);
+		}
+		
+	}
+	
+/*	public FactoryBean getFactory(){
 		return HallDAO.getFactory(id);
 	}
 	
@@ -65,7 +88,7 @@ public class HallBean {
 		return lineList;
 		
 	}
-	
+	*/
 
 
 
