@@ -50,7 +50,7 @@
 
 
 	<target name="compile" depends="init,retrieve">
-		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path">
+		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path" target="1.6">
 			<src path="${src}" />
 			<src path="${lib.default}" />
 		</javac>
