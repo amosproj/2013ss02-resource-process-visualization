@@ -79,7 +79,7 @@
 	</target>
 
 	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
-		<delete dir="${tomcat.web}/ROOT" />
+		<!--<delete dir="${tomcat.web}/ROOT" />-->
 		<copy file="${target}/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
 	</target>
 

@@ -27,3 +27,4 @@
 Status: 
 <div class="statusIcon <%= MasterData.getTrafficIconClass(line.getStatus()) %>"></div>
 </div>
+Line <%= line.getId() %>
