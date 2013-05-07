@@ -57,7 +57,7 @@ public class HallBean extends HierarchieElementBean {
 	@Override
 	protected void initChilds()  {
 		List<Integer> lineIds = LineDAO.getLineIds(id);
-		childs = new ArrayList<>();
+		childs = new ArrayList<HierarchieElementBean>();
 		for(int id : lineIds){
 			LineBean lineBean = new LineBean(id);
 			try {
