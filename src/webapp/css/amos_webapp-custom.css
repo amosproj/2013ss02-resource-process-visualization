@@ -74,6 +74,10 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
+.statusSummary{
+	float: right;
+}
+
 .hallplan {
 	display: block;
 	float: right;

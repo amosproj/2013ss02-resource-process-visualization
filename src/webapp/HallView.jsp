@@ -22,14 +22,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
+<%@ page import="de.osramos.reprovis.MasterData" %>
 <% HallBean hall = (HallBean)request.getAttribute("hall"); %>
+<div class="statusSummary">
+Status: 
+<div class="statusIcon <%= MasterData.getTrafficIconClass(hall.getStatus()) %>"></div>
+</div>
 <table>
-<tr>
-	<td>ID</td>
-	<td><%= hall.getId() %></td>
-</tr>
 <tr>
 	<td>Name</td>
 	<td><%= hall.getName() %></td>
+</tr>
+<tr>
+	<td>Staff</td>
+	<td><%= hall.getSizeOfStaff() %></td>
+</tr>
+<tr>
+	<td>Production Capacity</td>
+	<td><%= hall.getProductionCapacity() %></td>
 </tr>
 </table>
