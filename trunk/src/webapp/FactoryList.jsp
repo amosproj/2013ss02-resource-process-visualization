@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
+<%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="de.osramos.reprovis.MasterData.TrafficLight" %>
 <%@ page import="java.util.List" %>
 [
@@ -13,22 +14,7 @@
 		"lon": 11.425374, 
 		"companyImg": "<img class=\"companyImgSmall\" src=\"./img/logo_audi-small.png\" />", 
 		"flagImg": "<img class=\"flagImgSmall\" src=\"./img/flag_germany-bavaria.png\" />",
-		<% 	
-		TrafficLight status = factory.getStatus();
-		String statusClass; 
-		switch(status){
-		case red:
-			statusClass = "statusIconCritical";
-			break;
-		case yellow:
-			statusClass = "statusIconWarning";
-			break;
-		default:
-			statusClass = "statusIconOk";
-			break;
-		}
-		%>
-		"statusImg": "<span class=\"statusIcon <%= statusClass %>\">&nbsp;</span>"
+		"statusImg": "<span class=\"statusIcon <%= MasterData.getTrafficIconClass(factory.getStatus()) %>\">&nbsp;</span>"
 	}
 <% } %>
 ]
