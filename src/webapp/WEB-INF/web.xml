@@ -72,4 +72,16 @@
 		<servlet-name>hallServlet</servlet-name>
 		<url-pattern>/hall</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>lineServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.LineServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>lineServlet</servlet-name>
+		<url-pattern>/line</url-pattern>
+	</servlet-mapping>
+	
+	
 </web-app>
