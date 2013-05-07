@@ -28,22 +28,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.HallBean;
+import de.osramos.reprovis.LineBean;
 
-public class HallServlet extends HttpServlet {
+public class LineServlet extends HttpServlet {
 
-	private static final long serialVersionUID = -3606015914647184870L;
-	
+	private static final long serialVersionUID = 1574042887470193590L;
+
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		String id = req.getParameter("hid");
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException{
+		String id = req.getParameter("lid");
 		if(id == null){
-			req.setAttribute("message", "Requesting production hall without id.");
+			req.setAttribute("message", "Requesting line without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}else{
-			req.setAttribute("hall", new HallBean(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/HallView.jsp").forward(req, resp);
+			req.setAttribute("line", new LineBean(Integer.valueOf(id)));
+			getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
 		}
 	}
-
 }
