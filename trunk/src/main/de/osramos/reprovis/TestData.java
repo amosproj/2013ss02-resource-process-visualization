@@ -104,6 +104,14 @@ public class TestData {
 		return lines.get(lid);
 	}
 	
+	public Location getLocation(int locid){
+		return locations.get(locid);
+	}
+	
+	public Component getComponent(int cid){
+		return components.get(cid);
+	}
+	
 	public static class Node{
 		protected int id;
 		protected TrafficLight status = TrafficLight.red;

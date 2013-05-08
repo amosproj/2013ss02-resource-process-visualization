@@ -83,5 +83,25 @@
 		<url-pattern>/line</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>locationServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.LocationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>locationServlet</servlet-name>
+		<url-pattern>/location</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>componentServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.ComponentServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>componentServlet</servlet-name>
+		<url-pattern>/component</url-pattern>
+	</servlet-mapping>
+	
 	
 </web-app>

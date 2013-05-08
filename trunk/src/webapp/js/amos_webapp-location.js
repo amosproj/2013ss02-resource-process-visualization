@@ -1,19 +1,21 @@
-function displayLine(json){
+var svgNS = "http://www.w3.org/2000/svg";
+
+function displayLocation(json){
 	var container = document.createElement("div");
-	var locations = document.createElement("div");
+	var components = document.createElement("div");
 	var info = document.createElement("div");
 	
-	locations.setAttribute("class", "span6");
-	var locHtml = "<ul>";
-	for(var i = 0; i < json.locations.length; ++i){
-		locHtml += "<li onclick=\"javascript:locationZoom(" + json.locations[i].id + ")\" ";
-		locHtml += "class=\"list\">";
-		locHtml += "<div class=\"" + getStatusClass(json.locations[i].status)+ " listStatus\"></div>";
-		locHtml += json.locations[i].name;
-		locHtml += "</li>";
+	components.setAttribute("class", "span6");
+	var cHtml = "<ul>";
+	for(var i = 0; i < json.components.length; ++i){
+		cHtml += "<li onclick=\"javascript:componentZoom(" + json.components[i].id + ")\" ";
+		cHtml += "class=\"list\">";
+		cHtml += "<div class=\"" + getStatusClass(json.components[i].status)+ " listStatus\"></div>";
+		cHtml += json.components[i].type;
+		cHtml += "</li>";
 	}
-	locHtml += "</ul>";
-	locations.innerHTML = locHtml;
+	cHtml += "</ul>";
+	components.innerHTML = cHtml;
 	
 	info.setAttribute("class", "span5");
 	var infoHtml = "<div class=\"statusSummary\">";
@@ -28,21 +30,20 @@ function displayLine(json){
 	infoHtml += "</table>";
 	info.innerHTML = infoHtml;
 	
-	container.appendChild(locations);
+	container.appendChild(components);
 	container.appendChild(info);
 	
 	$("#canvas #dataLayer").html("");
 	$("#canvas #dataLayer").append(container);
 }
 
-function lineZoom(lineId){
+function locationZoom(locId){
 	$.ajax({
-		url: "./line",
+		url: "./location",
 		type: "POST",
-		data: {lid: lineId},
+		data: {locid: locId},
 		success: function(response, textStatus, jqXHR){
-			displayLine(response);
-			//$("#canvas #dataLayer").html(response);
+			displayLocation(response);
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			notAvailable();
