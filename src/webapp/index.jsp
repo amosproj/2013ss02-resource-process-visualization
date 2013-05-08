@@ -132,6 +132,8 @@
 	  <script src="./js/amos_webapp-style.js"></script>
 	  <script src="./js/amos_webapp-hall.js"></script>
 	  <script src="./js/amos_webapp-line.js"></script>
+	  <script src="./js/amos_webapp-location.js"></script>
+	  <script src="./js/amos_webapp-component.js"></script>
 	  
 	  
       <!-- Example row of columns -->
