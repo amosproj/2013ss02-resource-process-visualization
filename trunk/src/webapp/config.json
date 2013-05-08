@@ -3,12 +3,19 @@
 	"staff": 15000,
 	"brands": ["Audi", "Volkswagen"],
 	"vehicles": ["A4", "A5", "A6", "Golf"],
+	"coordinate": {
+		"latitude": 48.762201,
+		"longitude": 11.425374
+	},
+	"country": "Germany",
 	"halls": [{
 		"name": "B5",
+		"path": "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z",
 		"type": "Assembly+Finish",
 		"vehicles": ["A4", "A5", "A6", "Golf"],
 		"lines": [{
 			"name": "B5 Assembly",
+			"path": "m 117.38822,36.114366 143.94673,0 0,27.27411 -143.94673,0 z",
 			"locations": [{
 				"name": "VP1",
 				"components": [
@@ -44,6 +51,7 @@
 			}]
 		},{
 			"name": "B5 Finish",
+			"path": "m 352.24158,86.109936 0,1.03125 -74.75,0 0,44.437504 74.75,0 0,54.03125 72.21875,0 0,-99.500004 -72.21875,0 z",
 			"locations": [{
 				"name": "BZD",
 				"components": []
@@ -51,10 +59,12 @@
 		}]
 	},{
 		"name": "B8",
+		"path": "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z",
 		"type": "Assembly",
 		"vehicles": ["A4", "A5", "Golf"],
 		"lines": [{
 			"name": "B8 Assembly",
+			"path": "m 276.48725,31.568676 152.02795,0 0,41.92133 -152.02795,0 z",
 			"locations": [{
 				"name": "VP1",
 				"components": []
@@ -68,14 +78,27 @@
 		}]
 	},{
 		"name": "V1",
+		"path": "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z",
 		"type": "PreSeries",
 		"vehicles": ["A4", "A5", "A6", "Golf"],
 		"lines": [{
 			"name": "V1 PreSeries",
+			"path": "m 118.39838,113.39104 143.94673,0 0,27.27412 -143.94673,0 z",
 			"locations": [{
 				"name": "PreSeries",
 				"components": []
 			}]
 		}]
 	}]
+},{
+	"name": "German2",
+	"staff": 15000,
+	"brands": ["Audi", "Volkswagen"],
+	"vehicles": ["A4", "A5", "A6", "Golf"],
+	"coordinate": {
+		"latitude": 53.014783,
+		"longitude": 8.745117
+	},
+	"country": "Germany",
+	"halls": []
 }]

@@ -78,16 +78,22 @@ body {
 	float: right;
 }
 
-.hallplan {
+.plan {
+	width: 100%;
+	height: 100%;
+	border: 1px solid darkgray;
+}
+
+.plan {
 	display: block;
 	float: right;
 }
 
-.hallplan path{
+.plan path{
 	stroke: black;
 }
 
-.hallplan path:hover{
+.plan path:hover{
 	cursor: pointer;
 }
 
