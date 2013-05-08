@@ -22,8 +22,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
+<%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
-<% HallBean hall = (HallBean)request.getAttribute("hall"); %>
+<% TestData.Hall hall = (TestData.Hall)request.getAttribute("hall"); %>
 <div class="statusSummary">
 Status: 
 <div class="statusIcon <%= MasterData.getTrafficIconClass(hall.getStatus()) %>"></div>
@@ -50,7 +51,12 @@ Status:
    width="447.16"
    height="224.94"
    id="svg2">
-   <path class="statusHallOk" onclick="javascript:lineZoom(1)"
+<% for(TestData.Line line: hall.getLines()){ %>
+<path d="<%= line.getPath() %>" 
+	class="<%= MasterData.getHallClass(line.getStatus()) %>" 
+	onclick="javascript:lineZoom(<%= line.getId() %>)"/>
+<% } %>
+   <!-- <path class="statusHallOk" onclick="javascript:lineZoom(1)"
      d="m 117.38822,36.114366 143.94673,0 0,27.27411 -143.94673,0 z"/>
   <path class="statusHallOk" onclick="javascript:lineZoom(2)"
      d="m 118.39838,71.469706 143.94673,0 0,32.829964 -143.94673,0 z"/>
@@ -69,6 +75,6 @@ Status:
   <path class="statusHallOk" onclick="javascript:lineZoom(9)"
      d="m 41.626791,18.436686 54.04316,0 0,50.00255 -54.04316,0 z"/>
   <path class="statusHallOk" onclick="javascript:lineZoom(10)"
-     d="m 276.48725,31.568676 152.02795,0 0,41.92133 -152.02795,0 z"/>
+     d="m 276.48725,31.568676 152.02795,0 0,41.92133 -152.02795,0 z"/>-->
 </svg>
 </div>

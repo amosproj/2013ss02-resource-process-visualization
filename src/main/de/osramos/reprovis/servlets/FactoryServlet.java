@@ -23,21 +23,27 @@ package de.osramos.reprovis.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.FactoryBean;
-import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.TestData;
 
 public class FactoryServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 6222012527441265856L;
+	
+	public void init(ServletConfig config) throws ServletException{
+		super.init(config);
+		getServletContext().setAttribute("testdata", new TestData(getServletContext().getResourceAsStream("config.json")));
+	}
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		req.setAttribute("factories", GlobalBean.getGlobal().getFactories());
+		TestData global = (TestData)getServletContext().getAttribute("testdata");
+		req.setAttribute("factories", global.getFactories());
 		getServletContext().getRequestDispatcher("/FactoryList.jsp").forward(req, resp);
 	}
 	
@@ -45,11 +51,12 @@ public class FactoryServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String id = req.getParameter("fid");
+		TestData global = (TestData)getServletContext().getAttribute("testdata");
 		if(id == null){
-			req.setAttribute("factories", GlobalBean.getGlobal().getFactories());
+			req.setAttribute("factories", global.getFactories());
 			getServletContext().getRequestDispatcher("/FactoryList.jsp").forward(req, resp);
 		}else{
-			req.setAttribute("factory", new FactoryBean(Integer.valueOf(id)));
+			req.setAttribute("factory", global.getFactory(Integer.valueOf(id)));
 			getServletContext().getRequestDispatcher("/FactoryView.jsp").forward(req, resp);
 		}
 	}
