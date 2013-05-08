@@ -94,7 +94,7 @@ function showGlobalMap() {
 		$("#canvas #dataLayer").css({display: "none"});
 	});
 }
-
+/*
 function factoryZoom(el) {
 	var factoryID = parseInt($("#"+el).attr("fid"));	
     var request = $.ajax({
@@ -122,7 +122,7 @@ function factoryZoom(el) {
         );
     });
 }
-
+*/
 
 
 

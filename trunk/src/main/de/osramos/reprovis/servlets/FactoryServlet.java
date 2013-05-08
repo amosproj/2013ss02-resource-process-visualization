@@ -57,7 +57,7 @@ public class FactoryServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/FactoryList.jsp").forward(req, resp);
 		}else{
 			req.setAttribute("factory", global.getFactory(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/FactoryView.jsp").forward(req, resp);
+			getServletContext().getRequestDispatcher("/FactoryJSON.jsp").forward(req, resp);
 		}
 	}
 
