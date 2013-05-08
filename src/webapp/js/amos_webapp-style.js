@@ -1,4 +1,4 @@
-function getStatusIcon(status){
+function getStatusClass(status){
 	var c = "statusIcon ";
 	if(status === "green"){
 		c += "statusIconOk";
@@ -7,8 +7,12 @@ function getStatusIcon(status){
 	}else if(status === "red"){
 		c += "statusIconCritical";
 	}
+	return c;
+}
+
+function getStatusIcon(status){
 	var div = document.createElement("div");
-	div.setAttribute("class", c);
+	div.setAttribute("class", getStatusClass(status));
 	return div;
 }
 

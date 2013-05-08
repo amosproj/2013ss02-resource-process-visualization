@@ -100,6 +100,10 @@ public class TestData {
 		return halls.get(hid);
 	}
 	
+	public Line getLine(int lid){
+		return lines.get(lid);
+	}
+	
 	public static class Node{
 		protected int id;
 		protected TrafficLight status = TrafficLight.red;
