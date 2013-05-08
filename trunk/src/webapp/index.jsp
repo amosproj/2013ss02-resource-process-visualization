@@ -83,7 +83,7 @@
           <a class="brand" href="#">OSRAMOS AUDI RHV</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
+              <li class="active"><a href="./">Home</a></li>
               <li><a href="javascript:notAvailable()">About</a></li>
               <li><a href="javascript:notAvailable()">Contact</a></li>
               <li class="dropdown">
