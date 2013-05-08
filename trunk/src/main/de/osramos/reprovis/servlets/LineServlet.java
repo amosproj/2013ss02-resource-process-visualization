@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.LineBean;
+import de.osramos.reprovis.TestData;
 
 public class LineServlet extends HttpServlet {
 
@@ -42,7 +42,8 @@ public class LineServlet extends HttpServlet {
 			req.setAttribute("message", "Requesting line without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}else{
-			req.setAttribute("line", new LineBean(Integer.valueOf(id)));
+			TestData global = (TestData)getServletContext().getAttribute("testdata");
+			req.setAttribute("line", global.getLine(Integer.valueOf(id)));
 			getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
 		}
 	}

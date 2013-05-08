@@ -125,19 +125,6 @@ function factoryZoom(el) {
 
 
 
-function lineZoom(lineId){
-	$.ajax({
-		url: "./line",
-		type: "POST",
-		data: {lid: lineId},
-		success: function(response, textStatus, jqXHR){
-			$("#canvas #dataLayer").html(response);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			notAvailable();
-		}
-	});
-}
 
 function notAvailable() {
     $("#feature-announcement").modal("show");
