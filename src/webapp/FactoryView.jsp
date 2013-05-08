@@ -59,7 +59,7 @@ Status:
 	<td><%= factory.getSizeOfStaff() %></td>
 </tr>
 </table>
-<!-- <div class="hallplan">
+<div class="hallplan">
 Hallplan<br/>
 <svg xmlns:svg="http://www.w3.org/2000/svg"
 	xmlns="http://www.w3.org/2000/svg"
@@ -73,17 +73,5 @@ Hallplan<br/>
     <path d="m 147.72426,994.50525 11.07143,0 0,48.92855 -11.07143,0 z" class="statusHallOk" onclick="javascript:hallZoom(4)"/>
   </g>
 </svg>
-</div>-->
-<div id="factoryplan" style="width:100%; height: 500px;"></div>
-<script type="text/javascript">
-<!--
-	//var yellowIcon = L.icon({
-	//    iconUrl: './img/markerYellow.png',
-	//});
-	var factoryplan = L.map("factoryplan").setView([0.5, 0.5], 9);
-	var button = '<a href="#" onClick="hallZoom(1)" class="btn factoryBtn">Details</a>';
-	L.imageOverlay("./img/factory_sketch.jpg", [[0, 0], [1, 1]]).addTo(factoryplan);
-	L.marker([0.5, 0.2]/*, {icon: greenIcon}*/).addTo(factoryplan).bindPopup(button);
-//-->
-</script>
+</div>
 <a href="javascript:showGlobalMap()">Go back to global view</a>
