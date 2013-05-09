@@ -25,8 +25,9 @@ import org.junit.runner.*;
 import org.junit.runners.*;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ de.osramos.reprovis.test.FactoryBeanTest.class,
-		de.osramos.reprovis.test.BOTests.class
+@Suite.SuiteClasses({ 
+		de.osramos.reprovis.test.botests.BOTests.class,
+		de.osramos.reprovis.test.daotests.DAOTests.class
 })
 
 public class AllTests {

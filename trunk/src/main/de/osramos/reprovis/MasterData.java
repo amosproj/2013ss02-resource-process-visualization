@@ -27,6 +27,21 @@ public class MasterData {
 
 	
 	public enum Company{Audi, Volkswagen, Skoda, Seat}
+	public static Company stringToCompany(String string){
+		if (string.equals("Audi")){
+			return Company.Audi;
+		}
+		if (string.equals("Volkswagen")){
+			return Company.Volkswagen;
+		}
+		if (string.equals("Skoda")){
+			return Company.Skoda;
+		}
+		if (string.equals("Seat")){
+			return Company.Seat;
+		}
+		return null;
+	}
 	
 	public enum TrafficLight{red, yellow, green}
 	

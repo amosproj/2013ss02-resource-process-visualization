@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<global>
+	<factory name="German1" brand="Audi"
+		vehicles="Audi A3, Audi A3 Sportback, Audi S3, Audi S3 Sportback, Audi A4, Audi A4 Avant, Audi S4, Audi S4 Avant, Audi A4 allroad quattro, Audi RS4 Avant, Audi A5 Sportback, Audi A5 Coupé, Audi S5 Sportback, Audi S5 Coupé, Audi RS 5 Coupé, Audi Q5, Audi Q5 hybrid quattro, Audi SQ5 TDI, Karosseriebau/Lackiererei des Audi TT Coupé, Audi TT Roadster, Audi TTS Coupé, Audi TTS Roadster, Audi TT RS Coupé, Audi TT RS Roadster, Audi A3 Cabriolet "
+		country="Germany" city="Ingolstadt" gpsLatitude="48.762201"
+		gpsLongitude="11.425374" sizeOfStaff="35386" numOfVehicles="551889">
+		<hall name="" sizeOfStaff="" productionCapacity="">
+			<line name="">
+			</line>
+		</hall>
+	</factory>
+	<factory name="German2" brand="Audi"
+		vehicles="Audi A4, Audi A5 Cabriolet, Audi S5 Cabriolet, Audi RS 5 Cabriolet, Audi A6, Audi A6 hybrid, Audi A6 Avant, Audi S6, Audi A6 allroad quattro, Audi RS 6 Avant, Audi A7, Audi S7, Audi RS7, Audi A8, Audi A8 L, Audi A8 hybrid, Audi S8, Audi R8, Audi R8 Spyder, Audi R8 GT, Audi R8 GT Spyder"
+		country="Germany" city="Neckatsulm" gpsLatitude="49.194213"
+		gpsLongitude="9.221771" sizeOfStaff="14764" numOfVehicles="262965">
+		<hall name="" sizeOfStaff="" productionCapacity="">
+			<line name="">
+			</line>
+		</hall>
+	</factory>
+	<factory name="China1" brand="Volkswagen" vehicles="Audi A6L, Audi A4L, Audi Q5"
+		country="China" gpsLatitude="39.984552" gpsLongitude="116.45211"
+		sizeOfStaff="9700" numOfVehicles="333467">
+		<hall name="" sizeOfStaff="" productionCapacity="">
+			<line name="">
+			</line>
+		</hall>
+	</factory>
+	<factory name="Belgien1" brand="Audi"
+		vehicles="Audi A1, Audi A1 Sportback, Audi A1 quattro" country="USA"
+		gpsLatitude="50.811182" gpsLongitude="4.314855" sizeOfStaff="2503"
+		numOfVehicles="123111">
+		<hall name="" sizeOfStaff="" productionCapacity="">
+			<line name="">
+			</line>
+		</hall>
+	</factory> 
+</global>		

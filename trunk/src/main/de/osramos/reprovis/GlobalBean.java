@@ -24,12 +24,38 @@ package de.osramos.reprovis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+
+
 
 public class GlobalBean {
 
 	private static GlobalBean global;
 	
+	public Map<Integer, Object> reg;
+	
+	public static Object getElementById(int id){
+		return getGlobal().reg.get(id);
+	}
+	
 	private GlobalBean(){
+		reg = new TreeMap<Integer, Object>();
+		reg.put(0, this);
+		
+/*		try {
+			Context ctx = new InitialContext();
+			ctx.bind("de.osramos/reprovis/HierarchieElement/global", this);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
 	}
 	
 	public static GlobalBean getGlobal(){
@@ -41,6 +67,7 @@ public class GlobalBean {
 
 	public List<FactoryBean> getFactories(){
 		
+		try{
 		List<Integer> idList = FactoryDAO.getFactoryIds();
 		List<FactoryBean> factoryList = new ArrayList<FactoryBean>();
 		
@@ -49,6 +76,14 @@ public class GlobalBean {
 		}
 		
 		return factoryList;
+		}
+		catch(Exception e){
+			return null;
+		}
+	}
+
+	public int getId() {
+		return 0;
 	}
 	
 }

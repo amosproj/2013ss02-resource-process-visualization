@@ -25,6 +25,10 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 
 public class HallBean extends HierarchieElementBean {
 	
@@ -32,10 +36,19 @@ public class HallBean extends HierarchieElementBean {
 	private String name;
 	private int sizeOfStaff;
 	private int productionCapacity;
+	private String path;
 	
 	
-	public HallBean(int id) {
+	public HallBean(int id) throws Exception {
 		super(id);
+		
+		try {
+			Context ctx = new InitialContext();
+			ctx.bind("de.orsamos/reprovis/factory/"+id, this);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		name = HallDAO.getName(id);
 		sizeOfStaff = HallDAO.getSizeOfStaff(id); 
@@ -43,6 +56,10 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	public String getName(){
+		return name;
+	}
+	
+	public String getPath(){
 		return name;
 	}
 	
@@ -55,7 +72,7 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	@Override
-	protected void initChilds()  {
+	protected void initChilds() throws Exception  {
 		List<Integer> lineIds = LineDAO.getLineIds(id);
 		childs = new ArrayList<HierarchieElementBean>();
 		for(int id : lineIds){

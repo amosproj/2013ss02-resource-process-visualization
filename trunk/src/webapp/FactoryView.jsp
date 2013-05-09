@@ -22,10 +22,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
+<%@ page import="de.osramos.reprovis.HallBean" %>
 <%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 
-<% TestData.Factory factory = (TestData.Factory)request.getAttribute("factory"); %>
+<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
 <div class="statusSummary">
 Status: 
 <div class="statusIcon <%= MasterData.getTrafficIconClass(factory.getStatus()) %>"></div>
@@ -67,8 +68,8 @@ Hallplan<br/>
 	version="1.1"
 	width="250"
 	height="150">
-<% for(TestData.Hall hall: factory.getHalls()){ %>
-	<path d="<%= hall.getPath() %>" 
+<% for(HallBean hall: factory.getHalls()){ %>
+	<path d="<%=  hall.getPath() %>" 
 		class="<%= MasterData.getHallClass(hall.getStatus()) %>" 
 		onclick="javascript:hallZoom(<%= hall.getId() %>)"/>
 <% } %>

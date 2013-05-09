@@ -26,16 +26,34 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.InitialContext;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.MasterData.TrafficLight;
 
 
 public class FactoryBean {
+	
+	public static FactoryBean getFactoryById(int id){
+/*		try {
+			Context ctx = new InitialContext();
+			return (FactoryBean) ctx.lookup("de.osramos/reprovis/HierarchieElement/"+id);
+		} catch (NamingException e) {
+			return null;
+		}*/
+		
+		return (FactoryBean) GlobalBean.getElementById(id);
+	}
 
 	private int id;
 	private String name;	
 	private String country; 
-/*	private String gpsLocation;*/
+	private double gpsLatitude;
+	private double gpsLongitude;
 /*	private String city;*/
 	private Company company;
 	private GlobalBean parent;
@@ -67,9 +85,13 @@ public class FactoryBean {
 		return city;
 	}*/
 	
-/*	public String getGpsLocation(){
-		return gpsLocation;
-	}*/
+	public double getGpsLatitude(){
+		return gpsLatitude;
+	}
+	
+	public double getGpsLongitude(){
+		return gpsLongitude;
+	}
 	
 	public Company getCompany(){
 		return company;
@@ -86,11 +108,20 @@ public class FactoryBean {
 	
 	public FactoryBean(int id){
 
+		GlobalBean.getGlobal().reg.put(id, this);
+/*		try {
+			Context ctx = new InitialContext();
+			ctx.bind("de.osramos/reprovis/HierarchieElement/"+id, this);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		this.id = id;
 		name = FactoryDAO.getName(id);
 		country = FactoryDAO.getCountry(id);
 /*		city = FactoryDAO.getCity(id);*/
-/*		gpsLocation = FactoryDAO.getGpsLocation(id);*/
+		gpsLatitude = FactoryDAO.getGpsLatitude(id);
+		gpsLongitude = FactoryDAO.getGpsLongitude(id);
 		company = FactoryDAO.getCompany(id);
 		carModels = FactoryDAO.getCarModels(id);
 		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
@@ -99,7 +130,7 @@ public class FactoryBean {
 
 
 
-	public TrafficLight getStatus(){
+	public TrafficLight getStatus() throws Exception{
 		List<HallBean> halls = getHalls();
 		
 		TrafficLight status = TrafficLight.green;
@@ -129,7 +160,7 @@ public class FactoryBean {
 
 
 	
-	public List<HallBean> getHalls(){
+	public List<HallBean> getHalls() throws Exception{
 		
 		List<Integer> hallIds = HallDAO.getHallIds(id);
 		List<HallBean> halls = new ArrayList<HallBean>();

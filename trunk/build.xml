@@ -61,6 +61,7 @@
 		<war destfile="${target}/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
 			<classes dir="${build}" />
 			<fileset dir="${src.web}" />
+			<fileset dir="${src.resources}" />
 			<lib dir="${lib.default}"/>
 		</war>
 	</target>
@@ -79,7 +80,7 @@
 	</target>
 
 	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
-		<!--<delete dir="${tomcat.web}/ROOT" />-->
+		<delete dir="${tomcat.web}/ROOT" />
 		<copy file="${target}/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
 	</target>
 

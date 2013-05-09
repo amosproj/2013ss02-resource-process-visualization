@@ -19,40 +19,17 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis.test;
+package de.osramos.reprovis.test.botests;
 
 import org.junit.*;
 
-import de.osramos.reprovis.FactoryBean;
-import de.osramos.reprovis.FactoryDAO;
-import de.osramos.reprovis.GlobalBean;
-import static org.junit.Assert.*;
 
-public class FactoryBeanTest {
-	
+public class LineBeanTest {
+
 	@Test
-	public void FactoryTest() throws Exception{
+	public void LineTest(){
 		
-		int id = FactoryDAO.getFactoryIds().get(0);
-		
-		FactoryBean f = new FactoryBean(id);
-		assertNotNull(f.getCompany());
-		assertNotNull(f.getCountry());
-		assertNotNull(f.getGlobal());
-		assertNotNull(f.getHalls());
-		assertNotNull(f.getId());
-		assertNotNull(f.getName());
-		assertNotNull(f.getCarModels());
-		assertNotNull(f.getNumOfVehicles());
-		assertNotNull(f.getSizeOfStaff());
-	}
-	
-	@Test
-	public void FactoryGlobalTest(){
-		GlobalBean g = GlobalBean.getGlobal();
-		FactoryBean f = new FactoryBean(1);
-		
-		assertEquals(g, f.getGlobal());
 	}
 
+	
 }

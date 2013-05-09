@@ -22,6 +22,10 @@
 
 package de.osramos.reprovis;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import de.osramos.reprovis.MasterData.TrafficLight;
 
 
@@ -32,8 +36,16 @@ public class LineBean extends HierarchieElementBean {
 	String name;
 	
 	
-	public LineBean(int id) {
+	public LineBean(int id) throws Exception {
 		super(id);
+		
+		try {
+			Context ctx = new InitialContext();
+			ctx.bind("de.orsamos/reprovis/factory/"+id, this);
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		name = LineDAO.getName(id);
 		
 	}
