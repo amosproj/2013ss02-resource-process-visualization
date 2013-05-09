@@ -81,6 +81,7 @@ GlobalHierarchyHandler = {
 			
 			error: function(jqXHR, textStatus, errorThrown) {
 				notAvailable();
+				console.error(jqXHR);
 				console.error("The following error occured: " +
 					textStatus, errorThrown);
 			}

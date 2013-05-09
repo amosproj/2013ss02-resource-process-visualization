@@ -19,6 +19,31 @@
  - <http://www.gnu.org/licenses/>.
 */
 
+Line = {
+	// Loads the respective hall data as JSON object
+	getData: function(lID, callback) {
+		$.ajax({
+			dataType: "json",
+			type: "POST",
+			url: "./line",
+			data: {getData: true, lid: lID},
+			
+			success: function(response, textStatus, jqXHR){
+                callback.call(this, lID, response);
+			},
+	
+			error: function(jqXHR, textStatus, errorThrown){
+				notAvailable();
+				console.error("The following error occured: " +
+					textStatus, errorThrown);
+			}
+		});
+	}
+};
+
+
+////////////////////// DEPRECATED
+
 function lineZoom(lineId){
 	$.ajax({
 		url: "./line",
