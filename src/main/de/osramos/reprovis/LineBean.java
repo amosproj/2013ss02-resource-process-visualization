@@ -39,13 +39,13 @@ public class LineBean extends HierarchieElementBean {
 	public LineBean(int id) throws Exception {
 		super(id);
 		
-		try {
+		/*try {
 			Context ctx = new InitialContext();
 			ctx.bind("de.orsamos/reprovis/factory/"+id, this);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		name = LineDAO.getName(id);
 		
 	}

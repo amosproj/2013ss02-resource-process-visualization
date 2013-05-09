@@ -17,9 +17,10 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
-<%@ page import="de.osramos.reprovis.TestData" %>
+<%@ page import="de.osramos.reprovis.FactoryBean" %>
+<%@ page import="de.osramos.reprovis.HallBean" %>
 {
-<% TestData.Factory factory = (TestData.Factory)request.getAttribute("factory"); %>
+<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
 	"name": "<%= factory.getName() %>",
 	"status": "<%= factory.getStatus() %>",
 	"country": "<%= factory.getCountry() %>",
@@ -27,14 +28,14 @@
 	"staff": <%= factory.getSizeOfStaff() %>,
 	"brands": [
 		<% boolean first = true; %>
-		<% for(String brand: factory.getBrands()){ %>
+		<% for(String brand: factory.getCarModels()){ %>
 		<% if(!first){out.print(","); }else first = false; %>
 			"<%= brand %>"
 		<% } %>	
 	],
 	"halls": [
 		<% first = true; %>
-		<% for(TestData.Hall hall: factory.getHalls()){ %>
+		<% for(HallBean hall: factory.getHalls()){ %>
 		<% if(!first){out.print(","); }else first = false; %>
 		{
 			"id": <%= hall.getId() %>,
