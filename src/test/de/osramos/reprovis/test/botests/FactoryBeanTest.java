@@ -19,12 +19,11 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis.test;
+package de.osramos.reprovis.test.botests;
 
 import org.junit.*;
 
 import de.osramos.reprovis.FactoryBean;
-import de.osramos.reprovis.FactoryDAO;
 import de.osramos.reprovis.GlobalBean;
 import static org.junit.Assert.*;
 
@@ -32,10 +31,7 @@ public class FactoryBeanTest {
 	
 	@Test
 	public void FactoryTest() throws Exception{
-		
-		int id = FactoryDAO.getFactoryIds().get(0);
-		
-		FactoryBean f = new FactoryBean(id);
+		FactoryBean f = new FactoryBean(1);
 		assertNotNull(f.getCompany());
 		assertNotNull(f.getCountry());
 		assertNotNull(f.getGlobal());

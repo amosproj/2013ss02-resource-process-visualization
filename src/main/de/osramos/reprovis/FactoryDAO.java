@@ -21,9 +21,18 @@
 
 package de.osramos.reprovis;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 
 import de.osramos.reprovis.MasterData.Company;
 
@@ -31,76 +40,165 @@ public class FactoryDAO {
 
 	public static String getCity(int id) {
 
-		if (id == 1) {
-			return "Ingolstadt";
-		} else if (id == 2) {
-			return "Neckarsulm";
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("city");
+		} catch (Exception e) {
+			return null;
 		}
-		return "TestCity" + id;
 	}
 
 	public static String getCountry(int id) {
-		if ((id == 1) || (id == 2)) {
-			return "Germany";
+	
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("name");
+		} catch (Exception e) {
+			return null;
 		}
-
-		return "TestCountry" + id;
+		
+		
 	}
 
-	/*
-	 * public static String getGpsLocation(int id) { return null; }
-	 */
 
 	public static String getName(int id) {
 
-		if (id == 1) {
-			return "AudiIngolstadt1";
-		} else if (id == 2) {
-			return "AudiNeckarsulm1";
-		}
-		return "AudiFactory" + id;
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("name");
+		} catch (Exception e) {
+			return null;
+		}	
 	}
 
 	public static Company getCompany(int id) {
-		if ((id == 1) || (id == 2))
-		{
-			return Company.Audi;
+		try {
+			Element factory = getFactoryById(id);
+			String brand = factory.getAttribute("brand");
+			return MasterData.stringToCompany(brand);
+		} catch (Exception e) {
+			return null;
 		}
-		int i = id % 4;
-		switch (i) {
-		case 0:
-			return Company.Audi;
-		case 1:
-			return Company.Seat;
-		case 2:
-			return Company.Volkswagen;
-		case 3:
-			return Company.Skoda;
-		}
-		return null;
 	}
 
-	public static List<Integer> getFactoryIds() {
+	public static List<Integer> getFactoryIds() throws Exception {
 
-		// get List by conf file/ DB
+		List<Integer> l = new ArrayList<Integer>();
+		
+		NodeList factories = getFactoriyNodes();
+		
+		if (factories == null) {
+			throw new Exception("No factories initialized");
+		}
 
-		List<Integer> l = new ArrayList<Integer>(Arrays.asList(1/*,2,3,4,5,6,7,8*/));
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+				l.add(getFactoryHash(element));
+			}
+		}
+
 		return l;
 
 	}
 
 	public static String[] getCarModels(int id) {
-		return new String[]{"Q7", "R8"};
+		
+		try {
+			Element factory = getFactoryById(id);
+			String vehicles = factory.getAttribute("vehicles");
+			return vehicles.split(", ");
+		} catch (Exception e) {
+			return null;
+		}	
 	}
 
 	public static int getSizeOfStaff(int id) {
-		return 500;
+		try {
+			Element factory = getFactoryById(id);
+			return Integer.parseInt(factory.getAttribute("sizeOfStaff"));
+		} catch (Exception e) {
+			return -1;
+		}	
 	}
 
 	public static int getNumOfVehicles(int id) {
-		return 200;
+		try {
+			Element factory = getFactoryById(id);
+			return Integer.parseInt(factory.getAttribute("numOfVehicles"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+	
+	public static double getGpsLatitude(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Double.parseDouble(factory.getAttribute("gpsLatitude"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+	
+	public static double getGpsLongitude(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Double.parseDouble(factory.getAttribute("gpsLongitude"));
+		} catch (Exception e) {
+			return -1;
+		}	
 	}
 
+	private static NodeList getFactoriyNodes() throws Exception{
+		
 
+		File file = new File("../../config.xml");
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db;
+		try {
+			db = dbf.newDocumentBuilder();
 
+		Document doc = db.parse(file);
+		doc.getDocumentElement().normalize();
+		
+		return doc.getElementsByTagName("factory");
+		} catch (Exception e) {
+			throw new Exception("no Elements found");
+		}
+		
+	}
+	
+	public static Element getFactoryById(int id) throws Exception{
+		
+		NodeList factories = getFactoriyNodes();
+		
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+	
+				if (id == getFactoryHash(element)){
+					return element;
+				}
+			}
+		}
+		throw new Exception("no Element found");
+		
+	}
+	
+	public static int getFactoryHash(Element factory){
+		String name = factory.getAttribute("name");
+		double latitude = Double.parseDouble(factory.getAttribute("gpsLatitude"));
+		double longitude = Double.parseDouble(factory.getAttribute("gpsLongitude"));
+		
+		return (int) (name.hashCode() * latitude * longitude);
+		
+    }
 }

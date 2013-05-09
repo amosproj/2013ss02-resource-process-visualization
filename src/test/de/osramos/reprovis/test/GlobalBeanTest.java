@@ -23,6 +23,10 @@ package de.osramos.reprovis.test;
 
 import static org.junit.Assert.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.junit.Test;
 
 import de.osramos.reprovis.GlobalBean;
@@ -33,6 +37,19 @@ public class GlobalBeanTest {
 	public void GlobalBeanTest(){
 		GlobalBean global = GlobalBean.getGlobal();
 		assertNotNull(global.getFactories());
+	}
+
+	@Test
+	public void GlobalBeanRegTest() throws NamingException{
+		
+			GlobalBean gl = GlobalBean.getGlobal();
+/*			Context ctx = new InitialContext();
+			GlobalBean gln = (GlobalBean) ctx.lookup("de.osramos/reprovis/global");*/
+			
+			GlobalBean gln = (GlobalBean) GlobalBean.getElementById(gl.getId());
+			assertEquals(gl, gln);
+			System.out.println(gln);
+		
 	}
 
 }
