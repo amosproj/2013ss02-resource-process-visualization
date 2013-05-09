@@ -22,57 +22,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
-<%@ page import="de.osramos.reprovis.HallBean" %>
 <%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="java.util.List" %>
 
-<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
-<div class="statusSummary">
-Status: 
-<div class="statusIcon <%= MasterData.getTrafficIconClass(factory.getStatus()) %>"></div>
+<%
+// We only allow access to this template via request.
+// If there is none, exit here.
+// @TODO: Only allow access if post parameter was submitted
+if(request.getParameter("fid") == null)
+	return;
+
+// Process the post data here
+int id = Integer.parseInt(request.getParameter("fid"));
+%>
+
+<div class="row">
+	<div id="SVGPlanHolder" class="span7">
+		<svg id="SVGPlan" class="plan"></svg>
+	</div>
+	
+	<div class="span4">
+		<table id="factoryDetails">
+			<tr><td>Country</td><td id="factoryCountry"></td></tr>
+			<tr><td>Name</td><td id="factoryName"></td></tr>
+			<tr><td>Staff</td><td id="factoryStaff"></td></tr>
+			<tr><td>Vehicles</td><td id="factoryVehicles"></td></tr>
+			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
+		</table>
+	</div>
 </div>
-<table>
-<tr>
-	<td>Name</td>
-	<td><%= factory.getName() %></td>
-</tr>
-<tr>
-	<td>Country</td>
-	<td><%= factory.getCountry() %></td>
-</tr>
-<tr>
-	<td>Car Models</td>
-	<td><% 
-	String[] carNames = factory.getCarModels();
-	if(carNames.length > 0){
-		out.print(carNames[0]);
-	}
-	for(int i = 1; i < carNames.length; ++i){
-		out.print(", " + carNames[i]);
-	}
-	%></td>
-</tr>
-<tr>
-	<td>Vehicle output</td>
-	<td><%= factory.getNumOfVehicles() %></td>
-</tr>
-<tr>
-	<td>Staff</td>
-	<td><%= factory.getSizeOfStaff() %></td>
-</tr>
-</table>
-<div class="hallplan">
-Hallplan<br/>
-<svg xmlns:svg="http://www.w3.org/2000/svg"
-	xmlns="http://www.w3.org/2000/svg"
-	version="1.1"
-	width="250"
-	height="150">
-<% for(HallBean hall: factory.getHalls()){ %>
-	<path d="<%=  hall.getPath() %>" 
-		class="<%= MasterData.getHallClass(hall.getStatus()) %>" 
-		onclick="javascript:hallZoom(<%= hall.getId() %>)"/>
-<% } %>
-</svg>
-</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	Factory.getData(<%= id %>, function(a, factoryData) {
+	    // Draw the factory plan and attach click handler
+	    for(var i = 0; i < factoryData.halls.length; ++i) {
+	    	var svgPath = $("<path></path>")
+	    			.attr("d", factoryData.halls[i].path)
+	    			.attr("class", getSvgClass(factoryData.halls[i].status))
+	    			.attr("onclick", 'hallZoom('+factoryData.halls[i].id+')');
+	    	
+			$("#SVGPlan").append(svgPath);
+	    }
+	    
+	    // Refresh
+	    $("#SVGPlanHolder").html($("#SVGPlanHolder").html());
+	    
+	    // Insert static data
+	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
+	    //		  That is why the DOM architecture has been chosen like this(!)
+	    $("#factoryCountry").html(factoryData.country);
+	    $("#factoryName").html(factoryData.name);
+	    $("#factoryStaff").html(factoryData.staff);
+	    $("#factoryVehicles").html(factoryData.vehicles);
+	    
+	    var factoryCars = "";
+	    for(var j = 0; j < factoryData.brands.length; ++j) {
+	    	if(j != 0) factoryCars += ", ";
+	    	factoryCars += factoryData.brands[j];
+	    }
+	    
+	    $("#factoryCars").html(factoryCars);
+    });
+});
+</script>
+
+Hi! You just clicked the factory with the ID <%= id %><br />
 <a href="javascript:showGlobalMap()">Go back to global view</a>

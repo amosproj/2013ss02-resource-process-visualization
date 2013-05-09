@@ -46,7 +46,7 @@ public class FactoryServlet extends HttpServlet {
 	}
 
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 		
 /*		TestData global = (TestData)getServletContext().getAttribute("testdata");
 		req.setAttribute("factories", global.getFactories());*/
@@ -59,16 +59,28 @@ public class FactoryServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = req.getParameter("fid");
 		TestData global = (TestData)getServletContext().getAttribute("testdata");
-		if(id == null){
+		
+		// Show the overview of all factories available
+		if(id == null) {
 			/*req.setAttribute("factories", global.getFactories());*/
 			req.setAttribute("factories", GlobalBean.getGlobal().getFactories());
 			getServletContext().getRequestDispatcher("/FactoryList.jsp").forward(req, resp);
-		}else{
-			/*req.setAttribute("factory", global.getFactory(Integer.valueOf(id)))*/;
-			req.setAttribute("factory", FactoryBean.getFactoryById(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/FactoryJSON.jsp").forward(req, resp);
+			
 		}
-	}
 
-	
+		// Do an operation on a specific factory ID
+		else {
+			if(req.getParameter("getData") != null) {
+				// Call the data handler
+				req.setAttribute("factory", global.getFactory(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/FactoryJSON.jsp").forward(req, resp);
+			}
+			
+			else {
+				// Call the view handler
+				req.setAttribute("factory", global.getFactory(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/FactoryView.jsp").forward(req, resp);
+			}
+		}
+	}	
 }

@@ -44,6 +44,7 @@ var pluginName = "worldMap",
 		 "statusImg": '<span class="statusIcon statusIconWarning">&nbsp;</span>'}
 	]
 };*/
+
 var data = {};
 
 // Add tile layer to map (the actual map images)
@@ -62,10 +63,11 @@ function factoryPopup(factory) {
 	return result;
 }
 
+// Load factories ...
 jQuery.getJSON('./factory', function(factories){
 	data.factories = factories;
-	// Draw factories into map
-	for(var i=0; i<data.factories.length; i++) {
+	// ... and draw factories into map
+	for(var i=0; i < data.factories.length; i++) {
 		var obj = data.factories[i];
 		for(var key in obj) {
 			var markerObj = L.marker([data.factories[i].lat, data.factories[i].lon]).addTo(map)
@@ -78,14 +80,12 @@ jQuery.getJSON('./factory', function(factories){
 	}
 });
 
-
-function onMapClick(e) {	
-    // map.panTo(e.latlng);
+// Bind click handler to map
+function onMapClick(e) {
+	// map.panTo(e.latlng);
 }
 
-// Bind click handler to map
 map.on('click', onMapClick);
-
 
 function showGlobalMap() {
 	$("#canvas").animate({height: pluginConf.startHeight}, 500);
@@ -94,37 +94,6 @@ function showGlobalMap() {
 		$("#canvas #dataLayer").css({display: "none"});
 	});
 }
-/*
-function factoryZoom(el) {
-	var factoryID = parseInt($("#"+el).attr("fid"));	
-    var request = $.ajax({
-        url: "./factory",
-        type: "post",
-        data: { fid: factoryID }
-    });
-	
-	// callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
-	    $("#canvas #map").animate({height: "0px"}, 500);
-		
-		$("#canvas #dataLayer").css({display: "block", height: "300px"});
-		$("#canvas").animate({height: "300px"}, 500);
-		
-        $("#canvas #dataLayer").html(response);
-    });
-
-    // callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        notAvailable();
-		console.error(
-            "The following error occured: "+
-            textStatus, errorThrown
-        );
-    });
-}
-*/
-
-
 
 function notAvailable() {
     $("#feature-announcement").modal("show");

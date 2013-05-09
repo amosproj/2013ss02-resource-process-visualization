@@ -74,19 +74,14 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
-.statusSummary{
-	float: right;
-}
-
-.plan {
+#SVGPlan, .plan {
 	width: 100%;
 	height: 100%;
 	border: 1px solid darkgray;
-}
-
-.plan {
+	/*
 	display: block;
 	float: right;
+	*/
 }
 
 .plan path{
@@ -118,4 +113,8 @@ body {
 .listStatus {
 	margin-right: 0.5em;
 	margin-left: 0.5em;
+}
+
+.clear {
+	clear: both;
 }
