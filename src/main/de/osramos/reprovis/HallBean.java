@@ -44,7 +44,7 @@ public class HallBean extends HierarchieElementBean {
 		
 		try {
 			Context ctx = new InitialContext();
-			ctx.bind("de.orsamos/reprovis/factory/"+id, this);
+			ctx.bind("de.osramos/reprovis/factory/"+id, this);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

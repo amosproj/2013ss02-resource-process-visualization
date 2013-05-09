@@ -15,6 +15,24 @@ public class TestDataUpdater extends Thread {
 	}
 	
 	public void run(){
+		/*Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource datasource = (DataSource) ctx.lookup("java:comp/env/jdbc/postgresql");
+			//conn = datasource.getConnection();
+			
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} finally {
+			if(conn != null){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}*/
+		
 		while(true){
 			setRandomStatus();
 			try {

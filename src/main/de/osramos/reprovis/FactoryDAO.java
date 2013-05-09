@@ -33,7 +33,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
 import de.osramos.reprovis.MasterData.Company;
 
 public class FactoryDAO {
@@ -155,14 +154,12 @@ public class FactoryDAO {
 
 	private static NodeList getFactoriyNodes() throws Exception{
 		
-
-		File file = new File("../../config.xml");
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
 		try {
 			db = dbf.newDocumentBuilder();
 
-		Document doc = db.parse(file);
+		Document doc = db.parse(FactoryDAO.class.getClassLoader().getResourceAsStream("../../config.xml"));
 		doc.getDocumentElement().normalize();
 		
 		return doc.getElementsByTagName("factory");
