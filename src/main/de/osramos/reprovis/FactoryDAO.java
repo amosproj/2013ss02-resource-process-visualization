@@ -192,10 +192,10 @@ public class FactoryDAO {
 	
 	public static int getFactoryHash(Element factory){
 		String name = factory.getAttribute("name");
-		double latitude = Double.parseDouble(factory.getAttribute("gpsLatitude"));
-		double longitude = Double.parseDouble(factory.getAttribute("gpsLongitude"));
+		//double latitude = Double.parseDouble(factory.getAttribute("gpsLatitude"));
+		//double longitude = Double.parseDouble(factory.getAttribute("gpsLongitude"));
 		
-		return (int) (name.hashCode() * latitude * longitude);
+		return (int) (name.hashCode());
 		
     }
 }
