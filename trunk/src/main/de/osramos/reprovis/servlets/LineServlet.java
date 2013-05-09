@@ -35,16 +35,50 @@ public class LineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1574042887470193590L;
 
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException{
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
 		String id = req.getParameter("lid");
-		if(id == null){
+		
+		if(id == null) {
 			req.setAttribute("message", "Requesting line without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
-		}else{
-			//TestData global = (TestData)getServletContext().getAttribute("testdata");
-			req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
+		} else {
+			if(req.getParameter("getData") != null) {
+				// Call the data handler
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/LineJSON.jsp").forward(req, resp);
+			}
+			
+			else {
+				// Call the view handler
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
+				
+			}
+		}
+	}	
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
+			throws ServletException, IOException {
+		String id = req.getParameter("lid");
+		
+		if(id == null) {
+			req.setAttribute("message", "Requesting line without id.");
+			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
+		} else {
+			if(req.getParameter("getData") != null) {
+				// Call the data handler
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/LineJSON.jsp").forward(req, resp);
+			}
+			
+			else {
+				// Call the view handler
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
+				
+			}
 		}
 	}
 }

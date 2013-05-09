@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿<!DOCTYPE html>
 <!-- 
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
@@ -45,7 +45,7 @@
     <!-- CSS Framework -->
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="./css/amos_webapp-custom.css" rel="stylesheet">
+    <link href="./css/webapp-custom.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -70,11 +70,12 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 	<!-- Custom webapp Javascript -->
-	<script src="./js/amos_webapp-factory.js"></script>
-	<script src="./js/amos_webapp-hall.js"></script>
-	<script src="./js/amos_webapp-line.js"></script>
-	<script src="./js/amos_webapp-location.js"></script>
-	<script src="./js/amos_webapp-component.js"></script>	
+	<script src="./js/webapp-hierarchyHandler.js"></script>	
+	<script src="./js/webapp-factory.js"></script>
+	<script src="./js/webapp-hall.js"></script>
+	<script src="./js/webapp-line.js"></script>
+	<script src="./js/webapp-location.js"></script>
+	<script src="./js/webapp-component.js"></script>	
   </head>
 
 <body>
@@ -129,45 +130,23 @@
 	</div>
 
     <div class="container">
-	<h1>OSRAMOS AUDI Resource Hierarchy Visualization</h1>	  
+	<h2>OSRAMOS AUDI Resource Hierarchy Visualization</h2>	  
 	  <div id="canvas">
 	      <div id="map"></div>
 		  <div id="dataLayer"></div>
 	  </div>
 	  
-	  <script src="./js/amos_webapp-worldmap.js"></script>
-	  <script src="./js/amos_webapp-style.js"></script>	  
+	  <script src="./js/webapp-worldmap.js"></script>
+	  <script src="./js/webapp-style.js"></script>	  
 	  
-      <!-- Example row of columns -->
-      <!-- <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div> -->
-
       <hr>
-
       <footer>
         <p>&copy; AMOS Project Team 02 // 2013</p>
       </footer>
 
     </div> <!-- /container -->
  
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Remaining JavaScript, placed at bottom for faster page load -->
     <script src="./js/bootstrap-transition.js"></script>
     <script src="./js/bootstrap-alert.js"></script>
     <script src="./js/bootstrap-modal.js"></script>

@@ -18,6 +18,22 @@
  - License along with this program. If not, see
  - <http://www.gnu.org/licenses/>.
 */
+
+function lineZoom(lineId){
+	$.ajax({
+		url: "./line",
+		type: "POST",
+		data: {lid: lineId},
+		success: function(response, textStatus, jqXHR){
+			displayLine(response);
+			//$("#canvas #dataLayer").html(response);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			notAvailable();
+		}
+	});
+}
+
 function displayLine(json){
 	var container = document.createElement("div");
 	var locations = document.createElement("div");
@@ -53,19 +69,4 @@ function displayLine(json){
 	
 	$("#canvas #dataLayer").html("");
 	$("#canvas #dataLayer").append(container);
-}
-
-function lineZoom(lineId){
-	$.ajax({
-		url: "./line",
-		type: "POST",
-		data: {lid: lineId},
-		success: function(response, textStatus, jqXHR){
-			displayLine(response);
-			//$("#canvas #dataLayer").html(response);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			notAvailable();
-		}
-	});
 }

@@ -34,13 +34,15 @@ if(request.getParameter("fid") == null)
 int id = Integer.parseInt(request.getParameter("fid"));
 %>
 
-<div class="row">
+<div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
-		<svg id="SVGPlan" class="plan"></svg>
+		<h3 id="dynamicHeading"></h3>
+		<svg id="SVGPlan"></svg>
 	</div>
 	
-	<div class="span4">
-		<table id="factoryDetails">
+	<div id="informationBlock" class="span4">
+		<a href="javascript:showGlobalMap()">Go back to global view</a>
+		<table id="factoryDetails" class="table table-striped table-hover">
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
 			<tr><td>Name</td><td id="factoryName"></td></tr>
 			<tr><td>Staff</td><td id="factoryStaff"></td></tr>
@@ -48,7 +50,7 @@ int id = Integer.parseInt(request.getParameter("fid"));
 			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
 		</table>
 	</div>
-</div>
+</div><br class="clear" />
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -58,7 +60,7 @@ $(document).ready(function() {
 	    	var svgPath = $("<path></path>")
 	    			.attr("d", factoryData.halls[i].path)
 	    			.attr("class", getSvgClass(factoryData.halls[i].status))
-	    			.attr("onclick", 'hallZoom('+factoryData.halls[i].id+')');
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+factoryData.halls[i].id+')');
 	    	
 			$("#SVGPlan").append(svgPath);
 	    }
@@ -69,6 +71,7 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
+	    $("#dynamicHeading").html("Factory: "+factoryData.name+", "+factoryData.country+" (ID: <%= id %>)");
 	    $("#factoryCountry").html(factoryData.country);
 	    $("#factoryName").html(factoryData.name);
 	    $("#factoryStaff").html(factoryData.staff);
@@ -84,6 +87,3 @@ $(document).ready(function() {
     });
 });
 </script>
-
-Hi! You just clicked the factory with the ID <%= id %><br />
-<a href="javascript:showGlobalMap()">Go back to global view</a>
