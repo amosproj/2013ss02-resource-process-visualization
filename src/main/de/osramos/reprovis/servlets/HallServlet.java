@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.TestData;
+import de.osramos.reprovis.GlobalBean;
 
 public class HallServlet extends HttpServlet {
 
@@ -41,8 +41,8 @@ public class HallServlet extends HttpServlet {
 			req.setAttribute("message", "Requesting production hall without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}else{
-			TestData global = (TestData)getServletContext().getAttribute("testdata");
-			req.setAttribute("hall", global.getHall(Integer.valueOf(id)));
+			//TestData global = (TestData)getServletContext().getAttribute("testdata");
+			req.setAttribute("hall", GlobalBean.getElementById(Integer.valueOf(id)));
 			getServletContext().getRequestDispatcher("/HallJSON.jsp").forward(req, resp);
 		}
 	}
