@@ -41,26 +41,6 @@
   	</resource-ref>-->
 
 	<servlet>
-		<servlet-name>Factory</servlet-name>
-		<jsp-file>/Factory.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>Factory</servlet-name>
-		<url-pattern>/Factory</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>FactoryView</servlet-name>
-		<jsp-file>/FactoryView.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>FactoryView</servlet-name>
-		<url-pattern>/FactoryView</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>factoryServlet</servlet-name>
 		<servlet-class>de.osramos.reprovis.servlets.FactoryServlet</servlet-class>
 	</servlet>
