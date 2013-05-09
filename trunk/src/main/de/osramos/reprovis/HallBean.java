@@ -41,14 +41,14 @@ public class HallBean extends HierarchieElementBean {
 	
 	public HallBean(int id) throws Exception {
 		super(id);
-		
+		/*
 		try {
 			Context ctx = new InitialContext();
 			ctx.bind("de.osramos/reprovis/factory/"+id, this);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		name = HallDAO.getName(id);
 		sizeOfStaff = HallDAO.getSizeOfStaff(id); 
