@@ -17,18 +17,22 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
+<%@ page import="de.osramos.reprovis.HallBean" %>
+<%@ page import="de.osramos.reprovis.LineBean" %>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
 {
-<% TestData.Hall hall = (TestData.Hall)request.getAttribute("hall"); %>
+<% HallBean hall = (HallBean)request.getAttribute("hall"); %>
 	"name": "<%= hall.getName() %>",
 	"staff": <%= hall.getSizeOfStaff() %>,
 	"capacity": <%= hall.getProductionCapacity() %>,
 	"status": "<%= hall.getStatus() %>",
 	"lines": [
 		<% boolean first = true; %>
-		<% for(TestData.Line line: hall.getLines()){ %>
+		<% for(HierarchieElementBean elem: hall.getChilds()){ %>
+		<%		LineBean line = (LineBean) elem; %>
 		<% if(!first){out.print(","); }else first = false; %>
 		{
 			"id": <%= line.getId() %>,

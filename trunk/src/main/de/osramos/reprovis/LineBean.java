@@ -22,10 +22,6 @@
 
 package de.osramos.reprovis;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import de.osramos.reprovis.MasterData.TrafficLight;
 
 
@@ -34,6 +30,7 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 public class LineBean extends HierarchieElementBean {
 
 	String name;
+	private String path;
 	
 	
 	public LineBean(int id) throws Exception {
@@ -47,6 +44,7 @@ public class LineBean extends HierarchieElementBean {
 			e.printStackTrace();
 		}*/
 		name = LineDAO.getName(id);
+		path = LineDAO.getPath(id);
 		
 	}
 
@@ -62,6 +60,12 @@ public class LineBean extends HierarchieElementBean {
 		return LineDAO.getStatus(id);
 		
 	}
+	
+	public String getName(){
+		return name;
+	}
 
-
+	public String getPath(){
+		return path;
+	}
 }
