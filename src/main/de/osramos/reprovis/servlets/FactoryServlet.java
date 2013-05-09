@@ -46,8 +46,7 @@ public class FactoryServlet extends HttpServlet {
 	}
 
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-		
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) {		
 /*		TestData global = (TestData)getServletContext().getAttribute("testdata");
 		req.setAttribute("factories", global.getFactories());*/
 		req.setAttribute("factories", GlobalBean.getGlobal().getFactories());
