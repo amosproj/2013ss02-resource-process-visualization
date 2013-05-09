@@ -1,24 +1,79 @@
 var svgNS = "http://www.w3.org/2000/svg";
 
-function displayFactory(json){
+// Click handler for world map click on a factory details button
+function factoryZoom(el){
+	// Get the ID out of DOM element
+	var fID = parseInt($("#"+el).attr("fid"));	
+	
+	// Load the data with specific factoryID
+	$.ajax({
+		url: "./factory",
+		type: "POST",
+		data: {fid: fID},
+		success: function(response, textStatus, jqXHR){
+			$("#canvas #dataLayer").html(response);			
+			$("#canvas #map").animate({height: "0px"}, 500);			
+			$("#canvas #dataLayer").css({display: "block", height: "300px"});
+			$("#canvas").animate({height: "300px"}, 500);
+			//displayFactory(response);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			notAvailable();
+			console.error("The following error occured: " +
+				textStatus, errorThrown);
+		}
+	});
+}
+
+Factory = {
+	// Loads the respective factory data as JSON object
+	getData: function(fID, callback) {
+		$.ajax({
+			dataType: "json",
+			type: "POST",
+			url: "./factory",
+			data: {getData: true, fid: fID},
+			
+			success: function(response, textStatus, jqXHR){
+                callback.call(this, fID, response);
+			},
+	
+			error: function(jqXHR, textStatus, errorThrown){
+				notAvailable();
+				console.error("The following error occured: " +
+					textStatus, errorThrown);
+			}
+		});
+	}
+};
+
+// Displays the outlays and information of a Factory
+// Called by: factoryZoom(el)
+function displayFactory(json) {
+	console.log(json);
 	var container = document.createElement("div");
 	var mapContainer = document.createElement("div");
 	mapContainer.setAttribute("class", "span6");
+	
 	var infoContainer = document.createElement("div");
 	infoContainer.setAttribute("class", "span5");
 	
 	var svg = document.createElementNS(svgNS, "svg");
 	svg.setAttributeNS(null, "class", "plan");
+	
 	for(var i = 0; i < json.halls.length; ++i){
 		var hallElem = document.createElementNS(svgNS, "path");
 		hallElem.setAttributeNS(null, "d", json.halls[i].path);
 		hallElem.setAttributeNS(null, "class", getSvgClass(json.halls[i].status));
+		
 		var id = json.halls[i].id;
 		hallElem.onclick = (function(id){
 			return function(){hallZoom(id);};
 			})(id);
+			
 		svg.appendChild(hallElem);
 	}
+	
 	mapContainer.appendChild(svg);
 	
 	var status = document.createElement("div");
@@ -29,7 +84,7 @@ function displayFactory(json){
 	
 	var info = document.createElement("table");
 	var html = "<tr>";
-	html += "<td>Name</td>";
+	html += "<td>NameX</td>";
 	html += "<td>" + json.name + "</td>";
 	html += "</tr><tr>";
 	html += "<td>Country</td>";
@@ -61,19 +116,4 @@ function displayFactory(json){
 	
 	$("#canvas #dataLayer").css({display: "block", height: "300px"});
 	$("#canvas").animate({height: "300px"}, 500);
-}
-
-function factoryZoom(el){
-	var fId = parseInt($("#"+el).attr("fid"));
-	$.ajax({
-		url: "./factory",
-		type: "POST",
-		data: {fid: fId},
-		success: function(response, textStatus, jqXHR){
-			displayFactory(response);
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			notAvailable();
-		}
-	});
 }

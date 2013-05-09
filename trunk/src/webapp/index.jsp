@@ -45,6 +45,7 @@
     <!-- CSS Framework -->
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="./css/amos_webapp-custom.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -67,10 +68,16 @@
 	<![endif]-->
 	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="./css/amos_webapp-custom.css" rel="stylesheet">
+
+	<!-- Custom webapp Javascript -->
+	<script src="./js/amos_webapp-factory.js"></script>
+	<script src="./js/amos_webapp-hall.js"></script>
+	<script src="./js/amos_webapp-line.js"></script>
+	<script src="./js/amos_webapp-location.js"></script>
+	<script src="./js/amos_webapp-component.js"></script>	
   </head>
 
-  <body>
+<body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -129,13 +136,7 @@
 	  </div>
 	  
 	  <script src="./js/amos_webapp-worldmap.js"></script>
-	  <script src="./js/amos_webapp-style.js"></script>
-	  <script src="./js/amos_webapp-factory.js"></script>
-	  <script src="./js/amos_webapp-hall.js"></script>
-	  <script src="./js/amos_webapp-line.js"></script>
-	  <script src="./js/amos_webapp-location.js"></script>
-	  <script src="./js/amos_webapp-component.js"></script>
-	  
+	  <script src="./js/amos_webapp-style.js"></script>	  
 	  
       <!-- Example row of columns -->
       <!-- <div class="row">
