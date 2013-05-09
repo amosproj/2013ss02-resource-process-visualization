@@ -60,7 +60,7 @@ public class HallBean extends HierarchieElementBean {
 	}
 	
 	public String getPath(){
-		return name;
+		return path;
 	}
 	
 	public int getSizeOfStaff(){

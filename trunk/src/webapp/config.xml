@@ -4,7 +4,7 @@
 		vehicles="Audi A3, Audi A3 Sportback, Audi S3, Audi S3 Sportback, Audi A4, Audi A4 Avant, Audi S4, Audi S4 Avant, Audi A4 allroad quattro, Audi RS4 Avant, Audi A5 Sportback, Audi A5 Coupé, Audi S5 Sportback, Audi S5 Coupé, Audi RS 5 Coupé, Audi Q5, Audi Q5 hybrid quattro, Audi SQ5 TDI, Karosseriebau/Lackiererei des Audi TT Coupé, Audi TT Roadster, Audi TTS Coupé, Audi TTS Roadster, Audi TT RS Coupé, Audi TT RS Roadster, Audi A3 Cabriolet "
 		country="Germany" city="Ingolstadt" gpsLatitude="48.762201"
 		gpsLongitude="11.425374" sizeOfStaff="35386" numOfVehicles="551889">
-		<hall name="" sizeOfStaff="" productionCapacity="">
+		<hall name="" sizeOfStaff="" productionCapacity="" path="m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z">
 			<line name="">
 			</line>
 		</hall>
