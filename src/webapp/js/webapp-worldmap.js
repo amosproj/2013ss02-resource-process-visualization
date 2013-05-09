@@ -32,18 +32,6 @@ var pluginName = "worldMap",
 		startHeight: 400
 	};
 
-// Hardcoded data; will be pulled dynamically in further releases
-/*var data = {
-	factories: [
-		{"fid": 1, "fName": "Werk Ingolstadt", "lat": 48.762201, "lon": 11.425374, "active": true,
-		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bavaria.png" />',
-		 "statusImg": '<span class="statusIcon statusIconOk">&nbsp;</span>'},
-			  
-		{"fid": 2, "fName": "Werk Neckarsulm", "lat": 49.192780, "lon": 9.2261100, "active": false,
-		 "companyImg": '<img class="companyImgSmall" src="./img/logo_audi-small.png" />', "flagImg": '<img class="flagImgSmall" src="./img/flag_germany-bawu.png" />',
-		 "statusImg": '<span class="statusIcon statusIconWarning">&nbsp;</span>'}
-	]
-};*/
 
 var data = {};
 
@@ -57,7 +45,7 @@ function factoryPopup(factory) {
 	var result = '<div><p style="text-align: center;">'+factory.companyImg+'&nbsp;'+factory.flagImg+
 	             '</p><hr /><h4>'+factory.fName+'</h4>Status: '+factory.statusImg+'<hr />'+
 				 '<p style="text-align: center;"><p>Ingolstadt, Deutschland<br />Seit 1949<br />35.386 Mitarbeiter</p>'+
-				 '<a href="#" onClick="factoryZoom(this.id)" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="btn factoryBtn">View details &raquo;</a>'
+				 '<a href="#" onClick="GlobalHierarchyHandler.hierarchyZoom(\'factory\', this.id);" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="btn factoryBtn">View details &raquo;</a>'
 				 '</p></div>';	
 				 
 	return result;

@@ -35,16 +35,26 @@ public class HallServlet extends HttpServlet {
 	private static final long serialVersionUID = -3606015914647184870L;
 	
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException{
 		String id = req.getParameter("hid");
-		if(id == null){
+		
+		if(id == null) {
 			req.setAttribute("message", "Requesting production hall without id.");
-			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
-		}else{
-			//TestData global = (TestData)getServletContext().getAttribute("testdata");
-			req.setAttribute("hall", GlobalBean.getElementById(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/HallJSON.jsp").forward(req, resp);
+			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);			
+		} else {
+			if(req.getParameter("getData") != null) {
+				//TestData global = (TestData)getServletContext().getAttribute("testdata");
+				// Call the data handler
+				req.setAttribute("hall", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/HallJSON.jsp").forward(req, resp);
+			}
+			
+			else {
+				// Call the view handler
+				req.setAttribute("hall", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/HallView.jsp").forward(req, resp);				
+			}
 		}
 	}
-
 }
