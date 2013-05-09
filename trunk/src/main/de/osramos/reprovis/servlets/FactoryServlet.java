@@ -42,13 +42,12 @@ public class FactoryServlet extends HttpServlet {
 	
 	public void init(ServletConfig config) throws ServletException{
 		super.init(config);
-		getServletContext().setAttribute("testdata", new TestData(getServletContext().getResourceAsStream("config.json")));
+		//getServletContext().setAttribute("testdata", new TestData(getServletContext().getResourceAsStream("config.json")));
 	}
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		
-
 /*		TestData global = (TestData)getServletContext().getAttribute("testdata");
 		req.setAttribute("factories", global.getFactories());*/
 		req.setAttribute("factories", GlobalBean.getGlobal().getFactories());

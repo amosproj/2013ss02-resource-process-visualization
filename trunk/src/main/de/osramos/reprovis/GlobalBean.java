@@ -68,16 +68,17 @@ public class GlobalBean {
 	public List<FactoryBean> getFactories(){
 		
 		try{
-		List<Integer> idList = FactoryDAO.getFactoryIds();
-		List<FactoryBean> factoryList = new ArrayList<FactoryBean>();
-		
-		for(int id : idList){
-			factoryList.add(new FactoryBean(id));
-		}
-		
-		return factoryList;
+			List<Integer> idList = FactoryDAO.getFactoryIds();
+			List<FactoryBean> factoryList = new ArrayList<FactoryBean>();
+			
+			for(int id : idList){
+				factoryList.add(new FactoryBean(id));
+			}
+			
+			return factoryList;
 		}
 		catch(Exception e){
+			
 			return null;
 		}
 	}
