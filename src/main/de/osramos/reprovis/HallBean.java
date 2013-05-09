@@ -53,6 +53,7 @@ public class HallBean extends HierarchieElementBean {
 		name = HallDAO.getName(id);
 		sizeOfStaff = HallDAO.getSizeOfStaff(id); 
 		productionCapacity = HallDAO.getProductionCapacity();
+		path = HallDAO.getPath(id);
 	}
 
 	public String getName(){
