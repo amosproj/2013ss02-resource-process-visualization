@@ -41,7 +41,17 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
-	<div id="locationPlan"><ul></ul></div>
+	<div id="locationPlan">
+		<table id="locationList" class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Location Name</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
 </div>
 
 <div id="informationBlock" class="span4">
@@ -49,6 +59,8 @@ int id = Integer.parseInt(request.getParameter("lid"));
 	<table id="lineDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="lineStatus"></td></tr>
 		<tr><td>Name</td><td id="lineName"></td></tr>
+		<tr><td>Production Capacity</td><td id="lineProductionCapacity"></td></tr>
+		<tr><td>Production Series</td><td id="lineProductionSeries"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -56,23 +68,38 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Line.getData(<%= id %>, function(a, data) {
-		
 		for(var i = 0; i < data.locations.length; ++i) {
-			var dElm = $("<div></div>")
-					.attr("class", "listStatus" + getStatusClass(data.locations[i].status));
+			var rowClass = "";
 			
-			var lElm = $("<li></li>")
-					.attr("class", "list")
-					.attr("onclick", "locationZoom('"+data.locations[i].id+"')")
-					.html(dElm);
+			switch(data.locations[i].status) {
+				case "green": rowClass = "success"; break;
+				case "yellow": rowClass = "warning"; break;
+				case "red": default: rowClass = "error"; break;
+			}
+			
+			var sElm = $("<td></td>")
+					.html("<div class=\""+getStatusClass(data.locations[i].status)+"\"></div>");
+			
+			var lElm = $("<td></td>")
+					.html("Location "+data.locations[i].id);
+			
+			var rElm = $("<tr></tr>")
+					.attr("class", rowClass)					
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'location\', '+data.locations[i].id+')')
+					.append(sElm)
+					.append(lElm);
+			
+			$("#locationList tbody").append(rElm);
 		}		
 		
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Line: "+data.name+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Assembly Line: "+data.name+" (ID: <%= id %>)");
 	    $("#lineName").html(data.name);
 	    $("#lineStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
+	    $("#lineProductionCapacity").html("192817 units");
+	    $("#lineProductionSeries").html("Production Series 1, Production Series 2, Production Series 3, ...");
 	});
 });
 </script>

@@ -49,6 +49,18 @@ GlobalHierarchyHandler = {
 				request.url = "./line";
 				request.data = {lid: id};
 				break;
+
+			case "location":
+				request.id = id;
+				request.url = "./location";
+				request.data = {locid: id};
+				break;
+				
+			case "testingDevice":
+				request.id = id;
+				request.url = "./testingdevice";
+				request.data = {tdid: id};
+				break;
 	
 			default: notAvailable(); return; break;
 		}
@@ -70,7 +82,6 @@ GlobalHierarchyHandler = {
 						break;
 			
 					default:
-						console.log(response);
 						$('#canvas #dataLayer').fadeOut('fast', function() {
 							$("#canvas #dataLayer").html(response);
 							$('#canvas #dataLayer').fadeIn('fast');

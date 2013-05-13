@@ -30,29 +30,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.osramos.reprovis.GlobalBean;
 
-public class LocationServlet extends HttpServlet {
+public class TestingDeviceServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1574042887470193590L;
+	private static final long serialVersionUID = 1234042007470666590L;
 
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-		String id = req.getParameter("locid");
+		String id = req.getParameter("tdid");
 		
 		if(id == null) {
-			req.setAttribute("message", "Requesting location without id.");
+			req.setAttribute("message", "Requesting testing device without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("locid", GlobalBean.getElementById(Integer.valueOf(id)));
-				getServletContext().getRequestDispatcher("/LocationJSON.jsp").forward(req, resp);
+				req.setAttribute("tdid", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/TestingDeviceJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("locid", GlobalBean.getElementById(Integer.valueOf(id)));
-				getServletContext().getRequestDispatcher("/LocationView.jsp").forward(req, resp);
+				req.setAttribute("tdid", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/TestingDevice.jsp").forward(req, resp);
 			}
 		}
 	}
