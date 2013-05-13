@@ -23,12 +23,12 @@ public class TestingDeviceDAO {
 
 	public static String getSerialnumber(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "0123456";
 	}
 
 	public static String getComponentCategory(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "testCategory";
 	}
 
 	public static Date getTroublePeriod(int id) {

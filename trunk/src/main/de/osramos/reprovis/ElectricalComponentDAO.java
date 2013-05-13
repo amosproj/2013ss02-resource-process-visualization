@@ -3,6 +3,7 @@ package de.osramos.reprovis;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ElectricalComponentDAO {
@@ -12,32 +13,32 @@ public class ElectricalComponentDAO {
 
 	public static String getShiftResponsibility(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "Thomas Mueller";
 	}
 
 	public static String getCategory(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "TestCategory";
 	}
 
 	public static Date getTroubeOccurrenceTime(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return GregorianCalendar.getInstance().getTime();
 	}
 
 	public static String getTroubleOccurrenceSite(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "Testdata";
 	}
 
 	public static String getSector(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "TestSector1";
 	}
 
 	public static String getSerialnumber(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "98765432";
 	}
 
 	public static List<Integer> getElectricalComponentIds(int id) {

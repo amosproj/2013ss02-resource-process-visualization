@@ -35,7 +35,7 @@ public class LineDAO {
 
 	public static String getName(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return "testName";
 	}
 
 	public static TrafficLight getStatus(int id) {
