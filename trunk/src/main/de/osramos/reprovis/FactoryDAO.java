@@ -21,7 +21,6 @@
 
 package de.osramos.reprovis;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,30 +79,11 @@ public class FactoryDAO {
 		}
 	}
 
-	public static List<Integer> getFactoryIds() throws Exception {
+/*	public static List<Integer> getFactoryIds() throws Exception {
 
-		List<Integer> l = new ArrayList<Integer>();
-		
-		NodeList factories = getFactoriyNodes();
-		
-		if (factories == null) {
-			throw new Exception("No factories initialized");
-		}
 
-		for (int i = 0; i < factories.getLength(); i++) {
-			
-			Node factory = factories.item(i);
 
-			if (factory.getNodeType() == Node.ELEMENT_NODE) {
-				Element element = (Element) factory;
-				
-				l.add(getFactoryHash(element));
-			}
-		}
-
-		return l;
-
-	}
+	}*/
 
 	public static String[] getCarModels(int id) {
 		
@@ -159,7 +139,9 @@ public class FactoryDAO {
 		try {
 			db = dbf.newDocumentBuilder();
 
-		Document doc = db.parse(FactoryDAO.class.getClassLoader().getResourceAsStream("../../config.xml"));
+		Document doc = db.parse(FactoryDAO.class.getClassLoader().getResourceAsStream(MasterData.getConfigFile()));
+/*		Document doc = db.parse(MasterData.getConfigFile());*/
+		
 		doc.getDocumentElement().normalize();
 		
 		return doc.getElementsByTagName("factory");
@@ -198,4 +180,51 @@ public class FactoryDAO {
 		return (int) (name.hashCode());
 		
     }
+
+	public static List<Integer> getFactoryIds(int globalId) throws Exception {
+		List<Integer> l = new ArrayList<Integer>();
+		
+		NodeList factories = getFactoriyNodes();
+		
+		if (factories == null) {
+			throw new Exception("No factories initialized");
+		}
+
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+				l.add(getFactoryHash(element));
+			}
+		}
+
+		return l;
+	}
+	
+	
+/*	public static List<Integer> getChildIds(int id) throws Exception {
+		List<Integer> l = new ArrayList<Integer>();
+		
+		NodeList factories = getFactoriyNodes();
+		
+		if (factories == null) {
+			throw new Exception("No factories initialized");
+		}
+
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+				l.add(getFactoryHash(element));
+			}
+		}
+
+		return l;
+	}*/
 }

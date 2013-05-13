@@ -19,7 +19,6 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
@@ -29,85 +28,76 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
 public class HallBean extends HierarchieElementBean {
-	
-	
+
 	private String name;
 	private int sizeOfStaff;
 	private int productionCapacity;
 	private String path;
-	
-	
-	public HallBean(int id) throws Exception {
+
+	public HallBean(int id) {
 		super(id);
 		/*
-		try {
-			Context ctx = new InitialContext();
-			ctx.bind("de.osramos/reprovis/factory/"+id, this);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
+		 * try { Context ctx = new InitialContext();
+		 * ctx.bind("de.osramos/reprovis/factory/"+id, this); } catch
+		 * (NamingException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+
 		name = HallDAO.getName(id);
-		sizeOfStaff = HallDAO.getSizeOfStaff(id); 
+		sizeOfStaff = HallDAO.getSizeOfStaff(id);
 		productionCapacity = HallDAO.getProductionCapacity();
 		path = HallDAO.getPath(id);
 	}
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
-	
-	public String getPath(){
+
+	public String getPath() {
 		return path;
 	}
-	
-	public int getSizeOfStaff(){
+
+	public int getSizeOfStaff() {
 		return sizeOfStaff;
 	}
-	
-	public int getProductionCapacity(){
+
+	public int getProductionCapacity() {
 		return productionCapacity;
 	}
 
 	@Override
-	protected void initChilds() throws Exception  {
-		List<Integer> lineIds = LineDAO.getLineIds(id);
-		childs = new ArrayList<HierarchieElementBean>();
-		for(int id : lineIds){
-			LineBean lineBean = new LineBean(id);
-			try {
-				lineBean.setParent(this);
-			} catch (Exception e) {}
-			childs.add(lineBean);
-		}
-		
-	}
-	
-/*	public FactoryBean getFactory(){
-		return HallDAO.getFactory(id);
-	}
-	
-	public TrafficLight getStatus(){
-		return HallDAO.getStatus(id);
-	}
-	
-	public List<LineBean> getLines(){
-		
-		List<Integer> idList = LineDAO.getLineIds(id);
-		List<LineBean> lineList = new ArrayList<LineBean>();
-		
-		for(int id : idList){
-			lineList.add(new LineBean(id));
-		}
-		
-		return lineList;
-		
-	}
-	*/
+	protected void initChilds() {
+		try {
+			List<Integer> childIds = LineDAO.getLineIds(id);
+			childs = new ArrayList<HierarchieElementBean>();
+			for (int id : childIds) {
+				LineBean childBean = new LineBean(id);
 
+				childBean.setParent(this);
 
+				childs.add(childBean);
+			}
+		} catch (Exception e) {
+		}
+
+	}
+
+	/*
+	 * public FactoryBean getFactory(){ return HallDAO.getFactory(id); }
+	 * 
+	 * public TrafficLight getStatus(){ return HallDAO.getStatus(id); }
+	 * 
+	 * public List<LineBean> getLines(){
+	 * 
+	 * List<Integer> idList = LineDAO.getLineIds(id); List<LineBean> lineList =
+	 * new ArrayList<LineBean>();
+	 * 
+	 * for(int id : idList){ lineList.add(new LineBean(id)); }
+	 * 
+	 * return lineList;
+	 * 
+	 * }
+	 */
 
 }

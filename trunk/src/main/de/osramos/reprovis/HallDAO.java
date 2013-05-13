@@ -27,18 +27,7 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class HallDAO {
 
-	public static List<Integer> getHallIds(int FactoryId) {
-		
-	
-		List<Integer> l = new ArrayList<Integer>();
-		
-		for (int i = 1; i < 5; i++)
-		{
-			l.add(i);
-		}
 
-		return l;
-	}
 
 	public static String getName(int id) {
 		return "Hall" + id;
@@ -56,8 +45,9 @@ public class HallDAO {
 	}
 
 	public static FactoryBean getFactory(int id) {
-
-		return new FactoryBean( (int) (id/10) );
+/*
+		return new FactoryBean( (int) (id/10) );*/
+		return null;
 	}
 
 	public static int getSizeOfStaff(int id) {
@@ -80,6 +70,19 @@ public class HallDAO {
 	public static int getProductionCapacity() {
 		// TODO Auto-generated method stub
 		return 8000;
+	}
+
+	private static int count = 0;
+	
+	public static List<Integer> getHallIds(int factoryId) {
+		List<Integer> l = new ArrayList<Integer>();
+		
+		for (int i =1; i < 5; i++)
+		{
+			l.add(i*10 + count);
+		}
+
+		return l;
 	}
 	
 

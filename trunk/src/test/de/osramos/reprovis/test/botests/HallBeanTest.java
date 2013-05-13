@@ -48,7 +48,7 @@ public class HallBeanTest {
 	@Test
 	public void HallFactoryTest() throws Exception {
 		FactoryBean f = new FactoryBean(1);
-		HallBean h = f.getHalls().get(0);
+		HallBean h = (HallBean) f.getChilds().get(0);
 
 /*		assertEquals(f.getId(), h.getChilds().get(0).getParent().getId());
 */	}

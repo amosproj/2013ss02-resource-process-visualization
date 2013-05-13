@@ -24,10 +24,13 @@ package de.osramos.reprovis.test;
 import org.junit.runner.*;
 import org.junit.runners.*;
 
+import de.osramos.reprovis.test.tools.ToolsTest;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
 		de.osramos.reprovis.test.botests.BOTests.class,
-		de.osramos.reprovis.test.daotests.DAOTests.class
+		de.osramos.reprovis.test.daotests.DAOTests.class,
+		de.osramos.reprovis.test.tools.ToolsTest.class
 })
 
 public class AllTests {

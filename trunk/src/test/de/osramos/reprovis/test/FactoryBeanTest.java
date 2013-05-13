@@ -33,13 +33,13 @@ public class FactoryBeanTest {
 	@Test
 	public void FactoryTest() throws Exception{
 		
-		int id = FactoryDAO.getFactoryIds().get(0);
+		int id = FactoryDAO.getFactoryIds(0).get(0);
 		
 		FactoryBean f = new FactoryBean(id);
 		assertNotNull(f.getCompany());
 		assertNotNull(f.getCountry());
-		assertNotNull(f.getGlobal());
-		assertNotNull(f.getHalls());
+		assertNotNull(f.getParent());
+		assertNotNull(f.getChilds());
 		assertNotNull(f.getId());
 		assertNotNull(f.getName());
 		assertNotNull(f.getCarModels());
@@ -48,11 +48,11 @@ public class FactoryBeanTest {
 	}
 	
 	@Test
-	public void FactoryGlobalTest(){
+	public void FactoryGlobalTest() throws Exception{
 		GlobalBean g = GlobalBean.getGlobal();
 		FactoryBean f = new FactoryBean(1);
 		
-		assertEquals(g, f.getGlobal());
+		assertEquals(g, f.getParent());
 	}
 
 }

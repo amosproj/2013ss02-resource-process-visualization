@@ -56,11 +56,11 @@ int id = Integer.parseInt(request.getParameter("fid"));
 $(document).ready(function() {
 	Factory.getData(<%= id %>, function(a, factoryData) {
 	    // Draw the factory plan and attach click handler
-	    for(var i = 0; i < factoryData.halls.length; ++i) {
+	    for(var i = 0; i < factoryData.childs.length; ++i) {
 	    	var svgPath = $("<path></path>")
-	    			.attr("d", factoryData.halls[i].path)
-	    			.attr("class", getSvgClass(factoryData.halls[i].status))
-	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+factoryData.halls[i].id+')');
+	    			.attr("d", factoryData.childs[i].path)
+	    			.attr("class", getSvgClass(factoryData.childs[i].status))
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+factoryData.childs[i].id+')');
 	    	
 			$("#SVGPlan").append(svgPath);
 	    }

@@ -21,14 +21,19 @@
 
 package de.osramos.reprovis.test.botests;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.*;
+
+import de.osramos.reprovis.LineBean;
 
 
 public class LineBeanTest {
 
 	@Test
-	public void LineTest(){
-		
+	public void initTest(){
+		LineBean b = new LineBean(1);
+		assertTrue(b.getChilds().size() > 1);
 	}
 
 	

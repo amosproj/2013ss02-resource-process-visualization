@@ -14,7 +14,7 @@ public abstract class HierarchieElementBean {
 	protected List<HierarchieElementBean> childs;
 	protected HierarchieElementBean parent;
 
-	public HierarchieElementBean(int id) throws Exception {
+	public HierarchieElementBean(int id)  {
 		
 /*		try {*/
 			this.id = id;
@@ -24,15 +24,14 @@ public abstract class HierarchieElementBean {
 			throw new Exception("could not bind to registry");
 		}*/
 	
-			GlobalBean.getGlobal().reg.put(id, this);
-			
-		try {
+			Registry.getRegistry().reg.put(id, this);
+		
 			initChilds();
-		} catch (Exception e) {
-		}
+	
+	
 	}
 	
-	public HierarchieElementBean getElementById(int id){
+	public static HierarchieElementBean getElementById(int id){
 		
 /*		try {
 			Context ctx = new InitialContext();
@@ -40,13 +39,13 @@ public abstract class HierarchieElementBean {
 		} catch (NamingException e) {
 			return null;
 		}	*/
-		return (HierarchieElementBean) GlobalBean.getElementById(id);
+		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
 	}
 
 	protected void setParent(HierarchieElementBean parent) throws Exception {
-		if (parent != null) {
+	/*	if (parent != null) {
 			throw new Exception("Element already initialized.");
-		}
+		}*/
 
 		this.parent = parent;
 	}
@@ -55,7 +54,7 @@ public abstract class HierarchieElementBean {
 		return id;
 	}
 
-	public HierarchieElementBean getParent() {
+	public HierarchieElementBean getParent() throws HierarchieException {
 		return parent;
 	}
 
@@ -63,7 +62,7 @@ public abstract class HierarchieElementBean {
 		return childs;
 	}
 
-	public TrafficLight getStatus() throws Exception {
+	public TrafficLight getStatus() throws HierarchieException {
 
 		try {
 			return computeMinimalStatus();
@@ -73,14 +72,14 @@ public abstract class HierarchieElementBean {
 			return getDistinctStatus();
 		} catch (Exception e) {
 		}
-		throw new Exception("Element has no status");
+		throw new HierarchieException("Element has no status");
 	}
 
-	protected TrafficLight computeMinimalStatus() throws Exception {
+	protected TrafficLight computeMinimalStatus() throws HierarchieException {
 
 		TrafficLight status = TrafficLight.green;
 		if (childs == null){
-			throw new Exception("no child Elements");
+			throw new HierarchieException("no child Elements");
 		}
 		for (HierarchieElementBean child : childs) {
 			// aggregate to worst status
@@ -96,10 +95,10 @@ public abstract class HierarchieElementBean {
 
 	}
 
-	protected TrafficLight getDistinctStatus() throws Exception {
-		throw new Exception("Element has no distinct status");
+	protected TrafficLight getDistinctStatus() throws HierarchieException {
+		throw new HierarchieException("Element has no distinct status");
 	}
 
-	protected abstract void initChilds() throws Exception;
+	protected abstract void initChilds();
 
 }

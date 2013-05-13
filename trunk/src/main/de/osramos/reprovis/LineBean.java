@@ -19,53 +19,72 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.osramos.reprovis.MasterData.TrafficLight;
-
-
-
 
 public class LineBean extends HierarchieElementBean {
 
 	String name;
 	private String path;
-	
-	
-	public LineBean(int id) throws Exception {
+	private String productionSeries;
+	private int productionCapacity;
+
+	public LineBean(int id) {
 		super(id);
-		
-		/*try {
-			Context ctx = new InitialContext();
-			ctx.bind("de.orsamos/reprovis/factory/"+id, this);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+
+		/*
+		 * try { Context ctx = new InitialContext();
+		 * ctx.bind("de.orsamos/reprovis/factory/"+id, this); } catch
+		 * (NamingException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
 		name = LineDAO.getName(id);
 		path = LineDAO.getPath(id);
-		
+		productionSeries = LineDAO.getproductionSeries(id);
+		productionCapacity = LineDAO.getproductionCapacity(id);
+
 	}
 
 	@Override
-	protected void initChilds() throws Exception  {
-		childs = null;
-		throw new Exception("Element has no Childs");
-		
+	protected void initChilds() {
+		try {
+			List<Integer> childIds = LocationDAO.getLocationIds(id);
+			childs = new ArrayList<HierarchieElementBean>();
+			for (int id : childIds) {
+				LocationBean childBean = new LocationBean(id);
+
+				childBean.setParent(this);
+				childs.add(childBean);
+			}
+		} catch (Exception e) {
+
+		}
 	}
 
 	@Override
-	protected TrafficLight getDistinctStatus(){
+	protected TrafficLight getDistinctStatus() {
 		return LineDAO.getStatus(id);
-		
+
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
 
-	public String getPath(){
+	public String getPath() {
 		return path;
 	}
+
+	public String getProductionSeries() {
+		return productionSeries;
+	}
+
+	public int getProductionCapacity() {
+		return productionCapacity;
+	}
+
 }
