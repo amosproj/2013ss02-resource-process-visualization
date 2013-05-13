@@ -61,6 +61,12 @@ GlobalHierarchyHandler = {
 				request.url = "./testingdevice";
 				request.data = {tdid: id};
 				break;
+				
+			case "component":
+				request.id = id;
+				request.url = "./component";
+				request.data = {cid: id};
+				break;
 	
 			default: notAvailable(); return; break;
 		}
@@ -79,6 +85,13 @@ GlobalHierarchyHandler = {
 						$("#canvas #map").animate({height: "0px"}, 500);
 						$("#canvas #dataLayer").css({display: "block", height: "400px"});
 						$("#canvas").animate({height: "400px"}, 500);
+						break;
+						
+					case "component":
+						$('#componentModal').html(response).modal('show');
+					    $('#componentModal').on('shown', function() {
+					        //
+					    });
 						break;
 			
 					default:
