@@ -79,7 +79,8 @@ public abstract class HierarchieElementBean {
 
 		TrafficLight status = TrafficLight.green;
 		if (childs == null){
-			throw new HierarchieException("no child Elements");
+			return status;
+			//throw new HierarchieException("no child Elements");
 		}
 		for (HierarchieElementBean child : childs) {
 			// aggregate to worst status

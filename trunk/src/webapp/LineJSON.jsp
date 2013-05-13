@@ -16,9 +16,10 @@
  You should have received a copy of the GNU Affero General Public
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
+<%@ page import="de.osramos.reprovis.LocationBean"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.LineBean" %>
-<%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
 {
@@ -26,14 +27,14 @@
 	"name": "<%= line.getName() %>",
 	"status": "<%= line.getStatus() %>",
 	"locations": [
-		<%--<% boolean first = true; %>
-		<% for(TestData.Location loc: line.getLocations()){ 
+		<% boolean first = true; %>
+		<% for(HierarchieElementBean elem: line.getChilds()){ %>
+		<% LocationBean loc = (LocationBean) elem; %>
 		<% if(!first){out.print(","); }else first = false; %>
 		{
 			"id": <%= loc.getId() %>,
-			"name": "<%= loc.getName() %>",
 			"status": "<%= loc.getStatus() %>"
 		}
-		<% } %>	--%>
+		<% } %> 
 	]
 }
