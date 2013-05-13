@@ -61,7 +61,6 @@ public class GlobalBean extends HierarchieElementBean {
 			for (int id : childIds) {
 				FactoryBean childBean = new FactoryBean(id);
 				childBean.setParent(this);
-
 				childs.add(childBean);
 			}
 		} catch (Exception e) {

@@ -57,7 +57,7 @@ public class FactoryBean extends HierarchieElementBean {
 	 * return (FactoryBean) GlobalBean.getElementById(id); }
 	 */
 
-	private int id;
+	//private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
@@ -109,9 +109,9 @@ public class FactoryBean extends HierarchieElementBean {
 	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
 	 */
 
-	public int getId() {
+	/*public int getId() {
 		return id;
-	}
+	}*/
 
 	/*
 	 * public FactoryBean(int id){
