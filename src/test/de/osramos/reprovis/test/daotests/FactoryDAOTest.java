@@ -19,7 +19,6 @@ public class FactoryDAOTest {
 	
 	@Test
 	public void testGetFactoryIdsPrint() throws Exception{
-		System.out.println(MasterData.getConfigFile());
 		List<Integer> ids = FactoryDAO.getFactoryIds(0);
 		for(int id :ids){
 			System.out.println(id + ": " + FactoryDAO.getName(id));
