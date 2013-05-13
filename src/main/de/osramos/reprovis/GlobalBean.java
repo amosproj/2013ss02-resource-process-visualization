@@ -19,7 +19,6 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
@@ -31,60 +30,43 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+public class GlobalBean extends HierarchieElementBean {
 
-
-
-public class GlobalBean {
+	private GlobalBean(int id){
+		super(id);
+	}
 
 	private static GlobalBean global;
-	
-	public Map<Integer, Object> reg;
-	
-	public static Object getElementById(int id){
-		return getGlobal().reg.get(id);
+
+	@Override
+	public HierarchieElementBean getParent() throws HierarchieException {
+		throw new HierarchieException("Element is root");
 	}
-	
-	private GlobalBean(){
-		reg = new TreeMap<Integer, Object>();
-		reg.put(0, this);
-		
-/*		try {
-			Context ctx = new InitialContext();
-			ctx.bind("de.osramos/reprovis/HierarchieElement/global", this);
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-	}
-	
-	public static GlobalBean getGlobal(){
-		if (global == null){
-			global = new GlobalBean();
+
+	public static GlobalBean getGlobal() {
+		if (global == null) {
+			try {
+				global = new GlobalBean(0);
+			} catch (Exception e) {
+			}
 		}
 		return global;
 	}
 
-	public List<FactoryBean> getFactories(){
-		
-		try{
-			List<Integer> idList = FactoryDAO.getFactoryIds();
-			List<FactoryBean> factoryList = new ArrayList<FactoryBean>();
-			
-			for(int id : idList){
-				factoryList.add(new FactoryBean(id));
+	@Override
+	protected void initChilds() {
+		try {
+			List<Integer> childIds = FactoryDAO.getFactoryIds(id);
+			childs = new ArrayList<HierarchieElementBean>();
+			for (int id : childIds) {
+				FactoryBean childBean = new FactoryBean(id);
+				childBean.setParent(this);
+
+				childs.add(childBean);
 			}
-			
-			return factoryList;
+		} catch (Exception e) {
 		}
-		catch(Exception e){
-			
-			return null;
-		}
+
 	}
 
-	public int getId() {
-		return 0;
-	}
-	
 }

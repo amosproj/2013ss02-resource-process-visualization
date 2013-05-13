@@ -19,8 +19,11 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
 <%@ page import="de.osramos.reprovis.HallBean" %>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
 {
-<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
+<% assert (request.getAttribute("factory") != null); %>
+<% HierarchieElementBean helem = (HierarchieElementBean)request.getAttribute("factory"); %>
+<% FactoryBean factory = (FactoryBean)helem; %>
 	"name": "<%= factory.getName() %>",
 	"status": "<%= factory.getStatus() %>",
 	"country": "<%= factory.getCountry() %>",
@@ -35,7 +38,8 @@
 	],
 	"halls": [
 		<% first = true; %>
-		<% for(HallBean hall: factory.getHalls()){ %>
+		<%for(HierarchieElementBean elem:  factory.getChilds()){%>
+		<%		HallBean hall = (HallBean) elem; %>
 		<% if(!first){out.print(","); }else first = false; %>
 		{
 			"id": <%= hall.getId() %>,

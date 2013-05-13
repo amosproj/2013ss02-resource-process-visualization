@@ -21,32 +21,53 @@
 
 package de.osramos.reprovis;
 
+import java.io.InputStream;
+
 
 public class MasterData {
 
+	public static String getConfigFile() {
+		String path;
+		InputStream resource;
 
-	
-	public enum Company{Audi, Volkswagen, Skoda, Seat}
-	public static Company stringToCompany(String string){
-		if (string.equals("Audi")){
+		path = "../../config.xml";
+		resource = MasterData.class.getClassLoader().getResourceAsStream(path);
+		if (resource != null) {
+
+			return path;
+		}
+
+
+		return "config.xml";
+
+	}
+
+	public enum Company {
+		Audi, Volkswagen, Skoda, Seat
+	}
+
+	public static Company stringToCompany(String string) {
+		if (string.equals("Audi")) {
 			return Company.Audi;
 		}
-		if (string.equals("Volkswagen")){
+		if (string.equals("Volkswagen")) {
 			return Company.Volkswagen;
 		}
-		if (string.equals("Skoda")){
+		if (string.equals("Skoda")) {
 			return Company.Skoda;
 		}
-		if (string.equals("Seat")){
+		if (string.equals("Seat")) {
 			return Company.Seat;
 		}
 		return null;
 	}
-	
-	public enum TrafficLight{red, yellow, green}
-	
-	public static String getTrafficIconClass(TrafficLight status){
-		switch(status){
+
+	public enum TrafficLight {
+		red, yellow, green
+	}
+
+	public static String getTrafficIconClass(TrafficLight status) {
+		switch (status) {
 		case red:
 			return "statusIconCritical";
 		case yellow:
@@ -55,9 +76,9 @@ public class MasterData {
 			return "statusIconOk";
 		}
 	}
-	
-	public static String getHallClass(TrafficLight status){
-		switch(status){
+
+	public static String getHallClass(TrafficLight status) {
+		switch (status) {
 		case red:
 			return "statusHallCritical";
 		case yellow:

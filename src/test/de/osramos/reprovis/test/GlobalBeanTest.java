@@ -30,13 +30,14 @@ import javax.naming.NamingException;
 import org.junit.Test;
 
 import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.HierarchieException;
 
 public class GlobalBeanTest {
 	
 	@Test
-	public void GlobalBeanTest(){
+	public void GlobalBeanTest() throws HierarchieException{
 		GlobalBean global = GlobalBean.getGlobal();
-		assertNotNull(global.getFactories());
+		assertNotNull(global.getChilds());
 	}
 
 	@Test

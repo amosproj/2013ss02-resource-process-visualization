@@ -27,23 +27,11 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class LineDAO {
 
-	public static List<LineBean> getLines(){
+/*	public static List<LineBean> getLines(){
 		return null;
 		
-	}
+	}*/
 
-	public static List<Integer> getLineIds(int id) {
-		
-		int n = id %3 +2;
-		List<Integer> l = new ArrayList<Integer>();
-		
-		for (int i = 0; i < n; i++)
-		{
-			l.add(id * 100 +i);
-		}
-
-		return l;
-	}
 
 	public static String getName(int id) {
 		// TODO Auto-generated method stub
@@ -72,5 +60,28 @@ public class LineDAO {
 		default:
 			return "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
 		}
+	}
+
+	public static List<Integer> getLineIds(int id) {
+		List<Integer> l = new ArrayList<Integer>();
+		
+		for (int i = 0; i < 3; i++)
+		{
+			l.add(id * 10 +i);
+		}
+
+		return l;
+	}
+
+
+	public static String getproductionSeries(int id) {
+		// TODO Auto-generated method stub
+		return "testSeries";
+	}
+
+
+	public static int getproductionCapacity(int id) {
+		// TODO Auto-generated method stub
+		return 400;
 	}
 }
