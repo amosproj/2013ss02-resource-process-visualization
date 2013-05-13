@@ -19,14 +19,14 @@
  - <http://www.gnu.org/licenses/>.
 */
 
-Location = {
+TestingDevice = {
 		// Loads the respective data as JSON object
 		getData: function(lID, callback) {
 			$.ajax({
 				dataType: "json",
 				type: "POST",
-				url: "./location",
-				data: {getData: true, locid: lID},
+				url: "./testingdevice",
+				data: {getData: true, tdid: lID},
 				
 				success: function(response, textStatus, jqXHR){
 	                callback.call(this, lID, response);

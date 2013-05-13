@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <!-- 
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
@@ -75,6 +75,7 @@
 	<script src="./js/webapp-hall.js"></script>
 	<script src="./js/webapp-line.js"></script>
 	<script src="./js/webapp-location.js"></script>
+	<script src="./js/webapp-testingDevice.js"></script>
 	<script src="./js/webapp-component.js"></script>	
   </head>
 

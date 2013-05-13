@@ -57,7 +57,7 @@ int id = Integer.parseInt(request.getParameter("locid"));
 
 <div id="informationBlock" class="span4">
 	<a href="javascript:showGlobalMap()">Go back to global view</a>
-	<table id="lineDetails" class="table table-striped table-hover">
+	<table id="locationDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="locationStatus"></td></tr>
 		<tr><td>Name</td><td id="locationName"></td></tr>
 		<tr><td>Number of types</td><td id="locationCountOfDevices"></td></tr>
