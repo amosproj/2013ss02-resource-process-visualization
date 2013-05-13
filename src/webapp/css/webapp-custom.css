@@ -116,17 +116,6 @@ h1, h2, h3, h4, h5, h6 {
 	fill: darkred;
 }
 
-.list {
-	list-style: none;
-	background-color: lightgray;
-	border-bottom: 1px solid darkgray;
-}
-
-.listStatus {
-	margin-right: 0.5em;
-	margin-left: 0.5em;
-}
-
 .clear {
 	clear: both;
 }

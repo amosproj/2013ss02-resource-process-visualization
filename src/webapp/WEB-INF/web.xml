@@ -79,6 +79,16 @@
 		<servlet-name>locationServlet</servlet-name>
 		<url-pattern>/location</url-pattern>
 	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>testingDeviceServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.TestingDeviceServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>testingDeviceServlet</servlet-name>
+		<url-pattern>/testingdevice</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>componentServlet</servlet-name>

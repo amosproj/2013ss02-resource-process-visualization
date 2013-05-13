@@ -18,7 +18,28 @@
  - License along with this program. If not, see
  - <http://www.gnu.org/licenses/>.
 */
-var svgNS = "http://www.w3.org/2000/svg";
+
+Location = {
+		// Loads the respective data as JSON object
+		getData: function(lID, callback) {
+			$.ajax({
+				dataType: "json",
+				type: "POST",
+				url: "./location",
+				data: {getData: true, locid: lID},
+				
+				success: function(response, textStatus, jqXHR){
+	                callback.call(this, lID, response);
+				},
+		
+				error: function(jqXHR, textStatus, errorThrown){
+					notAvailable();
+					console.error("The following error occured: " +
+						textStatus, errorThrown);
+				}
+			});
+		}
+	};
 
 function displayLocation(json){
 	var container = document.createElement("div");
