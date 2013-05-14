@@ -17,45 +17,30 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 
+<%@page import="de.osramos.reprovis.ElectricalComponentBean"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.LineBean" %>
 <%@ page import="de.osramos.reprovis.TestingDeviceBean" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
+<% TestingDeviceBean device = (TestingDeviceBean)request.getAttribute("device"); %>
 {
-	"name": "Testing Device 4711-Test",
-	"status": "red",
+	"name": "Testing Device <%= device.getId() %>",
+	"status": "<%= device.getStatus() %>",
 	"componentCount": "167",
 	"components": [
-	    {
-	    	"id": "4711001",
-	    	"status": "green",
-	    	"category": "EC1",
-	    	"troublePeriod": "-",
-	    	"sector": "Sector 1"
-	    },
-	    {
-	    	"id": "4711002",
-	    	"status": "green",
-	    	"category": "EC1",
-	    	"troublePeriod": "-",
-	    	"sector": "Sector 1"
-	    },
-	    {
-	    	"id": "4711003",
-	    	"status": "green",
-	    	"category": "EC2",
-	    	"troublePeriod": "-",
-	    	"sector": "Sector 2"
-	    },
-	    {
-	    	"id": "4711004",
-	    	"status": "red",
-	    	"category": "EC3",
-	    	"troublePeriod": "00:27:18",
-	    	"sector": "Sector 3"
-	    }
+		<% boolean first = true; %>
+		<% for(HierarchieElementBean child: device.getChilds()){ %>
+		<% ElectricalComponentBean component = (ElectricalComponentBean) child; %>
+		<% if(!first){out.print(","); }else first = false; %>
+			{
+				"id": <%= component.getId() %>,
+				"name": "Testing Device <%= component.getId() %>",
+				"status": "<%= component.getStatus() %>",
+				"category": "<%= component.getCategory() %>",
+				"troublePeriod": "<%= component.getTroubeOccurrenceTime() %>",
+				"sector": "<%= component.getSector() %>"
+			}
+		<% } %>
 	]
 }

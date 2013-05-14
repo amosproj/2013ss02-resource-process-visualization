@@ -45,7 +45,7 @@ public class TestingDeviceServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("tdid", GlobalBean.getElementById(Integer.valueOf(id)));
+				req.setAttribute("device", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/TestingDeviceJSON.jsp").forward(req, resp);
 			}
 			
