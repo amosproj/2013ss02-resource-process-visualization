@@ -52,7 +52,7 @@ public class TestingDeviceServlet extends HttpServlet {
 			else {
 				// Call the view handler
 				req.setAttribute("tdid", GlobalBean.getElementById(Integer.valueOf(id)));
-				getServletContext().getRequestDispatcher("/TestingDevice.jsp").forward(req, resp);
+				getServletContext().getRequestDispatcher("/TestingDeviceView.jsp").forward(req, resp);
 			}
 		}
 	}
