@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.TestData;
+import de.osramos.reprovis.GlobalBean;
 
 public class ComponentServlet extends HttpServlet {
 
@@ -36,15 +36,24 @@ public class ComponentServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException{
+			throws ServletException, IOException {
 		String id = req.getParameter("cid");
-		if(id == null){
-			req.setAttribute("message", "Requesting location without id.");
+		
+		if(id == null) {
+			req.setAttribute("message", "Requesting component without id.");
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
-		}else{
-			TestData global = (TestData)getServletContext().getAttribute("testdata");
-			req.setAttribute("location", global.getComponent(Integer.valueOf(id)));
-			getServletContext().getRequestDispatcher("/ComponentView.jsp").forward(req, resp);
+		} else {
+			if(req.getParameter("getData") != null) {
+				// Call the data handler
+				req.setAttribute("cid", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/ComponentJSON.jsp").forward(req, resp);
+			}
+			
+			else {
+				// Call the view handler
+				req.setAttribute("cid", GlobalBean.getElementById(Integer.valueOf(id)));
+				getServletContext().getRequestDispatcher("/ComponentView.jsp").forward(req, resp);
+			}
 		}
 	}
 }
