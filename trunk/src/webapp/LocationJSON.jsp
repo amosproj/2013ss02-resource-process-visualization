@@ -17,27 +17,29 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 
+<%@page import="de.osramos.reprovis.TestingDeviceBean"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="de.osramos.reprovis.LocationBean"%>
 <%@ page import="de.osramos.reprovis.LineBean" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
+<% LocationBean loc = (LocationBean) request.getAttribute("location"); %>
 {
-	"name": "Location 4711",
-	"status": "green",
+	"name": "Location <%= loc.getId() %>",
+	"status": "<%= loc.getStatus() %>",
 	"testDeviceCount": "99",
 	"testDevices": [
-	    {
-	    	"id": "47111",
-	    	"name": "Testing Device 1",
-	    	"status": "yellow"
-	    },
-	    {
-	    	"id": "47112",
-	    	"name": "Testing Device 2",
-	    	"status": "red"
-	    }
+		<% boolean first = true; %>
+		<% for(HierarchieElementBean child: loc.getChilds()){ %>
+		<% TestingDeviceBean device = (TestingDeviceBean) child; %>
+		<% if(!first){out.print(","); }else first = false; %>
+			{
+				"id": <%= device.getId() %>,
+				"name": "Testing Device <%= device.getId() %>",
+				"status": "<%= device.getStatus() %>"
+			}
+		<% } %>
 	]
 			
 }

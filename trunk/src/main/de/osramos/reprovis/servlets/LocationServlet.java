@@ -45,7 +45,7 @@ public class LocationServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("locid", GlobalBean.getElementById(Integer.valueOf(id)));
+				req.setAttribute("location", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/LocationJSON.jsp").forward(req, resp);
 			}
 			
