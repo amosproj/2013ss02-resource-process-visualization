@@ -51,7 +51,7 @@ public class ComponentServlet extends HttpServlet {
 			
 			else {
 				// Call the view handler
-				req.setAttribute("cid", GlobalBean.getElementById(Integer.valueOf(id)));
+				req.setAttribute("component", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/ComponentView.jsp").forward(req, resp);
 			}
 		}
