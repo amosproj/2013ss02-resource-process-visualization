@@ -41,6 +41,7 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
+	<div id="breadCrumbNavi"></div>
 	<h3 id="dynamicHeading"></h3>
 	<div id="testingDeviceComponents">
 		<table id="testingDeviceComponentsList" class="table table-striped table-hover">
@@ -76,6 +77,9 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	TestingDevice.getData(<%= id %>, function(a, data) {
+		
+		console.log(data);
+		
 		for(var i = 0; i < data.components.length; ++i) {
 			var rowClass = "";
 			

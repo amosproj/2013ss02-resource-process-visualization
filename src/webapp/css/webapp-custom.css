@@ -41,9 +41,19 @@ h1, h2, h3, h4, h5, h6 {
 	border-right: 1px solid #cdcdcd;
 }
 
+#dynamicHeading {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#breadCrumbNavi {
+	width: 100%;
+	height: 20px;
+}
+
 #SVGPlan {
 	width: 100%;
-	height: 340px;
+	height: 300px;
 }
 
 #SVGPlan path {
