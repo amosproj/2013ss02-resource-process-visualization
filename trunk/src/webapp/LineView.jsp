@@ -40,6 +40,7 @@ int id = Integer.parseInt(request.getParameter("lid"));
 
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
+	<div id="breadCrumbNavi"></div>
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationPlan">
 		<table id="locationList" class="table table-striped table-hover">
@@ -68,6 +69,9 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Line.getData(<%= id %>, function(a, data) {
+		
+		console.log(data);
+		
 		for(var i = 0; i < data.locations.length; ++i) {
 			var rowClass = "";
 			

@@ -41,6 +41,7 @@ int id = Integer.parseInt(request.getParameter("locid"));
 
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
+	<div id="breadCrumbNavi"></div>
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationDevices">
 		<table id="locationDevicesList" class="table table-striped table-hover">
