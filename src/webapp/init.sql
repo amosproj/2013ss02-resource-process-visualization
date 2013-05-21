@@ -1,4 +1,4 @@
-﻿drop table factory;
+drop table factory;
 create table factory(id int , name char(25), city char(25), country char(25), 
 						gpslatitude double precision , gpslongitude double precision, 
 						carmodels char(512), sizeofstaff int, numofvehicles int );
