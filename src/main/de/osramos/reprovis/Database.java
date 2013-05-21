@@ -35,7 +35,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
-import org.postgresql.ds.PGSimpleDataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
@@ -50,7 +49,7 @@ public class Database {
 	public static void initDB() throws DatabaseException {
 
 		try {
-			String path = "../../config/init.sql";
+			String path = "config/init.sql";
 			String sql;
 
 			InputStream resource = MasterData.class.getClassLoader()
@@ -63,8 +62,7 @@ public class Database {
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
-
-			System.out.println(sql);
+			
 			statement.execute(sql);
 
 			statement.close();
@@ -74,7 +72,7 @@ public class Database {
 			
 		} catch (Exception e) {
 			throw new DatabaseException("could not init database");
-		}
+		} 
 		
 
 	}
