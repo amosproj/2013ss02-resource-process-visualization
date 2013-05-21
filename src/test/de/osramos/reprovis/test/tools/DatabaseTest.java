@@ -19,21 +19,45 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
+/**
+ * 
+ */
 package de.osramos.reprovis.test.tools;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import static org.junit.Assert.*;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ 
-		de.osramos.reprovis.test.tools.RegistryTest.class,
-		de.osramos.reprovis.test.tools.DatabaseTest.class,
- })
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
-public class ToolsTest {
+import org.junit.Test;
+
+import de.osramos.reprovis.Database;
+
+/**
+ * @author Martin
+ *
+ */
+public class DatabaseTest {
+
+	@Test
+	public void testDataSource() throws NamingException, SQLException{
+		DataSource db = Database.getAmosDB();
+		assertNotNull(db);
+		
+		Connection connection = db.getConnection();
+		Statement statement = connection.createStatement();
+		
+		ResultSet query = statement.executeQuery("create table factory(id int , name char(25), city char(25), country char(25) ); " +
+				"insert into factory (id, name, city, country) values (1, 'German1', 'Ingolstadt', 'Germany');");
+
+		
+		statement.close();
+		connection.close();
+	}
 	
-
-
 }

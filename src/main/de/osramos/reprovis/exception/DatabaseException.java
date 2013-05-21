@@ -19,21 +19,16 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+package de.osramos.reprovis.exception;
 
-package de.osramos.reprovis.test.tools;
+public class DatabaseException extends Exception {
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8879531415431978587L;
 
-
-@RunWith(Suite.class)
-@Suite.SuiteClasses({ 
-		de.osramos.reprovis.test.tools.RegistryTest.class,
-		de.osramos.reprovis.test.tools.DatabaseTest.class,
- })
-
-public class ToolsTest {
-	
-
-
+	public DatabaseException(String string) {
+		super(string);
+	}
 }

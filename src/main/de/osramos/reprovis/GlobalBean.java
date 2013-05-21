@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ public class GlobalBean extends HierarchieElementBean {
 
 	private GlobalBean(int id){
 		super(id);
+		
 	}
 
 	private static GlobalBean global;
@@ -44,6 +46,14 @@ public class GlobalBean extends HierarchieElementBean {
 	}
 
 	public static GlobalBean getGlobal() {
+		if (!Database.init){
+			try {
+				Database.initDB();
+			} catch (SQLException e) {
+
+			}
+		}
+		
 		if (global == null) {
 			try {
 				global = new GlobalBean(0);
