@@ -23,6 +23,11 @@ package de.osramos.reprovis;
 
 import java.io.InputStream;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 
 public class MasterData {
 
@@ -86,5 +91,14 @@ public class MasterData {
 		default:
 			return "statusHallOk";
 		}
+	}
+	
+	public DataSource getDB() throws NamingException{
+		Context ctx = new InitialContext();
+		DataSource datasource = (DataSource)
+			ctx.lookup("java:comp/env/jdbc/postgresql");
+		
+		return datasource;
+
 	}
 }
