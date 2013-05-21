@@ -64,19 +64,25 @@ public class Database {
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
 
+			System.out.println(sql);
 			statement.execute(sql);
 
 			statement.close();
 			connection.close();
 			
+			Database.init = true;
+			
 		} catch (Exception e) {
 			throw new DatabaseException("could not init database");
 		}
+		
 
 	}
 
 	public static DataSource getDB() throws DatabaseException {
 
+	
+		
 		DataSource datasource;
 		try {
 			Context ctx = new InitialContext();
@@ -84,22 +90,12 @@ public class Database {
 			datasource = (DataSource) ctx
 					.lookup("java:comp/env/jdbc/postgresql");
 		} catch (NamingException e) {
-			//throw new DatabaseException("could not find database");
-			datasource = getTestDB();
+			throw new DatabaseException("could not find database");
+
 		}
 
-		return getTestDB();
+		return datasource;
 
 	}
 	
-	public static DataSource getTestDB() {
-		PGSimpleDataSource ds = new PGSimpleDataSource();
-		ds.setServerName("localhost");
-		ds.setPortNumber(5432);
-		ds.setDatabaseName("ss13-proj2");
-		ds.setUser("ss13-proj2");
-		ds.setPassword("12345");
-
-		return ds;
-	}
 }

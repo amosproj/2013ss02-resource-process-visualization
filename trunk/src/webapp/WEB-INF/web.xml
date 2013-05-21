@@ -49,16 +49,7 @@
 		<servlet-name>factoryServlet</servlet-name>
 		<url-pattern>/factory</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>testServlet</servlet-name>
-		<servlet-class>de.osramos.reprovis.servlets.TestServlet</servlet-class>
-	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>testServlet</servlet-name>
-		<url-pattern>/test</url-pattern>
-	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>hallServlet</servlet-name>
