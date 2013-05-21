@@ -52,7 +52,7 @@ public class GlobalBean extends HierarchieElementBean {
 			try {
 				Database.initDB();
 			} catch (DatabaseException e) {
-
+				e.printStackTrace();
 			}
 		}
 		
