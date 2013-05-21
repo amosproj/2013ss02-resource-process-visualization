@@ -41,7 +41,7 @@ public class FactoryBean extends HierarchieElementBean {
 		try {
 			name = FactoryDAO.getName(id);
 			country = FactoryDAO.getCountry(id);
-			/* city = FactoryDAO.getCity(id); */
+			city = FactoryDAO.getCity(id);
 			gpsLatitude = FactoryDAO.getGpsLatitude(id);
 			gpsLongitude = FactoryDAO.getGpsLongitude(id);
 			company = FactoryDAO.getCompany(id);
@@ -67,9 +67,8 @@ public class FactoryBean extends HierarchieElementBean {
 	private String country;
 	private double gpsLatitude;
 	private double gpsLongitude;
-	/* private String city; */
+	private String city;
 	private Company company;
-	private GlobalBean parent;
 	private String[] carModels;
 	private int sizeOfStaff;
 	private int numOfVehicles;
@@ -94,9 +93,9 @@ public class FactoryBean extends HierarchieElementBean {
 		return carModels;
 	}
 
-	/*
-	 * public String getCity(){ return city; }
-	 */
+	public String getCity() {
+		return city;
+	}
 
 	public double getGpsLatitude() {
 		return gpsLatitude;

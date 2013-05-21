@@ -35,6 +35,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
+import org.postgresql.ds.PGSimpleDataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
@@ -49,7 +50,7 @@ public class Database {
 	public static void initDB() throws DatabaseException {
 
 		try {
-			String path = "../../init.sql";
+			String path = "../../config/init.sql";
 			String sql;
 
 			InputStream resource = MasterData.class.getClassLoader()
@@ -83,10 +84,22 @@ public class Database {
 			datasource = (DataSource) ctx
 					.lookup("java:comp/env/jdbc/postgresql");
 		} catch (NamingException e) {
-			throw new DatabaseException("could not find database");
+			//throw new DatabaseException("could not find database");
+			datasource = getTestDB();
 		}
 
-		return datasource;
+		return getTestDB();
 
+	}
+	
+	public static DataSource getTestDB() {
+		PGSimpleDataSource ds = new PGSimpleDataSource();
+		ds.setServerName("localhost");
+		ds.setPortNumber(5432);
+		ds.setDatabaseName("ss13-proj2");
+		ds.setUser("ss13-proj2");
+		ds.setPassword("12345");
+
+		return ds;
 	}
 }

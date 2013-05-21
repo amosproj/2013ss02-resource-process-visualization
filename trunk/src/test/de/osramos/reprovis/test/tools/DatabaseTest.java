@@ -49,6 +49,14 @@ public class DatabaseTest {
 	public void testDataSource() throws  SQLException, DatabaseException{
 		DataSource db = Database.getDB();
 		assertNotNull(db);
+		
+		assertNotNull(db.getConnection());
+	
+	}
+	
+	@Test
+	public void testInit() throws  SQLException, DatabaseException{
+		Database.initDB();
 	
 	}
 	

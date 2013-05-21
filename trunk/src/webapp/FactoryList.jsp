@@ -33,10 +33,13 @@
 		"fid": <%= factory.getId() %>,
 		"fName": "<%= factory.getName() %>",
 		"active": false,
+		"country": "<%= factory.getCountry() %>",
+		"city": "<%= factory.getCity() %>",
+		"sizeOfStaff": "<%= factory.getSizeOfStaff() %>",
 		"lat": <%= factory.getGpsLatitude() %>, 
 		"lon": <%= factory.getGpsLongitude() %>, 
-		"companyImg": "<img class=\"companyImgSmall\" src=\"./img/logo_audi-small.png\" />", 
-		"flagImg": "<img class=\"flagImgSmall\" src=\"./img/flag_germany-bavaria.png\" />",
+		"companyImg": "<img class=\"companyImgSmall\" src=\"./config/logo_company/<%= factory.getCompany().toString()%>.png\" />", 
+		"flagImg": "<img class=\"flagImgSmall\" src=\"./config/flag_country/<%= factory.getCountry()%>.png\" />",
 		"statusImg": "<span class=\"statusIcon <%= MasterData.getTrafficIconClass(factory.getStatus()) %>\">&nbsp;</span>"
 	}
 <% } %>
