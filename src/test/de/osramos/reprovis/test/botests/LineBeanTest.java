@@ -25,6 +25,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
 
+import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.HallBean;
+import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.LineBean;
 
 
@@ -36,5 +39,13 @@ public class LineBeanTest {
 		assertTrue(b.getChilds().size() > 1);
 	}
 
-	
+	@Test
+	public void hierarchieTest(){
+		GlobalBean g = GlobalBean.getGlobal();
+		HierarchieElementBean l = g.getChilds().get(0).getChilds().get(0).getChilds().get(0);
+		assertTrue(l.getClass().equals(LineBean.class));
+		assertTrue(!l.getClass().equals(HallBean.class));
+	}
+
+
 }
