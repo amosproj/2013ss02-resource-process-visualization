@@ -40,24 +40,28 @@ import javax.sql.DataSource;
 import org.apache.commons.io.IOUtils;
 import org.postgresql.ds.PGSimpleDataSource;
 
+import de.osramos.reprovis.exception.DatabaseException;
+
 /**
  * @author Martin
  * 
  */
 public class Database {
-	
+
 	static boolean init = false;
 
-	public static void initDB() throws SQLException {
-
-		String path = "../../init.sql";
+	public static void initDB() throws DatabaseException {
 
 		try {
+			String path = "../../init.sql";
+			String sql;
+
 			InputStream resource = MasterData.class.getClassLoader()
 					.getResourceAsStream(path);
 
-			// String sql = IOUtils.toString(resource);
-			String sql = "drop table if exists factory;"
+			sql = IOUtils.toString(resource);
+
+			sql = "drop table if exists factory;"
 					+ "create table factory (id int , name char(25), company char(25), city char(25), country char(25), "
 					+ "gpslatitude double precision , gpslongitude double precision, "
 					+ "carmodels char(512), sizeofstaff int, numofvehicles int );"
@@ -67,41 +71,20 @@ public class Database {
 					+ "insert into factory values (2, \'German2\', \'Audi\', \'Neckarsulm\', \'Germany\', 49.194213, 9.221771, "
 					+ "\'Audi A4, Audi A5 Cabriolet, Audi S5 Cabriolet, Audi RS 5 Cabriolet, Audi A6, Audi A6 hybrid, Audi A6 Avant, Audi S6, Audi A6 allroad quattro, Audi RS 6 Avant, Audi A7, Audi S7, Audi RS7, Audi A8, Audi A8 L, Audi A8 hybrid, Audi S8, Audi R8, Audi R8 Spyder, Audi R8 GT, Audi R8 GT Spyder\',"
 					+ "	14764, 262965 );";
-			execute(sql);
 
+			DataSource db = Database.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+
+			statement.execute(sql);
+
+			statement.close();
+			connection.close();
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new DatabaseException("could not init database");
 		}
-
-	}
-
-	public static ResultSet executeQuery(String query) throws SQLException {
-		ResultSet res = null;
-
-		DataSource db = Database.getAmosDB();
-
-		Connection connection = db.getConnection();
-		Statement statement = connection.createStatement();
-
-		res = statement.executeQuery(query);
-
-		statement.close();
-		connection.close();
-
-		return res;
-	}
-
-	public static void execute(String sql) throws SQLException {
-
-		DataSource db = Database.getAmosDB();
-
-		Connection connection = db.getConnection();
-		Statement statement = connection.createStatement();
-
-		statement.execute(sql);
-
-		statement.close();
-		connection.close();
 
 	}
 
@@ -114,7 +97,7 @@ public class Database {
 			datasource = (DataSource) ctx
 					.lookup("java:comp/env/jdbc/postgresql");
 		} catch (NamingException e) {
-			return getTestDB();
+			datasource = getAmosDB();
 		}
 
 		return datasource;
@@ -138,7 +121,7 @@ public class Database {
 		ds.setPortNumber(5432);
 		ds.setDatabaseName("ss13-proj2");
 		ds.setUser("ss13-proj2");
-		ds.setPassword("eiy0ua4Food6faiR");
+		ds.setPassword("");
 
 		return ds;
 	}

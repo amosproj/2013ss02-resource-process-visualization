@@ -49,7 +49,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -80,7 +80,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -111,7 +111,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -140,7 +140,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -171,7 +171,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -203,7 +203,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -234,7 +234,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -265,7 +265,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -296,7 +296,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -320,51 +320,6 @@ public class FactoryDAO {
 		return d;
 	}
 
-	/*
-	 * private static NodeList getFactoriyNodes() throws Exception {
-	 * 
-	 * DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-	 * DocumentBuilder db; try { db = dbf.newDocumentBuilder();
-	 * 
-	 * Document doc = db.parse(FactoryDAO.class.getClassLoader()
-	 * .getResourceAsStream(MasterData.getConfigFile())); Document doc =
-	 * db.parse(MasterData.getConfigFile());
-	 * 
-	 * doc.getDocumentElement().normalize();
-	 * 
-	 * return doc.getElementsByTagName("factory"); } catch (Exception e) { throw
-	 * new Exception("no Elements found"); }
-	 * 
-	 * }
-	 */
-	/*
-	 * public static Element getFactoryById(int id) throws Exception {
-	 * 
-	 * NodeList factories = getFactoriyNodes();
-	 * 
-	 * for (int i = 0; i < factories.getLength(); i++) {
-	 * 
-	 * Node factory = factories.item(i);
-	 * 
-	 * if (factory.getNodeType() == Node.ELEMENT_NODE) { Element element =
-	 * (Element) factory;
-	 * 
-	 * if (id == getFactoryHash(element)) { return element; } } } throw new
-	 * Exception("no Element found");
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public static int getFactoryHash(Element factory) { String name =
-	 * factory.getAttribute("name"); // double latitude = //
-	 * Double.parseDouble(factory.getAttribute("gpsLatitude")); // double
-	 * longitude = // Double.parseDouble(factory.getAttribute("gpsLongitude"));
-	 * 
-	 * return (int) (name.hashCode());
-	 * 
-	 * }
-	 */
 
 	public static List<Integer> getFactoryIds(int globalId) throws Exception {
 
@@ -373,7 +328,7 @@ public class FactoryDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getAmosDB();
+			DataSource db = Database.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -391,74 +346,6 @@ public class FactoryDAO {
 		}
 
 		return l;
-
-/*		try {
-
-			ResultSet res = null;
-
-			DataSource db = Database.getAmosDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-
-			res = Database.executeQuery("SELECT id FROM factory");
-
-			int i = 1;
-			while (true) {
-				try {
-
-					l.add(res.getInt(i++));
-				} catch (Exception e) {
-					e.printStackTrace();
-					break;
-				}
-			}
-
-			statement.close();
-			connection.close();
-			return l;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;*/
-
-		/*
-		 * NodeList factories = getFactoriyNodes();
-		 * 
-		 * if (factories == null) { throw new
-		 * Exception("No factories initialized"); }
-		 * 
-		 * for (int i = 0; i < factories.getLength(); i++) {
-		 * 
-		 * Node factory = factories.item(i);
-		 * 
-		 * if (factory.getNodeType() == Node.ELEMENT_NODE) { Element element =
-		 * (Element) factory;
-		 * 
-		 * l.add(getFactoryHash(element)); } }
-		 * 
-		 * return l;
-		 */
 	}
 
-	/*
-	 * public static List<Integer> getChildIds(int id) throws Exception {
-	 * List<Integer> l = new ArrayList<Integer>();
-	 * 
-	 * NodeList factories = getFactoriyNodes();
-	 * 
-	 * if (factories == null) { throw new Exception("No factories initialized");
-	 * }
-	 * 
-	 * for (int i = 0; i < factories.getLength(); i++) {
-	 * 
-	 * Node factory = factories.item(i);
-	 * 
-	 * if (factory.getNodeType() == Node.ELEMENT_NODE) { Element element =
-	 * (Element) factory;
-	 * 
-	 * l.add(getFactoryHash(element)); } }
-	 * 
-	 * return l; }
-	 */
 }
