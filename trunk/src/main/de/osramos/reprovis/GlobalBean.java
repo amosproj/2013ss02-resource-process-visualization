@@ -31,6 +31,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import de.osramos.reprovis.exception.DatabaseException;
+
 public class GlobalBean extends HierarchieElementBean {
 
 	private GlobalBean(int id){
@@ -49,7 +51,7 @@ public class GlobalBean extends HierarchieElementBean {
 		if (!Database.init){
 			try {
 				Database.initDB();
-			} catch (SQLException e) {
+			} catch (DatabaseException e) {
 
 			}
 		}

@@ -22,31 +22,16 @@
 package de.osramos.reprovis.servlets;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
-import javax.naming.NamingException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
-import org.apache.commons.io.IOUtils;
 
 import de.osramos.reprovis.Database;
-import de.osramos.reprovis.FactoryBean;
-import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.HierarchieException;
-import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.exception.DatabaseException;
 
 
 
@@ -67,7 +52,7 @@ public class TestServlet extends HttpServlet {
 		
 		try {
 			Database.initDB();
-		} catch (SQLException e) {
+		} catch (DatabaseException e) {
 
 			resp.getOutputStream().println(e.toString());
 		}
