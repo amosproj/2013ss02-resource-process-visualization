@@ -37,6 +37,7 @@ import javax.sql.DataSource;
 import org.junit.Test;
 
 import de.osramos.reprovis.Database;
+import de.osramos.reprovis.exception.DatabaseException;
 
 /**
  * @author Martin
@@ -45,19 +46,10 @@ import de.osramos.reprovis.Database;
 public class DatabaseTest {
 
 	@Test
-	public void testDataSource() throws NamingException, SQLException{
-		DataSource db = Database.getAmosDB();
+	public void testDataSource() throws  SQLException, DatabaseException{
+		DataSource db = Database.getDB();
 		assertNotNull(db);
-		
-		Connection connection = db.getConnection();
-		Statement statement = connection.createStatement();
-		
-		ResultSet query = statement.executeQuery("create table factory(id int , name char(25), city char(25), country char(25) ); " +
-				"insert into factory (id, name, city, country) values (1, 'German1', 'Ingolstadt', 'Germany');");
-
-		
-		statement.close();
-		connection.close();
+	
 	}
 	
 }
