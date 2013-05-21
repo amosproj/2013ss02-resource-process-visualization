@@ -93,12 +93,5 @@ public class MasterData {
 		}
 	}
 	
-	public DataSource getDB() throws NamingException{
-		Context ctx = new InitialContext();
-		DataSource datasource = (DataSource)
-			ctx.lookup("java:comp/env/jdbc/postgresql");
-		
-		return datasource;
-
-	}
+	
 }

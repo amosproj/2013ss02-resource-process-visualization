@@ -32,20 +32,25 @@ import javax.naming.NamingException;
 
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class FactoryBean extends HierarchieElementBean {
 
 	public FactoryBean(int id) {
 		super(id);
-		name = FactoryDAO.getName(id);
-		country = FactoryDAO.getCountry(id);
-		/* city = FactoryDAO.getCity(id); */
-		gpsLatitude = FactoryDAO.getGpsLatitude(id);
-		gpsLongitude = FactoryDAO.getGpsLongitude(id);
-		company = FactoryDAO.getCompany(id);
-		carModels = FactoryDAO.getCarModels(id);
-		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-		numOfVehicles = FactoryDAO.getNumOfVehicles(id);
+		try {
+			name = FactoryDAO.getName(id);
+			country = FactoryDAO.getCountry(id);
+			/* city = FactoryDAO.getCity(id); */
+			gpsLatitude = FactoryDAO.getGpsLatitude(id);
+			gpsLongitude = FactoryDAO.getGpsLongitude(id);
+			company = FactoryDAO.getCompany(id);
+			carModels = FactoryDAO.getCarModels(id);
+			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
+		} catch (DatabaseException e) {
+
+		}
 	}
 
 	/*
@@ -57,7 +62,7 @@ public class FactoryBean extends HierarchieElementBean {
 	 * return (FactoryBean) GlobalBean.getElementById(id); }
 	 */
 
-	//private int id;
+	// private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
@@ -109,9 +114,9 @@ public class FactoryBean extends HierarchieElementBean {
 	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
 	 */
 
-	/*public int getId() {
-		return id;
-	}*/
+	/*
+	 * public int getId() { return id; }
+	 */
 
 	/*
 	 * public FactoryBean(int id){
