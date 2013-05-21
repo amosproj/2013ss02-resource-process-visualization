@@ -49,7 +49,7 @@ public class Database {
 	public static void initDB() throws DatabaseException {
 
 		try {
-			String path = "config/init.sql";
+			String path = "../../config/init.sql";
 			String sql;
 
 			InputStream resource = MasterData.class.getClassLoader()
