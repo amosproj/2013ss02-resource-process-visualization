@@ -52,7 +52,7 @@ function factoryPopup(factory) {
 }
 
 // Load factories ...
-jQuery.getJSON('./factory', function(factories){
+jQuery.getJSON('./factory', function(factories) {
 	data.factories = factories;
 	// ... and draw factories into map
 	for(var i=0; i < data.factories.length; i++) {

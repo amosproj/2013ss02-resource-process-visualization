@@ -65,7 +65,6 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 </div>
 
 <div id="informationBlock" class="span4">
-	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="testingDeviceDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="testingDeviceStatus"></td></tr>
 		<tr><td>Name</td><td id="testingDeviceName"></td></tr>

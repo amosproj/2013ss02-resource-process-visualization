@@ -103,7 +103,7 @@ GlobalHierarchyHandler = {
 							
 							else {
 								// We are coming from the global map
-								$("#canvas #dataLayer").html(response);
+								$("#canvas #dataLayer").html('').html(response);
 								$("#canvas #map").animate({height: "0px"}, 500);
 								$("#canvas #dataLayer").css({display: "block", height: "400px"});
 								$("#canvas").animate({height: "400px"}, 500);
@@ -119,7 +119,7 @@ GlobalHierarchyHandler = {
 				
 						default:
 							$('#canvas #dataLayer').fadeOut('fast', function() {
-								$("#canvas #dataLayer").html(response);
+								$("#canvas #dataLayer").html('').html(response);
 								$('#canvas #dataLayer').fadeIn('fast');
 							});
 						break;
@@ -158,10 +158,19 @@ GlobalHierarchyHandler = {
 		
 		// Creates breadcrumb navigation als HTML DOM elements and appends
 		// them to the DOM automatically
-		createBreadcrumb: function(parentElm) {
+		createBreadcrumb: function(parentElm) {			
 			// Compose data elements
 			var navElements = GlobalHierarchyHandler.Navigation.composeNavElements(parentElm);
 			var navDOM = $('<span></span>');
+
+			// Add the global / start element always
+			$('<a>', {
+			    text: 'Global',
+			    title: 'Global',
+			    href: '#',
+			    onclick: 'GlobalHierarchyHandler.hierarchyZoom("global", "0");',
+			    //click: function() { GlobalHierarchyHandler.hierarchyZoom('global', '0'); return false; }
+			}).appendTo(navDOM);
 			
 			// Create navigation
 			$.each(navElements, function(idx, navElm) {
@@ -171,18 +180,8 @@ GlobalHierarchyHandler = {
 					    text: navElm.type + ' '+navElm.id,
 					    title: navElm.type + ' '+navElm.id,
 					    href: '#',
-					    //onclick: 'GlobalHierarchyHandler.hierarchyZoom("'+navElm.type+'", '+navElm.id+');',
-					    click: function() { GlobalHierarchyHandler.hierarchyZoom(navElm.type, navElm.id); return false; }
-					}).appendTo(navDOM);
-				}
-				
-				else {
-					$('<a>', {
-					    text: 'Global',
-					    title: 'Global',
-					    href: '#',
-					    //onclick: 'GlobalHierarchyHandler.hierarchyZoom("global", "0");',
-					    click: function() { GlobalHierarchyHandler.hierarchyZoom('global', '0'); return false; }
+					    onclick: 'GlobalHierarchyHandler.hierarchyZoom("'+navElm.type+'", '+navElm.id+');',
+					    //click: function() { GlobalHierarchyHandler.hierarchyZoom(navElm.type, navElm.id); return false; }
 					}).appendTo(navDOM);
 				}
 			});
@@ -191,8 +190,7 @@ GlobalHierarchyHandler = {
 			$(navDOM).children('a:not(:last-child)').after(' > ');
 		
 			// .. and append the DOM elements to the navigation div
-			$('#breadCrumbNavi').append(navDOM);
+			$('#breadCrumbNavi').html('').append(navDOM);
 		}
 	}
 };
-

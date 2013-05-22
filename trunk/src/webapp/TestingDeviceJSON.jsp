@@ -31,7 +31,11 @@
 
 TestingDeviceBean device = (TestingDeviceBean)request.getAttribute("device");
 
-// Hard code hierarchical scheme for now
+// @TODO: Dynamically create the hierarchy
+// For now, the hierarchy here is inserted manually
+// This crashes as soon as the hierarchy structure will be altered
+// Therefore it must be generated automatically in future.
+// Due to time constraints, it is currently hardcoded in here.
 HierarchieElementBean locParent = (LocationBean)device.getParent();
 int locationID = locParent.getId();
 
@@ -64,18 +68,22 @@ int factoryID = factoryParent.getId();
 		<% } %>
 	],
 	"parent": {
-		"id" : "<%= locationID %>",
-		"type": "location",
+		"id": "<%= device.getId() %>",
+		"type": "testingDevice",
 		"parent": {
-			"id": "<%= lineID %>",
-			"type": "line",
+			"id" : "<%= locationID %>",
+			"type": "location",
 			"parent": {
-				"id": "<%= hallID %>",
-				"type": "hall",
+				"id": "<%= lineID %>",
+				"type": "line",
 				"parent": {
-					"id": "<%= factoryID %>",
-					"type": "factory",
-					"parent": "null"
+					"id": "<%= hallID %>",
+					"type": "hall",
+					"parent": {
+						"id": "<%= factoryID %>",
+						"type": "factory",
+						"parent": "null"
+					}
 				}
 			}
 		}
