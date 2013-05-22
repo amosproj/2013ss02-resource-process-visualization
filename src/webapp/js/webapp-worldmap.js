@@ -76,11 +76,14 @@ function onMapClick(e) {
 map.on('click', onMapClick);
 
 function showGlobalMap() {
+	GlobalHierarchyHandler.hierarchyZoom('global', '0');
+	/*
 	$("#canvas").animate({height: pluginConf.startHeight}, 500);
 	$("#canvas #map").animate({height: pluginConf.startHeight}, 500);
 	$("#canvas #dataLayer").animate({height: "0px", display: "none"}, 500, function() {
 		$("#canvas #dataLayer").css({display: "none"});
 	});
+	*/
 }
 
 function notAvailable() {
