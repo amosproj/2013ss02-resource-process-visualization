@@ -28,6 +28,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import de.osramos.reprovis.exception.DatabaseException;
+
 public class HallBean extends HierarchieElementBean {
 
 	private String name;
@@ -43,11 +45,14 @@ public class HallBean extends HierarchieElementBean {
 		 * (NamingException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
 		 */
-
-		name = HallDAO.getName(id);
-		sizeOfStaff = HallDAO.getSizeOfStaff(id);
-		productionCapacity = HallDAO.getProductionCapacity();
-		path = HallDAO.getPath(id);
+		try {
+			name = HallDAO.getName(id);
+			sizeOfStaff = HallDAO.getSizeOfStaff(id);
+			productionCapacity = HallDAO.getProductionCapacity(id);
+			path = HallDAO.getPath(id);
+		} catch(DatabaseException e){
+			
+		}
 	}
 
 	public String getName() {

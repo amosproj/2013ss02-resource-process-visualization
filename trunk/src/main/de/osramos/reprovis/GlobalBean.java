@@ -76,6 +76,7 @@ public class GlobalBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

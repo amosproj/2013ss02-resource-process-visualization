@@ -69,7 +69,7 @@ public class FactoryDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 
-		return s.trim();
+		return s == null ? "" : s.trim();
 
 	}
 
@@ -101,7 +101,7 @@ public class FactoryDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 
-		return s.trim();
+		return s == null ? "" : s.trim();
 	}
 
 	public static String getName(int id) throws DatabaseException {
@@ -131,7 +131,7 @@ public class FactoryDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 
-		return s.trim();
+		return s == null ? "" : s.trim();
 	}
 
 	public static Company getCompany(int id) throws DatabaseException {
@@ -160,7 +160,6 @@ public class FactoryDAO {
 		} catch (SQLException e) {
 			throw new DatabaseException("DB access Failed");
 		}
-
 		return MasterData.stringToCompany(s.trim());
 	}
 
@@ -191,7 +190,7 @@ public class FactoryDAO {
 		} catch (SQLException e) {
 			throw new DatabaseException("DB access Failed");
 		}
-
+		s = s == null ? "" : s;
 		return s.split(", ");
 
 	}
@@ -344,7 +343,6 @@ public class FactoryDAO {
 		} catch (SQLException e) {
 			throw new DatabaseException("DB access Failed");
 		}
-
 		return l;
 	}
 
