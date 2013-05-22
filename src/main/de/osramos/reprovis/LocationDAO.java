@@ -23,19 +23,53 @@
 
 package de.osramos.reprovis;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import de.osramos.reprovis.exception.DatabaseException;
+
 public class LocationDAO {
-
-	public static List<Integer> getLocationIds(int id) {
-		List<Integer> l = new ArrayList<Integer>();
-		
-		for (int i = 0; i < 3; i++)
-		{
-			l.add(id * 10 +i);
+	
+	public static String getName(int id) throws DatabaseException {
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT name FROM location WHERE id = " + id);
+			res.next();
+			String name = res.getString(1);
+			stmt.close();
+			conn.close();
+			return name;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return "Error";
+	}
 
+	public static List<Integer> getLocationIds(int lineId) throws DatabaseException {
+		List<Integer> l = new ArrayList<Integer>();
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT id FROM location WHERE parent = " + lineId);
+			while(res.next()){
+				l.add(res.getInt(1));
+			}
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return l;
 	}
 

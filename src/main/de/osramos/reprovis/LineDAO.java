@@ -34,12 +34,6 @@ import de.osramos.reprovis.exception.DatabaseException;
 
 public class LineDAO {
 
-/*	public static List<LineBean> getLines(){
-		return null;
-		
-	}*/
-
-
 	public static String getName(int id) throws DatabaseException {
 		try {
 			DataSource db = Database.getDB();
@@ -142,5 +136,23 @@ public class LineDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public static HallBean getHall(int id) throws DatabaseException{
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT parent FROM line WHERE id = " + id);
+			res.next();
+			HallBean hall = new HallBean(res.getInt(1));
+			stmt.close();
+			conn.close();
+			return hall;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

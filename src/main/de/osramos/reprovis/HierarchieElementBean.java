@@ -22,6 +22,7 @@
 
 package de.osramos.reprovis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -81,7 +82,7 @@ public abstract class HierarchieElementBean {
 	}
 
 	public List<HierarchieElementBean> getChilds() {
-		return childs;
+		return childs != null ? childs : new ArrayList<HierarchieElementBean>();
 	}
 
 	public TrafficLight getStatus() throws HierarchieException {

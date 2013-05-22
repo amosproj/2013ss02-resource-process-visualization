@@ -29,7 +29,7 @@
 <%@ page import="java.util.List" %>
 <% LocationBean loc = (LocationBean) request.getAttribute("location"); %>
 {
-	"name": "Location <%= loc.getId() %>",
+	"name": "<%= loc.getName() %>",
 	"status": "<%= loc.getStatus() %>",
 	"testDeviceCount": "99",
 	"testDevices": [
