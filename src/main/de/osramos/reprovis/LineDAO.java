@@ -20,10 +20,17 @@
  */
 package de.osramos.reprovis;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class LineDAO {
 
@@ -33,9 +40,22 @@ public class LineDAO {
 	}*/
 
 
-	public static String getName(int id) {
-		// TODO Auto-generated method stub
-		return "testName";
+	public static String getName(int id) throws DatabaseException {
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT name FROM line WHERE id = " + id);
+			res.next();
+			String name = res.getString(1);
+			stmt.close();
+			conn.close();
+			return name;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "Error";
 	}
 
 	public static TrafficLight getStatus(int id) {
@@ -49,39 +69,78 @@ public class LineDAO {
 		}
 	}
 	
-	public static String getPath(int id){
-		switch(id){
-		case 0:
-			return "m 117.38822,36.114366 143.94673,0 0,27.27411 -143.94673,0 z";
-		case 1:
-			return "m 352.24158,86.109936 0,1.03125 -74.75,0 0,44.437504 74.75,0 0,54.03125 72.21875,0 0,-99.500004 -72.21875,0 z";
-		case 2:
-			return "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
-		default:
-			return "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
+	public static String getPath(int id) throws DatabaseException{
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT path FROM line WHERE id = " + id);
+			res.next();
+			String path = res.getString(1);
+			stmt.close();
+			conn.close();
+			return path;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return "";
 	}
 
-	public static List<Integer> getLineIds(int id) {
+	public static List<Integer> getLineIds(int id) throws DatabaseException {
 		List<Integer> l = new ArrayList<Integer>();
-		
-		for (int i = 0; i < 3; i++)
-		{
-			l.add(id * 10 +i);
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT id FROM line WHERE parent = " + id);
+			while(res.next()){
+				l.add(res.getInt(1));
+			}
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-
 		return l;
 	}
 
 
-	public static String getproductionSeries(int id) {
-		// TODO Auto-generated method stub
-		return "testSeries";
+	public static String getproductionSeries(int id) throws DatabaseException {
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT series FROM line WHERE id = " + id);
+			res.next();
+			String path = res.getString(1);
+			stmt.close();
+			conn.close();
+			return path;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "Error Series";
 	}
 
 
-	public static int getproductionCapacity(int id) {
-		// TODO Auto-generated method stub
-		return 400;
+	public static int getproductionCapacity(int id) throws DatabaseException {
+		try {
+			DataSource db = Database.getDB();
+			Connection conn = db.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(
+					"SELECT capacity FROM line WHERE id = " + id);
+			res.next();
+			int capacity = res.getInt(1);
+			stmt.close();
+			conn.close();
+			return capacity;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 }

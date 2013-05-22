@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class LineBean extends HierarchieElementBean {
 
@@ -42,10 +43,14 @@ public class LineBean extends HierarchieElementBean {
 		 * (NamingException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
 		 */
-		name = LineDAO.getName(id);
-		path = LineDAO.getPath(id);
-		productionSeries = LineDAO.getproductionSeries(id);
-		productionCapacity = LineDAO.getproductionCapacity(id);
+		try{
+			name = LineDAO.getName(id);
+			path = LineDAO.getPath(id);
+			productionSeries = LineDAO.getproductionSeries(id);
+			productionCapacity = LineDAO.getproductionCapacity(id);
+		} catch(DatabaseException e){
+			
+		}
 
 	}
 

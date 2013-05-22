@@ -35,6 +35,8 @@ HierarchieElementBean hParent = (HierarchieElementBean)line.getParent();
 {
 	"name": "<%= line.getName() %>",
 	"status": "<%= line.getStatus() %>",
+	"capacity": "<%= line.getProductionCapacity() %>",
+	"series": "<%= line.getProductionSeries() %>",
 	"locations": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean elem: line.getChilds()){ %>
@@ -45,9 +47,9 @@ HierarchieElementBean hParent = (HierarchieElementBean)line.getParent();
 			"status": "<%= loc.getStatus() %>"
 		}
 		<% } %> 
-	],
+	]<%--,
 	"parent": {
 		"id": "<%= hParent.getId() %>",
 		"name": "asd"
-	}
+	}--%>
 }
