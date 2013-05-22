@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.LineBean;
+import de.osramos.reprovis.GlobalBean;
 
 public class LineServlet extends HttpServlet {
 
@@ -45,13 +45,13 @@ public class LineServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("line", new LineBean(Integer.valueOf(id)));
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/LineJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("line", new LineBean(Integer.valueOf(id)));
+				req.setAttribute("line", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/LineView.jsp").forward(req, resp);
 				
 			}

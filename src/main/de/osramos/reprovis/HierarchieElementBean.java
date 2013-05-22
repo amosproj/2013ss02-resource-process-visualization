@@ -25,10 +25,6 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import de.osramos.reprovis.MasterData.TrafficLight;
 
 public abstract class HierarchieElementBean {

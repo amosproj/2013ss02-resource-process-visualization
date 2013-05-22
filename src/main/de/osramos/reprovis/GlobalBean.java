@@ -21,15 +21,8 @@
 
 package de.osramos.reprovis;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
