@@ -77,60 +77,8 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	TestingDevice.getData(<%= id %>, function(a, data) {
-		
-		console.log(data);
-		
-		// Create navigation breadcrumb
-		HierarchicalNavigation = {
-				// Returns a ready HTML code for hierarchical breadcrumb navigation
-				composeNavElements: function(parentElm) {
-					var navElements = new Array();
-					if(parentElm == null) return navElements;
-					
-					while(parentElm) {
-						navElements.push(parentElm);
-						if(parentElm.parent)
-							parentElm = parentElm.parent;
-						
-						else
-							parentElm = null;
-					}
-					
-					navElements.reverse();
-					return navElements;
-				},
-				
-				createBreadcrumb: function(parentElm) {
-					// Compose data elements
-					var navElements = HierarchicalNavigation.composeNavElements(parentElm);
-					var navDOM = $('<span></span>');
-					console.log(navElements);
-					
-					// Create navigation
-					$.each(navElements, function(idx, navElm) {
-						// Null means: Links for global (anyways)
-						if(navElm == null) {
-							$('<a></a>', {
-							    text: 'Global',
-							    title: 'Global',
-							    href: 'showGlobalMap()',
-							}).append(navDOM);
-						}
-						
-						else {
-							$('<a></a>', {
-							    text: navElm.type + " "+navElm.id,
-							    title: navElm.type + " "+navElm.id,
-							    href: 'hierarchyZoom('+navElm.type+', '+navElm.id+')',
-							}).append(navDOM);
-						}
-					});
-					
-					console.log(navDOM);
-				}
-		}
-		
-		$("#breadCrumbNavi").html(HierarchicalNavigation.createBreadcrumb(data.parent));
+		// Create hierarchical navigation first
+		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 		for(var i = 0; i < data.components.length; ++i) {
 			var rowClass = "";

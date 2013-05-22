@@ -68,10 +68,7 @@ int id = Integer.parseInt(request.getParameter("lid"));
 
 <script type="text/javascript">
 $(document).ready(function() {
-	Line.getData(<%= id %>, function(a, data) {
-		
-		console.log(data);
-		
+	Line.getData(<%= id %>, function(a, data) {		
 		for(var i = 0; i < data.locations.length; ++i) {
 			var rowClass = "";
 			
