@@ -46,7 +46,6 @@ int id = Integer.parseInt(request.getParameter("hid"));
 </div>
 
 <div id="informationBlock" class="span4">
-	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="hallDetails" class="table table-striped table-hover">
 		<tr><td>Name</td><td id="hallName"></td></tr>
 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
@@ -58,6 +57,9 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Hall.getData(<%= id %>, function(a, data) {
+		// Create hierarchical navigation first
+		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
+		
 	    // Draw the plan and attach click handler
 	    for(var i = 0; i < data.lines.length; ++i) {
 	    	var svgPath = $("<path></path>")

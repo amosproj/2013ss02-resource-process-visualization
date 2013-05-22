@@ -29,14 +29,22 @@
 <%
 
 LineBean line = (LineBean)request.getAttribute("line");
-HierarchieElementBean hParent = (HierarchieElementBean)line.getParent();
+
+//@TODO: Dynamically create the hierarchy
+//For now, the hierarchy here is inserted manually
+//This crashes as soon as the hierarchy structure will be altered
+//Therefore it must be generated automatically in future.
+//Due to time constraints, it is currently hardcoded in here.
+HierarchieElementBean hallParent = (HallBean)line.getParent();
+int hallID = hallParent.getId();
+
+HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
+int factoryID = factoryParent.getId(); 
 
 %>
 {
 	"name": "<%= line.getName() %>",
 	"status": "<%= line.getStatus() %>",
-	"capacity": "<%= line.getProductionCapacity() %>",
-	"series": "<%= line.getProductionSeries() %>",
 	"locations": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean elem: line.getChilds()){ %>
@@ -47,9 +55,19 @@ HierarchieElementBean hParent = (HierarchieElementBean)line.getParent();
 			"status": "<%= loc.getStatus() %>"
 		}
 		<% } %> 
-	]<%--,
+	],
 	"parent": {
-		"id": "<%= hParent.getId() %>",
-		"name": "asd"
-	}--%>
+		"id": "<%= line.getId() %>",
+		"type": "line",
+		"parent": {
+			"id": "<%= hallID %>",
+			"type": "hall",
+			"parent": {
+				"id": "<%= factoryID %>",
+				"type": "factory",
+				"parent": "null"
+			}
+		}
+	}
+
 }
