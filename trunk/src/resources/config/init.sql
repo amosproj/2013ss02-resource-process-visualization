@@ -38,3 +38,164 @@ insert into factory values (9, 'Jakarta', 'Audi' , 'Jakarta', 'Indonesia', -6.21
 	'Audi A4, Audi A6',
 		0, 443
 );
+
+/*
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+SET search_path = public, pg_catalog;
+SET default_tablespace = '';
+SET default_with_oids = false;
+
+CREATE TABLE factory (
+    id integer NOT NULL,
+    company character varying(50),
+    name character varying(25),
+    city character varying(50),
+    country character varying(50),
+    gpslatitude double precision,
+    gpslongitude double precision,
+    carmodels character varying(512),
+    sizeofstaff integer,
+    numofvehicles integer
+);
+
+CREATE SEQUENCE factory_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE factory_id_seq OWNED BY factory.id;
+
+CREATE TABLE hall (
+    id integer NOT NULL,
+    name character varying(50),
+    staff integer,
+    capacity integer,
+    path character varying(250),
+    parent integer
+);
+
+CREATE SEQUENCE hall_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE hall_id_seq OWNED BY hall.id;
+
+CREATE TABLE line (
+    id integer NOT NULL,
+    name character varying(50),
+    series character varying(50),
+    capacity integer,
+    path character varying(250),
+    parent integer
+);
+
+CREATE SEQUENCE line_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE line_id_seq OWNED BY line.id;
+
+CREATE TABLE location (
+    id integer NOT NULL,
+    name character varying(50),
+    parent integer
+);
+
+CREATE SEQUENCE location_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER SEQUENCE location_id_seq OWNED BY location.id;
+
+ALTER TABLE ONLY factory ALTER COLUMN id SET DEFAULT nextval('factory_id_seq'::regclass);
+
+ALTER TABLE ONLY hall ALTER COLUMN id SET DEFAULT nextval('hall_id_seq'::regclass);
+
+ALTER TABLE ONLY line ALTER COLUMN id SET DEFAULT nextval('line_id_seq'::regclass);
+
+ALTER TABLE ONLY location ALTER COLUMN id SET DEFAULT nextval('location_id_seq'::regclass);
+
+COPY factory (id, company, name, city, country, gpslatitude, gpslongitude, carmodels, sizeofstaff, numofvehicles) FROM stdin;
+1	Audi	German1			48.7622009999999975	11.4253739999999997	\N	15000	0
+2	Audi	German2			53.0147830000000013	8.74511700000000047	\N	15000	0
+\.
+
+SELECT pg_catalog.setval('factory_id_seq', 2, true);
+
+COPY hall (id, name, staff, capacity, path, parent) FROM stdin;
+1	B5	0	0	m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z	1
+2	B8	0	0	m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z	1
+3	V1	0	0	m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z	1
+\.
+
+SELECT pg_catalog.setval('hall_id_seq', 3, true);
+
+COPY line (id, name, series, capacity, path, parent) FROM stdin;
+1	B5 Assembly	Test Series	0	m 117.38822,36.114366 143.94673,0 0,27.27411 -143.94673,0 z	1
+2	B5 Finish	Test Series	0	m 352.24158,86.109936 0,1.03125 -74.75,0 0,44.437504 74.75,0 0,54.03125 72.21875,0 0,-99.500004 -72.21875,0 z	1
+3	B8 Assembly	Test Series	0	m 276.48725,31.568676 152.02795,0 0,41.92133 -152.02795,0 z	2
+4	V1 PreSeries	Test Series	0	m 118.39838,113.39104 143.94673,0 0,27.27412 -143.94673,0 z	3
+\.
+
+SELECT pg_catalog.setval('line_id_seq', 4, true);
+
+COPY location (id, name, parent) FROM stdin;
+1	VP1	1
+2	VP2	1
+3	VP3	1
+4	IBN	1
+5	Rework	1
+6	BZD	2
+7	VP1	3
+8	VP3	3
+9	IBN	3
+10	PreSeries	4
+\.
+
+SELECT pg_catalog.setval('location_id_seq', 10, true);
+
+ALTER TABLE ONLY factory
+    ADD CONSTRAINT factory_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY hall
+    ADD CONSTRAINT hall_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY line
+    ADD CONSTRAINT line_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY location
+    ADD CONSTRAINT location_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY hall
+    ADD CONSTRAINT hall_parent_fkey FOREIGN KEY (parent) REFERENCES factory(id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY line
+    ADD CONSTRAINT line_parent_fkey FOREIGN KEY (parent) REFERENCES hall(id) ON DELETE CASCADE;
+
+ALTER TABLE ONLY location
+    ADD CONSTRAINT location_parent_fkey FOREIGN KEY (parent) REFERENCES line(id) ON DELETE CASCADE;
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+ */

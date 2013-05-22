@@ -25,11 +25,23 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.osramos.reprovis.exception.DatabaseException;
+
 public class LocationBean extends HierarchieElementBean {
 
+	private String name;
+	
 	public LocationBean(int id) {
 		super(id);
-		// TODO Auto-generated constructor stub
+		try {
+			name = LocationDAO.getName(id);
+		}catch(DatabaseException e){
+			
+		}
+	}
+	
+	public String getName(){
+		return name;
 	}
 
 	@Override
