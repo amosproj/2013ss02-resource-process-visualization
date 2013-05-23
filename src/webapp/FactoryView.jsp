@@ -36,12 +36,12 @@ int id = Integer.parseInt(request.getParameter("fid"));
 
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
-		<div id="breadCrumbNavi"></div>
 		<h3 id="dynamicHeading"></h3>
 		<svg id="SVGPlan"></svg>
 	</div>
 	
 	<div id="informationBlock" class="span4">
+		<a href="javascript:showGlobalMap()">Go back to global view</a>
 		<table id="factoryDetails" class="table table-striped table-hover">
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
 			<tr><td>Name</td><td id="factoryName"></td></tr>
@@ -54,16 +54,13 @@ int id = Integer.parseInt(request.getParameter("fid"));
 
 <script type="text/javascript">
 $(document).ready(function() {
-	Factory.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
+	Factory.getData(<%= id %>, function(a, factoryData) {
 	    // Draw the factory plan and attach click handler
-	    for(var i = 0; i < data.halls.length; ++i) {
+	    for(var i = 0; i < factoryData.halls.length; ++i) {
 	    	var svgPath = $("<path></path>")
-	    			.attr("d", data.halls[i].path)
-	    			.attr("class", getSvgClass(data.halls[i].status))
-	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')');
+	    			.attr("d", factoryData.halls[i].path)
+	    			.attr("class", getSvgClass(factoryData.halls[i].status))
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+factoryData.halls[i].id+')');
 	    	
 			$("#SVGPlan").append(svgPath);
 	    }
@@ -74,16 +71,16 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Factory: "+data.name+", "+data.country+" (ID: <%= id %>)");
-	    $("#factoryCountry").html(data.country);
-	    $("#factoryName").html(data.name);
-	    $("#factoryStaff").html(data.staff);
-	    $("#factoryVehicles").html(data.vehicles);
+	    $("#dynamicHeading").html("Factory: "+factoryData.name+", "+factoryData.country+" (ID: <%= id %>)");
+	    $("#factoryCountry").html(factoryData.country);
+	    $("#factoryName").html(factoryData.name);
+	    $("#factoryStaff").html(factoryData.staff);
+	    $("#factoryVehicles").html(factoryData.vehicles);
 	    
 	    var factoryCars = "";
-	    for(var j = 0; j < data.brands.length; ++j) {
+	    for(var j = 0; j < factoryData.brands.length; ++j) {
 	    	if(j != 0) factoryCars += ", ";
-	    	factoryCars += data.brands[j];
+	    	factoryCars += factoryData.brands[j];
 	    }
 	    
 	    $("#factoryCars").html(factoryCars);

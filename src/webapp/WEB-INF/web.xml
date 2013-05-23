@@ -49,7 +49,6 @@
 		<servlet-name>factoryServlet</servlet-name>
 		<url-pattern>/factory</url-pattern>
 	</servlet-mapping>
-
 	
 	<servlet>
 		<servlet-name>hallServlet</servlet-name>

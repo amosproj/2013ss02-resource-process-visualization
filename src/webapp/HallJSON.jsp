@@ -17,29 +17,13 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
-<%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.FactoryBean"%>
-<%@ page import="de.osramos.reprovis.HallBean"%>
+<%@ page import="de.osramos.reprovis.HallBean" %>
 <%@ page import="de.osramos.reprovis.LineBean" %>
-<%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.TestingDeviceBean"%>
-<%@ page import="de.osramos.reprovis.ElectricalComponentBean"%>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
-<%
-
-HallBean hall = (HallBean)request.getAttribute("hall");
-
-//@TODO: Dynamically create the hierarchy
-//For now, the hierarchy here is inserted manually
-//This crashes as soon as the hierarchy structure will be altered
-//Therefore it must be generated automatically in future.
-//Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean factoryParent = (FactoryBean)hall.getParent();
-int factoryID = factoryParent.getId(); 
-
-%>
 {
+<% HallBean hall = (HallBean)request.getAttribute("hall"); %>
 	"name": "<%= hall.getName() %>",
 	"staff": <%= hall.getSizeOfStaff() %>,
 	"capacity": <%= hall.getProductionCapacity() %>,
@@ -55,14 +39,5 @@ int factoryID = factoryParent.getId();
 			"status": "<%= line.getStatus() %>"
 		}
 		<% } %>	
-	],
-	"parent": {
-		"id": "<%= hall.getId() %>",
-		"type": "hall",
-		"parent": {
-			"id": "<%= factoryID %>",
-			"type": "factory",
-			"parent": "null"
-		}
-	}
+	]
 }

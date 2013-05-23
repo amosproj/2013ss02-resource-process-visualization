@@ -44,7 +44,7 @@ L.tileLayer('http://{s}.tile.cloudmade.com/'+pluginConf['apikey']+'/'+pluginConf
 function factoryPopup(factory) {
 	var result = '<div><p style="text-align: center;">'+factory.companyImg+'&nbsp;'+factory.flagImg+
 	             '</p><hr /><h4>'+factory.fName+'</h4>Status: '+factory.statusImg+'<hr />'+
-				 '<p style="text-align: center;"><p>'+factory.city+', '+factory.country+'<br />'+factory.sizeOfStaff+' Mitarbeiter</p>'+
+				 '<p style="text-align: center;"><p>Ingolstadt, Deutschland<br />Seit 1949<br />35.386 Mitarbeiter</p>'+
 				 '<a href="#" onClick="GlobalHierarchyHandler.hierarchyZoom(\'factory\', this.id);" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="btn factoryBtn">View details &raquo;</a>'
 				 '</p></div>';	
 				 
@@ -52,7 +52,7 @@ function factoryPopup(factory) {
 }
 
 // Load factories ...
-jQuery.getJSON('./factory', function(factories) {
+jQuery.getJSON('./factory', function(factories){
 	data.factories = factories;
 	// ... and draw factories into map
 	for(var i=0; i < data.factories.length; i++) {
@@ -76,14 +76,11 @@ function onMapClick(e) {
 map.on('click', onMapClick);
 
 function showGlobalMap() {
-	GlobalHierarchyHandler.hierarchyZoom('global', '0');
-	/*
 	$("#canvas").animate({height: pluginConf.startHeight}, 500);
 	$("#canvas #map").animate({height: pluginConf.startHeight}, 500);
 	$("#canvas #dataLayer").animate({height: "0px", display: "none"}, 500, function() {
 		$("#canvas #dataLayer").css({display: "none"});
 	});
-	*/
 }
 
 function notAvailable() {

@@ -23,11 +23,6 @@ package de.osramos.reprovis;
 
 import java.io.InputStream;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 
 public class MasterData {
 
@@ -92,6 +87,4 @@ public class MasterData {
 			return "statusHallOk";
 		}
 	}
-	
-	
 }

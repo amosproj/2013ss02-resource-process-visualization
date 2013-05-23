@@ -24,7 +24,9 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public class HallBean extends HierarchieElementBean {
 
@@ -41,14 +43,11 @@ public class HallBean extends HierarchieElementBean {
 		 * (NamingException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
 		 */
-		try {
-			name = HallDAO.getName(id);
-			sizeOfStaff = HallDAO.getSizeOfStaff(id);
-			productionCapacity = HallDAO.getProductionCapacity(id);
-			path = HallDAO.getPath(id);
-		} catch(DatabaseException e){
-			
-		}
+
+		name = HallDAO.getName(id);
+		sizeOfStaff = HallDAO.getSizeOfStaff(id);
+		productionCapacity = HallDAO.getProductionCapacity();
+		path = HallDAO.getPath(id);
 	}
 
 	public String getName() {

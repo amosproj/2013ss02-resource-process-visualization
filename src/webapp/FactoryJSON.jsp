@@ -17,17 +17,13 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
-<%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.FactoryBean"%>
-<%@ page import="de.osramos.reprovis.HallBean"%>
-<%@ page import="de.osramos.reprovis.LineBean" %>
-<%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.TestingDeviceBean"%>
-<%@ page import="de.osramos.reprovis.ElectricalComponentBean"%>
+<%@ page import="de.osramos.reprovis.FactoryBean" %>
+<%@ page import="de.osramos.reprovis.HallBean" %>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
+{
 <% assert (request.getAttribute("factory") != null); %>
 <% HierarchieElementBean helem = (HierarchieElementBean)request.getAttribute("factory"); %>
 <% FactoryBean factory = (FactoryBean)helem; %>
-{
 	"name": "<%= factory.getName() %>",
 	"status": "<%= factory.getStatus() %>",
 	"country": "<%= factory.getCountry() %>",
@@ -51,10 +47,5 @@
 			"status": "<%= hall.getStatus() %>"
 		}
 		<% } %>	
-	],
-	"parent": {
-		"id": "<%= factory.getId() %>",
-		"type": "factory",
-		"parent": null
-	}
+	]
 }

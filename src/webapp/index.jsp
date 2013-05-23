@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿﻿﻿﻿﻿<!DOCTYPE html>
 <!-- 
  - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
  -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 

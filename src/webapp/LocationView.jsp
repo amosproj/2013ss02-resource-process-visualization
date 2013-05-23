@@ -41,7 +41,6 @@ int id = Integer.parseInt(request.getParameter("locid"));
 
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
-	<div id="breadCrumbNavi"></div>
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationDevices">
 		<table id="locationDevicesList" class="table table-striped table-hover">
@@ -57,6 +56,7 @@ int id = Integer.parseInt(request.getParameter("locid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="locationDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="locationStatus"></td></tr>
 		<tr><td>Name</td><td id="locationName"></td></tr>
@@ -68,9 +68,6 @@ int id = Integer.parseInt(request.getParameter("locid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Location.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
 		for(var i = 0; i < data.testDevices.length; ++i) {
 			var rowClass = "";
 			

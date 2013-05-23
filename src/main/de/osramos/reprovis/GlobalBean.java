@@ -23,14 +23,17 @@ package de.osramos.reprovis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public class GlobalBean extends HierarchieElementBean {
 
 	private GlobalBean(int id){
 		super(id);
-		
 	}
 
 	private static GlobalBean global;
@@ -41,14 +44,6 @@ public class GlobalBean extends HierarchieElementBean {
 	}
 
 	public static GlobalBean getGlobal() {
-		if (!Database.init){
-			try {
-				Database.initDB();
-			} catch (DatabaseException e) {
-				e.printStackTrace();
-			}
-		}
-		
 		if (global == null) {
 			try {
 				global = new GlobalBean(0);
@@ -69,7 +64,6 @@ public class GlobalBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 	}
