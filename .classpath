@@ -19,7 +19,5 @@
 	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=default"/>
 	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=test"/>
 	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=code&amp;ivyXmlPath=ivy.xml&amp;confs=provided"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=a2&amp;ivyXmlPath=ivy.xml&amp;confs=default"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=a2&amp;ivyXmlPath=ivy.xml&amp;confs=provided"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

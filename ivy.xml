@@ -30,7 +30,7 @@
 	<dependencies>
 
 		<dependency org="postgresql" name="postgresql" rev="9.1-901.jdbc4"
-			conf="default" />
+			conf="provided->default" />
 
 		<dependency org="org.apache.commons" name="commons-io" rev="1.3.2" conf="default"/>
 
