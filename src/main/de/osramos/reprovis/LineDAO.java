@@ -48,8 +48,8 @@ public class LineDAO {
 			return name;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return "Error";
 	}
 
 	public static TrafficLight getStatus(int id) {
@@ -77,8 +77,8 @@ public class LineDAO {
 			return path;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return "";
 	}
 
 	public static List<Integer> getLineIds(int id) throws DatabaseException {
@@ -96,6 +96,7 @@ public class LineDAO {
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
 		return l;
 	}
@@ -115,8 +116,8 @@ public class LineDAO {
 			return path;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return "Error Series";
 	}
 
 
@@ -134,8 +135,8 @@ public class LineDAO {
 			return capacity;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return -1;
 	}
 	
 	public static HallBean getHall(int id) throws DatabaseException{
@@ -152,7 +153,7 @@ public class LineDAO {
 			return hall;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return null;
 	}
 }

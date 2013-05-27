@@ -19,40 +19,27 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
-
 package de.osramos.reprovis;
 
-import java.util.Map;
-import java.util.TreeMap;
+import de.osramos.reprovis.exception.DatabaseException;
 
-public class Registry {
+public class ConfigHandler {
 
-	private static Registry registry;
-	
-	public Map<Integer, Object> reg;
-	
-	public static Registry getRegistry(){
-		if (registry == null){
-			initRegistry();
+	public static void InitApplication(){
+		
+		
+		try {
+			Registry.cleanRegistry();
+			Database.initDB();
+			Registry.initRegistry();
+			
+			GlobalBean.resetGlobal();
+		} catch (DatabaseException e) {
+			
+			e.printStackTrace();
 		}
 		
-		return registry;
+		
 	}
 	
-	public static void cleanRegistry(){
-		registry = null;
-	}
-	
-	public static void initRegistry(){
-		registry = new Registry();
-	}
-	
-	public Registry(){
-		reg = new TreeMap<Integer, Object>();
-	}
-	
-	public Object lookup(int id){
-		return reg.get(id);
-	}
 }
