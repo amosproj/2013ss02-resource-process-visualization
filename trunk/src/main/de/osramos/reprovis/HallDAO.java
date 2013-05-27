@@ -48,8 +48,8 @@ public class HallDAO {
 			return name;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return "Error";
 	}
 	
 	public static TrafficLight getStatus (int id){
@@ -77,8 +77,9 @@ public class HallDAO {
 			return factory;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return null;
+
 	}
 
 	public static int getSizeOfStaff(int id) throws DatabaseException {
@@ -95,8 +96,8 @@ public class HallDAO {
 			return staff;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return -1;
 	}
 
 	public static String getPath(int id) throws DatabaseException {
@@ -113,8 +114,8 @@ public class HallDAO {
 			return path;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return "";
 	}
 	
 	public static int getProductionCapacity(int id) throws DatabaseException {
@@ -131,8 +132,8 @@ public class HallDAO {
 			return capacity;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
-		return -1;
 	}
 
 	//private static int count = 0;
@@ -152,6 +153,7 @@ public class HallDAO {
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new DatabaseException("DB access Failed");
 		}
 		return l;
 	}

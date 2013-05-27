@@ -39,6 +39,11 @@ public class GlobalBean extends HierarchieElementBean {
 	public HierarchieElementBean getParent() throws HierarchieException {
 		throw new HierarchieException("Element is root");
 	}
+	
+	public static void resetGlobal(){
+		global = null;
+		getGlobal();
+	}
 
 	public static GlobalBean getGlobal() {
 		if (!Database.init){
@@ -49,12 +54,7 @@ public class GlobalBean extends HierarchieElementBean {
 			}
 		}
 		
-		if (global == null) {
-			try {
-				global = new GlobalBean(0);
-			} catch (Exception e) {
-			}
-		}
+		global = new GlobalBean(0);
 		return global;
 	}
 

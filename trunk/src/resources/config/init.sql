@@ -1,7 +1,11 @@
-drop table if exists factory;
-drop table if exists hall;
-drop table if exists location;
+drop table if exists component;
+drop table if exists device;
 drop table if exists line;
+drop table if exists location;
+drop table if exists hall;
+drop table if exists factory;
+
+
 
 create table factory(
 	id int ,
