@@ -45,6 +45,7 @@ public abstract class HierarchieElementBean {
 	
 			Registry.getRegistry().reg.put(id, this);
 		
+			childs = new ArrayList<HierarchieElementBean>();
 			initChilds();
 	
 	
@@ -86,10 +87,12 @@ public abstract class HierarchieElementBean {
 		try {
 			return computeMinimalStatus();
 		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 		try {
 			return getDistinctStatus();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		throw new HierarchieException("Element has no status");
 	}

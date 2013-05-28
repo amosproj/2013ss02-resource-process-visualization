@@ -48,6 +48,22 @@ CREATE TABLE location (
     name character varying(50),
     parent integer
 );
+
+CREATE TABLE device (
+    id integer ,
+    category character varying(50),
+    sector character varying(50),
+    serialnumber character varying(50),
+    troubleperiod timestamp,
+    testfailure boolean,
+    parent integer
+);
+
+CREATE TABLE component (
+    id integer ,
+    name character varying(50),
+    parent integer
+);
 						
 /* ************************************************************************************************************* */				
 /*Factories */
@@ -305,3 +321,6 @@ INSERT INTO location VALUES (1214, 'PreSeries', 121);
 
 /* end of Locations */
 /* ************************************************************************************************************* */
+
+
+insert into device values (10000, 'Bla', 'TestSector', '12345', '2013-05-28 07:37:16-08', false, 1000);

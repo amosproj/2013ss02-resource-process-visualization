@@ -33,7 +33,7 @@ import de.osramos.reprovis.TestingDeviceDAO;
 public class TestingDeviceDAOTest {
 	
 	@Test
-	public void initTest(){
+	public void initTest() throws Exception{
 		List<Integer> testingDeviceIds = TestingDeviceDAO.getTestingDeviceIds(0);
 		assertTrue( testingDeviceIds.size() == 3);
 		assertTrue(testingDeviceIds.get(0) != testingDeviceIds.get(1));

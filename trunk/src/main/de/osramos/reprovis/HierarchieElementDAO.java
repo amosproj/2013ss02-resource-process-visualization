@@ -22,13 +22,74 @@
 
 package de.osramos.reprovis;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
+
+import de.osramos.reprovis.exception.DatabaseException;
 
 public abstract class HierarchieElementDAO {
 
-	public List<Integer> getChildIds(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public static List<Integer> getChildIds(int parentId, String tableName) throws Exception {
+
+		List<Integer> l = new ArrayList<Integer>();
+
+		try {
+			ResultSet res = null;
+
+			DataSource db = Database.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			res = statement.executeQuery("SELECT id FROM "+tableName+" where parent = " + parentId);
+
+			while (res.next()) {
+				l.add(res.getInt(1));
+			}
+		
+
+			statement.close();
+			connection.close();
+		} catch (SQLException e) {
+			throw new DatabaseException("DB access Failed");
+		}
+		return l;
+	}
+
+	
+	protected static Object getAttribute(int id, String attributeName, String tableName) throws DatabaseException{
+		Object o = null;
+
+		try {
+			ResultSet res = null;
+
+			DataSource db = Database.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			res = statement
+					.executeQuery("SELECT country FROM " + tableName+ " WHERE id = "
+							+ id);
+
+			res.next();
+			o = res.getObject(1);
+			if (res.next()) {
+
+				throw new DatabaseException("bad data");
+			}
+
+			statement.close();
+			connection.close();
+			
+			return o;
+		} catch (SQLException e) {
+			throw new DatabaseException("DB access Failed");
+		}
 	}
 
 }

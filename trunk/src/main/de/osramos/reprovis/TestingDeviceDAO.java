@@ -22,43 +22,45 @@
 
 package de.osramos.reprovis;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
-public class TestingDeviceDAO {
+import de.osramos.reprovis.exception.DatabaseException;
+
+public class TestingDeviceDAO extends HierarchieElementDAO {
 
 
 
 	
-	public static List<Integer> getTestingDeviceIds(int id) {
-		List<Integer> l = new ArrayList<Integer>();
+	public static List<Integer> getTestingDeviceIds(int id) throws Exception {
+		List<Integer> l = getChildIds(id, "device");
 		
-		for (int i = 0; i < 3; i++)
-		{
-			l.add(id * 10 +i);
-		}
-
 		return l;
 	}
 
-	public static String getSerialnumber(int id) {
-		// TODO Auto-generated method stub
-		return "0123456";
+	public static String getSerialnumber(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "serialnumber");
+
+		return s;
 	}
 
-	public static String getComponentCategory(int id) {
-		// TODO Auto-generated method stub
-		return "testCategory";
+	public static String getComponentCategory(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "category");
+
+		return s;
 	}
 
-	public static Date getTroublePeriod(int id) {
-		GregorianCalendar.getInstance().getTime();
-		return GregorianCalendar.getInstance().getTime();
+	public static Date getTroublePeriod(int id) throws DatabaseException {
+		
+		Timestamp t = (Timestamp) getAttribute(id, "troubleperiod");
+
+		return new Date (t.getTime());
 	}
 
-	public static boolean getTestFailure(int id) {
+	public static boolean getTestFailure(int id) throws DatabaseException  {
 		double r = Math.random();
 		if (r > 0.1d){
 			return true;
@@ -66,9 +68,17 @@ public class TestingDeviceDAO {
 		return false;
 	}
 
-	public static String getSector(int id) {
-		// TODO Auto-generated method stub
-		return "testSector";
+	public static String getSector(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "sector");
+
+		return s;
 	}
+
+	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
+		
+		return HierarchieElementDAO.getAttribute(id, attributeName, "device");
+	}
+	
+
 
 }
