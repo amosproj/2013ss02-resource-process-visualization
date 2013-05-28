@@ -19,41 +19,45 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
 import java.util.Date;
-import java.util.List;
 
 
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class ElectricalComponentBean extends HierarchieElementBean {
-	
+
 	private String serialnumber;
 	private String category;
 	private Date troubeOccurrenceTime;
 	private String troubleOccurrenceSite;
 	private String sector;
 	private String shiftResponsibility;
-	
 
-	public ElectricalComponentBean(int id)  {
-		
+	public ElectricalComponentBean(int id) {
+
 		super(id);
 
-		
-		setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
-		setCategory(ElectricalComponentDAO.getCategory(id));
-		setTroubeOccurrenceTime(ElectricalComponentDAO.getTroubeOccurrenceTime(id));
-		setTroubleOccurrenceSite(ElectricalComponentDAO.getTroubleOccurrenceSite(id));
-		setSector(ElectricalComponentDAO.getSector(id));
-		setShiftResponsibility(ElectricalComponentDAO.getShiftResponsibility(id));
+		try {
+			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
+			setCategory(ElectricalComponentDAO.getCategory(id));
+			setTroubeOccurrenceTime(ElectricalComponentDAO
+					.getTroubeOccurrenceTime(id));
+			setTroubleOccurrenceSite(ElectricalComponentDAO
+					.getTroubleOccurrenceSite(id));
+			setSector(ElectricalComponentDAO.getSector(id));
+			setShiftResponsibility(ElectricalComponentDAO
+					.getShiftResponsibility(id));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	protected void initChilds() {
 		childs = null;
-		
+
 	}
 
 	public String getShiftResponsibility() {
@@ -104,9 +108,10 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		this.serialnumber = serialnumber;
 	}
 
-/*	@Override
-	public List<HierarchieElementBean> getChilds() throws HierarchieException{
-		throw new HierarchieException("Element has no childs");
-	}*/
+	/*
+	 * @Override public List<HierarchieElementBean> getChilds() throws
+	 * HierarchieException{ throw new
+	 * HierarchieException("Element has no childs"); }
+	 */
 
 }

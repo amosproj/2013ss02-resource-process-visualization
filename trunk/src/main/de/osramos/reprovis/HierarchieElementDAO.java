@@ -73,7 +73,7 @@ public abstract class HierarchieElementDAO {
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
 			res = statement
-					.executeQuery("SELECT country FROM " + tableName+ " WHERE id = "
+					.executeQuery("SELECT " + attributeName+ " FROM " + tableName+ " WHERE id = "
 							+ id);
 
 			res.next();
