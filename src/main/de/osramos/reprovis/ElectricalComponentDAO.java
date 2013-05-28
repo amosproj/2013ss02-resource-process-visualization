@@ -23,56 +23,65 @@
 package de.osramos.reprovis;
 
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class ElectricalComponentDAO {
+import de.osramos.reprovis.exception.DatabaseException;
+
+public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 
 
 
-	public static String getShiftResponsibility(int id) {
-		// TODO Auto-generated method stub
-		return "Thomas Mueller";
+	public static String getShiftResponsibility(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "shiftresponsibility");
+
+		return s;
 	}
 
-	public static String getCategory(int id) {
-		// TODO Auto-generated method stub
-		return "TestCategory";
+	public static String getCategory(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "category");
+
+		return s;
 	}
 
-	public static Date getTroubeOccurrenceTime(int id) {
-		// TODO Auto-generated method stub
-		return GregorianCalendar.getInstance().getTime();
+	public static Date getTroubeOccurrenceTime(int id) throws DatabaseException {
+		Timestamp t = (Timestamp) getAttribute(id, "troubleoccurrencetime");
+
+		return new Date(t.getTime());
 	}
 
-	public static String getTroubleOccurrenceSite(int id) {
-		// TODO Auto-generated method stub
-		return "Testdata";
+	public static String getTroubleOccurrenceSite(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "troubleoccurrencesite");
+
+		return s;
 	}
 
-	public static String getSector(int id) {
-		// TODO Auto-generated method stub
-		return "TestSector1";
+	public static String getSector(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "sector");
+
+		return s;
 	}
 
-	public static String getSerialnumber(int id) {
-		// TODO Auto-generated method stub
-		return "98765432";
+	public static String getSerialnumber(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "serialnumber");
+
+		return s;
 	}
 
-	public static List<Integer> getElectricalComponentIds(int id) {
-		List<Integer> l = new ArrayList<Integer>();
+	public static List<Integer> getElectricalComponentIds(int id) throws Exception {
+		List<Integer> l = getChildIds(id, "component");
 		
-		for (int i = 0; i < 3; i++)
-		{
-			l.add(id * 10 +i);
-		}
-
 		return l;
 	}
-
+	
+	
+	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
+		
+		return HierarchieElementDAO.getAttribute(id, attributeName, "component");
+	}
 
 }

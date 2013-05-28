@@ -33,7 +33,7 @@ public class ElectricalComponentDAOTest {
 
 	
 	@Test
-	public void initTest(){
-		assertTrue( ElectricalComponentDAO.getElectricalComponentIds(0).size() > 2);
+	public void initTest() throws Exception{
+		assertTrue( ElectricalComponentDAO.getElectricalComponentIds(0).size() == 1 );
 	}
 }

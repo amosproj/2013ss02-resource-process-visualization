@@ -9,13 +9,13 @@ drop table if exists factory;
 
 create table factory(
 	id int ,
-	name char(25), 
-	company char(25), 
-	city char(25), 
-	country char(25), 				
+	name  character varying(50), 
+	company  character varying(50), 
+	city  character varying(50), 
+	country  character varying(50), 				
 	gpslatitude double precision , 
 	gpslongitude double precision, 
-	carmodels char(512), 
+	carmodels  character varying(512), 
 	sizeofstaff int, 
 	numofvehicles int 
 );
@@ -61,7 +61,12 @@ CREATE TABLE device (
 
 CREATE TABLE component (
     id integer ,
-    name character varying(50),
+    sector character varying(50),
+    category character varying(50),
+    serialnumber character varying(50),
+    shiftresponsibility character varying(50),
+    troubleoccurrencetime timestamp,
+    troubleoccurrencesite character varying(50),
     parent integer
 );
 						
@@ -73,7 +78,7 @@ insert into factory values (1, 'Ingolstadt', 'Audi' ,'Ingolstadt', 'Germany', 48
 	'Audi A3, Audi A3 Sportback, Audi S3, Audi S3 Sportback, Audi A4, Audi A4 Avant, Audi S4, Audi S4 Avant, Audi A4 allroad quattro, Audi RS4 Avant, Audi A5 Sportback, Audi A5 Coupe, Audi S5 Sportback, Audi S5 Coupe, Audi RS 5 Coupe, Audi Q5, Audi Q5 hybrid quattro, Audi SQ5 TDI, Karosseriebau/Lackiererei des Audi TT Coupe, Audi TT Roadster, Audi TTS Coupe, Audi TTS Roadster, Audi TT RS Coupe, Audi TT RS Roadster, Audi A3 Cabriolet',
 	35386, 551889
 );
-insert into factory values (2, 'Neackrsulm', 'Audi' , 'Neckarsulm', 'Germany', 49.194213, 9.221771, 
+insert into factory values (2, 'Neckarsulm', 'Audi' , 'Neckarsulm', 'Germany', 49.194213, 9.221771, 
 	'Audi A4, Audi A5 Cabriolet, Audi S5 Cabriolet, Audi RS 5 Cabriolet, Audi A6, Audi A6 hybrid, Audi A6 Avant, Audi S6, Audi A6 allroad quattro, Audi RS 6 Avant, Audi A7, Audi S7, Audi RS7, Audi A8, Audi A8 L, Audi A8 hybrid, Audi S8, Audi R8, Audi R8 Spyder, Audi R8 GT, Audi R8 GT Spyder',
 		14764, 262965
 );
@@ -322,5 +327,8 @@ INSERT INTO location VALUES (1214, 'PreSeries', 121);
 /* end of Locations */
 /* ************************************************************************************************************* */
 
+				
 
 insert into device values (10000, 'Bla', 'TestSector', '12345', '2013-05-28 07:37:16-08', false, 1000);
+insert into component values(100000, 'TestSector', 'TestCategory','123ab45c', 'Sheldon Cooper', '2013-05-28 17:50:00-08', 'aa', 10000);
+

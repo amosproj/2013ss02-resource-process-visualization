@@ -37,7 +37,7 @@ import de.osramos.reprovis.TestingDeviceBean;
 public class TestingDeviceBeanTest {
 
 	@Test
-	public void initTest(){
+	public void initTest() throws Exception{
 		TestingDeviceBean b = new TestingDeviceBean(1);
 		List<Integer> childIds = ElectricalComponentDAO
 				.getElectricalComponentIds(0);
