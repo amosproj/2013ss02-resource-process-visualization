@@ -87,12 +87,11 @@ public abstract class HierarchieElementBean {
 		try {
 			return computeMinimalStatus();
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			
 		}
 		try {
 			return getDistinctStatus();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		throw new HierarchieException("Element has no status");
 	}
@@ -100,14 +99,14 @@ public abstract class HierarchieElementBean {
 	protected TrafficLight computeMinimalStatus() throws HierarchieException {
 
 		TrafficLight status = TrafficLight.green;
-		double rand = Math.random();
+	/*			double rand = Math.random();
 		if(rand > 0.5)return TrafficLight.green;
 		else if(rand > 0.25)return TrafficLight.yellow;
 		else if(rand >= 0)return TrafficLight.red;
 		if (childs == null){
 			return status;
 			//throw new HierarchieException("no child Elements");
-		}
+		}*/
 		for (HierarchieElementBean child : childs) {
 			// aggregate to worst status
 			if (status == TrafficLight.green) {

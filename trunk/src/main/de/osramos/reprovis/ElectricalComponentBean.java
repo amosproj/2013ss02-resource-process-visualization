@@ -23,7 +23,7 @@ package de.osramos.reprovis;
 
 import java.util.Date;
 
-
+import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class ElectricalComponentBean extends HierarchieElementBean {
@@ -106,6 +106,18 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 
 	private void setSerialnumber(String serialnumber) {
 		this.serialnumber = serialnumber;
+	}
+
+	public TrafficLight getDistinctStatus() {
+
+		double rand = Math.random();
+		if (rand > 0.1d) {
+			return TrafficLight.green;
+		} else if (rand > 0.05d) {
+			return TrafficLight.yellow;
+		}
+		return TrafficLight.red;
+
 	}
 
 	/*
