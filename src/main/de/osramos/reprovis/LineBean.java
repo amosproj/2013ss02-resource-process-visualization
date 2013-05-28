@@ -49,7 +49,7 @@ public class LineBean extends HierarchieElementBean {
 			productionSeries = LineDAO.getproductionSeries(id);
 			productionCapacity = LineDAO.getproductionCapacity(id);
 		} catch(DatabaseException e){
-			
+			e.printStackTrace();
 		}
 
 	}
@@ -66,7 +66,7 @@ public class LineBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 	}
 

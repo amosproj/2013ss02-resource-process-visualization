@@ -19,12 +19,13 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class TestingDeviceBean extends HierarchieElementBean {
 
@@ -36,12 +37,14 @@ public class TestingDeviceBean extends HierarchieElementBean {
 
 	public TestingDeviceBean(int id) {
 		super(id);
+		try {
 
-		this.setSerialnumber(TestingDeviceDAO.getSerialnumber(id));
-		this.setComponentCategory(TestingDeviceDAO.getComponentCategory(id));
-		this.setTroublePeriod(TestingDeviceDAO.getTroublePeriod(id));
-		this.setTestFailure(TestingDeviceDAO.getTestFailure(id));
-		this.setSector(TestingDeviceDAO.getSector(id));
+			this.setSerialnumber(TestingDeviceDAO.getSerialnumber(id));
+			this.setComponentCategory(TestingDeviceDAO.getComponentCategory(id));
+			this.setSector(TestingDeviceDAO.getSector(id));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -73,14 +76,26 @@ public class TestingDeviceBean extends HierarchieElementBean {
 	}
 
 	public boolean isTestFailure() {
+		try {
+			this.setTestFailure(TestingDeviceDAO.getTestFailure(id));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
 		return testFailure;
 	}
 
 	private void setTestFailure(boolean testFailure) {
+
 		this.testFailure = testFailure;
 	}
 
 	public Date getTroublePeriod() {
+		try {
+			this.setTroublePeriod(TestingDeviceDAO.getTroublePeriod(id));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+
 		return troublePeriod;
 	}
 

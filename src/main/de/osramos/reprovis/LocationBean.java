@@ -36,7 +36,7 @@ public class LocationBean extends HierarchieElementBean {
 		try {
 			name = LocationDAO.getName(id);
 		}catch(DatabaseException e){
-			
+			e.printStackTrace();
 		}
 	}
 	
@@ -55,6 +55,7 @@ public class LocationBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

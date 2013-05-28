@@ -33,7 +33,7 @@ import de.osramos.reprovis.TestingDeviceDAO;
 public class LocationBeanTest {
 
 	@Test
-	public void initTest(){
+	public void initTest() throws Exception{
 		LocationBean b = new LocationBean(1);
 		assertTrue(b.getChilds().size() == TestingDeviceDAO.getTestingDeviceIds(1).size());
 	}
