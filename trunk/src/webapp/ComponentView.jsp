@@ -35,7 +35,7 @@
 
 <div class="modal-body">
 	<div class="pull-right">
-		<button type="button" class="btn" onclick="notAvailable();">Print (soon available)</button>
+		<button type="button" class="factoryBtn" onclick="notAvailable();">Print (soon available)</button>
 	</div><br /><br />
 	
 	<table id="componentDetails" class="table table-striped table-hover">
@@ -53,5 +53,5 @@
 </div>
 
 <div class="modal-footer">
-	<button class="btn" data-dismiss="modal">Close</button>
+	<button class="factoryBtn" data-dismiss="modal">Close</button>
 </div>

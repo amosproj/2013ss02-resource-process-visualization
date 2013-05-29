@@ -40,7 +40,6 @@ int id = Integer.parseInt(request.getParameter("lid"));
 
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
-	<div id="breadCrumbNavi"></div>
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationPlan">
 		<table id="locationList" class="table table-striped table-hover">
