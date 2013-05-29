@@ -36,7 +36,6 @@ int id = Integer.parseInt(request.getParameter("fid"));
 
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
-		<div id="breadCrumbNavi"></div>
 		<h3 id="dynamicHeading"></h3>
 		<svg id="SVGPlan"></svg>
 	</div>
@@ -59,13 +58,17 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 	    // Draw the factory plan and attach click handler
+		var svgGroup = $("#SVGPlan").append(
+				$("<g>").attr("transform", "scale(1.5)")
+		);
+		
 	    for(var i = 0; i < data.halls.length; ++i) {
 	    	var svgPath = $("<path></path>")
 	    			.attr("d", data.halls[i].path)
 	    			.attr("class", getSvgClass(data.halls[i].status))
 	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')');
 	    	
-			$("#SVGPlan").append(svgPath);
+	    	$("#SVGPlan g").append(svgPath);
 	    }
 	    
 	    // Refresh
