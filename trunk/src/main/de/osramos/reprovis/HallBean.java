@@ -60,10 +60,22 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	public int getSizeOfStaff() {
+		try {
+			sizeOfStaff = HallDAO.getSizeOfStaff(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return sizeOfStaff;
 	}
 
 	public int getProductionCapacity() {
+		try {
+			productionCapacity = HallDAO.getProductionCapacity(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return productionCapacity;
 	}
 

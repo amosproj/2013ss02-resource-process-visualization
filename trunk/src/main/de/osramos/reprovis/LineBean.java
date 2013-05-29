@@ -70,11 +70,11 @@ public class LineBean extends HierarchieElementBean {
 		}
 	}
 
-	@Override
+/*	@Override
 	protected TrafficLight getDistinctStatus() {
 		return LineDAO.getStatus(id);
 
-	}
+	}*/
 
 	public String getName() {
 		return name;

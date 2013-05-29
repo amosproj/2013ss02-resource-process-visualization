@@ -82,14 +82,32 @@ public class FactoryBean extends HierarchieElementBean {
 	}
 
 	public int getSizeOfStaff() {
+		try {
+			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return sizeOfStaff;
 	}
 
 	public int getNumOfVehicles() {
+		try {
+			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return numOfVehicles;
 	}
 
 	public String[] getCarModels() {
+		try {
+			carModels = FactoryDAO.getCarModels(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return carModels;
 	}
 
