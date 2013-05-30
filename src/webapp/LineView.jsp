@@ -55,6 +55,7 @@ int id = Integer.parseInt(request.getParameter("lid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="lineDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="lineStatus"></td></tr>
 		<tr><td>Name</td><td id="lineName"></td></tr>
@@ -67,9 +68,6 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Line.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
 		for(var i = 0; i < data.locations.length; ++i) {
 			var rowClass = "";
 			
