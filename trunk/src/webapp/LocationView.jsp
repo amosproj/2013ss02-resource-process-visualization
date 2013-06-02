@@ -59,7 +59,9 @@ int id = Integer.parseInt(request.getParameter("locid"));
 	<table id="locationDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="locationStatus"></td></tr>
 		<tr><td>Name</td><td id="locationName"></td></tr>
-		<tr><td>Number of types</td><td id="locationCountOfDevices"></td></tr>
+		<tr><td>Description</td><td id="locationDescription"></td></tr>
+		<tr><td>Person in charge</td><td id="locationPersonInCharge"></td></tr>
+		<tr><td>Devices</td><td id="locationCountOfDevices"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -96,6 +98,8 @@ $(document).ready(function() {
 
 	    $("#dynamicHeading").html("Location: "+data.name+" (ID: <%= id %>)");
 	    $("#locationName").html(data.name);
+	    $("#locationDescription").html(data.description);
+	    $("#locationPersonInCharge").html(data.personincharge);
 	    $("#locationStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#locationCountOfDevices").html(data.testDeviceCount);	
 	});

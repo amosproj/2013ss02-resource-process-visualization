@@ -35,7 +35,7 @@ import de.osramos.reprovis.exception.DatabaseException;
 
 public abstract class HierarchieElementDAO {
 
-	public static List<Integer> getChildIds(int parentId, String tableName) throws Exception {
+	protected static List<Integer> getChildIds(int parentId, String tableName) throws Exception {
 
 		List<Integer> l = new ArrayList<Integer>();
 

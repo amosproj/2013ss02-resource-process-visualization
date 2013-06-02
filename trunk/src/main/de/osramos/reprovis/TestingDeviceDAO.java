@@ -32,13 +32,17 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 
 
 
-	
+	// get all Elements
 	public static List<Integer> getTestingDeviceIds(int id) throws Exception {
 		List<Integer> l = getChildIds(id, "device");
 		
 		return l;
 	}
-
+	
+	
+	
+	
+	// Get Attributes by id
 	public static String getSerialnumber(int id) throws DatabaseException {
 		
 		String s = (String) getAttribute(id, "serialnumber");
@@ -46,7 +50,7 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		return s;
 	}
 
-	public static String getComponentCategory(int id) throws DatabaseException {
+	public static String getCategory(int id) throws DatabaseException {
 		
 		String s = (String) getAttribute(id, "category");
 
@@ -61,11 +65,9 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 	}
 
 	public static boolean getTestFailure(int id) throws DatabaseException  {
-		double r = Math.random();
-		if (r > 0.1d){
-			return true;
-		}
-		return false;
+		boolean b = (Boolean) getAttribute(id, "testfailure");
+
+		return b;
 	}
 
 	public static String getSector(int id) throws DatabaseException {
@@ -74,6 +76,8 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		return s;
 	}
 
+	
+	// 
 	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
 		
 		return HierarchieElementDAO.getAttribute(id, attributeName, "device");

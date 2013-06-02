@@ -67,6 +67,8 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 	<table id="testingDeviceDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="testingDeviceStatus"></td></tr>
 		<tr><td>Name</td><td id="testingDeviceName"></td></tr>
+		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
+		<tr><td>Category</td><td id="testingDeviceCategory"></td></tr>
 		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
 	</table>
 </div>
@@ -121,6 +123,8 @@ $(document).ready(function() {
 
 	    $("#dynamicHeading").html(data.name+" (ID: <%= id %>)");
 	    $("#testingDeviceName").html(data.name);
+	    $("#testingDeviceSerialnumber").html(data.serialnumber);
+	    $("#testingDeviceCategory").html(data.category);
 	    $("#testingDeviceStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#testingDevicesCountComponents").html(data.componentCount);	
 	});

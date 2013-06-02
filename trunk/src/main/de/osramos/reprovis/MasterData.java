@@ -70,6 +70,19 @@ public class MasterData {
 	public enum TrafficLight {
 		red, yellow, green
 	}
+	
+	public static TrafficLight stringToTrafficLight(String string) {
+		if (string.equals(TrafficLight.yellow.name())) {
+			return TrafficLight.yellow;
+		}
+		if (string.equals(TrafficLight.red.name())) {
+			return TrafficLight.red;
+		}
+		if (string.equals(TrafficLight.green.name())) {
+			return TrafficLight.green;
+		}
+		return null;
+	}
 
 	public static String getTrafficIconClass(TrafficLight status) {
 		switch (status) {

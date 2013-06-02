@@ -23,54 +23,52 @@
 
 package de.osramos.reprovis;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
-public class LocationDAO {
+
+
+public class LocationDAO extends HierarchieElementDAO {
 	
+	
+	// get Attributes by id
 	public static String getName(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT name FROM location WHERE id = " + id);
-			res.next();
-			String name = res.getString(1);
-			stmt.close();
-			conn.close();
-			return name;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "Error";
+		
+		String s = (String) getAttribute(id, "name");
+		
+		return s;
 	}
 
-	public static List<Integer> getLocationIds(int lineId) throws DatabaseException {
-		List<Integer> l = new ArrayList<Integer>();
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT id FROM location WHERE parent = " + lineId);
-			while(res.next()){
-				l.add(res.getInt(1));
-			}
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public static String getDescription(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "description");
+		
+		return s;
+	}
+
+	
+	public static String getPersonInCharge(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "personincharge");
+		
+		return s;
+	}
+	
+	
+	// get all Elements
+	public static List<Integer> getLocationIds(int id) throws Exception {
+		List<Integer> l = getChildIds(id, "location");
+		
 		return l;
 	}
 
+
+	
+	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
+		
+		return HierarchieElementDAO.getAttribute(id, attributeName, "location");
+	}
+
+	
 }

@@ -16,6 +16,7 @@
  You should have received a copy of the GNU Affero General Public
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
+<%@page import="de.osramos.reprovis.FactoryBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
@@ -46,6 +47,7 @@ int id = Integer.parseInt(request.getParameter("hid"));
 
 <div id="informationBlock" class="span4">
 	<table id="hallDetails" class="table table-striped table-hover">
+		<tr><td>Status</td><td id="hallStatus"></td></tr>
 		<tr><td>Name</td><td id="hallName"></td></tr>
 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
 		<tr><td>Capacity</td><td id="hallCapacity"></td></tr>
@@ -76,6 +78,7 @@ $(document).ready(function() {
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
 	    $("#dynamicHeading").html("Hall: "+data.name+" (ID: <%= id %>)");
+	    $("#hallStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#hallName").html(data.name);
 	    $("#hallStaff").html(data.staff);
 	    $("#hallCapacity").html(data.capacity);

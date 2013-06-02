@@ -51,7 +51,9 @@ int factoryID = factoryParent.getId();
 {
 	"name": "Testing Device <%= device.getId() %>",
 	"status": "<%= device.getStatus() %>",
-	"componentCount": "167",
+	"serialnumber": "<%= device.getSerialnumber() %>",
+	"category": "<%= device.getCategory() %>",
+	"componentCount": "<%= device.getChilds().size() %>",
 	"components": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean child: device.getChilds()){ %>

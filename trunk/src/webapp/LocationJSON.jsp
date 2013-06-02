@@ -49,7 +49,9 @@ int factoryID = factoryParent.getId();
 {
 	"name": "<%= loc.getName() %>",
 	"status": "<%= loc.getStatus() %>",
-	"testDeviceCount": "99",
+	"description": "<%= loc.getDescription() %>",
+	"personincharge": "<%= loc.getPersonInCharge() %>",
+	"testDeviceCount": "<%= loc.getChilds().size() %>",
 	"testDevices": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean child: loc.getChilds()){ %>
