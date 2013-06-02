@@ -59,8 +59,17 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		childs = null;
 
 	}
+	
+	
 
 	public String getShiftResponsibility() {
+		try {
+			setShiftResponsibility(ElectricalComponentDAO
+					.getShiftResponsibility(id));
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return shiftResponsibility;
 	}
 
@@ -69,6 +78,12 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getSector() {
+		try {
+			setSector(ElectricalComponentDAO.getSector(id));
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return sector;
 	}
 
@@ -77,6 +92,13 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getTroubleOccurrenceSite() {
+		try {
+			setTroubleOccurrenceSite(ElectricalComponentDAO
+					.getTroubleOccurrenceSite(id));
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return troubleOccurrenceSite;
 	}
 
@@ -85,6 +107,13 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public Date getTroubeOccurrenceTime() {
+		try {
+			setTroubeOccurrenceTime(ElectricalComponentDAO
+					.getTroubeOccurrenceTime(id));
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return troubeOccurrenceTime;
 	}
 
@@ -93,6 +122,12 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getCategory() {
+		try {
+			setCategory(ElectricalComponentDAO.getCategory(id));
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return category;
 	}
 
@@ -101,6 +136,11 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getSerialnumber() {
+		try {
+			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
 		return serialnumber;
 	}
 
@@ -108,15 +148,17 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		this.serialnumber = serialnumber;
 	}
 
+	
+	@Override
 	public TrafficLight getDistinctStatus() {
-
-		double rand = Math.random();
-		if (rand > 0.1d) {
-			return TrafficLight.green;
-		} else if (rand > 0.05d) {
-			return TrafficLight.yellow;
+		
+		try {
+			return ElectricalComponentDAO.getStatus(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return TrafficLight.red;
+		return null;
 
 	}
 

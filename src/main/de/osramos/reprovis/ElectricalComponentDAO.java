@@ -29,12 +29,17 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 
+	public static TrafficLight getStatus(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "status");
 
+		return MasterData.stringToTrafficLight(s);
+	}
 
 	public static String getShiftResponsibility(int id) throws DatabaseException {
 		String s = (String) getAttribute(id, "shiftresponsibility");

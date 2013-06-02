@@ -30,18 +30,21 @@ import de.osramos.reprovis.exception.DatabaseException;
 public class TestingDeviceBean extends HierarchieElementBean {
 
 	private String serialnumber;
-	private String componentCategory;
+	private String category;
+	private String sector;
+	
 	private Date troublePeriod;
 	private boolean testFailure;
-	private String sector;
+	
+
 
 	public TestingDeviceBean(int id) {
 		super(id);
 		try {
 
-			this.setSerialnumber(TestingDeviceDAO.getSerialnumber(id));
-			this.setComponentCategory(TestingDeviceDAO.getComponentCategory(id));
-			this.setSector(TestingDeviceDAO.getSector(id));
+			serialnumber = TestingDeviceDAO.getSerialnumber(id);
+			category = TestingDeviceDAO.getCategory(id);
+			sector = TestingDeviceDAO.getSector(id);
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 		}
@@ -71,52 +74,39 @@ public class TestingDeviceBean extends HierarchieElementBean {
 		return sector;
 	}
 
-	private void setSector(String sector) {
-		this.sector = sector;
-	}
-
-	public boolean isTestFailure() {
-		try {
-			this.setTestFailure(TestingDeviceDAO.getTestFailure(id));
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		}
-		return testFailure;
-	}
-
-	private void setTestFailure(boolean testFailure) {
-
-		this.testFailure = testFailure;
-	}
-
-	public Date getTroublePeriod() {
-		try {
-			this.setTroublePeriod(TestingDeviceDAO.getTroublePeriod(id));
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		}
-
-		return troublePeriod;
-	}
-
-	private void setTroublePeriod(Date troublePeriod) {
-		this.troublePeriod = troublePeriod;
-	}
-
-	public String getComponentCategory() {
-		return componentCategory;
-	}
-
-	private void setComponentCategory(String componentCategory) {
-		this.componentCategory = componentCategory;
+	public String getCategory() {
+		return category;
 	}
 
 	public String getSerialnumber() {
 		return serialnumber;
 	}
 
-	private void setSerialnumber(String serialnumber) {
-		this.serialnumber = serialnumber;
+
+	
+	public boolean isTestFailure() {
+		try {
+			return TestingDeviceDAO.getTestFailure(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
+
+
+	public Date getTroublePeriod() {
+		try {
+			return TestingDeviceDAO.getTroublePeriod(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
+
+
 
 }

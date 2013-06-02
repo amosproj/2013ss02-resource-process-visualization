@@ -47,8 +47,8 @@
 		<tr><td>Trouble Occurence Site:</td><td><%= component.getTroubleOccurrenceSite() %></td></tr>
 		<tr><td>Responsible Sector:</td><td><%= component.getSector() %></td></tr>
 		<tr><td>Shift Responsible:</td><td><%= component.getShiftResponsibility() %></td></tr>
-		<tr><td>More 1</td><td>More Information 1</td></tr>
-		<tr><td>More 2</td><td>More Information 2</td></tr>
+	<!-- 	<tr><td>More 1</td><td>More Information 1</td></tr>
+		<tr><td>More 2</td><td>More Information 2</td></tr> -->
 	</table>
 </div>
 

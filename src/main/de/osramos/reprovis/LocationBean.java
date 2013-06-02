@@ -30,11 +30,14 @@ import de.osramos.reprovis.exception.DatabaseException;
 public class LocationBean extends HierarchieElementBean {
 
 	private String name;
+	private String description;
 	
 	public LocationBean(int id) {
 		super(id);
 		try {
 			name = LocationDAO.getName(id);
+			description = LocationDAO.getDescription(id);
+			
 		}catch(DatabaseException e){
 			e.printStackTrace();
 		}
@@ -43,7 +46,23 @@ public class LocationBean extends HierarchieElementBean {
 	public String getName(){
 		return name;
 	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public String getPersonInCharge() {
+		try{
+			return LocationDAO.getPersonInCharge(id);
+		} catch (DatabaseException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
+	
+	
+	
 	@Override
 	protected void initChilds() {
 		try {
@@ -58,5 +77,9 @@ public class LocationBean extends HierarchieElementBean {
 			e.printStackTrace();
 		}
 	}
+
+	
+
+
 
 }

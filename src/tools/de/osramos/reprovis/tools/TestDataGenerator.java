@@ -29,6 +29,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Random;
 
+import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.MasterData.TrafficLight;
+
 public class TestDataGenerator {
 
 	private static int nextId;
@@ -105,6 +108,8 @@ public class TestDataGenerator {
 			initFactories();
 
 			out.close();
+			
+			System.out.println("finsihed");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,29 +126,43 @@ public class TestDataGenerator {
 				+ "drop table if exists hall;\n"
 				+ "drop table if exists factory;\n" +
 
-				"create table factory(\n" + "	id int ,\n"
-				+ "	name char(25), \n" + "	company char(25), \n"
-				+ "	city char(25), \n" + "	country char(25), 	\n"
+				"create table factory(\n"
+				+ "	id int ,\n"
+				+ "	name char(25), \n" 
+				+ "	company char(25), \n"
+				+ "	city char(25), \n" 
+				+ "	country char(25), 	\n"
 				+ "	gpslatitude double precision , \n"
 				+ "	gpslongitude double precision, \n"
-				+ "	carmodels char(512), \n" + "	sizeofstaff int, \n"
-				+ "	numofvehicles int \n" + ");\n" +
+				+ "	carmodels char(512), \n" 
+				+ "	sizeofstaff int, \n"
+				+ "	numofvehicles int \n" 
+				+ ");\n" +
 
-				"CREATE TABLE hall (\n" + "    id integer ,\n"
-				+ "    name character varying(50),\n" + "    staff integer,\n"
+				"CREATE TABLE hall (\n"
+				+ "    id integer ,\n"
+				+ "    name character varying(50),\n" 
+				+ "    staff integer,\n"
 				+ "    capacity integer,\n"
-				+ "    path character varying(5000),\n" + "    parent integer\n"
-				+ ");				\n" +
+				+ "    path character varying(5000),\n"
+				+ "    parent integer\n"
+				+ ");\n" +
 
-				"CREATE TABLE line (\n" + "    id integer ,\n"
+				"CREATE TABLE line (\n" 
+				+ "    id integer ,\n"
 				+ "    name character varying(50),\n"
 				+ "    series character varying(50),\n"
 				+ "    capacity integer,\n"
-				+ "    path character varying(250),\n" + "    parent integer\n"
+				+ "    path character varying(250),\n"
+				+ "    parent integer\n"
 				+ ");\n" +
 
-				"CREATE TABLE location (\n" + "    id integer ,\n"
-				+ "    name character varying(50),\n" + "    parent integer\n"
+				"CREATE TABLE location (\n" 
+				+ "    id integer ,\n"
+				+ "    name character varying(50),\n" 
+				+ "    description character varying(100),\n" 
+				+ "    personincharge character varying(100),\n" 
+				+ "    parent integer\n"
 				+ ");\n" +
 
 				"CREATE TABLE device (\n" + "	    id integer ,\n"
@@ -161,6 +180,7 @@ public class TestDataGenerator {
 				+ "	    shiftresponsibility character varying(50),\n"
 				+ "	    troubleoccurrencetime timestamp,\n"
 				+ "	    troubleoccurrencesite character varying(50),\n"
+				+ "	    status character varying(20),\n"
 				+ "	    parent integer\n" + "	);\n";
 
 		out.write(s);
@@ -332,6 +352,11 @@ public class TestDataGenerator {
 	}
 
 	private static void initLocations(int lineId) throws IOException {
+		
+		String[] description = {"motor", "ABS", "multimedia", "security", "transmission"};
+		
+		String[] firstname = {"Hans", "Peter", "Robert", "Sarah", "Franziska"};
+		String[] lastname = {"Mueller", "Schmitt", "Meier", "Schulze", "Merkel"};
 
 		for (int i = 0; i < numOfLocations; i++) {
 			int id = id();
@@ -353,6 +378,20 @@ public class TestDataGenerator {
 					+ numbers.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
 
+			
+			// decription
+			int c = (int) (Math.random() * description.length);
+			st.append(", \'");
+			st.append(description[c] + " test");
+			st.append("\'");
+
+			// personincharge
+			int f = (int) (Math.random() * firstname.length);
+			int l = (int) (Math.random() * lastname.length);
+			st.append(", \'");
+			st.append(firstname[f] + " " +lastname[l]);
+			st.append("\'");
+			
 			// Lineid
 			st.append(", ");
 			st.append(lineId);
@@ -366,6 +405,8 @@ public class TestDataGenerator {
 	}
 
 	private static void initDevices(int locationId) throws IOException {
+		
+		String[] categories = {"handheld", "mobile station", "flashing station", "printer"};
 
 		for (int i = 0; i < numOfDevices; i++) {
 
@@ -383,9 +424,9 @@ public class TestDataGenerator {
 			st.append(id);
 
 			// category
+			int c = (int) (Math.random() * categories.length);
 			st.append(", \'");
-			st.append("" + chars.charAt(r.nextInt(numbers.length()))
-					+ numbers.charAt(r.nextInt(numbers.length())));
+			st.append(categories[c]);
 			st.append("\'");
 
 			// sector
@@ -432,6 +473,7 @@ public class TestDataGenerator {
 		String[] names = { "Dr. Dr. Sheldon Lee Cooper",
 				"Dr. Leonard Leakey Hofstadter", "Howard Joel Wolowitz",
 				"Dr. Rajesh Ramayan Koothrappali" };
+		
 
 		for (int i = 0; i < numOfComponents; i++) {
 			int id = id();
@@ -449,10 +491,9 @@ public class TestDataGenerator {
 			st.append("" + chars.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
 
-			// category
+			// sector
 			st.append(", \'");
-			st.append("" + chars.charAt(r.nextInt(numbers.length()))
-					+ numbers.charAt(r.nextInt(numbers.length())));
+			st.append("" + chars.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
 
 			// serialnumber
@@ -461,7 +502,7 @@ public class TestDataGenerator {
 			st.append("\'");
 
 			// name
-			int a = (int) (Math.random() * 4);
+			int a = (int) (Math.random() * names.length);
 			st.append(", \'");
 			st.append(names[a]);
 			st.append("\'");
@@ -476,8 +517,22 @@ public class TestDataGenerator {
 
 			//
 			st.append(", \'");
-			st.append("" + chars.charAt(r.nextInt(chars.length())));
+			st.append("" + chars.charAt(r.nextInt(chars.length())) + numbers.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
+			
+			//status
+			String status = MasterData.TrafficLight.red.name();
+			double rand = Math.random();
+			if (rand > 0.1d) {
+				status = MasterData.TrafficLight.green.name();
+			} else if (rand > 0.05d) {
+				status = MasterData.TrafficLight.yellow.name();
+			}
+			st.append(", \'");
+			st.append(status);
+			st.append("\'");
+			
+			
 
 			// deviceid
 			st.append(", ");

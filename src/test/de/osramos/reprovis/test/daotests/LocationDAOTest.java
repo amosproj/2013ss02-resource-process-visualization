@@ -34,7 +34,7 @@ public class LocationDAOTest {
 
 	
 	@Test
-	public void initTest(){
+	public void initTest() throws Exception{
 		try{
 			assertTrue( LocationDAO.getLocationIds(0).size() > 2);
 		}catch(DatabaseException e){
