@@ -24,16 +24,12 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class LineBean extends HierarchieElementBean {
 
 	String name;
 	private String path;
-	private String productionSeries;
-	private int productionCapacity;
-
 	public LineBean(int id) {
 		super(id);
 
@@ -46,8 +42,8 @@ public class LineBean extends HierarchieElementBean {
 		try{
 			name = LineDAO.getName(id);
 			path = LineDAO.getPath(id);
-			productionSeries = LineDAO.getproductionSeries(id);
-			productionCapacity = LineDAO.getproductionCapacity(id);
+			LineDAO.getproductionSeries(id);
+			LineDAO.getproductionCapacity(id);
 		} catch(DatabaseException e){
 			e.printStackTrace();
 		}
@@ -77,7 +73,11 @@ public class LineBean extends HierarchieElementBean {
 	}*/
 
 	public String getName() {
-		return name;
+		try {
+			return LineDAO.getName(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
 	}
 
 	public String getPath() {
@@ -85,11 +85,19 @@ public class LineBean extends HierarchieElementBean {
 	}
 
 	public String getProductionSeries() {
-		return productionSeries;
+		try {
+			return LineDAO.getproductionSeries(id);
+		} catch(DatabaseException e){
+			return "Error";
+		}
 	}
 
 	public int getProductionCapacity() {
-		return productionCapacity;
+		try {
+			return LineDAO.getproductionCapacity(id);
+		} catch (DatabaseException e){
+			return -1;
+		}
 	}
 
 }

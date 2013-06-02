@@ -52,7 +52,11 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	public String getName() {
-		return name;
+		try {
+			return HallDAO.getName(id);
+		}catch(DatabaseException e){
+			return "Error";
+		}
 	}
 
 	public String getPath() {
@@ -77,6 +81,22 @@ public class HallBean extends HierarchieElementBean {
 			e.printStackTrace();
 		}
 		return productionCapacity;
+	}
+	
+	public int getUpsServer(){
+		try {
+			return HallDAO.getUpsServer(id);
+		}catch(DatabaseException e){
+			return -1;
+		}
+	}
+	
+	public String getType(){
+		try{
+			return HallDAO.getType(id);
+		}catch(DatabaseException e){
+			return "Error";
+		}
 	}
 
 	@Override

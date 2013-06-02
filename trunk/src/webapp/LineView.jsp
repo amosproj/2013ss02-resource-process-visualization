@@ -100,8 +100,8 @@ $(document).ready(function() {
 	    $("#dynamicHeading").html("Assembly Line: "+data.name+" (ID: <%= id %>)");
 	    $("#lineName").html(data.name);
 	    $("#lineStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#lineProductionCapacity").html("192817 units");
-	    $("#lineProductionSeries").html("Production Series 1, Production Series 2, Production Series 3, ...");
+	    $("#lineProductionCapacity").html("" + data.capacity + " units");
+	    $("#lineProductionSeries").html(data.series);
 	});
 });
 </script>

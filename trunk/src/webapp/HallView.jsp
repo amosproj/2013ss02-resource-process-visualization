@@ -49,8 +49,11 @@ int id = Integer.parseInt(request.getParameter("hid"));
 	<table id="hallDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="hallStatus"></td></tr>
 		<tr><td>Name</td><td id="hallName"></td></tr>
+		<tr><td>Type</td><td id="hallType"></td></tr>
 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
 		<tr><td>Capacity</td><td id="hallCapacity"></td></tr>
+		<tr><td>UPS Server</td><td id="hallUpsServer"></td></tr>
+		
 	</table>
 </div>
 </div><br class="clear" />
@@ -82,6 +85,8 @@ $(document).ready(function() {
 	    $("#hallName").html(data.name);
 	    $("#hallStaff").html(data.staff);
 	    $("#hallCapacity").html(data.capacity);
+	    $("#hallType").html(data.type);
+	    $("#hallUpsServer").html(data.upsServer);
 	});
 });
 </script>

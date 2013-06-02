@@ -35,21 +35,7 @@ import de.osramos.reprovis.exception.DatabaseException;
 public class HallDAO {
 
 	public static String getName(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT name FROM hall WHERE id = " + id);
-			res.next();
-			String name = res.getString(1);
-			stmt.close();
-			conn.close();
-			return name;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
+		return (String) getAttribute(id, "name");
 	}
 	
 	public static TrafficLight getStatus (int id){
@@ -61,6 +47,14 @@ public class HallDAO {
 		} else {
 			return TrafficLight.red;
 		}
+	}
+	
+	public static int getUpsServer(int id) throws DatabaseException{
+		return (Integer) getAttribute(id, "upsServer");
+	}
+	
+	public static String getType(int id) throws DatabaseException{
+		return (String) getAttribute(id, "type");
 	}
 
 	public static FactoryBean getFactory(int id) throws DatabaseException {
@@ -156,5 +150,9 @@ public class HallDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 		return l;
+	}
+	
+	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
+		return HierarchieElementDAO.getAttribute(id, attributeName, "hall");
 	}
 }

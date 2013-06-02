@@ -71,7 +71,7 @@ public class Database {
 			Database.init = true;
 			
 		} catch (Exception e) {
-			throw new DatabaseException("could not init database");
+			//throw new DatabaseException("could not init database");
 		} 
 		
 

@@ -22,7 +22,9 @@ CREATE TABLE hall (
     staff integer,
     capacity integer,
     path character varying(5000),
-    parent integer
+    parent integer,
+    upsserver integer DEFAULT 0 NOT NULL,
+    type character varying(100) DEFAULT ''::character varying NOT NULL
 );
 CREATE TABLE line (
     id integer ,
