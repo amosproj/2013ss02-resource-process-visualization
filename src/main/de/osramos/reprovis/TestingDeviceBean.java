@@ -29,25 +29,8 @@ import de.osramos.reprovis.exception.DatabaseException;
 
 public class TestingDeviceBean extends HierarchieElementBean {
 
-	private String serialnumber;
-	private String category;
-	private String sector;
-	
-	private Date troublePeriod;
-	private boolean testFailure;
-	
-
-
 	public TestingDeviceBean(int id) {
 		super(id);
-		try {
-
-			serialnumber = TestingDeviceDAO.getSerialnumber(id);
-			category = TestingDeviceDAO.getCategory(id);
-			sector = TestingDeviceDAO.getSector(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
@@ -71,18 +54,28 @@ public class TestingDeviceBean extends HierarchieElementBean {
 	}
 
 	public String getSector() {
-		return sector;
+		try{
+			return TestingDeviceDAO.getSector(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
 	}
 
 	public String getCategory() {
-		return category;
+		try {
+			return TestingDeviceDAO.getCategory(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
 	}
 
 	public String getSerialnumber() {
-		return serialnumber;
+		try {
+			return TestingDeviceDAO.getSerialnumber(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
 	}
-
-
 	
 	public boolean isTestFailure() {
 		try {
@@ -102,11 +95,5 @@ public class TestingDeviceBean extends HierarchieElementBean {
 		}
 		return null;
 	}
-
-
-
-
-
-
 
 }

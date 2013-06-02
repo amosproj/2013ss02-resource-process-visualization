@@ -70,6 +70,9 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
 		<tr><td>Category</td><td id="testingDeviceCategory"></td></tr>
 		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
+		<tr><td>Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
+		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr>
+		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -126,7 +129,10 @@ $(document).ready(function() {
 	    $("#testingDeviceSerialnumber").html(data.serialnumber);
 	    $("#testingDeviceCategory").html(data.category);
 	    $("#testingDeviceStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#testingDevicesCountComponents").html(data.componentCount);	
+	    $("#testingDevicesCountComponents").html(data.componentCount);
+	    $("#testingDevicesTroublePeriod").html(data.troubleperiod);	
+	    $("#testingDevicesFailure").html("" + data.testfailure);	
+	    $("#testingDevicesSector").html(data.sector);	
 	});
 });
 </script>

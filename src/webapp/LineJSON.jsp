@@ -45,6 +45,8 @@ int factoryID = factoryParent.getId();
 {
 	"name": "<%= line.getName() %>",
 	"status": "<%= line.getStatus() %>",
+	"capacity": <%= line.getProductionCapacity() %>,
+	"series": "<%= line.getProductionSeries() %>",
 	"locations": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean elem: line.getChilds()){ %>

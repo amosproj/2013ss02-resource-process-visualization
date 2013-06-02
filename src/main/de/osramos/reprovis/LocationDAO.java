@@ -62,8 +62,6 @@ public class LocationDAO extends HierarchieElementDAO {
 		
 		return l;
 	}
-
-
 	
 	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
 		
