@@ -17,7 +17,7 @@ public slots:
     static void update(Component* component);
     static void del(Component* component);
 
-    static void create();
+    static bool create();
     static void del();
 private:
     ComponentDAO();

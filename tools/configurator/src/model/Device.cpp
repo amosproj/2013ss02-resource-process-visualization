@@ -1,7 +1,7 @@
 #include "Device.hpp"
 
 Device::Device(QObject *parent) :
-    QObject(parent){
+    QObject(parent), sector(""), serial(""){
 }
 
 Device::~Device(){

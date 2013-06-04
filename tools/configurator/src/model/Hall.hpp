@@ -23,6 +23,11 @@ class Hall: public QObject {
     Q_PROPERTY(QString path
                READ getPath WRITE setPath
                NOTIFY pathChanged)
+    Q_PROPERTY(QString type
+               READ getType WRITE setType
+               NOTIFY typeChanged)
+
+
 public:
     Hall(QObject* parent = nullptr);
     Hall(const Hall& other);
@@ -36,6 +41,7 @@ public:
 	int capacity;
 	QString path;
     int factory;
+    QString type;
 
     int getId() const;
     void setId(int value);
@@ -47,12 +53,16 @@ public:
     void setCapacity(int value);
     QString getPath() const;
     void setPath(const QString &value);
+    QString getType() const;
+    void setType(QString arg);
+
 signals:
     void staffChanged(int arg);
     void capacityChanged(int arg);
     void nameChanged(QString arg);
     void idChanged(int arg);
     void pathChanged(QString arg);
+    void typeChanged(QString arg);
 };
 
 #endif /* HALL_HPP */

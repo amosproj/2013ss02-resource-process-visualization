@@ -98,6 +98,7 @@ bool Database::loadTestData(){
             hall.factory = factory.id;
 			hall.name = jHall.value("name").toString();
 			hall.path = jHall.value("path").toString();
+            hall.type = jHall.value("type").toString();
 			hall.staff = 0;
 			hall.capacity = 0;
             HallDAO::insert(&hall);

@@ -1,7 +1,7 @@
 #include "Hall.hpp"
 
 Hall::Hall(QObject* parent)
-    : id(-1), staff(0), capacity(0), factory(0){
+    : id(-1), staff(0), capacity(0), factory(0), type(""){
 
 }
 
@@ -63,4 +63,15 @@ int Hall::getId() const{
 
 void Hall::setId(int value){
     id = value;
+}
+
+QString Hall::getType() const{
+    return type;
+}
+
+void Hall::setType(QString arg){
+    if (type != arg) {
+        type = arg;
+        emit typeChanged(arg);
+    }
 }
