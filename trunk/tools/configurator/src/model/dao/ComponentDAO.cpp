@@ -91,20 +91,27 @@ void ComponentDAO::del(Component *component){
     getInstance().elementDeleted();
 }
 
-void ComponentDAO::create(){
+bool ComponentDAO::create(){
     QSqlQuery query(
         "CREATE TABLE IF NOT EXISTS component "
         "("
             "id INT DEFAULT nextval('ids') PRIMARY KEY, "
-            "serialnumber VARCHAR(60), "
-            "category VARCHAR(50), "
-            "troubletime TIMESTAMP, "
-            "sector VARCHAR(50), "
-            "troublesite VARCHAR(50), "
-            "responsible VARCHAR(50), "
+            "serialnumber VARCHAR(60) NOT NULL DEFAULT '0', "
+            "category VARCHAR(50) NOT NULL DEFAULT '', "
+            "troubleoccurrencetime TIMESTAMP NOT NULL DEFAULT NOW(), "
+            "sector VARCHAR(50) NOT NULL DEFAULT '', "
+            "troubleoccurrencesite VARCHAR(50) NOT NULL DEFAULT '', "
+            "shiftresponsibility VARCHAR(50) NOT NULL DEFAULT '', "
+            "status VARCHAR(20) DEFAULT 'yellow', "
             "parent INTEGER REFERENCES device(id) ON DELETE CASCADE"
         ")");
-    getInstance().tableCreated();
+    if(QSqlError::NoError == query.lastError().type()){
+        getInstance().tableCreated();
+        return true;
+    }else {
+        Log::warning(query.lastError().text());
+        return false;
+    }
 }
 
 void ComponentDAO::del(){

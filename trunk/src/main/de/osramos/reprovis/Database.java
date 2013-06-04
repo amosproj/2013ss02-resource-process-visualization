@@ -77,7 +77,7 @@ public class Database {
 
 	}
 
-	public static DataSource getDB() throws DatabaseException {
+	synchronized public static DataSource getDB() throws DatabaseException {
 
 	
 		

@@ -53,8 +53,11 @@ bool DeviceDAO::create(){
     QSqlQuery query("CREATE TABLE IF NOT EXISTS device"
         "("
             "id INT DEFAULT nextval('ids') PRIMARY KEY, "
-            "serial VARCHAR(60), "
-            "sector VARCHAR(50), "
+            "category VARCHAR(50) NOT NULL DEFAULT '', "
+            "troubleperiod TIMESTAMP NOT NULL DEFAULT NOW(), "
+            "testfailure BOOLEAN NOT NULL DEFAULT false, "
+            "serialnumber VARCHAR(60) NOT NULL DEFAULT '', "
+            "sector VARCHAR(50) NOT NULL DEFAULT '', "
             "parent INTEGER REFERENCES location(id) ON DELETE CASCADE"
         ")");
     if(QSqlError::NoError == query.lastError().type()){
@@ -66,7 +69,7 @@ bool DeviceDAO::create(){
 void DeviceDAO::insert(Device* device){
     QSqlQuery query;
     query.prepare("INSERT INTO device "
-          "(id, serial, sector, parent) "
+          "(id, serialnumber, sector, parent) "
           "VALUES "
           "(DEFAULT, :serial, :sector, :parent) "
           "RETURNING id");
@@ -87,7 +90,7 @@ void DeviceDAO::update(Device *device){
     QSqlQuery query;
     query.prepare("UPDATE device "
       "SET "
-        "serial = :serial, sector = :sector "
+        "serialnumber = :serial, sector = :sector "
       "WHERE id = :id");
     query.bindValue(":serial", device->getSerial());
     query.bindValue(":sector", device->getSector());

@@ -84,10 +84,12 @@ bool HallDAO::create(){
     query.exec("CREATE TABLE IF NOT EXISTS hall"
                "("
                "id INT DEFAULT nextval('ids') PRIMARY KEY, "
-               "name VARCHAR(50), "
-               "staff INTEGER, "
-               "capacity INTEGER, "
-               "path TEXT, "
+               "name VARCHAR(50) NOT NULL, "
+               "staff INTEGER NOT NULL DEFAULT 0, "
+               "capacity INTEGER NOT NULL DEFAULT 0, "
+               "path TEXT NOT NULL DEFAULT '', "
+               "upsServer INTEGER NOT NULL DEFAULT 0, "
+               "type VARCHAR(100) NOT NULL DEFAULT '', "
                "parent INTEGER REFERENCES factory(id) ON DELETE CASCADE"
                ")");
     if(QSqlError::NoError == query.lastError().type()){
@@ -99,15 +101,16 @@ bool HallDAO::create(){
 void HallDAO::insert(Hall* hall){
     QSqlQuery query;
     query.prepare("INSERT INTO hall "
-                  "(id, name, staff, capacity, path, parent) "
+                  "(id, name, staff, capacity, path, parent, type) "
                   "VALUES "
-                  "(DEFAULT, :name, :staff, :capacity, :path, :parent)"
+                  "(DEFAULT, :name, :staff, :capacity, :path, :parent, :type)"
                   "RETURNING id");
     query.bindValue(":name", hall->name);
     query.bindValue(":staff", hall->staff);
     query.bindValue(":capacity", hall->capacity);
     query.bindValue(":path", hall->path);
     query.bindValue(":parent", hall->factory);
+    query.bindValue(":type", hall->getType());
     query.exec();
     if(query.next()){
         int id = query.value(0).toInt();

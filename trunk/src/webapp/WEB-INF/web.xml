@@ -54,6 +54,12 @@
 		<servlet-name>hallServlet</servlet-name>
 		<servlet-class>de.osramos.reprovis.servlets.HallServlet</servlet-class>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>testStatusProviderServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.status.TestStatusProvider</servlet-class>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>hallServlet</servlet-name>

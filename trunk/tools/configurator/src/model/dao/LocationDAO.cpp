@@ -54,7 +54,9 @@ bool LocationDAO::create(){
         "("
         "id INT DEFAULT nextval('ids') PRIMARY KEY, "
         "name VARCHAR(50), "
-        "parent INTEGER REFERENCES line(id) ON DELETE CASCADE"
+        "parent INTEGER REFERENCES line(id) ON DELETE CASCADE, "
+        "personincharge VARCHAR(100), "
+        "description VARCHAR(100)"
         ")");
     if(QSqlError::NoError == query.lastError().type()){
         getInstance().tableCreated();
