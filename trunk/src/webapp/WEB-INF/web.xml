@@ -32,6 +32,7 @@
 	<servlet>
 		<servlet-name>configServlet</servlet-name>
 		<servlet-class>de.osramos.reprovis.servlets.ConfigServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>

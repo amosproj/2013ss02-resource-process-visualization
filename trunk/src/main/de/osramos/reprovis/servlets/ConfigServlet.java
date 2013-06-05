@@ -42,6 +42,7 @@ public class ConfigServlet extends HttpServlet  {
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		GlobalBean.getGlobal();
 	}
 
 	@Override

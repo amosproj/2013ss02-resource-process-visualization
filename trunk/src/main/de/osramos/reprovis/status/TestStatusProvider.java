@@ -34,6 +34,8 @@ public class TestStatusProvider extends HttpServlet {
 		private boolean printElapsedTime = false; 
 		
 		RandomStatusGenerator(DataSource dataSource){
+			this.setDaemon(true);
+			this.setPriority(getPriority() - 1);
 			factories = new HashMap<Integer, DesiredStatus>();
 			this.dataSource = dataSource;
 			readFactories();
@@ -76,8 +78,9 @@ public class TestStatusProvider extends HttpServlet {
 		
 		@Override
 		public void run() {
-			while(!isInterrupted()){
-				try {
+			try {
+				while(!isInterrupted()){
+				
 					long start = System.currentTimeMillis();
 					readFactories();
 					Connection conn = dataSource.getConnection();
@@ -93,11 +96,22 @@ public class TestStatusProvider extends HttpServlet {
 							"WHERE factory.id = ?";
 					PreparedStatement componentStmt = conn.prepareStatement(componentQuery);
 					for(Map.Entry<Integer, DesiredStatus> factory: factorySet){
-						if(isInterrupted())throw new InterruptedException();
+						if(isInterrupted()){
+							componentUpdateStmt.close();
+							componentStmt.close();
+							conn.close();
+							throw new InterruptedException();
+						}
 						componentStmt.setInt(1, factory.getKey());
 						ResultSet components = componentStmt.executeQuery();
 						while(components.next()){
-							if(isInterrupted())throw new InterruptedException();
+							if(isInterrupted()){
+								components.close();
+								componentUpdateStmt.close();
+								componentStmt.close();
+								conn.close();
+								throw new InterruptedException();
+							}
 							componentUpdateStmt.setInt(2, components.getInt(1));
 							switch(factory.getValue()){
 							case RANDOM:
@@ -128,15 +142,14 @@ public class TestStatusProvider extends HttpServlet {
 						System.out.println("Elapsed time updating status information: " + (timeElapsedUpdating / 1000) + "s");
 					}
 					
-					
 					Thread.sleep(5*1000);
-				} catch (InterruptedException e){
-					interrupt();
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-					interrupt();
 				}
-			}	
+			} catch (InterruptedException e){
+				interrupt();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				interrupt();
+			}
 		}
 	}
 	
@@ -145,7 +158,7 @@ public class TestStatusProvider extends HttpServlet {
 		super.init(config);
 		try {
 			generator = new Thread(new RandomStatusGenerator(Database.getDB()));
-			// generator.start();
+			generator.start();
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 		}
