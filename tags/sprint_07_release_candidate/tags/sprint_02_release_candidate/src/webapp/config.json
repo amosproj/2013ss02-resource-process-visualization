@@ -1,0 +1,81 @@
+[{
+	"name": "German1",
+	"staff": 15000,
+	"brands": ["Audi", "Volkswagen"],
+	"vehicles": ["A4", "A5", "A6", "Golf"],
+	"halls": [{
+		"name": "B5",
+		"type": "Assembly+Finish",
+		"vehicles": ["A4", "A5", "A6", "Golf"],
+		"lines": [{
+			"name": "B5 Assembly",
+			"locations": [{
+				"name": "VP1",
+				"components": [
+					{"type": "Flashing station"},
+					{"type": "Flashing station"}]
+			},{
+				"name": "VP2",
+				"components": [
+					{"type": "mobile station"},
+					{"type": "mobile station"},
+					{"type": "mobile station"},
+					{"type": "mobile station"},
+					{"type": "mobile station"},
+					{"type": "mobile station"},
+					{"type": "handheld"},
+					{"type": "handheld"},
+					{"type": "handheld"},
+					{"type": "handheld"},
+					{"type": "handheld"},
+					{"type": "handheld"},
+					{"type": "printer"},
+					{"type": "printer"
+				}]
+			},{
+				"name": "VP3",
+				"components":[]
+			},{
+				"name": "IBN",
+				"components":[]
+			},{
+				"name": "Rework",
+				"components":[]
+			}]
+		},{
+			"name": "B5 Finish",
+			"locations": [{
+				"name": "BZD",
+				"components": []
+			}]
+		}]
+	},{
+		"name": "B8",
+		"type": "Assembly",
+		"vehicles": ["A4", "A5", "Golf"],
+		"lines": [{
+			"name": "B8 Assembly",
+			"locations": [{
+				"name": "VP1",
+				"components": []
+			},{
+				"name": "VP3",
+				"components": []
+			},{
+				"name": "IBN",
+				"components": []
+			}]
+		}]
+	},{
+		"name": "V1",
+		"type": "PreSeries",
+		"vehicles": ["A4", "A5", "A6", "Golf"],
+		"lines": [{
+			"name": "V1 PreSeries",
+			"locations": [{
+				"name": "PreSeries",
+				"components": []
+			}]
+		}]
+	}]
+}]
