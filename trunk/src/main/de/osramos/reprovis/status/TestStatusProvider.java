@@ -145,7 +145,7 @@ public class TestStatusProvider extends HttpServlet {
 		super.init(config);
 		try {
 			generator = new Thread(new RandomStatusGenerator(Database.getDB()));
-			generator.start();
+			// generator.start();
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 		}
