@@ -16,7 +16,6 @@
  You should have received a copy of the GNU Affero General Public
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
-<%@page import="de.osramos.reprovis.FactoryBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
@@ -46,14 +45,11 @@ int id = Integer.parseInt(request.getParameter("hid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="hallDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="hallStatus"></td></tr>
 		<tr><td>Name</td><td id="hallName"></td></tr>
-		<tr><td>Type</td><td id="hallType"></td></tr>
 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
 		<tr><td>Capacity</td><td id="hallCapacity"></td></tr>
-		<tr><td>UPS Server</td><td id="hallUpsServer"></td></tr>
-		
 	</table>
 </div>
 </div><br class="clear" />
@@ -61,9 +57,6 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Hall.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
 	    // Draw the plan and attach click handler
 	    for(var i = 0; i < data.lines.length; ++i) {
 	    	var svgPath = $("<path></path>")
@@ -81,12 +74,9 @@ $(document).ready(function() {
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
 	    $("#dynamicHeading").html("Hall: "+data.name+" (ID: <%= id %>)");
-	    $("#hallStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#hallName").html(data.name);
 	    $("#hallStaff").html(data.staff);
 	    $("#hallCapacity").html(data.capacity);
-	    $("#hallType").html(data.type);
-	    $("#hallUpsServer").html(data.upsServer);
 	});
 });
 </script>

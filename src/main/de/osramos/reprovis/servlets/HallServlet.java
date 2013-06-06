@@ -44,6 +44,7 @@ public class HallServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);			
 		} else {
 			if(req.getParameter("getData") != null) {
+				//TestData global = (TestData)getServletContext().getAttribute("testdata");
 				// Call the data handler
 				req.setAttribute("hall", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/HallJSON.jsp").forward(req, resp);

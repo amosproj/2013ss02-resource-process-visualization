@@ -32,25 +32,20 @@ import javax.naming.NamingException;
 
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.MasterData.TrafficLight;
-import de.osramos.reprovis.exception.DatabaseException;
 
 public class FactoryBean extends HierarchieElementBean {
 
 	public FactoryBean(int id) {
 		super(id);
-		try {
-			name = FactoryDAO.getName(id);
-			country = FactoryDAO.getCountry(id);
-			city = FactoryDAO.getCity(id);
-			gpsLatitude = FactoryDAO.getGpsLatitude(id);
-			gpsLongitude = FactoryDAO.getGpsLongitude(id);
-			company = FactoryDAO.getCompany(id);
-			carModels = FactoryDAO.getCarModels(id);
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
-		} catch (DatabaseException e) {
-
-		}
+		name = FactoryDAO.getName(id);
+		country = FactoryDAO.getCountry(id);
+		/* city = FactoryDAO.getCity(id); */
+		gpsLatitude = FactoryDAO.getGpsLatitude(id);
+		gpsLongitude = FactoryDAO.getGpsLongitude(id);
+		company = FactoryDAO.getCompany(id);
+		carModels = FactoryDAO.getCarModels(id);
+		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+		numOfVehicles = FactoryDAO.getNumOfVehicles(id);
 	}
 
 	/*
@@ -62,13 +57,14 @@ public class FactoryBean extends HierarchieElementBean {
 	 * return (FactoryBean) GlobalBean.getElementById(id); }
 	 */
 
-	// private int id;
+	//private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
 	private double gpsLongitude;
-	private String city;
+	/* private String city; */
 	private Company company;
+	private GlobalBean parent;
 	private String[] carModels;
 	private int sizeOfStaff;
 	private int numOfVehicles;
@@ -82,38 +78,20 @@ public class FactoryBean extends HierarchieElementBean {
 	}
 
 	public int getSizeOfStaff() {
-		try {
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return sizeOfStaff;
 	}
 
 	public int getNumOfVehicles() {
-		try {
-			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return numOfVehicles;
 	}
 
 	public String[] getCarModels() {
-		try {
-			carModels = FactoryDAO.getCarModels(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return carModels;
 	}
 
-	public String getCity() {
-		return city;
-	}
+	/*
+	 * public String getCity(){ return city; }
+	 */
 
 	public double getGpsLatitude() {
 		return gpsLatitude;
@@ -131,9 +109,9 @@ public class FactoryBean extends HierarchieElementBean {
 	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
 	 */
 
-	/*
-	 * public int getId() { return id; }
-	 */
+	/*public int getId() {
+		return id;
+	}*/
 
 	/*
 	 * public FactoryBean(int id){

@@ -17,41 +17,18 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 
+<%@page import="de.osramos.reprovis.TestingDeviceBean"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.FactoryBean"%>
-<%@ page import="de.osramos.reprovis.HallBean"%>
-<%@ page import="de.osramos.reprovis.LineBean" %>
 <%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.TestingDeviceBean"%>
-<%@ page import="de.osramos.reprovis.ElectricalComponentBean"%>
+<%@ page import="de.osramos.reprovis.LineBean" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
-<%
-
-LocationBean loc = (LocationBean) request.getAttribute("location");
-
-//@TODO: Dynamically create the hierarchy
-//For now, the hierarchy here is inserted manually
-//This crashes as soon as the hierarchy structure will be altered
-//Therefore it must be generated automatically in future.
-//Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean lineParent = (LineBean)loc.getParent();
-int lineID = lineParent.getId();
-
-HierarchieElementBean hallParent = (HallBean)lineParent.getParent();
-int hallID = hallParent.getId();
-
-HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
-int factoryID = factoryParent.getId(); 
-
-%>
+<% LocationBean loc = (LocationBean) request.getAttribute("location"); %>
 {
-	"name": "<%= loc.getName() %>",
+	"name": "Location <%= loc.getId() %>",
 	"status": "<%= loc.getStatus() %>",
-	"description": "<%= loc.getDescription() %>",
-	"personincharge": "<%= loc.getPersonInCharge() %>",
-	"testDeviceCount": "<%= loc.getChilds().size() %>",
+	"testDeviceCount": "99",
 	"testDevices": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean child: loc.getChilds()){ %>
@@ -63,22 +40,6 @@ int factoryID = factoryParent.getId();
 				"status": "<%= device.getStatus() %>"
 			}
 		<% } %>
-	],
-	"parent": {
-		"id": "<%= loc.getId() %>",
-		"type": "location",
-		"parent": {
-			"id": "<%= lineID %>",
-			"type": "line",
-			"parent": {
-				"id": "<%= hallID %>",
-				"type": "hall",
-				"parent": {
-					"id": "<%= factoryID %>",
-					"type": "factory",
-					"parent": "null"
-				}
-			}
-		}	
-	}
+	]
+			
 }

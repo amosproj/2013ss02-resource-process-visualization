@@ -24,12 +24,15 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class LineBean extends HierarchieElementBean {
 
 	String name;
 	private String path;
+	private String productionSeries;
+	private int productionCapacity;
+
 	public LineBean(int id) {
 		super(id);
 
@@ -39,14 +42,10 @@ public class LineBean extends HierarchieElementBean {
 		 * (NamingException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
 		 */
-		try{
-			name = LineDAO.getName(id);
-			path = LineDAO.getPath(id);
-			LineDAO.getproductionSeries(id);
-			LineDAO.getproductionCapacity(id);
-		} catch(DatabaseException e){
-			e.printStackTrace();
-		}
+		name = LineDAO.getName(id);
+		path = LineDAO.getPath(id);
+		productionSeries = LineDAO.getproductionSeries(id);
+		productionCapacity = LineDAO.getproductionCapacity(id);
 
 	}
 
@@ -62,22 +61,18 @@ public class LineBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
 	}
 
-/*	@Override
+	@Override
 	protected TrafficLight getDistinctStatus() {
 		return LineDAO.getStatus(id);
 
-	}*/
+	}
 
 	public String getName() {
-		try {
-			return LineDAO.getName(id);
-		} catch (DatabaseException e){
-			return "Error";
-		}
+		return name;
 	}
 
 	public String getPath() {
@@ -85,19 +80,11 @@ public class LineBean extends HierarchieElementBean {
 	}
 
 	public String getProductionSeries() {
-		try {
-			return LineDAO.getproductionSeries(id);
-		} catch(DatabaseException e){
-			return "Error";
-		}
+		return productionSeries;
 	}
 
 	public int getProductionCapacity() {
-		try {
-			return LineDAO.getproductionCapacity(id);
-		} catch (DatabaseException e){
-			return -1;
-		}
+		return productionCapacity;
 	}
 
 }
