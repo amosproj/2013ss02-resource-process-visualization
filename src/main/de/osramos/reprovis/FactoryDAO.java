@@ -21,329 +21,113 @@
 
 package de.osramos.reprovis;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+
+import java.sql.Timestamp;
+
+import java.util.Date;
 import java.util.List;
-
-import javax.sql.DataSource;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
 
-public class FactoryDAO {
+public class FactoryDAO extends HierarchieElementDAO{
+	
+	
 
+	// get all Elements
+	public static List<Integer> getFactoryIds(int id) throws Exception {
+		List<Integer> l = getChildIds(id, "factory");
+		
+		return l;
+	}
+	
+	
+	
+	
+	// Get Attributes by id
 	public static String getCity(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "City");
 
-		String s = null;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement.executeQuery("SELECT city FROM factory WHERE id = "
-					+ id);
-
-			res.next();
-			s = res.getString(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
-
-		return s == null ? "" : s.trim();
-
-	}
-
-	public static String getCountry(int id) throws DatabaseException {
-
-		String s = null;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT country FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			s = res.getString(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
-
-		return s == null ? "" : s.trim();
-	}
-
-	public static String getName(int id) throws DatabaseException {
-
-		String s = null;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement.executeQuery("SELECT name FROM factory WHERE id = "
-					+ id);
-
-			res.next();
-			s = res.getString(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
-
-		return s == null ? "" : s.trim();
-	}
-
-	public static Company getCompany(int id) throws DatabaseException {
-		String s = null;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT company FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			s = res.getString(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
-		return MasterData.stringToCompany(s.trim());
+		return s;
 	}
 
 	public static String[] getCarModels(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "CarModels");
 
-		String s = null;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT carmodels FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			s = res.getString(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
 		s = s == null ? "" : s;
 		return s.split(", ");
 
 	}
+	
+
+	public static String getCountry(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "Country");
+
+		return s;
+	}
+
+	public static String getName(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "Name");
+
+		return s;
+	}
+
+	public static Company getCompany(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "Company");
+
+		return MasterData.stringToCompany(s);
+	}
+
+
 
 	public static int getSizeOfStaff(int id) throws DatabaseException {
-
-		int i = -1;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT sizeofstaff FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			i = res.getInt(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
+		
+		int i = (Integer) getAttribute(id, "SizeOfStaff");
 
 		return i;
+	}
+	
+	public static Date getSizeOfStaffDate(int id) throws DatabaseException {
+		
+		Timestamp t = (Timestamp) getAttribute(id, "SizeOfStaffDate");
+
+		return new Date (t.getTime());
 	}
 
 	public static int getNumOfVehicles(int id) throws DatabaseException {
-
-		int i = -1;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT numofvehicles FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			i = res.getInt(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
+		
+		int i = (Integer) getAttribute(id, "NumOfVehicles");
 
 		return i;
 	}
-
+	
+	
 	public static double getGpsLatitude(int id) throws DatabaseException {
-
-		double d = -1.d;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT gpslatitude FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			d = res.getDouble(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
+		
+		double d = (Double) getAttribute(id, "GpsLatitude");
 
 		return d;
 	}
+
 
 	public static double getGpsLongitude(int id) throws DatabaseException {
-
-		double d = -1.d;
-
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery("SELECT gpslongitude FROM factory WHERE id = "
-							+ id);
-
-			res.next();
-			d = res.getDouble(1);
-			if (res.next()) {
-
-				throw new DatabaseException("bad data");
-			}
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
+		
+		double d = (Double) getAttribute(id, "GpsLongitude");
 
 		return d;
 	}
 
 
-	public static List<Integer> getFactoryIds(int globalId) throws Exception {
 
-		List<Integer> l = new ArrayList<Integer>();
 
-		try {
-			ResultSet res = null;
-
-			DataSource db = Database.getDB();
-
-			Connection connection = db.getConnection();
-			Statement statement = connection.createStatement();
-			res = statement.executeQuery("SELECT id FROM factory");
-
-			while (res.next()) {
-				l.add(res.getInt(1));
-			}
+	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
 		
-
-			statement.close();
-			connection.close();
-		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
-		}
-		return l;
+		return HierarchieElementDAO.getAttribute(id, attributeName, "factory");
 	}
-
+	
 }

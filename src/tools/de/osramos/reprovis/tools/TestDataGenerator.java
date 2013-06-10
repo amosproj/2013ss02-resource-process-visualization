@@ -21,12 +21,17 @@
 
 package de.osramos.reprovis.tools;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import de.osramos.reprovis.MasterData;
@@ -54,8 +59,6 @@ public class TestDataGenerator {
 	private static int numOfComponents = 2;
 
 	private static String path = "./src/resources/config/init.sql";
-	
-	
 
 	public static void main(String[] args) {
 
@@ -107,8 +110,22 @@ public class TestDataGenerator {
 			initTables();
 			initFactories();
 
+			FileReader fr = new FileReader(new File(".",
+					"./src/resources/config/oldData.sql").getCanonicalPath());
+			BufferedReader br = new BufferedReader(fr);
+
+			while (true) {
+				String line = br.readLine();
+				if (line == null) {
+					break;
+				}
+				out.write(line + "\n");
+			}
+
+			br.close();
+
 			out.close();
-			
+
 			System.out.println("finsihed");
 
 		} catch (Exception e) {
@@ -126,44 +143,36 @@ public class TestDataGenerator {
 				+ "drop table if exists hall;\n"
 				+ "drop table if exists factory;\n" +
 
-				"create table factory(\n"
-				+ "	id int ,\n"
-				+ "	name char(25), \n" 
-				+ "	company char(25), \n"
-				+ "	city char(25), \n" 
-				+ "	country char(25), 	\n"
+				"create table factory(\n" + "	id int ,\n"
+				+ "	name char varying(50), \n"
+				+ "	company char varying(50), \n"
+				+ "	city char varying(50), \n"
+				+ "	country char varying(50), 	\n"
 				+ "	gpslatitude double precision , \n"
 				+ "	gpslongitude double precision, \n"
-				+ "	carmodels char(512), \n" 
-				+ "	sizeofstaff int, \n"
-				+ "	numofvehicles int \n" 
-				+ ");\n" +
+				+ "	carmodels char varying(512), \n" + "	sizeofstaff int, \n"
+				+ "	sizeofstaffdate timestamp,\n" + "	numofvehicles int, \n"
+				+ "	upsservers int, \n" + "	upsprovider char varying(128), \n"
+				+ " parent integer\n" + ");\n" +
 
-				"CREATE TABLE hall (\n"
-				+ "    id integer ,\n"
-				+ "    name character varying(50),\n" 
-				+ "    staff integer,\n"
+				"CREATE TABLE hall (\n" + "    id integer ,\n"
+				+ "    name character varying(50),\n" + "    staff integer,\n"
 				+ "    capacity integer,\n"
 				+ "    path character varying(5000),\n"
-				+ "    parent integer\n"
-				+ ");\n" +
+				+ "    parent integer\n" + ");\n" +
 
-				"CREATE TABLE line (\n" 
-				+ "    id integer ,\n"
+				"CREATE TABLE line (\n" + "    id integer ,\n"
 				+ "    name character varying(50),\n"
 				+ "    series character varying(50),\n"
 				+ "    capacity integer,\n"
-				+ "    path character varying(250),\n"
-				+ "    parent integer\n"
+				+ "    path character varying(5000),\n" + "    parent integer\n"
 				+ ");\n" +
 
-				"CREATE TABLE location (\n" 
-				+ "    id integer ,\n"
-				+ "    name character varying(50),\n" 
-				+ "    description character varying(100),\n" 
-				+ "    personincharge character varying(100),\n" 
-				+ "    parent integer\n"
-				+ ");\n" +
+				"CREATE TABLE location (\n" + "    id integer ,\n"
+				+ "    name character varying(50),\n"
+				+ "    description character varying(100),\n"
+				+ "    personincharge character varying(100),\n"
+				+ "    parent integer\n" + ");\n" +
 
 				"CREATE TABLE device (\n" + "	    id integer ,\n"
 				+ "	    category character varying(50),\n"
@@ -191,42 +200,73 @@ public class TestDataGenerator {
 
 		factoryIds = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+		new Timestamp(new GregorianCalendar(2012, 11, 31).getTime().getTime())
+				.toString();
+
 		String s =
 
 		"insert into factory values (1, \'Ingolstadt\', \'Audi\' ,\'Ingolstadt\', \'Germany\', 48.762201, 11.425374, \n"
 				+ "		\'Audi A3, Audi A3 Sportback, Audi S3, Audi S3 Sportback, Audi A4, Audi A4 Avant, Audi S4, Audi S4 Avant, Audi A4 allroad quattro, Audi RS4 Avant, Audi A5 Sportback, Audi A5 Coupe, Audi S5 Sportback, Audi S5 Coupe, Audi RS 5 Coupe, Audi Q5, Audi Q5 hybrid quattro, Audi SQ5 TDI, Karosseriebau/Lackiererei des Audi TT Coupe, Audi TT Roadster, Audi TTS Coupe, Audi TTS Roadster, Audi TT RS Coupe, Audi TT RS Roadster, Audi A3 Cabriolet\',\n"
-				+ "		35386, 551889\n"
+				+ "		35386, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 551889, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (2, \'Neckarsulm\', \'Audi\' , \'Neckarsulm\', \'Germany\', 49.194213, 9.221771,\n"
 				+ "		\'Audi A4, Audi A5 Cabriolet, Audi S5 Cabriolet, Audi RS 5 Cabriolet, Audi A6, Audi A6 hybrid, Audi A6 Avant, Audi S6, Audi A6 allroad quattro, Audi RS 6 Avant, Audi A7, Audi S7, Audi RS7, Audi A8, Audi A8 L, Audi A8 hybrid, Audi S8, Audi R8, Audi R8 Spyder, Audi R8 GT, Audi R8 GT Spyder\',\n"
-				+ "			14764, 262965\n"
+				+ "			14764,  \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 262965, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (3, \'Gyor\', \'Audi\' ,\'Gyor\', \'Hungary\', 47.68746, 17.65040,\n"
 				+ "		\'Audi TT Coupe, Audi TT Roadster,Audi A3 Cabriolet\',\n"
-				+ "		8663, 33553\n"
+				+ "		8663, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 33553, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (4, \'Changchun\', \'Volkswagen\' , \'Changchun\', \'China\', 43.81708, 125.32354,\n"
 				+ "		\'Audi A6L, Audi A4L, Audi Q5\',\n"
-				+ "			9700, 333467\n"
+				+ "			9700, \'"
+				+ new Timestamp(new GregorianCalendar(2011, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 333467, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (5, \'Bruessel\', \'Audi\' ,\'Bruessel\', \'Belgium\', 50.85034, 4.35171,\n"
 				+ "		\'Audi A1, Audi A1 Sportback, Audi A1 quattro\',\n"
-				+ "		2503, 123111\n"
+				+ "		2503, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 123111, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (6, \'Aurangabad\', \'Skoda\' , \'Aurangabad\', \'India\', 19.87617, 75.34331,\n"
 				+ "		\'Audi A4 Limousine, Audi A6 Limousine,Audi Q5, Audi Q7\',\n"
-				+ "			140, 6786\n"
+				+ "			140, \'"
+				+ new Timestamp(new GregorianCalendar(2011, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 6786, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (7, \'Bratislava\', \'Volkswagen\' , \'Bratislava\', \'Slovakia\', 48.14589, 17.10714,\n"
 				+ "		\'Audi Q7\',\n"
-				+ "			2200, 54562\n"
+				+ "			2200, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 54562, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (8, \'Martorell\', \'Seat\' ,\'Martorell\', \'Spain\', 41.48040, 1.91481,\n"
 				+ "		\'Audi Q3\',\n"
-				+ "		1500, 106829\n"
+				+ "		1500, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 106829, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (9, \'Jakarta\', \'Audi\' , \'Jakarta\', \'Indonesia\', -6.21154, 106.84517,\n"
-				+ "		\'Audi A4, Audi A6\',\n" + "			0, 443\n" + "	);\n";
+				+ "		\'Audi A4, Audi A6\',\n"
+				+ "			0, \'"
+				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
+						.getTime()).toString()
+				+ "\', 443, 3, \'DSA GmbH\', 0\n" + "	);\n";
 
 		nextId = 2000;
 
@@ -352,11 +392,13 @@ public class TestDataGenerator {
 	}
 
 	private static void initLocations(int lineId) throws IOException {
-		
-		String[] description = {"motor", "ABS", "multimedia", "security", "transmission"};
-		
-		String[] firstname = {"Hans", "Peter", "Robert", "Sarah", "Franziska"};
-		String[] lastname = {"Mueller", "Schmitt", "Meier", "Schulze", "Merkel"};
+
+		String[] description = { "motor", "ABS", "multimedia", "security",
+				"transmission" };
+
+		String[] firstname = { "Hans", "Peter", "Robert", "Sarah", "Franziska" };
+		String[] lastname = { "Mueller", "Schmitt", "Meier", "Schulze",
+				"Merkel" };
 
 		for (int i = 0; i < numOfLocations; i++) {
 			int id = id();
@@ -378,7 +420,6 @@ public class TestDataGenerator {
 					+ numbers.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
 
-			
 			// decription
 			int c = (int) (Math.random() * description.length);
 			st.append(", \'");
@@ -389,9 +430,9 @@ public class TestDataGenerator {
 			int f = (int) (Math.random() * firstname.length);
 			int l = (int) (Math.random() * lastname.length);
 			st.append(", \'");
-			st.append(firstname[f] + " " +lastname[l]);
+			st.append(firstname[f] + " " + lastname[l]);
 			st.append("\'");
-			
+
 			// Lineid
 			st.append(", ");
 			st.append(lineId);
@@ -405,8 +446,9 @@ public class TestDataGenerator {
 	}
 
 	private static void initDevices(int locationId) throws IOException {
-		
-		String[] categories = {"handheld", "mobile station", "flashing station", "printer"};
+
+		String[] categories = { "handheld", "mobile station",
+				"flashing station", "printer" };
 
 		for (int i = 0; i < numOfDevices; i++) {
 
@@ -473,7 +515,6 @@ public class TestDataGenerator {
 		String[] names = { "Dr. Dr. Sheldon Lee Cooper",
 				"Dr. Leonard Leakey Hofstadter", "Howard Joel Wolowitz",
 				"Dr. Rajesh Ramayan Koothrappali" };
-		
 
 		for (int i = 0; i < numOfComponents; i++) {
 			int id = id();
@@ -517,10 +558,11 @@ public class TestDataGenerator {
 
 			//
 			st.append(", \'");
-			st.append("" + chars.charAt(r.nextInt(chars.length())) + numbers.charAt(r.nextInt(numbers.length())));
+			st.append("" + chars.charAt(r.nextInt(chars.length()))
+					+ numbers.charAt(r.nextInt(numbers.length())));
 			st.append("\'");
-			
-			//status
+
+			// status
 			String status = MasterData.TrafficLight.red.name();
 			double rand = Math.random();
 			if (rand > 0.1d) {
@@ -531,8 +573,6 @@ public class TestDataGenerator {
 			st.append(", \'");
 			st.append(status);
 			st.append("\'");
-			
-			
 
 			// deviceid
 			st.append(", ");
