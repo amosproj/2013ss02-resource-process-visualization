@@ -110,7 +110,7 @@ public class TestDataGenerator {
 			initTables();
 			initFactories();
 
-			FileReader fr = new FileReader(new File(".",
+			/*FileReader fr = new FileReader(new File(".",
 					"./src/resources/config/oldData.sql").getCanonicalPath());
 			BufferedReader br = new BufferedReader(fr);
 
@@ -123,7 +123,7 @@ public class TestDataGenerator {
 			}
 
 			br.close();
-
+*/
 			out.close();
 
 			System.out.println("finsihed");
@@ -158,6 +158,8 @@ public class TestDataGenerator {
 				"CREATE TABLE hall (\n" + "    id integer ,\n"
 				+ "    name character varying(50),\n" + "    staff integer,\n"
 				+ "    capacity integer,\n"
+				+ "	   carmodels char varying(512), \n" 
+				+ "	   upsservers int, \n" 
 				+ "    path character varying(5000),\n"
 				+ "    parent integer\n" + ");\n" +
 
@@ -175,7 +177,12 @@ public class TestDataGenerator {
 				+ "    parent integer\n" + ");\n" +
 
 				"CREATE TABLE device (\n" + "	    id integer ,\n"
-				+ "	    category character varying(50),\n"
+				+ "	    type character varying(50),\n"
+				+ "	    description character varying(50),\n"
+				+ "	    name character varying(50),\n"
+				+ "	    networkstatus character varying(50),\n"
+				+ "	    ipaddress character varying(50),\n"
+				+ "	    maintainanceinfo character varying(50),\n"
 				+ "	    sector character varying(50),\n"
 				+ "	    serialnumber character varying(50),\n"
 				+ "	    troubleperiod timestamp,\n"
@@ -313,6 +320,12 @@ public class TestDataGenerator {
 			// capacity
 			st.append(", ");
 			st.append((int) (Math.random() * 10000 + 1));
+			
+			// vehicles
+			st.append(", \'Audi A4\'");
+			
+			// UPSServer
+			st.append(", 2");
 
 			// path
 			st.append(", ");
@@ -447,8 +460,16 @@ public class TestDataGenerator {
 
 	private static void initDevices(int locationId) throws IOException {
 
-		String[] categories = { "handheld", "mobile station",
-				"flashing station", "printer" };
+		String[] categories = { "UPS Printer", "UPS Printer", "UPS MFTD2X",
+				"UPS MFT Cradle" };
+		String[] descriptions = { "EPSON Printer TN-220B", "DSA Print Server Station", "DSA Multifunction-tester Gen. 2", "DSA MFT Cradle for Power Supply and LAN connection" };
+		String[] name = {"IBNA-PR1", "IBNA-PS1", "MFTD2XI1-052", "IBNA-LS3X2"};
+		
+		
+		String[] networkstatus = {"reachable", "N/A"};
+		String[] ipaddress = {"10.xxx.xxx.xxx", "N/A"};
+		
+		
 
 		for (int i = 0; i < numOfDevices; i++) {
 
@@ -456,6 +477,13 @@ public class TestDataGenerator {
 
 			// insert into device values (10000, 'TestCategory', 'TestSector',
 			// '12345', '2013-05-28 07:37:16-08', false, 1000);
+			
+/*			+ "	    desciption character varying(50),\n"
+			+ "	    name character varying(50),\n"
+			+ "	    networkstatus character varying(50),\n"
+			+ "	    ipaddress character varying(50),\n"
+			+ "	    maintainanceinfo character varying(50),\n"
+			*/
 
 			StringBuilder st = new StringBuilder();
 
@@ -470,6 +498,30 @@ public class TestDataGenerator {
 			st.append(", \'");
 			st.append(categories[c]);
 			st.append("\'");
+			
+			// description
+			st.append(", \'");
+			st.append(descriptions[c]);
+			st.append("\'");
+			
+			// name
+			st.append(", \'");
+			st.append(name[c]);
+			st.append("\'");
+			
+			//network status
+			int x = (int) (Math.random() * 2)  ;
+			st.append(", \'");
+			st.append(networkstatus[x]);
+			st.append("\'");
+			
+			// ipaddress
+			st.append(", \'");
+			st.append(ipaddress[x]);
+			st.append("\'");
+			
+			// maintainance info
+			st.append(", \' \'");
 
 			// sector
 			st.append(", \'");

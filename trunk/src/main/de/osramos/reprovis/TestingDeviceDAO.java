@@ -43,6 +43,42 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 	
 	
 	// Get Attributes by id
+	
+	public static String getDescription(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "description");
+
+		return s;
+	}
+	
+	public static String getName(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "name");
+
+		return s;
+	}
+	
+	public static String getNetworkStatus(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "NetworkStatus");
+
+		return s;
+	}
+	
+	public static String getIpAddress(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "IpAddress");
+
+		return s;
+	}
+	
+	public static String getMaintainanceInfo(int id) throws DatabaseException {
+		
+		String s = (String) getAttribute(id, "MaintainanceInfo");
+
+		return s;
+	}
+	
 	public static String getSerialnumber(int id) throws DatabaseException {
 		
 		String s = (String) getAttribute(id, "serialnumber");
@@ -50,9 +86,9 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		return s;
 	}
 
-	public static String getCategory(int id) throws DatabaseException {
+	public static String getType(int id) throws DatabaseException {
 		
-		String s = (String) getAttribute(id, "category");
+		String s = (String) getAttribute(id, "type");
 
 		return s;
 	}

@@ -21,7 +21,6 @@
 
 package de.osramos.reprovis;
 
-
 import java.sql.Timestamp;
 
 import java.util.Date;
@@ -30,104 +29,106 @@ import java.util.List;
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
 
-public class FactoryDAO extends HierarchieElementDAO{
-	
-	
+public class FactoryDAO extends HierarchieElementDAO {
 
 	// get all Elements
 	public static List<Integer> getFactoryIds(int id) throws Exception {
 		List<Integer> l = getChildIds(id, "factory");
-		
+
 		return l;
 	}
-	
-	
-	
-	
+
 	// Get Attributes by id
 	public static String getCity(int id) throws DatabaseException {
-		
+
 		String s = (String) getAttribute(id, "City");
 
 		return s;
 	}
 
 	public static String[] getCarModels(int id) throws DatabaseException {
-		
+
 		String s = (String) getAttribute(id, "CarModels");
 
 		s = s == null ? "" : s;
 		return s.split(", ");
 
 	}
-	
 
 	public static String getCountry(int id) throws DatabaseException {
-		
+
 		String s = (String) getAttribute(id, "Country");
 
 		return s;
 	}
 
 	public static String getName(int id) throws DatabaseException {
-		
+
 		String s = (String) getAttribute(id, "Name");
 
 		return s;
 	}
 
 	public static Company getCompany(int id) throws DatabaseException {
-		
+
 		String s = (String) getAttribute(id, "Company");
 
 		return MasterData.stringToCompany(s);
 	}
 
-
-
 	public static int getSizeOfStaff(int id) throws DatabaseException {
-		
+
 		int i = (Integer) getAttribute(id, "SizeOfStaff");
 
 		return i;
 	}
-	
+
 	public static Date getSizeOfStaffDate(int id) throws DatabaseException {
-		
+
 		Timestamp t = (Timestamp) getAttribute(id, "SizeOfStaffDate");
 
-		return new Date (t.getTime());
+		return new Date(t.getTime());
 	}
 
 	public static int getNumOfVehicles(int id) throws DatabaseException {
-		
+
 		int i = (Integer) getAttribute(id, "NumOfVehicles");
 
 		return i;
 	}
-	
-	
+
 	public static double getGpsLatitude(int id) throws DatabaseException {
-		
+
 		double d = (Double) getAttribute(id, "GpsLatitude");
 
 		return d;
 	}
 
-
 	public static double getGpsLongitude(int id) throws DatabaseException {
-		
+
 		double d = (Double) getAttribute(id, "GpsLongitude");
 
 		return d;
 	}
 
+	public static int getUPSServers (int id) throws DatabaseException {
 
+		int i = (Integer) getAttribute(id, "UPSServers");
 
-
-	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
-		
-		return HierarchieElementDAO.getAttribute(id, attributeName, "factory");
+		return i;
 	}
 	
+	public static String getUPSProvider(int id) throws DatabaseException {
+
+		String s = (String) getAttribute(id, "UPSProvider");
+
+		return s;
+	}
+
+	private static Object getAttribute(int id, String attributeName)
+			throws DatabaseException {
+
+		return HierarchieElementDAO.getAttribute(id, attributeName, "factory");
+	}
+
 }

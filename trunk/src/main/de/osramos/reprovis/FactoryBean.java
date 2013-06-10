@@ -22,22 +22,18 @@
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.naming.InitialContext;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import de.osramos.reprovis.MasterData.Company;
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class FactoryBean extends HierarchieElementBean {
 
 	public FactoryBean(int id) {
 		super(id);
+
+		
 		try {
 			name = FactoryDAO.getName(id);
 			country = FactoryDAO.getCountry(id);
@@ -72,6 +68,9 @@ public class FactoryBean extends HierarchieElementBean {
 	private String[] carModels;
 	private int sizeOfStaff;
 	private int numOfVehicles;
+	private int upsServers;
+	private String upsProvider;
+	private Date sizeOfStaffDate;
 
 	public String getName() {
 		return name;
@@ -89,6 +88,16 @@ public class FactoryBean extends HierarchieElementBean {
 			e.printStackTrace();
 		}
 		return sizeOfStaff;
+	}
+	
+	public Date getSizeOfStaffDate() {
+		try {
+			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sizeOfStaffDate;
 	}
 
 	public int getNumOfVehicles() {
@@ -127,51 +136,34 @@ public class FactoryBean extends HierarchieElementBean {
 		return company;
 	}
 
-	/*
-	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
-	 */
+	public int getUPSServers() {
+		try {
+			upsServers = FactoryDAO.getUPSServers(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return upsServers;
+	}
+	
+	public String getUPSProvider() {
+		try {
+			upsProvider = FactoryDAO.getUPSProvider(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return upsProvider;
+	}
 
-	/*
-	 * public int getId() { return id; }
-	 */
-
-	/*
-	 * public FactoryBean(int id){
-	 * 
-	 * GlobalBean.getGlobal().reg.put(id, this); try { Context ctx = new
-	 * InitialContext(); ctx.bind("de.osramos/reprovis/HierarchieElement/"+id,
-	 * this); } catch (NamingException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } this.id = id;
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public TrafficLight getStatus() throws Exception{
-	 * List<HierarchieElementBean> halls = getChilds();
-	 * 
-	 * TrafficLight status = TrafficLight.green;
-	 * 
-	 * for(HierarchieElementBean hall: halls){ // aggregate to worst status if (
-	 * status == TrafficLight.green){ try { status = hall.getStatus(); } catch
-	 * (Exception e) { // TODO Auto-generated catch block e.printStackTrace(); }
-	 * } else if (status == TrafficLight.yellow){ try { if (hall.getStatus() ==
-	 * TrafficLight.red){ status = TrafficLight.red; } } catch (Exception e) {
-	 * // TODO Auto-generated catch block e.printStackTrace(); } } } return
-	 * status; }
-	 */
-
-	/*
-	 * public List<HierarchieElementBean> getChilds() throws Exception{
-	 * 
-	 * List<Integer> hallIds = HallDAO.getHallIds(id);
-	 * List<HierarchieElementBean> halls = new
-	 * ArrayList<HierarchieElementBean>();
-	 * 
-	 * for(int hallId : hallIds){ halls.add(new HallBean(hallId)); } return
-	 * halls; }
-	 */
-
+	public int getUPSClients() {
+		
+		int i = 0;
+		
+				
+		return i;
+	}
+	
 	@Override
 	protected void initChilds() {
 		try {
