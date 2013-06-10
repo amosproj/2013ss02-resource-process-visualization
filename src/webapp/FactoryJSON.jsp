@@ -33,6 +33,12 @@
 	"country": "<%= factory.getCountry() %>",
 	"vehicles": <%= factory.getNumOfVehicles() %>,
 	"staff": <%= factory.getSizeOfStaff() %>,
+<%-- 	"staffdate": <%= ""+ factory.getSizeOfStaffDate().getDay()  
+					+ "." + (factory.getSizeOfStaffDate().getMonth() + 1) 
+					+"." + (factory.getSizeOfStaffDate().getYear() + 1900) %>, --%>
+	"upsclients": <%= factory.getUPSClients()%>,
+	"upsservers": <%= factory.getUPSServers()%>,
+<%-- 	"upsprovider": <%= factory.getUPSProvider()%>, --%>
 	"brands": [
 		<% boolean first = true; %>
 		<% for(String brand: factory.getCarModels()){ %>

@@ -61,9 +61,9 @@ public class TestingDeviceBean extends HierarchieElementBean {
 		}
 	}
 
-	public String getCategory() {
+	public String getType() {
 		try {
-			return TestingDeviceDAO.getCategory(id);
+			return TestingDeviceDAO.getType(id);
 		} catch (DatabaseException e){
 			return "Error";
 		}
@@ -72,6 +72,46 @@ public class TestingDeviceBean extends HierarchieElementBean {
 	public String getSerialnumber() {
 		try {
 			return TestingDeviceDAO.getSerialnumber(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
+	}
+	
+	public String getDescription() {
+		try {
+			return TestingDeviceDAO.getDescription(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
+	}
+	
+	public String getIpAddress() {
+		try {
+			return TestingDeviceDAO.getIpAddress(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
+	}
+	
+	public String getName() {
+		try {
+			return TestingDeviceDAO.getName(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
+	}
+	
+	public String getNetworkStatus() {
+		try {
+			return TestingDeviceDAO.getNetworkStatus(id);
+		} catch (DatabaseException e){
+			return "Error";
+		}
+	}
+	
+	public String getMaintainanceInfo() {
+		try {
+			return TestingDeviceDAO.getMaintainanceInfo(id);
 		} catch (DatabaseException e){
 			return "Error";
 		}

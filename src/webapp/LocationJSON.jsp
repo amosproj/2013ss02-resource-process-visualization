@@ -59,7 +59,7 @@ int factoryID = factoryParent.getId();
 		<% if(!first){out.print(","); }else first = false; %>
 			{
 				"id": <%= device.getId() %>,
-				"name": "Testing Device <%= device.getId() %>",
+				"name": "<%= device.getName() %>",
 				"status": "<%= device.getStatus() %>"
 			}
 		<% } %>

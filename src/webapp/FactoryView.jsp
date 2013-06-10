@@ -27,6 +27,8 @@
 // We only allow access to this template via request.
 // If there is none, exit here.
 // @TODO: Only allow access if post parameter was submitted
+
+
 if(request.getParameter("fid") == null)
 	return;
 
@@ -45,7 +47,10 @@ int id = Integer.parseInt(request.getParameter("fid"));
 			<tr><td>Status</td><td id="factoryStatus"></td></tr>
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
 			<tr><td>Name</td><td id="factoryName"></td></tr>
-			<tr><td>Staff</td><td id="factoryStaff"></td></tr>
+			<tr><td>UPS Provider</td><td id="factoryUPSProvider"></td></tr>
+			<tr><td>UPS Servers</td><td id="factoryUPSServers"></td></tr>
+			<tr><td>UPS Clients</td><td id="factoryUPSClients"></td></tr>
+			<tr><td>Staff</td><td id="factoryStaff"></td></tr> <!--  -->
 			<tr><td>Vehicles</td><td id="factoryVehicles"></td></tr>
 			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
 		</table>
@@ -82,8 +87,11 @@ $(document).ready(function() {
 	    $("#factoryStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#factoryCountry").html(data.country);
 	    $("#factoryName").html(data.name);
-	    $("#factoryStaff").html(data.staff);
+	    $("#factoryStaff").html(data.staff+" ("+data.staffdate+")");
 	    $("#factoryVehicles").html(data.vehicles);
+	    $("#factoryUPSServers").html(data.upsservers);
+	    $("#factoryUPSClients").html(data.upsclients);
+	    $("#factoryUPSProvider").html(data.upsprovider);
 	    
 	    var factoryCars = "";
 	    for(var j = 0; j < data.brands.length; ++j) {

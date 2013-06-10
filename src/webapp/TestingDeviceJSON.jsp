@@ -49,10 +49,14 @@ HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
 int factoryID = factoryParent.getId(); 
 %>
 {
-	"name": "Testing Device <%= device.getId() %>",
+	"name": "Testing Device <%= device.getName() %>",
 	"status": "<%= device.getStatus() %>",
 	"serialnumber": "<%= device.getSerialnumber() %>",
-	"category": "<%= device.getCategory() %>",
+	"category": "<%=device.getType()%>",
+	"description": "<%=device.getDescription()%>",
+	"ipaddress": "<%=device.getIpAddress()%>",
+	"maintainanceinfo": "<%=device.getMaintainanceInfo()%>",
+	"networkstatus": "<%=device.getNetworkStatus()%>",
 	"componentCount": "<%= device.getChilds().size() %>",
 	"troubleperiod": "<%= device.getTroublePeriod() %>",
 	"testfailure": <%= device.isTestFailure() %>,
