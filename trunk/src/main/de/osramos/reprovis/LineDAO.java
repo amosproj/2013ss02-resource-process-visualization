@@ -52,7 +52,7 @@ public class LineDAO {
 		}
 	}
 
-	public static TrafficLight getStatus(int id) {
+	/*public static TrafficLight getStatus(int id) {
 		int r = ((int)(Math.random()*100))%10;
 		if (r < 8){
 			return TrafficLight.green;
@@ -61,7 +61,7 @@ public class LineDAO {
 		} else {
 			return TrafficLight.red;
 		}
-	}
+	}*/
 	
 	public static String getPath(int id) throws DatabaseException{
 		try {

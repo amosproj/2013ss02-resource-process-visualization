@@ -64,7 +64,7 @@ public class FactoryDAOTest {
 		assertNotNull(FactoryDAO.getGpsLatitude(id));
 		assertNotNull(FactoryDAO.getGpsLongitude(id));
 		assertNotNull(FactoryDAO.getName(id));
-		assertNotSame(new Integer(-1), FactoryDAO.getNumOfVehicles(id));
+		assertNotSame(new Integer(-1), FactoryDAO.getVehiclesPerYear(id));
 		assertNotSame(new Integer(-1), FactoryDAO.getSizeOfStaff(id));
 		
 	}
@@ -79,7 +79,7 @@ public class FactoryDAOTest {
 		System.out.println(FactoryDAO.getGpsLatitude(id));
 		System.out.println(FactoryDAO.getGpsLongitude(id));
 		System.out.println(FactoryDAO.getName(id));
-		System.out.println(FactoryDAO.getNumOfVehicles(id));
+		System.out.println(FactoryDAO.getVehiclesPerYear(id));
 		System.out.println(FactoryDAO.getSizeOfStaff(id));
 		
 	}

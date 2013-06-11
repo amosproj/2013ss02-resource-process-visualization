@@ -54,7 +54,10 @@ public class GlobalBean extends HierarchieElementBean {
 			}
 		}
 		
-		global = new GlobalBean(0);
+		if (global == null){
+			global = new GlobalBean(0);
+		}
+		
 		return global;
 	}
 

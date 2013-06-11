@@ -42,7 +42,7 @@ public class FactoryBeanTest {
 		assertNotNull(f.getId());
 		assertNotNull(f.getName());
 		assertNotNull(f.getCarModels());
-		assertNotNull(f.getNumOfVehicles());
+		assertNotNull(f.getVehiclesPerYear());
 		assertNotNull(f.getSizeOfStaff());
 	}
 	

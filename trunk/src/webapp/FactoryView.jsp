@@ -47,11 +47,14 @@ int id = Integer.parseInt(request.getParameter("fid"));
 			<tr><td>Status</td><td id="factoryStatus"></td></tr>
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
 			<tr><td>Name</td><td id="factoryName"></td></tr>
+			<tr><td>Brand</td><td id="factoryBrand"></td></tr>
+			<tr><td>UPS Systems</td><td id="factoryUPSSystems"></td></tr>
 			<tr><td>UPS Provider</td><td id="factoryUPSProvider"></td></tr>
 			<tr><td>UPS Servers</td><td id="factoryUPSServers"></td></tr>
 			<tr><td>UPS Clients</td><td id="factoryUPSClients"></td></tr>
 			<tr><td>Staff</td><td id="factoryStaff"></td></tr> <!--  -->
-			<tr><td>Vehicles</td><td id="factoryVehicles"></td></tr>
+			<tr><td>Vehicles per year</td><td id="factoryVehiclesPerYear"></td></tr>
+			<tr><td>Vehicles per day</td><td id="factoryVehiclesPerDay"></td></tr>
 			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
 		</table>
 	</div>
@@ -88,10 +91,14 @@ $(document).ready(function() {
 	    $("#factoryCountry").html(data.country);
 	    $("#factoryName").html(data.name);
 	    $("#factoryStaff").html(data.staff+" ("+data.staffdate+")");
-	    $("#factoryVehicles").html(data.vehicles);
+	    $("#factoryVehiclesPerYear").html(data.vehiclesperyear);
+	    $("#factoryVehiclesPerDay").html(data.vehiclesperday);
+	    $("#factoryBrand").html(data.brand);
 	    $("#factoryUPSServers").html(data.upsservers);
 	    $("#factoryUPSClients").html(data.upsclients);
 	    $("#factoryUPSProvider").html(data.upsprovider);
+	    $("#factoryUPSSystems").html(data.upssystems);
+	    
 	    
 	    var factoryCars = "";
 	    for(var j = 0; j < data.brands.length; ++j) {

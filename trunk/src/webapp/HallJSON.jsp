@@ -43,9 +43,11 @@ int factoryID = factoryParent.getId();
 	"name": "<%= hall.getName() %>",
 	"staff": <%= hall.getSizeOfStaff() %>,
 	"capacity": <%= hall.getProductionCapacity() %>,
+	<%-- "vehicles": <%= hall.getVehicles() %>, --%>
 	"status": "<%= hall.getStatus() %>",
 	"upsServer": <%= hall.getUpsServer() %>,
-	"type": "<%= hall.getType() %>",
+	"upsClients": <%= hall.getUPSClients() %>,
+	<%-- "type": "<%= hall.getType() %>", --%>
 	"lines": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean elem: hall.getChilds()){ %>

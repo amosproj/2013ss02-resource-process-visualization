@@ -80,6 +80,10 @@ public class LineBean extends HierarchieElementBean {
 		}
 	}
 
+	public String getType() {
+		return "";
+	}
+	
 	public String getPath() {
 		return path;
 	}
