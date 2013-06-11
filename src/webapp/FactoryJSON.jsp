@@ -31,13 +31,16 @@
 	"name": "<%= factory.getName() %>",
 	"status": "<%= factory.getStatus() %>",
 	"country": "<%= factory.getCountry() %>",
-	"vehicles": <%= factory.getNumOfVehicles() %>,
+	"vehiclesperyear": <%= factory.getVehiclesPerYear() %>,
+	"vehiclesperday": <%= factory.getVehiclesPerDay() %>,
+	<%-- "brand": <%= factory.getCompany().toString() %>, --%>
 	"staff": <%= factory.getSizeOfStaff() %>,
 <%-- 	"staffdate": <%= ""+ factory.getSizeOfStaffDate().getDay()  
 					+ "." + (factory.getSizeOfStaffDate().getMonth() + 1) 
 					+"." + (factory.getSizeOfStaffDate().getYear() + 1900) %>, --%>
 	"upsclients": <%= factory.getUPSClients()%>,
 	"upsservers": <%= factory.getUPSServers()%>,
+	"upssystems": <%= factory.getUPSSystems()%>,
 <%-- 	"upsprovider": <%= factory.getUPSProvider()%>, --%>
 	"brands": [
 		<% boolean first = true; %>

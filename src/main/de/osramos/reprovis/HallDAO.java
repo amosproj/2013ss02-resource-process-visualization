@@ -32,13 +32,13 @@ import javax.sql.DataSource;
 import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
-public class HallDAO {
+public class HallDAO extends HierarchieElementDAO {
 
 	public static String getName(int id) throws DatabaseException {
 		return (String) getAttribute(id, "name");
 	}
 	
-	public static TrafficLight getStatus (int id){
+/*	public static TrafficLight getStatus (int id){
 		int r = ((int)(Math.random()*100))%10;
 		if (r < 6){
 			return TrafficLight.green;
@@ -48,16 +48,16 @@ public class HallDAO {
 			return TrafficLight.red;
 		}
 	}
-	
-	public static int getUpsServer(int id) throws DatabaseException{
-		return (Integer) getAttribute(id, "upsServer");
+	*/
+	public static int getUpsServers(int id) throws DatabaseException{
+		return (Integer) getAttribute(id, "upsServers");
 	}
 	
 	public static String getType(int id) throws DatabaseException{
 		return (String) getAttribute(id, "type");
 	}
 
-	public static FactoryBean getFactory(int id) throws DatabaseException {
+/*	public static FactoryBean getFactory(int id) throws DatabaseException {
 		try {
 			DataSource db = Database.getDB();
 			Connection conn = db.getConnection();
@@ -74,64 +74,28 @@ public class HallDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 
-	}
+	}*/
 
 	public static int getSizeOfStaff(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT staff FROM hall WHERE id = " + id);
-			res.next();
-			int staff = res.getInt(1);
-			stmt.close();
-			conn.close();
-			return staff;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
+		int i = (Integer) getAttribute(id, "staff");
+
+		return i;
 	}
 
 	public static String getPath(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT path FROM hall WHERE id = " + id);
-			res.next();
-			String path = res.getString(1);
-			stmt.close();
-			conn.close();
-			return path;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
+		String s = (String) getAttribute(id, "path");
+
+		return s;
 	}
 	
 	public static int getProductionCapacity(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT capacity FROM hall WHERE id = " + id);
-			res.next();
-			int capacity = res.getInt(1);
-			stmt.close();
-			conn.close();
-			return capacity;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
+		int i = (Integer) getAttribute(id, "capacity");
+
+		return i;
 	}
 
 	//private static int count = 0;
-	
+/*	
 	public static List<Integer> getHallIds(int factoryId) throws DatabaseException {
 		List<Integer> l = new ArrayList<Integer>();
 		try {
@@ -150,9 +114,22 @@ public class HallDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 		return l;
+	}*/
+	
+	public static List<Integer> getHallIds(int id) throws Exception {
+		List<Integer> l = getChildIds(id, "hall");
+
+		return l;
 	}
 	
 	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
 		return HierarchieElementDAO.getAttribute(id, attributeName, "hall");
 	}
+
+	public static String getVehicles(int id) throws DatabaseException {
+		String s = (String) getAttribute(id, "Vehicles");
+
+		return s;
+	}
+	
 }

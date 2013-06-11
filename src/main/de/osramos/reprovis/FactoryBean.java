@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
 
@@ -43,7 +44,10 @@ public class FactoryBean extends HierarchieElementBean {
 			company = FactoryDAO.getCompany(id);
 			carModels = FactoryDAO.getCarModels(id);
 			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
+			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
+			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
+			upsSystems = FactoryDAO.getUPSSystems(id);
+			upsProvider = FactoryDAO.getUPSProvider(id);
 		} catch (DatabaseException e) {
 
 		}
@@ -69,6 +73,7 @@ public class FactoryBean extends HierarchieElementBean {
 	private int sizeOfStaff;
 	private int numOfVehicles;
 	private int upsServers;
+	private int upsSystems;
 	private String upsProvider;
 	private Date sizeOfStaffDate;
 
@@ -100,14 +105,24 @@ public class FactoryBean extends HierarchieElementBean {
 		return sizeOfStaffDate;
 	}
 
-	public int getNumOfVehicles() {
+	public int getVehiclesPerYear() {
 		try {
-			numOfVehicles = FactoryDAO.getNumOfVehicles(id);
+			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return numOfVehicles;
+	}
+	
+	public int getVehiclesPerDay(){
+		try {
+			return FactoryDAO.getVehiclesPerDay(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	public String[] getCarModels() {
@@ -135,6 +150,16 @@ public class FactoryBean extends HierarchieElementBean {
 	public Company getCompany() {
 		return company;
 	}
+	
+	public int getUPSSystems() {
+		try {
+			upsSystems = FactoryDAO.getUPSSystems(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return upsSystems;
+	}
 
 	public int getUPSServers() {
 		try {
@@ -158,10 +183,7 @@ public class FactoryBean extends HierarchieElementBean {
 
 	public int getUPSClients() {
 		
-		int i = 0;
-		
-				
-		return i;
+		return getNumOfLeafs();
 	}
 	
 	@Override

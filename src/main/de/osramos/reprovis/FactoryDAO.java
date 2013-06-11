@@ -90,9 +90,9 @@ public class FactoryDAO extends HierarchieElementDAO {
 		return new Date(t.getTime());
 	}
 
-	public static int getNumOfVehicles(int id) throws DatabaseException {
+	public static int getVehiclesPerYear(int id) throws DatabaseException {
 
-		int i = (Integer) getAttribute(id, "NumOfVehicles");
+		int i = (Integer) getAttribute(id, "vehiclesperyear");
 
 		return i;
 	}
@@ -118,6 +118,13 @@ public class FactoryDAO extends HierarchieElementDAO {
 		return i;
 	}
 	
+	public static int getUPSSystems (int id) throws DatabaseException {
+
+		int i = (Integer) getAttribute(id, "UPSSystems");
+
+		return i;
+	}
+	
 	public static String getUPSProvider(int id) throws DatabaseException {
 
 		String s = (String) getAttribute(id, "UPSProvider");
@@ -129,6 +136,13 @@ public class FactoryDAO extends HierarchieElementDAO {
 			throws DatabaseException {
 
 		return HierarchieElementDAO.getAttribute(id, attributeName, "factory");
+	}
+
+	public static int getVehiclesPerDay(int id) throws DatabaseException {
+		
+		int i = (Integer) getAttribute(id, "vehiclesperday");
+
+		return i;
 	}
 
 }

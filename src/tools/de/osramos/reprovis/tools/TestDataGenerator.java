@@ -53,10 +53,10 @@ public class TestDataGenerator {
 	}
 
 	private static int numOfHalls = 2;
-	private static int numOfLines = 2;
-	private static int numOfLocations = 2;
-	private static int numOfDevices = 2;
-	private static int numOfComponents = 2;
+	private static int numOfLines = 3;
+	private static int numOfLocations = 6;
+	private static int numOfDevices = 20;
+	private static int numOfComponents = 1;
 
 	private static String path = "./src/resources/config/init.sql";
 
@@ -144,19 +144,24 @@ public class TestDataGenerator {
 				+ "drop table if exists factory;\n" +
 
 				"create table factory(\n" + "	id int ,\n"
-				+ "	name char varying(50), \n"
-				+ "	company char varying(50), \n"
-				+ "	city char varying(50), \n"
-				+ "	country char varying(50), 	\n"
+				+ "	name char varying(128), \n"
+				+ "	company char varying(128), \n"
+				+ "	city char varying(128), \n"
+				+ "	country char varying(128), 	\n"
 				+ "	gpslatitude double precision , \n"
 				+ "	gpslongitude double precision, \n"
 				+ "	carmodels char varying(512), \n" + "	sizeofstaff int, \n"
-				+ "	sizeofstaffdate timestamp,\n" + "	numofvehicles int, \n"
+				+ "	sizeofstaffdate timestamp,\n" 
+				+ "	vehiclesperyear int, \n"
+				+ "	vehiclesperday int, \n"
+				+ "	upssystems int, \n"
 				+ "	upsservers int, \n" + "	upsprovider char varying(128), \n"
 				+ " parent integer\n" + ");\n" +
 
 				"CREATE TABLE hall (\n" + "    id integer ,\n"
-				+ "    name character varying(50),\n" + "    staff integer,\n"
+				+ "    name character varying(128),\n" 
+				+ "    type character varying(128),\n" 
+				+ "    staff integer,\n"
 				+ "    capacity integer,\n"
 				+ "	   carmodels char varying(512), \n" 
 				+ "	   upsservers int, \n" 
@@ -217,63 +222,63 @@ public class TestDataGenerator {
 				+ "		35386, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 551889, 3, \'DSA GmbH\', 0\n"
+				+ "\', 551889, 2580, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (2, \'Neckarsulm\', \'Audi\' , \'Neckarsulm\', \'Germany\', 49.194213, 9.221771,\n"
 				+ "		\'Audi A4, Audi A5 Cabriolet, Audi S5 Cabriolet, Audi RS 5 Cabriolet, Audi A6, Audi A6 hybrid, Audi A6 Avant, Audi S6, Audi A6 allroad quattro, Audi RS 6 Avant, Audi A7, Audi S7, Audi RS7, Audi A8, Audi A8 L, Audi A8 hybrid, Audi S8, Audi R8, Audi R8 Spyder, Audi R8 GT, Audi R8 GT Spyder\',\n"
 				+ "			14764,  \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 262965, 3, \'DSA GmbH\', 0\n"
+				+ "\', 262965, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (3, \'Gyor\', \'Audi\' ,\'Gyor\', \'Hungary\', 47.68746, 17.65040,\n"
 				+ "		\'Audi TT Coupe, Audi TT Roadster,Audi A3 Cabriolet\',\n"
 				+ "		8663, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 33553, 3, \'DSA GmbH\', 0\n"
+				+ "\', 33553, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (4, \'Changchun\', \'Volkswagen\' , \'Changchun\', \'China\', 43.81708, 125.32354,\n"
 				+ "		\'Audi A6L, Audi A4L, Audi Q5\',\n"
 				+ "			9700, \'"
 				+ new Timestamp(new GregorianCalendar(2011, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 333467, 3, \'DSA GmbH\', 0\n"
+				+ "\', 333467, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (5, \'Bruessel\', \'Audi\' ,\'Bruessel\', \'Belgium\', 50.85034, 4.35171,\n"
 				+ "		\'Audi A1, Audi A1 Sportback, Audi A1 quattro\',\n"
 				+ "		2503, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 123111, 3, \'DSA GmbH\', 0\n"
+				+ "\', 123111, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (6, \'Aurangabad\', \'Skoda\' , \'Aurangabad\', \'India\', 19.87617, 75.34331,\n"
 				+ "		\'Audi A4 Limousine, Audi A6 Limousine,Audi Q5, Audi Q7\',\n"
 				+ "			140, \'"
 				+ new Timestamp(new GregorianCalendar(2011, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 6786, 3, \'DSA GmbH\', 0\n"
+				+ "\', 6786, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (7, \'Bratislava\', \'Volkswagen\' , \'Bratislava\', \'Slovakia\', 48.14589, 17.10714,\n"
 				+ "		\'Audi Q7\',\n"
 				+ "			2200, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 54562, 3, \'DSA GmbH\', 0\n"
+				+ "\', 54562, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (8, \'Martorell\', \'Seat\' ,\'Martorell\', \'Spain\', 41.48040, 1.91481,\n"
 				+ "		\'Audi Q3\',\n"
 				+ "		1500, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 106829, 3, \'DSA GmbH\', 0\n"
+				+ "\', 106829, 0, 1, 3, \'DSA GmbH\', 0\n"
 				+ "	);\n"
 				+ "	insert into factory values (9, \'Jakarta\', \'Audi\' , \'Jakarta\', \'Indonesia\', -6.21154, 106.84517,\n"
 				+ "		\'Audi A4, Audi A6\',\n"
 				+ "			0, \'"
 				+ new Timestamp(new GregorianCalendar(2012, 11, 31).getTime()
 						.getTime()).toString()
-				+ "\', 443, 3, \'DSA GmbH\', 0\n" + "	);\n";
+				+ "\', 443, 0, 1, 3, \'DSA GmbH\', 0\n" + "	);\n";
 
 		nextId = 2000;
 
@@ -312,6 +317,9 @@ public class TestDataGenerator {
 			st.append(", \'");
 			st.append(name);
 			st.append("\'");
+			
+			// type
+			st.append(", \'Assembly+Finish\'");
 
 			// staff
 			st.append(", ");

@@ -22,6 +22,7 @@
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
@@ -46,15 +47,15 @@ public class HallBean extends HierarchieElementBean {
 			sizeOfStaff = HallDAO.getSizeOfStaff(id);
 			productionCapacity = HallDAO.getProductionCapacity(id);
 			path = HallDAO.getPath(id);
-		} catch(DatabaseException e){
-			
+		} catch (DatabaseException e) {
+
 		}
 	}
 
 	public String getName() {
 		try {
 			return HallDAO.getName(id);
-		}catch(DatabaseException e){
+		} catch (DatabaseException e) {
 			return "Error";
 		}
 	}
@@ -63,6 +64,16 @@ public class HallBean extends HierarchieElementBean {
 		return path;
 	}
 
+	public String getVehicles() {
+		try {
+			return HallDAO.getVehicles(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Error";
+	}
+	
 	public int getSizeOfStaff() {
 		try {
 			sizeOfStaff = HallDAO.getSizeOfStaff(id);
@@ -82,21 +93,26 @@ public class HallBean extends HierarchieElementBean {
 		}
 		return productionCapacity;
 	}
-	
-	public int getUpsServer(){
+
+	public int getUpsServer() {
 		try {
-			return HallDAO.getUpsServer(id);
-		}catch(DatabaseException e){
+			return HallDAO.getUpsServers(id);
+		} catch (DatabaseException e) {
 			return -1;
 		}
 	}
-	
-	public String getType(){
-		try{
+
+	public String getType() {
+		try {
 			return HallDAO.getType(id);
-		}catch(DatabaseException e){
+		} catch (DatabaseException e) {
 			return "Error";
 		}
+	}
+
+	public int getUPSClients() {
+
+		return getNumOfLeafs();
 	}
 
 	@Override
