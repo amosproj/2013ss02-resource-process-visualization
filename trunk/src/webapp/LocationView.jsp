@@ -96,7 +96,7 @@ $(document).ready(function() {
 			$("#locationDevicesList tbody").append(rElm);
 		}	
 
-	    $("#dynamicHeading").html("Location: "+data.name+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Location: "+data.name);
 	    $("#locationName").html(data.name);
 	    $("#locationDescription").html(data.description);
 	    $("#locationPersonInCharge").html(data.personincharge);

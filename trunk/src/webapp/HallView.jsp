@@ -51,8 +51,8 @@ int id = Integer.parseInt(request.getParameter("hid"));
 		<tr><td>Name</td><td id="hallName"></td></tr>
 		<tr><td>Type</td><td id="hallType"></td></tr>
 		<tr><td>Vehicles</td><td id="hallVehicles"></td></tr>
-		<tr><td>Staff</td><td id="hallStaff"></td></tr>
-		<tr><td>Capacity</td><td id="hallCapacity"></td></tr>
+<!-- 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
+		<tr><td>Capacity</td><td id="hallCapacity"></td></tr> -->
 		<tr><td>UPS Server</td><td id="hallUpsServer"></td></tr>
 		<tr><td>UPS Clients</td><td id="hallUpsClients"></td></tr>
 		
@@ -82,13 +82,13 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Hall: "+data.name+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Hall: "+data.name);
 	    $("#hallStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#hallName").html(data.name);
 	    $("#hallStaff").html(data.staff);
-	    $("#hallVehicles").html(data.vehicles);
+	    $("#hallVehicles").html(""+data.vehicles);
 	    $("#hallCapacity").html(data.capacity);
-	    $("#hallType").html(data.type);
+	    $("#hallType").html(""+data.type);
 	    $("#hallUpsServer").html(data.upsServer);
 	    $("#hallUpsClients").html(data.upsClients);
 	});

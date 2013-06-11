@@ -163,7 +163,7 @@ public class TestDataGenerator {
 				+ "    type character varying(128),\n" 
 				+ "    staff integer,\n"
 				+ "    capacity integer,\n"
-				+ "	   carmodels char varying(512), \n" 
+				+ "	   vehicles char varying(512), \n" 
 				+ "	   upsservers int, \n" 
 				+ "    path character varying(5000),\n"
 				+ "    parent integer\n" + ");\n" +

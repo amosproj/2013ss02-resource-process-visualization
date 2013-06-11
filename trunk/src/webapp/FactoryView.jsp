@@ -46,8 +46,8 @@ int id = Integer.parseInt(request.getParameter("fid"));
 		<table id="factoryDetails" class="table table-striped table-hover">
 			<tr><td>Status</td><td id="factoryStatus"></td></tr>
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
-			<tr><td>Name</td><td id="factoryName"></td></tr>
-			<tr><td>Brand</td><td id="factoryBrand"></td></tr>
+			<tr><td>City</td><td id="factoryName"></td></tr>
+			<tr><td>Brands</td><td id="factoryBrand"></td></tr>
 			<tr><td>UPS Systems</td><td id="factoryUPSSystems"></td></tr>
 			<tr><td>UPS Provider</td><td id="factoryUPSProvider"></td></tr>
 			<tr><td>UPS Servers</td><td id="factoryUPSServers"></td></tr>
@@ -55,7 +55,7 @@ int id = Integer.parseInt(request.getParameter("fid"));
 			<tr><td>Staff</td><td id="factoryStaff"></td></tr> <!--  -->
 			<tr><td>Vehicles per year</td><td id="factoryVehiclesPerYear"></td></tr>
 			<tr><td>Vehicles per day</td><td id="factoryVehiclesPerDay"></td></tr>
-			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
+			<tr><td>Vehicles</td><td id="factoryCars"></td></tr>
 		</table>
 	</div>
 </div><br class="clear" />
@@ -86,7 +86,7 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Factory: "+data.name+", "+data.country+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Factory: "+data.name+", "+data.country);
 	    $("#factoryStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#factoryCountry").html(data.country);
 	    $("#factoryName").html(data.name);
