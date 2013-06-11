@@ -97,7 +97,7 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Assembly Line: "+data.name+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Assembly Line: "+data.name);
 	    $("#lineName").html(data.name);
 	    $("#lineStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#lineProductionCapacity").html("" + data.capacity + " units");

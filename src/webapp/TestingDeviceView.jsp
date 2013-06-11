@@ -128,7 +128,7 @@ $(document).ready(function() {
 			$("#testingDeviceComponentsList tbody").append(rElm);
 		}	
 
-	    $("#dynamicHeading").html("Testing Device: "+data.name+" (ID: <%= id %>)");
+	    $("#dynamicHeading").html("Testing Device: "+data.name);
 	    $("#testingDeviceName").html(data.name);
 	    $("#testingDeviceSerialnumber").html(data.serialnumber);
 	    $("#testingDeviceCategory").html(data.category);
