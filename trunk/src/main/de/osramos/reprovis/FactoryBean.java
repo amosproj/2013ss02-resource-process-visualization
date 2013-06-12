@@ -186,6 +186,15 @@ public class FactoryBean extends HierarchieElementBean {
 		return getNumOfLeafs();
 	}
 	
+	public String getMap() {
+		try {
+			return FactoryDAO.getMap(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		return "Error";
+	}
+	
 	@Override
 	protected void initChilds() {
 		try {

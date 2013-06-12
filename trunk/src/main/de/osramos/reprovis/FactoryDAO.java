@@ -131,6 +131,10 @@ public class FactoryDAO extends HierarchieElementDAO {
 
 		return s;
 	}
+	
+	public static String getMap(int id) throws DatabaseException{
+		return (String) getAttribute(id, "map");
+	}
 
 	private static Object getAttribute(int id, String attributeName)
 			throws DatabaseException {

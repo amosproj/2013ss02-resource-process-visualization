@@ -23,11 +23,9 @@ package de.osramos.reprovis.tools;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -35,7 +33,6 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 
 import de.osramos.reprovis.MasterData;
-import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class TestDataGenerator {
 
@@ -126,7 +123,7 @@ public class TestDataGenerator {
 */
 			out.close();
 
-			System.out.println("finsihed");
+			System.out.println("finished");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,66 +140,82 @@ public class TestDataGenerator {
 				+ "drop table if exists hall;\n"
 				+ "drop table if exists factory;\n" +
 
-				"create table factory(\n" + "	id int ,\n"
+				"create table factory(\n" 
+				+ "	id int PRIMARY KEY,\n"
 				+ "	name char varying(128), \n"
 				+ "	company char varying(128), \n"
 				+ "	city char varying(128), \n"
 				+ "	country char varying(128), 	\n"
 				+ "	gpslatitude double precision , \n"
 				+ "	gpslongitude double precision, \n"
-				+ "	carmodels char varying(512), \n" + "	sizeofstaff int, \n"
+				+ "	carmodels char varying(512), \n" 
+				+ "	sizeofstaff int, \n"
 				+ "	sizeofstaffdate timestamp,\n" 
 				+ "	vehiclesperyear int, \n"
 				+ "	vehiclesperday int, \n"
 				+ "	upssystems int, \n"
 				+ "	upsservers int, \n" + "	upsprovider char varying(128), \n"
-				+ " parent integer\n" + ");\n" +
-
-				"CREATE TABLE hall (\n" + "    id integer ,\n"
-				+ "    name character varying(128),\n" 
-				+ "    type character varying(128),\n" 
-				+ "    staff integer,\n"
-				+ "    capacity integer,\n"
-				+ "	   vehicles char varying(512), \n" 
-				+ "	   upsservers int, \n" 
-				+ "    path character varying(5000),\n"
-				+ "    parent integer\n" + ");\n" +
-
-				"CREATE TABLE line (\n" + "    id integer ,\n"
-				+ "    name character varying(50),\n"
-				+ "    series character varying(50),\n"
-				+ "    capacity integer,\n"
-				+ "    path character varying(5000),\n" + "    parent integer\n"
+				+ "	parent integer, \n" 
+				+ "	map TEXT NOT NULL DEFAULT ''\n" 
 				+ ");\n" +
 
-				"CREATE TABLE location (\n" + "    id integer ,\n"
-				+ "    name character varying(50),\n"
-				+ "    description character varying(100),\n"
-				+ "    personincharge character varying(100),\n"
-				+ "    parent integer\n" + ");\n" +
+				"CREATE TABLE hall (\n" 
+				+ "	id integer PRIMARY KEY,\n"
+				+ "	name character varying(128) NOT NULL DEFAULT '',\n" 
+				+ "	type character varying(128) NOT NULL DEFAULT '',\n" 
+				+ "	staff integer NOT NULL DEFAULT 0,\n"
+				+ "	capacity integer NOT NULL DEFAULT 0,\n"
+				+ "	vehicles char varying(512) NOT NULL DEFAULT '', \n" 
+				+ "	upsServers int NOT NULL DEFAULT 0, \n" 
+				+ "	path character varying(50) NOT NULL DEFAULT '',\n"
+				+ "	parent integer REFERENCES factory(id) ON DELETE CASCADE,\n" 
+				+ "	map TEXT NOT NULL DEFAULT ''\n"
+				+ ");\n" +
 
-				"CREATE TABLE device (\n" + "	    id integer ,\n"
-				+ "	    type character varying(50),\n"
-				+ "	    description character varying(50),\n"
-				+ "	    name character varying(50),\n"
-				+ "	    networkstatus character varying(50),\n"
-				+ "	    ipaddress character varying(50),\n"
-				+ "	    maintainanceinfo character varying(50),\n"
-				+ "	    sector character varying(50),\n"
-				+ "	    serialnumber character varying(50),\n"
-				+ "	    troubleperiod timestamp,\n"
-				+ "	    testfailure boolean,\n" + "	    parent integer\n"
-				+ "	);\n" +
+				"CREATE TABLE line (\n" 
+				+ "	id integer PRIMARY KEY,\n"
+				+ "	name character varying(50) NOT NULL DEFAULT '',\n"
+				+ "	series character varying(50) NOT NULL DEFAULT '',\n"
+				+ "	capacity integer NOT NULL DEFAULT 0,\n"
+				+ "	path character varying(50) NOT NULL DEFAULT '',\n" 
+				+ "	parent integer REFERENCES hall(id) ON DELETE CASCADE,\n"
+				+ "	map TEXT NOT NULL DEFAULT ''\n"
+				+ ");\n" +
 
-				"	CREATE TABLE component (\n" + "	    id integer ,\n"
-				+ "	    sector character varying(50),\n"
-				+ "	    category character varying(50),\n"
-				+ "	    serialnumber character varying(50),\n"
-				+ "	    shiftresponsibility character varying(50),\n"
-				+ "	    troubleoccurrencetime timestamp,\n"
-				+ "	    troubleoccurrencesite character varying(50),\n"
-				+ "	    status character varying(20),\n"
-				+ "	    parent integer\n" + "	);\n";
+				"CREATE TABLE location (\n" 
+				+ "	id integer,\n"
+				+ "	name character varying(50),\n"
+				+ "	description character varying(100),\n"
+				+ "	personincharge character varying(100),\n"
+				+ "	parent integer\n" 
+				+ ");\n" +
+
+				"CREATE TABLE device (\n" 
+				+ "	id integer,\n"
+				+ "	type character varying(50),\n"
+				+ "	description character varying(50),\n"
+				+ "	name character varying(50),\n"
+				+ "	networkstatus character varying(50),\n"
+				+ "	ipaddress character varying(50),\n"
+				+ "	maintainanceinfo character varying(50),\n"
+				+ "	sector character varying(50),\n"
+				+ "	serialnumber character varying(50),\n"
+				+ "	troubleperiod timestamp,\n"
+				+ "	testfailure boolean,\n" 
+				+ "	parent integer\n"
+				+ ");\n" +
+
+				"CREATE TABLE component (\n" 
+				+ "	id integer,\n"
+				+ "	sector character varying(50),\n"
+				+ "	category character varying(50),\n"
+				+ "	serialnumber character varying(50),\n"
+				+ "	shiftresponsibility character varying(50),\n"
+				+ "	troubleoccurrencetime timestamp,\n"
+				+ "	troubleoccurrencesite character varying(50),\n"
+				+ "	status character varying(20),\n"
+				+ "	parent integer\n" 
+				+ ");\n";
 
 		out.write(s);
 
@@ -285,18 +298,42 @@ public class TestDataGenerator {
 		out.write(s);
 
 		for (int f : factoryIds) {
+			initMap(f);
 			initHalls(f);
 		}
 
 	}
+	
+	public static String readFile(String filename) throws IOException{
+		BufferedReader reader = null;
+		try{
+			reader = new BufferedReader(new FileReader(filename));
+			String line = null;
+			StringBuilder stringBuilder = new StringBuilder();
+			while((line = reader.readLine()) != null){
+				stringBuilder.append(line);
+				stringBuilder.append("\n");
+			}
+			return stringBuilder.toString().replace("'", "\\'");
+		} finally {
+			reader.close();
+		}
+	}
+	
+	public static void initMap(int factoryId) throws IOException{
+		out.write("UPDATE factory SET map = '\n");
+		out.write(readFile("./src/resources/config/testmap.svg"));
+		out.write("' WHERE id = " + factoryId + ";\n");
+	}
 
 	public static void initHalls(int factoryId) throws IOException {
 
-		String[] paths = new String[3];
-		paths[0] = "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z";
-		paths[1] = "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
-		paths[2] = "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
-
+		String[] paths = new String[2];
+//		paths[0] = "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z";
+//		paths[1] = "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
+//		paths[2] = "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
+		paths[0] = "path369";
+		paths[1] = "polygon249";
 		for (int i = 0; i < numOfHalls; i++) {
 			int id = id();
 
@@ -343,6 +380,12 @@ public class TestDataGenerator {
 			// factoryid
 			st.append("\', ");
 			st.append(factoryId);
+			
+			// map
+			st.append(", ");
+			st.append("\'");
+			st.append(readFile("./src/resources/config/testhallmap.svg"));
+			st.append("\'");
 			st.append(");\n");
 
 			out.write(st.toString());
@@ -355,9 +398,12 @@ public class TestDataGenerator {
 	private static void initLines(int hallId, String name) throws IOException {
 
 		String[] paths = new String[3];
-		paths[0] = "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z";
-		paths[1] = "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
-		paths[2] = "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
+		//paths[0] = "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z";
+		//paths[1] = "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
+		//paths[2] = "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
+		paths[0] = "rect217";
+		paths[1] = "polygon25";
+		paths[2] = "rect497";
 
 		String[] names = new String[3];
 		names[0] = "Assembly";

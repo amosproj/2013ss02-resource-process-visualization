@@ -42,7 +42,7 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
-	<svg id="SVGPlan"></svg>
+	<%= hall.getMap() %>
 </div>
 
 <div id="informationBlock" class="span4">
@@ -68,12 +68,15 @@ $(document).ready(function() {
 		
 	    // Draw the plan and attach click handler
 	    for(var i = 0; i < data.lines.length; ++i) {
-	    	var svgPath = $("<path></path>")
+	    	/*var svgPath = $("<path></path>")
 	    			.attr("d", data.lines[i].path)
 	    			.attr("class", getSvgClass(data.lines[i].status))
 	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')');
 	    	
-			$("#SVGPlan").append(svgPath);
+			$("#SVGPlan").append(svgPath);*/
+	    	$("#" + data.lines[i].path)
+	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')')
+	    		.attr("class", getSvgClass(data.lines[i].status));
 	    }
 	    
 	    // Refresh
