@@ -20,16 +20,8 @@
  */
 package de.osramos.reprovis;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class HallDAO extends HierarchieElementDAO {
@@ -115,6 +107,10 @@ public class HallDAO extends HierarchieElementDAO {
 		}
 		return l;
 	}*/
+	
+	public static String getMap(int id) throws DatabaseException{
+		return (String) getAttribute(id, "map");
+	}
 	
 	public static List<Integer> getHallIds(int id) throws Exception {
 		List<Integer> l = getChildIds(id, "hall");

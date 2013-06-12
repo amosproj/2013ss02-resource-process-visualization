@@ -35,11 +35,13 @@ if(request.getParameter("fid") == null)
 // Process the post data here
 int id = Integer.parseInt(request.getParameter("fid"));
 %>
+<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
 
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
 		<h3 id="dynamicHeading"></h3>
-		<svg id="SVGPlan"></svg>
+		<!-- <svg id="SVGPlan"></svg> -->
+		<%= factory.getMap() %>
 	</div>
 	
 	<div id="informationBlock" class="span4">
@@ -67,17 +69,10 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 	    // Draw the factory plan and attach click handler
-		var svgGroup = $("#SVGPlan").append(
-				$("<g>").attr("transform", "scale(1.5)")
-		);
-		
 	    for(var i = 0; i < data.halls.length; ++i) {
-	    	var svgPath = $("<path></path>")
-	    			.attr("d", data.halls[i].path)
-	    			.attr("class", getSvgClass(data.halls[i].status))
-	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')');
-	    	
-	    	$("#SVGPlan g").append(svgPath);
+	    	$("#" + data.halls[i].path)
+	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
+	    		.attr("class", getSvgClass(data.halls[i].status));
 	    }
 	    
 	    // Refresh

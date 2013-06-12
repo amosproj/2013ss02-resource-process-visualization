@@ -22,17 +22,14 @@
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class HallBean extends HierarchieElementBean {
 
-	private String name;
 	private int sizeOfStaff;
 	private int productionCapacity;
-	private String path;
 
 	public HallBean(int id) {
 		super(id);
@@ -43,10 +40,8 @@ public class HallBean extends HierarchieElementBean {
 		 * e.printStackTrace(); }
 		 */
 		try {
-			name = HallDAO.getName(id);
 			sizeOfStaff = HallDAO.getSizeOfStaff(id);
 			productionCapacity = HallDAO.getProductionCapacity(id);
-			path = HallDAO.getPath(id);
 		} catch (DatabaseException e) {
 
 		}
@@ -61,7 +56,12 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	public String getPath() {
-		return path;
+		try {
+			return HallDAO.getPath(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		return "Error";
 	}
 
 	public String getVehicles() {
@@ -111,8 +111,16 @@ public class HallBean extends HierarchieElementBean {
 	}
 
 	public int getUPSClients() {
-
 		return getNumOfLeafs();
+	}
+	
+	public String getMap() {
+		try {
+			return HallDAO.getMap(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		return "Error";
 	}
 
 	@Override
