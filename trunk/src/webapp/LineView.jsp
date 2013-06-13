@@ -58,8 +58,8 @@ int id = Integer.parseInt(request.getParameter("lid"));
 	<table id="lineDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="lineStatus"></td></tr>
 		<tr><td>Name</td><td id="lineName"></td></tr>
-		<tr><td>Production Capacity</td><td id="lineProductionCapacity"></td></tr>
-		<tr><td>Production Series</td><td id="lineProductionSeries"></td></tr>
+	<!-- 	<tr><td>Production Capacity</td><td id="lineProductionCapacity"></td></tr>
+		<tr><td>Production Series</td><td id="lineProductionSeries"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />
@@ -83,7 +83,7 @@ $(document).ready(function() {
 					.html("<div class=\""+getStatusClass(data.locations[i].status)+"\"></div>");
 			
 			var lElm = $("<td></td>")
-					.html("Location "+data.locations[i].id);
+					.html(data.locations[i].name);
 			
 			var rElm = $("<tr></tr>")
 					.attr("class", rowClass)					
