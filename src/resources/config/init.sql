@@ -125,7 +125,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -480,7 +481,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 1;
-INSERT INTO hall VALUES (2000, 'E4', 'Assembly+Finish', 944, 7713, 'Audi A4', 2, 'path369', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2000, 'A8', 'Assembly+Finish', 461, 4650, 'Audi A4', 2, 'path369', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -622,52 +623,52 @@ INSERT INTO hall VALUES (2000, 'E4', 'Assembly+Finish', 944, 7713, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2001, 'E4 Assembly', 'Series 2', 2, 'rect217', 2000);
-INSERT INTO location VALUES (2002, 'BG3', 'multimedia test', 'Robert Merkel', 2001);
-INSERT INTO device VALUES (2003, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '97888970', '2013-06-11 21:41:21.997', false, 2002);
-INSERT INTO component VALUES (2004, 'C', 'B', '77304949', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:14:50.578', 'I2', 'green', 2003);
-INSERT INTO component VALUES (2005, 'B', 'C', '17914480', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:18:51.815', 'E8', 'yellow', 2003);
-INSERT INTO device VALUES (2006, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '90356124', '2013-06-11 11:00:15.31', false, 2002);
-INSERT INTO component VALUES (2007, 'B', 'C', '10247598', 'Howard Joel Wolowitz', '2013-06-11 13:27:46.541', 'G5', 'green', 2006);
-INSERT INTO component VALUES (2008, 'G', 'G', '5017869', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:42:37.472', 'C4', 'green', 2006);
-INSERT INTO location VALUES (2009, 'EF6', 'motor test', 'Peter Mueller', 2001);
-INSERT INTO device VALUES (2010, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '67917135', '2013-06-12 03:14:49.803', false, 2009);
-INSERT INTO component VALUES (2011, 'B', 'H', '7445370', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 00:32:48.499', 'E9', 'red', 2010);
-INSERT INTO component VALUES (2012, 'D', 'B', '70912907', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 15:44:36.346', 'C2', 'green', 2010);
-INSERT INTO device VALUES (2013, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '26499902', '2013-06-11 10:26:37.517', false, 2009);
-INSERT INTO component VALUES (2014, 'G', 'B', '85706645', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 11:45:16.193', 'E8', 'green', 2013);
-INSERT INTO component VALUES (2015, 'F', 'C', '32391051', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 15:48:31.588', 'G1', 'green', 2013);
-INSERT INTO line VALUES (2016, 'E4 PreSeries', 'Series 2', 87, 'polygon25', 2000);
-INSERT INTO location VALUES (2017, 'AG5', 'ABS test', 'Robert Merkel', 2016);
-INSERT INTO device VALUES (2018, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '961698', '2013-06-11 06:46:22.017', false, 2017);
-INSERT INTO component VALUES (2019, 'I', 'G', '97465170', 'Howard Joel Wolowitz', '2013-06-11 19:23:48.453', 'A9', 'green', 2018);
-INSERT INTO component VALUES (2020, 'G', 'I', '16109446', 'Howard Joel Wolowitz', '2013-06-12 02:10:33.542', 'G9', 'green', 2018);
-INSERT INTO device VALUES (2021, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '77399161', '2013-06-11 07:39:08.064', false, 2017);
-INSERT INTO component VALUES (2022, 'D', 'F', '48973872', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:46:53.343', 'C3', 'green', 2021);
-INSERT INTO component VALUES (2023, 'B', 'B', '76099655', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:18:15.319', 'C6', 'green', 2021);
-INSERT INTO location VALUES (2024, 'HF9', 'multimedia test', 'Hans Meier', 2016);
-INSERT INTO device VALUES (2025, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '225421', '2013-06-11 05:47:36.931', false, 2024);
-INSERT INTO component VALUES (2026, 'H', 'G', '82232058', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 14:15:19.036', 'G9', 'red', 2025);
-INSERT INTO component VALUES (2027, 'A', 'G', '27542358', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:30:27.237', 'B1', 'green', 2025);
-INSERT INTO device VALUES (2028, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '64234277', '2013-06-12 00:09:24.138', false, 2024);
-INSERT INTO component VALUES (2029, 'E', 'I', '57629503', 'Howard Joel Wolowitz', '2013-06-11 10:31:47.901', 'H5', 'green', 2028);
-INSERT INTO component VALUES (2030, 'F', 'E', '76131451', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:17:46.717', 'C5', 'green', 2028);
-INSERT INTO line VALUES (2031, 'E4 Finish', 'Series 5', 32, 'rect497', 2000);
-INSERT INTO location VALUES (2032, 'CH5', 'security test', 'Robert Mueller', 2031);
-INSERT INTO device VALUES (2033, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '39910137', '2013-06-12 03:27:38.353', false, 2032);
-INSERT INTO component VALUES (2034, 'H', 'C', '56789116', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 19:07:11.876', 'F2', 'green', 2033);
-INSERT INTO component VALUES (2035, 'H', 'H', '82134604', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 06:43:06.281', 'D7', 'green', 2033);
-INSERT INTO device VALUES (2036, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '85769529', '2013-06-11 22:14:47.194', false, 2032);
-INSERT INTO component VALUES (2037, 'A', 'E', '6125276', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 01:03:42.928', 'B4', 'green', 2036);
-INSERT INTO component VALUES (2038, 'I', 'H', '62161534', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 06:25:55.825', 'D4', 'green', 2036);
-INSERT INTO location VALUES (2039, 'IA7', 'security test', 'Hans Merkel', 2031);
-INSERT INTO device VALUES (2040, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '93486604', '2013-06-11 04:46:35.193', false, 2039);
-INSERT INTO component VALUES (2041, 'D', 'G', '926235', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:53:42.443', 'I5', 'green', 2040);
-INSERT INTO component VALUES (2042, 'F', 'I', '76761672', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:19:56.415', 'I1', 'green', 2040);
-INSERT INTO device VALUES (2043, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '17223939', '2013-06-11 22:08:54.612', false, 2039);
-INSERT INTO component VALUES (2044, 'F', 'A', '78174504', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:32:29.34', 'I7', 'green', 2043);
-INSERT INTO component VALUES (2045, 'H', 'E', '48512352', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:36:47.284', 'B7', 'green', 2043);
-INSERT INTO hall VALUES (2046, 'I6', 'Assembly+Finish', 264, 7071, 'Audi A4', 2, 'polygon249', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2001, 'A8 Assembly', 'Series 6', 64, 'rect217', 2000);
+INSERT INTO location VALUES (2002, 'AC6', 'multimedia test', 'Robert Schmitt', 2001);
+INSERT INTO device VALUES (2003, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'D', '1574500', '2013-06-12 21:52:01.748', false, 2002);
+INSERT INTO component VALUES (2004, 'H', 'E', '7094409', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:20:10.781', 'F4', 'yellow', 2003);
+INSERT INTO component VALUES (2005, 'G', 'E', '35848181', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 00:27:38.593', 'B8', 'green', 2003);
+INSERT INTO device VALUES (2006, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'D', '13789010', '2013-06-13 09:53:12.318', false, 2002);
+INSERT INTO component VALUES (2007, 'E', 'A', '50069576', 'Howard Joel Wolowitz', '2013-06-12 18:32:15.884', 'D1', 'green', 2006);
+INSERT INTO component VALUES (2008, 'D', 'B', '26572514', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 00:03:26.408', 'D8', 'green', 2006);
+INSERT INTO location VALUES (2009, 'IH8', 'security test', 'Sarah Schmitt', 2001);
+INSERT INTO device VALUES (2010, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '85143864', '2013-06-12 15:28:49.212', false, 2009);
+INSERT INTO component VALUES (2011, 'E', 'H', '37869688', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 11:28:06.96', 'D8', 'green', 2010);
+INSERT INTO component VALUES (2012, 'D', 'C', '70731668', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:30:56.865', 'B1', 'green', 2010);
+INSERT INTO device VALUES (2013, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '37290196', '2013-06-12 18:12:38.27', false, 2009);
+INSERT INTO component VALUES (2014, 'H', 'D', '99598027', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 01:56:05.285', 'E9', 'green', 2013);
+INSERT INTO component VALUES (2015, 'G', 'G', '59842911', 'Howard Joel Wolowitz', '2013-06-12 16:32:53.169', 'D8', 'green', 2013);
+INSERT INTO line VALUES (2016, 'A8 PreSeries', 'Series 1', 47, 'polygon25', 2000);
+INSERT INTO location VALUES (2017, 'HI6', 'motor test', 'Sarah Merkel', 2016);
+INSERT INTO device VALUES (2018, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '52571066', '2013-06-12 18:32:54.863', false, 2017);
+INSERT INTO component VALUES (2019, 'A', 'B', '16668689', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 07:51:20.805', 'A4', 'green', 2018);
+INSERT INTO component VALUES (2020, 'D', 'H', '7188167', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 02:37:11.388', 'C9', 'green', 2018);
+INSERT INTO device VALUES (2021, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '39093845', '2013-06-13 07:42:26.307', false, 2017);
+INSERT INTO component VALUES (2022, 'A', 'C', '2342651', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:08:55.735', 'G1', 'red', 2021);
+INSERT INTO component VALUES (2023, 'H', 'A', '56698086', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 22:35:41.615', 'E5', 'green', 2021);
+INSERT INTO location VALUES (2024, 'FI7', 'multimedia test', 'Peter Schulze', 2016);
+INSERT INTO device VALUES (2025, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '71094100', '2013-06-13 01:08:34.648', false, 2024);
+INSERT INTO component VALUES (2026, 'A', 'G', '62484033', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 19:18:24.533', 'B1', 'green', 2025);
+INSERT INTO component VALUES (2027, 'G', 'D', '26404578', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 23:32:13.022', 'H4', 'green', 2025);
+INSERT INTO device VALUES (2028, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '97717507', '2013-06-12 13:20:50.271', true, 2024);
+INSERT INTO component VALUES (2029, 'F', 'G', '91496945', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:32:18.475', 'D3', 'green', 2028);
+INSERT INTO component VALUES (2030, 'I', 'D', '80352030', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:05:46.336', 'C2', 'green', 2028);
+INSERT INTO line VALUES (2031, 'A8 Finish', 'Series 5', 72, 'rect497', 2000);
+INSERT INTO location VALUES (2032, 'FG7', 'transmission test', 'Sarah Schmitt', 2031);
+INSERT INTO device VALUES (2033, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '49439467', '2013-06-13 11:32:37.03', false, 2032);
+INSERT INTO component VALUES (2034, 'A', 'I', '36898180', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 15:30:09.951', 'A4', 'green', 2033);
+INSERT INTO component VALUES (2035, 'I', 'F', '88924303', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:23:16.992', 'A5', 'green', 2033);
+INSERT INTO device VALUES (2036, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '10347276', '2013-06-13 05:23:09.751', false, 2032);
+INSERT INTO component VALUES (2037, 'F', 'D', '97234986', 'Howard Joel Wolowitz', '2013-06-12 14:27:30.201', 'E5', 'green', 2036);
+INSERT INTO component VALUES (2038, 'H', 'H', '46684940', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 15:54:57.13', 'B3', 'yellow', 2036);
+INSERT INTO location VALUES (2039, 'HB4', 'security test', 'Robert Schmitt', 2031);
+INSERT INTO device VALUES (2040, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '5504180', '2013-06-13 05:41:11.285', false, 2039);
+INSERT INTO component VALUES (2041, 'F', 'C', '83532583', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 09:21:38.08', 'B3', 'green', 2040);
+INSERT INTO component VALUES (2042, 'D', 'F', '15576780', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:35:14.469', 'I4', 'green', 2040);
+INSERT INTO device VALUES (2043, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '2287492', '2013-06-12 21:13:46.875', false, 2039);
+INSERT INTO component VALUES (2044, 'A', 'E', '41064143', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:53:04.785', 'D3', 'green', 2043);
+INSERT INTO component VALUES (2045, 'I', 'H', '76031048', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:41:24.493', 'E2', 'green', 2043);
+INSERT INTO hall VALUES (2046, 'E9', 'Assembly+Finish', 430, 492, 'Audi A4', 2, 'polygon249', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -809,51 +810,51 @@ INSERT INTO hall VALUES (2046, 'I6', 'Assembly+Finish', 264, 7071, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2047, 'I6 Assembly', 'Series 6', 14, 'rect217', 2046);
-INSERT INTO location VALUES (2048, 'HA3', 'motor test', 'Franziska Mueller', 2047);
-INSERT INTO device VALUES (2049, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '95356394', '2013-06-11 14:31:35.968', false, 2048);
-INSERT INTO component VALUES (2050, 'F', 'E', '89100351', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 03:36:18.122', 'H1', 'green', 2049);
-INSERT INTO component VALUES (2051, 'H', 'G', '83633009', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:22:57.952', 'A9', 'green', 2049);
-INSERT INTO device VALUES (2052, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '32768618', '2013-06-12 02:38:32.435', false, 2048);
-INSERT INTO component VALUES (2053, 'D', 'G', '2538627', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:47:06.289', 'C8', 'green', 2052);
-INSERT INTO component VALUES (2054, 'H', 'D', '66099685', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:43:59.611', 'A3', 'green', 2052);
-INSERT INTO location VALUES (2055, 'CI3', 'multimedia test', 'Sarah Schmitt', 2047);
-INSERT INTO device VALUES (2056, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '3272091', '2013-06-11 16:52:16.102', false, 2055);
-INSERT INTO component VALUES (2057, 'H', 'A', '31052177', 'Howard Joel Wolowitz', '2013-06-11 23:33:56.361', 'H9', 'green', 2056);
-INSERT INTO component VALUES (2058, 'F', 'D', '69854622', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 11:29:46.467', 'F1', 'green', 2056);
-INSERT INTO device VALUES (2059, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '32673651', '2013-06-11 06:21:43.0', false, 2055);
-INSERT INTO component VALUES (2060, 'D', 'B', '30831106', 'Howard Joel Wolowitz', '2013-06-11 11:24:41.697', 'B1', 'green', 2059);
-INSERT INTO component VALUES (2061, 'B', 'E', '78830305', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:08:44.905', 'C3', 'yellow', 2059);
-INSERT INTO line VALUES (2062, 'I6 PreSeries', 'Series 1', 8, 'polygon25', 2046);
-INSERT INTO location VALUES (2063, 'EF2', 'transmission test', 'Franziska Merkel', 2062);
-INSERT INTO device VALUES (2064, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '81985056', '2013-06-12 00:15:16.214', true, 2063);
-INSERT INTO component VALUES (2065, 'A', 'F', '4017369', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:57:20.972', 'F7', 'green', 2064);
-INSERT INTO component VALUES (2066, 'F', 'B', '9888937', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:20:28.73', 'A5', 'green', 2064);
-INSERT INTO device VALUES (2067, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'C', '38626576', '2013-06-11 23:33:00.212', false, 2063);
-INSERT INTO component VALUES (2068, 'B', 'I', '84540068', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 12:35:06.805', 'F5', 'yellow', 2067);
-INSERT INTO component VALUES (2069, 'H', 'D', '65991114', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 10:27:17.07', 'G7', 'yellow', 2067);
-INSERT INTO location VALUES (2070, 'DF8', 'multimedia test', 'Robert Meier', 2062);
-INSERT INTO device VALUES (2071, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '91814387', '2013-06-11 15:18:04.936', false, 2070);
-INSERT INTO component VALUES (2072, 'B', 'A', '95115683', 'Howard Joel Wolowitz', '2013-06-11 17:52:30.757', 'E4', 'green', 2071);
-INSERT INTO component VALUES (2073, 'D', 'D', '6404996', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:43:39.512', 'E7', 'green', 2071);
-INSERT INTO device VALUES (2074, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '21473019', '2013-06-11 09:01:05.818', false, 2070);
-INSERT INTO component VALUES (2075, 'B', 'H', '71049247', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 19:33:33.195', 'F5', 'green', 2074);
-INSERT INTO component VALUES (2076, 'G', 'H', '61653797', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 02:14:24.484', 'C3', 'green', 2074);
-INSERT INTO line VALUES (2077, 'I6 Finish', 'Series 7', 14, 'rect497', 2046);
-INSERT INTO location VALUES (2078, 'FB3', 'security test', 'Sarah Merkel', 2077);
-INSERT INTO device VALUES (2079, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '34695543', '2013-06-11 13:45:07.482', false, 2078);
-INSERT INTO component VALUES (2080, 'C', 'I', '70990561', 'Howard Joel Wolowitz', '2013-06-11 16:58:28.286', 'H9', 'green', 2079);
-INSERT INTO component VALUES (2081, 'A', 'H', '2993770', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 04:46:49.795', 'I7', 'green', 2079);
-INSERT INTO device VALUES (2082, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'C', '57879166', '2013-06-12 01:27:42.56', false, 2078);
-INSERT INTO component VALUES (2083, 'D', 'E', '41523681', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:48:28.252', 'D5', 'green', 2082);
-INSERT INTO component VALUES (2084, 'F', 'I', '70938784', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:47:46.735', 'C3', 'green', 2082);
-INSERT INTO location VALUES (2085, 'HG1', 'transmission test', 'Hans Schulze', 2077);
-INSERT INTO device VALUES (2086, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '7534401', '2013-06-11 19:50:05.017', false, 2085);
-INSERT INTO component VALUES (2087, 'H', 'E', '66131440', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 03:52:52.989', 'G4', 'green', 2086);
-INSERT INTO component VALUES (2088, 'A', 'I', '61874786', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 10:58:49.022', 'H5', 'red', 2086);
-INSERT INTO device VALUES (2089, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'C', '36405118', '2013-06-11 12:59:52.123', false, 2085);
-INSERT INTO component VALUES (2090, 'H', 'A', '77101924', 'Howard Joel Wolowitz', '2013-06-11 17:06:12.197', 'H1', 'green', 2089);
-INSERT INTO component VALUES (2091, 'B', 'A', '49601689', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:22:29.304', 'H2', 'red', 2089);
+INSERT INTO line VALUES (2047, 'E9 Assembly', 'Series 6', 50, 'rect217', 2046);
+INSERT INTO location VALUES (2048, 'CF8', 'ABS test', 'Franziska Mueller', 2047);
+INSERT INTO device VALUES (2049, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '30037752', '2013-06-13 12:33:35.899', false, 2048);
+INSERT INTO component VALUES (2050, 'I', 'D', '44102524', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:12:09.394', 'B3', 'green', 2049);
+INSERT INTO component VALUES (2051, 'A', 'B', '74746210', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 18:53:54.766', 'H4', 'green', 2049);
+INSERT INTO device VALUES (2052, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '7765282', '2013-06-13 02:49:03.33', false, 2048);
+INSERT INTO component VALUES (2053, 'F', 'D', '45932141', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:24:14.977', 'C6', 'green', 2052);
+INSERT INTO component VALUES (2054, 'G', 'G', '22498505', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 09:32:08.003', 'B5', 'green', 2052);
+INSERT INTO location VALUES (2055, 'BA1', 'multimedia test', 'Franziska Mueller', 2047);
+INSERT INTO device VALUES (2056, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '25425375', '2013-06-13 12:32:47.075', false, 2055);
+INSERT INTO component VALUES (2057, 'E', 'E', '78930802', 'Howard Joel Wolowitz', '2013-06-12 23:54:17.885', 'B7', 'green', 2056);
+INSERT INTO component VALUES (2058, 'D', 'B', '7435393', 'Howard Joel Wolowitz', '2013-06-13 06:42:32.445', 'A1', 'green', 2056);
+INSERT INTO device VALUES (2059, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '72084101', '2013-06-13 08:20:40.787', false, 2055);
+INSERT INTO component VALUES (2060, 'I', 'B', '38513644', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:25:53.432', 'E9', 'green', 2059);
+INSERT INTO component VALUES (2061, 'F', 'D', '81276554', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 02:04:31.778', 'F4', 'green', 2059);
+INSERT INTO line VALUES (2062, 'E9 PreSeries', 'Series 2', 14, 'polygon25', 2046);
+INSERT INTO location VALUES (2063, 'BE6', 'multimedia test', 'Sarah Mueller', 2062);
+INSERT INTO device VALUES (2064, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '79947416', '2013-06-13 12:02:40.156', false, 2063);
+INSERT INTO component VALUES (2065, 'G', 'D', '30853706', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:24:59.217', 'I8', 'green', 2064);
+INSERT INTO component VALUES (2066, 'I', 'C', '61715772', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:42:46.749', 'C5', 'green', 2064);
+INSERT INTO device VALUES (2067, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '37345964', '2013-06-13 09:13:16.045', false, 2063);
+INSERT INTO component VALUES (2068, 'E', 'H', '62291043', 'Howard Joel Wolowitz', '2013-06-13 01:01:39.93', 'H1', 'yellow', 2067);
+INSERT INTO component VALUES (2069, 'E', 'E', '40051301', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:14:31.847', 'B3', 'green', 2067);
+INSERT INTO location VALUES (2070, 'AA8', 'security test', 'Sarah Schulze', 2062);
+INSERT INTO device VALUES (2071, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '44660929', '2013-06-12 17:22:18.08', false, 2070);
+INSERT INTO component VALUES (2072, 'F', 'B', '89146754', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:02:15.841', 'E9', 'green', 2071);
+INSERT INTO component VALUES (2073, 'B', 'H', '23375927', 'Howard Joel Wolowitz', '2013-06-13 10:13:29.604', 'G1', 'red', 2071);
+INSERT INTO device VALUES (2074, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '8700827', '2013-06-12 17:07:32.528', false, 2070);
+INSERT INTO component VALUES (2075, 'F', 'B', '81600194', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 05:08:34.293', 'F8', 'green', 2074);
+INSERT INTO component VALUES (2076, 'F', 'B', '82685668', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 09:34:55.807', 'A9', 'green', 2074);
+INSERT INTO line VALUES (2077, 'E9 Finish', 'Series 8', 48, 'rect497', 2046);
+INSERT INTO location VALUES (2078, 'BA9', 'transmission test', 'Franziska Schulze', 2077);
+INSERT INTO device VALUES (2079, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '64983857', '2013-06-12 14:10:04.64', false, 2078);
+INSERT INTO component VALUES (2080, 'C', 'E', '91309894', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 05:14:55.339', 'D8', 'green', 2079);
+INSERT INTO component VALUES (2081, 'H', 'H', '41944598', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 22:02:49.206', 'D9', 'green', 2079);
+INSERT INTO device VALUES (2082, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '68091357', '2013-06-13 02:04:29.238', true, 2078);
+INSERT INTO component VALUES (2083, 'A', 'D', '1420027', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 13:20:30.147', 'G1', 'green', 2082);
+INSERT INTO component VALUES (2084, 'C', 'A', '65421818', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 22:46:44.334', 'I2', 'green', 2082);
+INSERT INTO location VALUES (2085, 'IC8', 'motor test', 'Franziska Meier', 2077);
+INSERT INTO device VALUES (2086, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '83556214', '2013-06-12 14:02:33.25', false, 2085);
+INSERT INTO component VALUES (2087, 'B', 'G', '97175017', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 09:58:39.378', 'D6', 'green', 2086);
+INSERT INTO component VALUES (2088, 'B', 'I', '19077419', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:11:42.78', 'B9', 'green', 2086);
+INSERT INTO device VALUES (2089, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '73611187', '2013-06-13 00:13:29.331', false, 2085);
+INSERT INTO component VALUES (2090, 'D', 'H', '45035041', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:38:56.121', 'G4', 'green', 2089);
+INSERT INTO component VALUES (2091, 'I', 'H', '98072633', 'Howard Joel Wolowitz', '2013-06-12 16:07:17.041', 'G1', 'green', 2089);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -867,7 +868,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -1222,7 +1224,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 2;
-INSERT INTO hall VALUES (2092, 'G5', 'Assembly+Finish', 242, 8787, 'Audi A4', 2, 'path369', 2, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2092, 'H1', 'Assembly+Finish', 383, 9167, 'Audi A4', 2, 'path369', 2, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -1364,52 +1366,52 @@ INSERT INTO hall VALUES (2092, 'G5', 'Assembly+Finish', 242, 8787, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2093, 'G5 Assembly', 'Series 2', 4, 'rect217', 2092);
-INSERT INTO location VALUES (2094, 'BI2', 'motor test', 'Peter Schulze', 2093);
-INSERT INTO device VALUES (2095, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '45868670', '2013-06-11 05:49:08.396', true, 2094);
-INSERT INTO component VALUES (2096, 'G', 'H', '97145115', 'Howard Joel Wolowitz', '2013-06-12 02:35:17.646', 'H3', 'yellow', 2095);
-INSERT INTO component VALUES (2097, 'G', 'E', '69013604', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 20:49:49.026', 'A2', 'green', 2095);
-INSERT INTO device VALUES (2098, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'C', '3137650', '2013-06-11 22:56:49.392', false, 2094);
-INSERT INTO component VALUES (2099, 'F', 'C', '68201035', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:30:01.038', 'G6', 'green', 2098);
-INSERT INTO component VALUES (2100, 'E', 'D', '22361857', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:21:31.005', 'F2', 'green', 2098);
-INSERT INTO location VALUES (2101, 'CA8', 'motor test', 'Robert Meier', 2093);
-INSERT INTO device VALUES (2102, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'H', '67112820', '2013-06-11 10:48:13.325', false, 2101);
-INSERT INTO component VALUES (2103, 'F', 'I', '42139242', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:26:13.055', 'B7', 'green', 2102);
-INSERT INTO component VALUES (2104, 'D', 'A', '36791476', 'Howard Joel Wolowitz', '2013-06-11 10:55:09.272', 'I6', 'green', 2102);
-INSERT INTO device VALUES (2105, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '59662287', '2013-06-12 03:10:53.768', false, 2101);
-INSERT INTO component VALUES (2106, 'C', 'I', '12382760', 'Howard Joel Wolowitz', '2013-06-11 15:22:14.587', 'A5', 'green', 2105);
-INSERT INTO component VALUES (2107, 'I', 'H', '98781242', 'Howard Joel Wolowitz', '2013-06-11 19:36:37.708', 'D8', 'green', 2105);
-INSERT INTO line VALUES (2108, 'G5 PreSeries', 'Series 6', 57, 'polygon25', 2092);
-INSERT INTO location VALUES (2109, 'GE4', 'security test', 'Franziska Mueller', 2108);
-INSERT INTO device VALUES (2110, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '94264082', '2013-06-11 15:09:39.188', false, 2109);
-INSERT INTO component VALUES (2111, 'E', 'A', '13596234', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 03:45:33.459', 'G2', 'green', 2110);
-INSERT INTO component VALUES (2112, 'B', 'E', '23824156', 'Howard Joel Wolowitz', '2013-06-11 21:32:59.209', 'H7', 'green', 2110);
-INSERT INTO device VALUES (2113, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '64383188', '2013-06-11 04:38:21.975', false, 2109);
-INSERT INTO component VALUES (2114, 'H', 'G', '78737361', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 13:11:40.845', 'A3', 'green', 2113);
-INSERT INTO component VALUES (2115, 'I', 'D', '89854893', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:23:54.429', 'D3', 'green', 2113);
-INSERT INTO location VALUES (2116, 'HC1', 'transmission test', 'Peter Mueller', 2108);
-INSERT INTO device VALUES (2117, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '3550155', '2013-06-11 05:02:39.812', true, 2116);
-INSERT INTO component VALUES (2118, 'F', 'F', '28305262', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:04:36.967', 'D1', 'green', 2117);
-INSERT INTO component VALUES (2119, 'I', 'E', '63730070', 'Howard Joel Wolowitz', '2013-06-11 11:33:55.103', 'A5', 'green', 2117);
-INSERT INTO device VALUES (2120, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '78018237', '2013-06-11 22:12:20.707', false, 2116);
-INSERT INTO component VALUES (2121, 'H', 'B', '59193757', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 17:01:27.855', 'E8', 'green', 2120);
-INSERT INTO component VALUES (2122, 'C', 'E', '71484281', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:12:57.388', 'H9', 'yellow', 2120);
-INSERT INTO line VALUES (2123, 'G5 Finish', 'Series 6', 91, 'rect497', 2092);
-INSERT INTO location VALUES (2124, 'GA4', 'ABS test', 'Hans Meier', 2123);
-INSERT INTO device VALUES (2125, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '86581065', '2013-06-11 21:36:42.766', false, 2124);
-INSERT INTO component VALUES (2126, 'H', 'A', '19322245', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 01:38:50.653', 'A2', 'green', 2125);
-INSERT INTO component VALUES (2127, 'D', 'H', '8635986', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 21:44:17.771', 'I1', 'green', 2125);
-INSERT INTO device VALUES (2128, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '42140728', '2013-06-11 17:08:39.687', false, 2124);
-INSERT INTO component VALUES (2129, 'B', 'D', '3543045', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 00:30:47.105', 'I3', 'green', 2128);
-INSERT INTO component VALUES (2130, 'H', 'H', '78988098', 'Howard Joel Wolowitz', '2013-06-11 13:17:04.604', 'I7', 'green', 2128);
-INSERT INTO location VALUES (2131, 'GE1', 'motor test', 'Franziska Merkel', 2123);
-INSERT INTO device VALUES (2132, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '54817990', '2013-06-12 01:53:01.762', false, 2131);
-INSERT INTO component VALUES (2133, 'C', 'I', '58648653', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 03:54:22.754', 'F3', 'green', 2132);
-INSERT INTO component VALUES (2134, 'C', 'E', '99025237', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:39:07.47', 'I1', 'green', 2132);
-INSERT INTO device VALUES (2135, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '71940145', '2013-06-12 02:01:36.66', false, 2131);
-INSERT INTO component VALUES (2136, 'H', 'H', '38248524', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 01:18:56.804', 'C1', 'green', 2135);
-INSERT INTO component VALUES (2137, 'C', 'D', '51546765', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 17:52:18.971', 'E3', 'green', 2135);
-INSERT INTO hall VALUES (2138, 'D9', 'Assembly+Finish', 989, 2176, 'Audi A4', 2, 'polygon249', 2, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2093, 'H1 Assembly', 'Series 1', 96, 'rect217', 2092);
+INSERT INTO location VALUES (2094, 'DA9', 'security test', 'Sarah Mueller', 2093);
+INSERT INTO device VALUES (2095, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'H', '25987781', '2013-06-13 12:29:24.046', true, 2094);
+INSERT INTO component VALUES (2096, 'H', 'E', '71618809', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:31:58.356', 'B8', 'green', 2095);
+INSERT INTO component VALUES (2097, 'E', 'I', '78242867', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 06:17:03.963', 'G8', 'green', 2095);
+INSERT INTO device VALUES (2098, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '96920232', '2013-06-12 19:09:32.436', false, 2094);
+INSERT INTO component VALUES (2099, 'D', 'A', '62125483', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:11:13.435', 'I6', 'green', 2098);
+INSERT INTO component VALUES (2100, 'D', 'I', '67736678', 'Howard Joel Wolowitz', '2013-06-12 20:15:53.865', 'E2', 'green', 2098);
+INSERT INTO location VALUES (2101, 'BH5', 'transmission test', 'Hans Schmitt', 2093);
+INSERT INTO device VALUES (2102, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '42399777', '2013-06-13 12:07:55.38', false, 2101);
+INSERT INTO component VALUES (2103, 'I', 'H', '53073524', 'Howard Joel Wolowitz', '2013-06-12 20:37:37.665', 'A6', 'green', 2102);
+INSERT INTO component VALUES (2104, 'F', 'I', '87540825', 'Howard Joel Wolowitz', '2013-06-13 00:47:33.872', 'E1', 'green', 2102);
+INSERT INTO device VALUES (2105, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'G', '85665220', '2013-06-12 22:46:15.075', false, 2101);
+INSERT INTO component VALUES (2106, 'B', 'C', '76844915', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:19:12.812', 'E5', 'green', 2105);
+INSERT INTO component VALUES (2107, 'F', 'F', '52501249', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 02:26:55.507', 'C9', 'green', 2105);
+INSERT INTO line VALUES (2108, 'H1 PreSeries', 'Series 7', 11, 'polygon25', 2092);
+INSERT INTO location VALUES (2109, 'IE8', 'ABS test', 'Hans Schulze', 2108);
+INSERT INTO device VALUES (2110, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '85357563', '2013-06-12 14:54:21.173', false, 2109);
+INSERT INTO component VALUES (2111, 'E', 'C', '95488075', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:39:44.131', 'B9', 'green', 2110);
+INSERT INTO component VALUES (2112, 'H', 'C', '42893062', 'Howard Joel Wolowitz', '2013-06-13 00:31:00.64', 'G4', 'green', 2110);
+INSERT INTO device VALUES (2113, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '92471705', '2013-06-12 20:08:58.759', false, 2109);
+INSERT INTO component VALUES (2114, 'E', 'G', '47111754', 'Howard Joel Wolowitz', '2013-06-13 00:49:30.36', 'C8', 'green', 2113);
+INSERT INTO component VALUES (2115, 'H', 'E', '45114945', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:54:17.698', 'D5', 'green', 2113);
+INSERT INTO location VALUES (2116, 'GG6', 'motor test', 'Franziska Mueller', 2108);
+INSERT INTO device VALUES (2117, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '32857839', '2013-06-13 08:14:44.508', false, 2116);
+INSERT INTO component VALUES (2118, 'B', 'H', '95567077', 'Howard Joel Wolowitz', '2013-06-13 05:53:14.527', 'I7', 'green', 2117);
+INSERT INTO component VALUES (2119, 'E', 'D', '95308732', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 13:46:34.392', 'H5', 'green', 2117);
+INSERT INTO device VALUES (2120, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '13880977', '2013-06-13 06:28:36.907', false, 2116);
+INSERT INTO component VALUES (2121, 'G', 'I', '73020569', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:43:39.369', 'G7', 'green', 2120);
+INSERT INTO component VALUES (2122, 'A', 'G', '5704746', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 07:32:19.668', 'F3', 'green', 2120);
+INSERT INTO line VALUES (2123, 'H1 Finish', 'Series 5', 89, 'rect497', 2092);
+INSERT INTO location VALUES (2124, 'AC2', 'multimedia test', 'Peter Schulze', 2123);
+INSERT INTO device VALUES (2125, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '77385172', '2013-06-12 16:15:03.465', false, 2124);
+INSERT INTO component VALUES (2126, 'H', 'F', '15099235', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:54:23.614', 'E2', 'green', 2125);
+INSERT INTO component VALUES (2127, 'C', 'C', '46497724', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:06:13.155', 'E7', 'green', 2125);
+INSERT INTO device VALUES (2128, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '87170496', '2013-06-12 16:29:22.363', false, 2124);
+INSERT INTO component VALUES (2129, 'I', 'A', '59553280', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:25:14.284', 'A9', 'green', 2128);
+INSERT INTO component VALUES (2130, 'G', 'A', '16906945', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:55:35.077', 'F7', 'green', 2128);
+INSERT INTO location VALUES (2131, 'EI9', 'security test', 'Hans Schmitt', 2123);
+INSERT INTO device VALUES (2132, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '20189893', '2013-06-13 00:45:04.956', false, 2131);
+INSERT INTO component VALUES (2133, 'D', 'B', '13517135', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:34:20.719', 'B1', 'green', 2132);
+INSERT INTO component VALUES (2134, 'G', 'I', '98010312', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:54:07.94', 'H3', 'green', 2132);
+INSERT INTO device VALUES (2135, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'I', '50674967', '2013-06-12 17:46:10.0', false, 2131);
+INSERT INTO component VALUES (2136, 'D', 'A', '28249404', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 13:24:12.632', 'A4', 'green', 2135);
+INSERT INTO component VALUES (2137, 'G', 'G', '24826091', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 04:08:20.987', 'B5', 'green', 2135);
+INSERT INTO hall VALUES (2138, 'C1', 'Assembly+Finish', 465, 2560, 'Audi A4', 2, 'polygon249', 2, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -1551,51 +1553,51 @@ INSERT INTO hall VALUES (2138, 'D9', 'Assembly+Finish', 989, 2176, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2139, 'D9 Assembly', 'Series 5', 57, 'rect217', 2138);
-INSERT INTO location VALUES (2140, 'DI3', 'multimedia test', 'Hans Schulze', 2139);
-INSERT INTO device VALUES (2141, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '48978112', '2013-06-11 05:51:58.427', false, 2140);
-INSERT INTO component VALUES (2142, 'B', 'C', '93913640', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:28:41.807', 'E7', 'green', 2141);
-INSERT INTO component VALUES (2143, 'G', 'B', '6761185', 'Howard Joel Wolowitz', '2013-06-11 04:07:34.3', 'G7', 'green', 2141);
-INSERT INTO device VALUES (2144, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '23026685', '2013-06-11 05:33:04.069', false, 2140);
-INSERT INTO component VALUES (2145, 'D', 'E', '9716870', 'Howard Joel Wolowitz', '2013-06-12 01:20:37.99', 'C3', 'green', 2144);
-INSERT INTO component VALUES (2146, 'A', 'B', '3135093', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 20:32:41.585', 'I5', 'green', 2144);
-INSERT INTO location VALUES (2147, 'GE5', 'multimedia test', 'Franziska Meier', 2139);
-INSERT INTO device VALUES (2148, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'F', '97936954', '2013-06-11 19:29:14.661', false, 2147);
-INSERT INTO component VALUES (2149, 'G', 'B', '78788088', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 10:26:01.399', 'F5', 'green', 2148);
-INSERT INTO component VALUES (2150, 'B', 'C', '61032361', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 17:49:04.029', 'A7', 'green', 2148);
-INSERT INTO device VALUES (2151, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'F', '80129858', '2013-06-12 02:45:25.163', true, 2147);
-INSERT INTO component VALUES (2152, 'A', 'H', '98106899', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:34:14.656', 'G9', 'green', 2151);
-INSERT INTO component VALUES (2153, 'I', 'F', '32520859', 'Howard Joel Wolowitz', '2013-06-11 03:43:18.046', 'A6', 'green', 2151);
-INSERT INTO line VALUES (2154, 'D9 PreSeries', 'Series 6', 32, 'polygon25', 2138);
-INSERT INTO location VALUES (2155, 'AI7', 'security test', 'Franziska Mueller', 2154);
-INSERT INTO device VALUES (2156, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '83295261', '2013-06-12 00:12:24.13', false, 2155);
-INSERT INTO component VALUES (2157, 'I', 'G', '33632772', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 05:16:37.635', 'I4', 'green', 2156);
-INSERT INTO component VALUES (2158, 'A', 'I', '3808438', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 14:06:22.01', 'B9', 'green', 2156);
-INSERT INTO device VALUES (2159, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '41317583', '2013-06-12 02:13:20.215', false, 2155);
-INSERT INTO component VALUES (2160, 'H', 'C', '75184740', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 21:24:56.173', 'G2', 'green', 2159);
-INSERT INTO component VALUES (2161, 'C', 'B', '67425158', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 03:16:03.73', 'D3', 'green', 2159);
-INSERT INTO location VALUES (2162, 'DF4', 'multimedia test', 'Sarah Merkel', 2154);
-INSERT INTO device VALUES (2163, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'G', '92539535', '2013-06-11 20:36:39.722', false, 2162);
-INSERT INTO component VALUES (2164, 'C', 'I', '40339638', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 22:26:22.089', 'F8', 'red', 2163);
-INSERT INTO component VALUES (2165, 'G', 'B', '38413051', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:02:56.314', 'I7', 'green', 2163);
-INSERT INTO device VALUES (2166, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '67232501', '2013-06-11 16:20:48.859', false, 2162);
-INSERT INTO component VALUES (2167, 'E', 'D', '86032920', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:33:53.795', 'I1', 'green', 2166);
-INSERT INTO component VALUES (2168, 'F', 'E', '66520937', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 00:51:48.835', 'I4', 'green', 2166);
-INSERT INTO line VALUES (2169, 'D9 Finish', 'Series 3', 26, 'rect497', 2138);
-INSERT INTO location VALUES (2170, 'CH5', 'security test', 'Peter Mueller', 2169);
-INSERT INTO device VALUES (2171, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'D', '49581350', '2013-06-11 12:26:11.092', true, 2170);
-INSERT INTO component VALUES (2172, 'G', 'B', '35295577', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 15:02:58.053', 'D7', 'green', 2171);
-INSERT INTO component VALUES (2173, 'E', 'E', '56846039', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 05:18:10.141', 'B9', 'green', 2171);
-INSERT INTO device VALUES (2174, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'A', '97436329', '2013-06-11 08:26:45.498', false, 2170);
-INSERT INTO component VALUES (2175, 'D', 'G', '24234767', 'Howard Joel Wolowitz', '2013-06-11 17:40:37.969', 'F8', 'green', 2174);
-INSERT INTO component VALUES (2176, 'A', 'F', '1552610', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:26:44.284', 'C8', 'green', 2174);
-INSERT INTO location VALUES (2177, 'CD2', 'transmission test', 'Peter Mueller', 2169);
-INSERT INTO device VALUES (2178, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '93720691', '2013-06-11 06:44:41.573', false, 2177);
-INSERT INTO component VALUES (2179, 'H', 'B', '93879155', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 22:22:19.836', 'E6', 'green', 2178);
-INSERT INTO component VALUES (2180, 'F', 'G', '79117705', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 06:14:28.736', 'G4', 'green', 2178);
-INSERT INTO device VALUES (2181, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'A', '50024289', '2013-06-11 04:20:35.418', false, 2177);
-INSERT INTO component VALUES (2182, 'G', 'D', '98617776', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:07:15.94', 'B9', 'green', 2181);
-INSERT INTO component VALUES (2183, 'F', 'F', '40841139', 'Howard Joel Wolowitz', '2013-06-11 11:11:21.085', 'C2', 'green', 2181);
+INSERT INTO line VALUES (2139, 'C1 Assembly', 'Series 3', 4, 'rect217', 2138);
+INSERT INTO location VALUES (2140, 'FG5', 'motor test', 'Sarah Merkel', 2139);
+INSERT INTO device VALUES (2141, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '54134271', '2013-06-13 09:09:20.892', false, 2140);
+INSERT INTO component VALUES (2142, 'H', 'E', '26458365', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:13:26.755', 'G8', 'green', 2141);
+INSERT INTO component VALUES (2143, 'D', 'C', '75298950', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:09:09.843', 'H9', 'green', 2141);
+INSERT INTO device VALUES (2144, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '93891709', '2013-06-12 13:47:39.866', false, 2140);
+INSERT INTO component VALUES (2145, 'I', 'E', '89549053', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:29:52.004', 'D7', 'red', 2144);
+INSERT INTO component VALUES (2146, 'E', 'H', '26906952', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 23:17:45.115', 'G6', 'green', 2144);
+INSERT INTO location VALUES (2147, 'IH9', 'ABS test', 'Robert Schulze', 2139);
+INSERT INTO device VALUES (2148, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '89817726', '2013-06-13 04:09:50.663', false, 2147);
+INSERT INTO component VALUES (2149, 'E', 'G', '49022050', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 02:00:36.016', 'I7', 'green', 2148);
+INSERT INTO component VALUES (2150, 'G', 'D', '95552179', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:29:55.666', 'D1', 'green', 2148);
+INSERT INTO device VALUES (2151, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '77291495', '2013-06-13 11:00:30.953', false, 2147);
+INSERT INTO component VALUES (2152, 'F', 'H', '611618', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 09:16:16.791', 'B4', 'green', 2151);
+INSERT INTO component VALUES (2153, 'D', 'B', '56924076', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:57:04.932', 'A9', 'green', 2151);
+INSERT INTO line VALUES (2154, 'C1 PreSeries', 'Series 3', 76, 'polygon25', 2138);
+INSERT INTO location VALUES (2155, 'DC9', 'multimedia test', 'Sarah Mueller', 2154);
+INSERT INTO device VALUES (2156, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '20882672', '2013-06-12 19:59:20.408', false, 2155);
+INSERT INTO component VALUES (2157, 'B', 'C', '49341760', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 23:06:31.367', 'H8', 'yellow', 2156);
+INSERT INTO component VALUES (2158, 'H', 'E', '30606942', 'Howard Joel Wolowitz', '2013-06-13 05:27:25.344', 'B4', 'green', 2156);
+INSERT INTO device VALUES (2159, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'G', '98419817', '2013-06-12 13:43:09.223', false, 2155);
+INSERT INTO component VALUES (2160, 'E', 'E', '15654609', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:23:20.304', 'G5', 'green', 2159);
+INSERT INTO component VALUES (2161, 'H', 'E', '91955929', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 04:28:06.844', 'E5', 'green', 2159);
+INSERT INTO location VALUES (2162, 'GD2', 'security test', 'Franziska Schmitt', 2154);
+INSERT INTO device VALUES (2163, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '81440996', '2013-06-13 06:49:23.834', false, 2162);
+INSERT INTO component VALUES (2164, 'D', 'A', '82417717', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:37:51.391', 'A7', 'green', 2163);
+INSERT INTO component VALUES (2165, 'E', 'C', '51436252', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:36:14.217', 'A7', 'green', 2163);
+INSERT INTO device VALUES (2166, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'A', '35237955', '2013-06-12 15:06:14.205', false, 2162);
+INSERT INTO component VALUES (2167, 'I', 'G', '31096491', 'Howard Joel Wolowitz', '2013-06-13 05:55:20.639', 'C3', 'green', 2166);
+INSERT INTO component VALUES (2168, 'G', 'B', '1163758', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 23:11:50.379', 'H5', 'green', 2166);
+INSERT INTO line VALUES (2169, 'C1 Finish', 'Series 2', 8, 'rect497', 2138);
+INSERT INTO location VALUES (2170, 'GA4', 'transmission test', 'Sarah Schulze', 2169);
+INSERT INTO device VALUES (2171, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '31236173', '2013-06-13 09:29:43.853', false, 2170);
+INSERT INTO component VALUES (2172, 'E', 'I', '60118747', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:10:35.299', 'I1', 'green', 2171);
+INSERT INTO component VALUES (2173, 'E', 'B', '68003592', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:48:13.606', 'A5', 'red', 2171);
+INSERT INTO device VALUES (2174, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '15232701', '2013-06-12 14:22:30.76', true, 2170);
+INSERT INTO component VALUES (2175, 'C', 'H', '85822590', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 09:32:23.363', 'F1', 'green', 2174);
+INSERT INTO component VALUES (2176, 'A', 'D', '27147546', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 22:45:10.05', 'C8', 'green', 2174);
+INSERT INTO location VALUES (2177, 'ID2', 'transmission test', 'Hans Meier', 2169);
+INSERT INTO device VALUES (2178, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'H', '91529348', '2013-06-12 19:12:07.151', true, 2177);
+INSERT INTO component VALUES (2179, 'I', 'D', '64025274', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 09:40:54.816', 'D2', 'green', 2178);
+INSERT INTO component VALUES (2180, 'E', 'B', '94872300', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:48:18.639', 'D4', 'green', 2178);
+INSERT INTO device VALUES (2181, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '68743971', '2013-06-13 08:36:57.496', false, 2177);
+INSERT INTO component VALUES (2182, 'C', 'E', '50598630', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 19:41:30.038', 'H5', 'green', 2181);
+INSERT INTO component VALUES (2183, 'C', 'F', '94186053', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:00:31.037', 'E5', 'green', 2181);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -1609,7 +1611,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -1964,7 +1967,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 3;
-INSERT INTO hall VALUES (2184, 'B4', 'Assembly+Finish', 101, 5368, 'Audi A4', 2, 'path369', 3, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2184, 'B3', 'Assembly+Finish', 233, 664, 'Audi A4', 2, 'path369', 3, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -2106,52 +2109,52 @@ INSERT INTO hall VALUES (2184, 'B4', 'Assembly+Finish', 101, 5368, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2185, 'B4 Assembly', 'Series 2', 80, 'rect217', 2184);
-INSERT INTO location VALUES (2186, 'HE6', 'multimedia test', 'Sarah Meier', 2185);
-INSERT INTO device VALUES (2187, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'D', '68401138', '2013-06-11 06:35:15.268', false, 2186);
-INSERT INTO component VALUES (2188, 'D', 'G', '52026358', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 00:48:12.875', 'E6', 'green', 2187);
-INSERT INTO component VALUES (2189, 'D', 'G', '36463662', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 00:47:37.012', 'B3', 'green', 2187);
-INSERT INTO device VALUES (2190, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '37451357', '2013-06-11 06:17:22.141', false, 2186);
-INSERT INTO component VALUES (2191, 'E', 'A', '2978101', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 15:47:42.304', 'A5', 'green', 2190);
-INSERT INTO component VALUES (2192, 'I', 'B', '20748976', 'Howard Joel Wolowitz', '2013-06-11 15:49:34.81', 'C8', 'green', 2190);
-INSERT INTO location VALUES (2193, 'HC8', 'security test', 'Hans Schmitt', 2185);
-INSERT INTO device VALUES (2194, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '38296924', '2013-06-11 20:46:10.66', false, 2193);
-INSERT INTO component VALUES (2195, 'D', 'F', '62482164', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 18:00:53.147', 'B4', 'green', 2194);
-INSERT INTO component VALUES (2196, 'A', 'D', '15816024', 'Howard Joel Wolowitz', '2013-06-12 02:41:03.35', 'E6', 'green', 2194);
-INSERT INTO device VALUES (2197, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '70153606', '2013-06-12 03:12:18.51', false, 2193);
-INSERT INTO component VALUES (2198, 'I', 'A', '98705382', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 18:51:22.46', 'H9', 'green', 2197);
-INSERT INTO component VALUES (2199, 'F', 'I', '46177740', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 01:41:15.586', 'H4', 'green', 2197);
-INSERT INTO line VALUES (2200, 'B4 PreSeries', 'Series 6', 94, 'polygon25', 2184);
-INSERT INTO location VALUES (2201, 'AD8', 'ABS test', 'Sarah Mueller', 2200);
-INSERT INTO device VALUES (2202, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '83888813', '2013-06-11 19:53:02.393', false, 2201);
-INSERT INTO component VALUES (2203, 'B', 'G', '5921659', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 06:55:28.266', 'B5', 'green', 2202);
-INSERT INTO component VALUES (2204, 'B', 'D', '22709650', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 12:48:00.833', 'F6', 'green', 2202);
-INSERT INTO device VALUES (2205, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'D', '39557356', '2013-06-11 06:06:29.121', false, 2201);
-INSERT INTO component VALUES (2206, 'I', 'A', '51942258', 'Howard Joel Wolowitz', '2013-06-12 01:32:57.505', 'C9', 'green', 2205);
-INSERT INTO component VALUES (2207, 'D', 'B', '92168367', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:59:18.422', 'I8', 'green', 2205);
-INSERT INTO location VALUES (2208, 'GB7', 'security test', 'Franziska Schmitt', 2200);
-INSERT INTO device VALUES (2209, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '88209768', '2013-06-11 11:05:01.996', true, 2208);
-INSERT INTO component VALUES (2210, 'C', 'A', '55876347', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 20:19:53.04', 'F6', 'green', 2209);
-INSERT INTO component VALUES (2211, 'C', 'F', '2644472', 'Howard Joel Wolowitz', '2013-06-11 22:14:01.017', 'G4', 'green', 2209);
-INSERT INTO device VALUES (2212, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '49655812', '2013-06-11 12:17:04.998', false, 2208);
-INSERT INTO component VALUES (2213, 'B', 'H', '71935092', 'Howard Joel Wolowitz', '2013-06-12 01:37:28.978', 'G2', 'green', 2212);
-INSERT INTO component VALUES (2214, 'I', 'G', '41811128', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 05:14:36.105', 'E6', 'green', 2212);
-INSERT INTO line VALUES (2215, 'B4 Finish', 'Series 8', 6, 'rect497', 2184);
-INSERT INTO location VALUES (2216, 'GH4', 'multimedia test', 'Robert Merkel', 2215);
-INSERT INTO device VALUES (2217, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'I', '23528758', '2013-06-11 15:31:14.726', false, 2216);
-INSERT INTO component VALUES (2218, 'F', 'C', '65081044', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 05:22:11.209', 'G5', 'yellow', 2217);
-INSERT INTO component VALUES (2219, 'A', 'F', '10329295', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:43:55.927', 'B4', 'green', 2217);
-INSERT INTO device VALUES (2220, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '57120365', '2013-06-11 21:14:40.907', false, 2216);
-INSERT INTO component VALUES (2221, 'H', 'A', '59612745', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:46:19.726', 'I3', 'green', 2220);
-INSERT INTO component VALUES (2222, 'E', 'G', '63178728', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:20:56.146', 'D5', 'yellow', 2220);
-INSERT INTO location VALUES (2223, 'ED1', 'security test', 'Robert Meier', 2215);
-INSERT INTO device VALUES (2224, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '28771056', '2013-06-11 21:42:50.224', false, 2223);
-INSERT INTO component VALUES (2225, 'I', 'A', '32983036', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 04:49:39.584', 'H2', 'green', 2224);
-INSERT INTO component VALUES (2226, 'B', 'H', '46144576', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 00:14:58.885', 'A2', 'green', 2224);
-INSERT INTO device VALUES (2227, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '19298291', '2013-06-12 03:31:15.887', false, 2223);
-INSERT INTO component VALUES (2228, 'E', 'E', '61268757', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:00:13.373', 'E3', 'green', 2227);
-INSERT INTO component VALUES (2229, 'G', 'I', '47600894', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 15:51:01.262', 'E1', 'green', 2227);
-INSERT INTO hall VALUES (2230, 'C7', 'Assembly+Finish', 660, 5250, 'Audi A4', 2, 'polygon249', 3, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2185, 'B3 Assembly', 'Series 7', 77, 'rect217', 2184);
+INSERT INTO location VALUES (2186, 'HA4', 'multimedia test', 'Hans Merkel', 2185);
+INSERT INTO device VALUES (2187, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '87004065', '2013-06-13 10:05:06.672', false, 2186);
+INSERT INTO component VALUES (2188, 'I', 'A', '50445839', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:28:30.193', 'E7', 'green', 2187);
+INSERT INTO component VALUES (2189, 'E', 'E', '55378809', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:21:28.366', 'D5', 'green', 2187);
+INSERT INTO device VALUES (2190, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '93878144', '2013-06-13 09:21:00.019', false, 2186);
+INSERT INTO component VALUES (2191, 'B', 'F', '16774691', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:21:55.075', 'E8', 'green', 2190);
+INSERT INTO component VALUES (2192, 'H', 'B', '32515840', 'Howard Joel Wolowitz', '2013-06-13 11:51:13.027', 'E1', 'green', 2190);
+INSERT INTO location VALUES (2193, 'ED2', 'security test', 'Franziska Merkel', 2185);
+INSERT INTO device VALUES (2194, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '55818919', '2013-06-13 03:49:30.209', false, 2193);
+INSERT INTO component VALUES (2195, 'D', 'I', '11246000', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 18:37:14.32', 'E5', 'green', 2194);
+INSERT INTO component VALUES (2196, 'B', 'D', '64725178', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 14:36:54.45', 'F6', 'green', 2194);
+INSERT INTO device VALUES (2197, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '77368597', '2013-06-13 03:45:44.879', false, 2193);
+INSERT INTO component VALUES (2198, 'E', 'D', '30820779', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 00:02:43.194', 'G5', 'green', 2197);
+INSERT INTO component VALUES (2199, 'F', 'B', '35665478', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:25:08.413', 'D4', 'green', 2197);
+INSERT INTO line VALUES (2200, 'B3 PreSeries', 'Series 7', 43, 'polygon25', 2184);
+INSERT INTO location VALUES (2201, 'IB9', 'security test', 'Sarah Schulze', 2200);
+INSERT INTO device VALUES (2202, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'A', '33661671', '2013-06-13 00:39:57.919', false, 2201);
+INSERT INTO component VALUES (2203, 'C', 'B', '49479876', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 15:32:25.561', 'C4', 'yellow', 2202);
+INSERT INTO component VALUES (2204, 'F', 'F', '11659402', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 13:37:23.239', 'A1', 'green', 2202);
+INSERT INTO device VALUES (2205, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '63226059', '2013-06-13 03:22:09.528', false, 2201);
+INSERT INTO component VALUES (2206, 'G', 'I', '89837762', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 19:00:45.37', 'I1', 'green', 2205);
+INSERT INTO component VALUES (2207, 'E', 'E', '51223248', 'Howard Joel Wolowitz', '2013-06-12 22:40:33.622', 'C5', 'green', 2205);
+INSERT INTO location VALUES (2208, 'GI1', 'multimedia test', 'Robert Merkel', 2200);
+INSERT INTO device VALUES (2209, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '89334311', '2013-06-13 01:53:01.308', false, 2208);
+INSERT INTO component VALUES (2210, 'A', 'F', '9558788', 'Howard Joel Wolowitz', '2013-06-13 01:20:59.931', 'E7', 'yellow', 2209);
+INSERT INTO component VALUES (2211, 'B', 'H', '27355608', 'Howard Joel Wolowitz', '2013-06-13 07:30:08.924', 'B9', 'green', 2209);
+INSERT INTO device VALUES (2212, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '84015226', '2013-06-12 18:22:20.736', false, 2208);
+INSERT INTO component VALUES (2213, 'E', 'F', '32222046', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 23:04:03.601', 'I6', 'green', 2212);
+INSERT INTO component VALUES (2214, 'I', 'G', '85224077', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 00:31:42.602', 'G8', 'green', 2212);
+INSERT INTO line VALUES (2215, 'B3 Finish', 'Series 5', 13, 'rect497', 2184);
+INSERT INTO location VALUES (2216, 'FH8', 'transmission test', 'Peter Meier', 2215);
+INSERT INTO device VALUES (2217, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '22696615', '2013-06-13 04:15:33.998', false, 2216);
+INSERT INTO component VALUES (2218, 'D', 'B', '45014682', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:52:15.449', 'A6', 'green', 2217);
+INSERT INTO component VALUES (2219, 'G', 'I', '76632631', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 02:49:01.808', 'E1', 'green', 2217);
+INSERT INTO device VALUES (2220, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '60211614', '2013-06-13 07:54:07.312', false, 2216);
+INSERT INTO component VALUES (2221, 'F', 'F', '13170263', 'Howard Joel Wolowitz', '2013-06-13 07:24:22.354', 'I4', 'green', 2220);
+INSERT INTO component VALUES (2222, 'H', 'C', '25440108', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:40:33.126', 'F6', 'green', 2220);
+INSERT INTO location VALUES (2223, 'DA5', 'transmission test', 'Sarah Merkel', 2215);
+INSERT INTO device VALUES (2224, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '33503995', '2013-06-12 16:03:08.829', false, 2223);
+INSERT INTO component VALUES (2225, 'G', 'E', '15291985', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:30:29.082', 'A9', 'green', 2224);
+INSERT INTO component VALUES (2226, 'A', 'G', '3761216', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:29:47.87', 'H2', 'green', 2224);
+INSERT INTO device VALUES (2227, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '17470658', '2013-06-12 16:49:07.244', false, 2223);
+INSERT INTO component VALUES (2228, 'H', 'B', '51351307', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:10:25.181', 'E1', 'green', 2227);
+INSERT INTO component VALUES (2229, 'B', 'I', '62978278', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:54:24.8', 'I3', 'green', 2227);
+INSERT INTO hall VALUES (2230, 'E2', 'Assembly+Finish', 1, 6419, 'Audi A4', 2, 'polygon249', 3, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -2293,51 +2296,51 @@ INSERT INTO hall VALUES (2230, 'C7', 'Assembly+Finish', 660, 5250, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2231, 'C7 Assembly', 'Series 6', 23, 'rect217', 2230);
-INSERT INTO location VALUES (2232, 'HF8', 'motor test', 'Peter Merkel', 2231);
-INSERT INTO device VALUES (2233, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '11704897', '2013-06-11 05:29:30.331', false, 2232);
-INSERT INTO component VALUES (2234, 'I', 'H', '5318492', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:27:16.841', 'D4', 'green', 2233);
-INSERT INTO component VALUES (2235, 'D', 'D', '9076618', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 17:02:18.662', 'A9', 'green', 2233);
-INSERT INTO device VALUES (2236, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '37990938', '2013-06-12 03:23:54.531', false, 2232);
-INSERT INTO component VALUES (2237, 'G', 'C', '92449231', 'Howard Joel Wolowitz', '2013-06-11 12:24:59.145', 'H3', 'red', 2236);
-INSERT INTO component VALUES (2238, 'E', 'D', '20942268', 'Howard Joel Wolowitz', '2013-06-12 02:54:20.738', 'F2', 'green', 2236);
-INSERT INTO location VALUES (2239, 'ED8', 'multimedia test', 'Hans Mueller', 2231);
-INSERT INTO device VALUES (2240, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '14425165', '2013-06-11 09:44:23.124', false, 2239);
-INSERT INTO component VALUES (2241, 'C', 'B', '85862359', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 03:59:08.402', 'H8', 'green', 2240);
-INSERT INTO component VALUES (2242, 'D', 'H', '79031427', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:49:09.717', 'A6', 'green', 2240);
-INSERT INTO device VALUES (2243, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '16463660', '2013-06-11 23:41:04.13', false, 2239);
-INSERT INTO component VALUES (2244, 'F', 'D', '65682265', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 00:52:59.496', 'D6', 'green', 2243);
-INSERT INTO component VALUES (2245, 'D', 'G', '21258426', 'Howard Joel Wolowitz', '2013-06-11 15:34:25.837', 'D6', 'green', 2243);
-INSERT INTO line VALUES (2246, 'C7 PreSeries', 'Series 6', 52, 'polygon25', 2230);
-INSERT INTO location VALUES (2247, 'BE7', 'motor test', 'Franziska Schulze', 2246);
-INSERT INTO device VALUES (2248, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '42240482', '2013-06-11 18:25:38.6', false, 2247);
-INSERT INTO component VALUES (2249, 'B', 'H', '34619549', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 01:45:51.522', 'H4', 'green', 2248);
-INSERT INTO component VALUES (2250, 'H', 'B', '77231837', 'Howard Joel Wolowitz', '2013-06-11 09:31:44.875', 'C8', 'green', 2248);
-INSERT INTO device VALUES (2251, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '32020701', '2013-06-11 19:21:53.977', false, 2247);
-INSERT INTO component VALUES (2252, 'C', 'E', '92920113', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:57:06.822', 'G9', 'green', 2251);
-INSERT INTO component VALUES (2253, 'I', 'B', '27211135', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:39:38.925', 'C6', 'green', 2251);
-INSERT INTO location VALUES (2254, 'AB4', 'transmission test', 'Robert Schulze', 2246);
-INSERT INTO device VALUES (2255, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'G', '89232241', '2013-06-11 16:22:59.072', false, 2254);
-INSERT INTO component VALUES (2256, 'E', 'H', '46073319', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 11:05:14.542', 'H1', 'green', 2255);
-INSERT INTO component VALUES (2257, 'I', 'B', '71201134', 'Howard Joel Wolowitz', '2013-06-11 19:35:27.95', 'F8', 'green', 2255);
-INSERT INTO device VALUES (2258, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'E', '23800148', '2013-06-11 09:09:03.752', false, 2254);
-INSERT INTO component VALUES (2259, 'I', 'D', '96769456', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 11:44:22.951', 'F1', 'yellow', 2258);
-INSERT INTO component VALUES (2260, 'C', 'I', '18307744', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 18:06:38.093', 'H2', 'green', 2258);
-INSERT INTO line VALUES (2261, 'C7 Finish', 'Series 2', 58, 'rect497', 2230);
-INSERT INTO location VALUES (2262, 'IE8', 'multimedia test', 'Hans Meier', 2261);
-INSERT INTO device VALUES (2263, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '59578018', '2013-06-11 08:48:04.229', false, 2262);
-INSERT INTO component VALUES (2264, 'C', 'H', '92690153', 'Howard Joel Wolowitz', '2013-06-11 11:32:16.284', 'F4', 'green', 2263);
-INSERT INTO component VALUES (2265, 'A', 'F', '95504014', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 18:11:54.93', 'C6', 'green', 2263);
-INSERT INTO device VALUES (2266, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '33930962', '2013-06-11 13:31:12.257', false, 2262);
-INSERT INTO component VALUES (2267, 'C', 'A', '5589866', 'Howard Joel Wolowitz', '2013-06-11 10:34:16.884', 'E8', 'yellow', 2266);
-INSERT INTO component VALUES (2268, 'E', 'I', '23086237', 'Howard Joel Wolowitz', '2013-06-12 00:20:21.989', 'H4', 'green', 2266);
-INSERT INTO location VALUES (2269, 'GF8', 'motor test', 'Sarah Schulze', 2261);
-INSERT INTO device VALUES (2270, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '42080006', '2013-06-11 15:55:42.736', false, 2269);
-INSERT INTO component VALUES (2271, 'B', 'C', '32147648', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:00:04.672', 'C3', 'green', 2270);
-INSERT INTO component VALUES (2272, 'H', 'I', '69626760', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 21:01:39.143', 'G5', 'green', 2270);
-INSERT INTO device VALUES (2273, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '60878428', '2013-06-11 21:02:04.943', false, 2269);
-INSERT INTO component VALUES (2274, 'H', 'D', '70931213', 'Howard Joel Wolowitz', '2013-06-11 22:46:01.051', 'B3', 'green', 2273);
-INSERT INTO component VALUES (2275, 'F', 'H', '46266860', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 07:21:34.625', 'C9', 'green', 2273);
+INSERT INTO line VALUES (2231, 'E2 Assembly', 'Series 9', 82, 'rect217', 2230);
+INSERT INTO location VALUES (2232, 'AE5', 'ABS test', 'Hans Schulze', 2231);
+INSERT INTO device VALUES (2233, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'C', '11652237', '2013-06-12 15:30:43.11', false, 2232);
+INSERT INTO component VALUES (2234, 'C', 'H', '21876396', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 10:14:56.737', 'H2', 'green', 2233);
+INSERT INTO component VALUES (2235, 'F', 'H', '328038', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 18:12:18.99', 'E4', 'green', 2233);
+INSERT INTO device VALUES (2236, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '66443180', '2013-06-12 18:59:56.75', false, 2232);
+INSERT INTO component VALUES (2237, 'F', 'E', '68257182', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:45:04.86', 'B3', 'green', 2236);
+INSERT INTO component VALUES (2238, 'C', 'A', '18191870', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 02:06:35.257', 'B9', 'green', 2236);
+INSERT INTO location VALUES (2239, 'CB7', 'motor test', 'Hans Schmitt', 2231);
+INSERT INTO device VALUES (2240, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'F', '11866998', '2013-06-12 14:53:49.085', true, 2239);
+INSERT INTO component VALUES (2241, 'D', 'E', '85878536', 'Howard Joel Wolowitz', '2013-06-13 07:18:35.426', 'C8', 'green', 2240);
+INSERT INTO component VALUES (2242, 'B', 'B', '36789478', 'Howard Joel Wolowitz', '2013-06-13 02:01:51.628', 'I4', 'green', 2240);
+INSERT INTO device VALUES (2243, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '54761294', '2013-06-13 03:41:24.887', false, 2239);
+INSERT INTO component VALUES (2244, 'B', 'C', '27602348', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:32:13.875', 'E9', 'green', 2243);
+INSERT INTO component VALUES (2245, 'C', 'B', '3271833', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:54:12.264', 'F1', 'green', 2243);
+INSERT INTO line VALUES (2246, 'E2 PreSeries', 'Series 3', 49, 'polygon25', 2230);
+INSERT INTO location VALUES (2247, 'CF3', 'transmission test', 'Hans Schulze', 2246);
+INSERT INTO device VALUES (2248, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '89985561', '2013-06-13 08:46:20.576', false, 2247);
+INSERT INTO component VALUES (2249, 'G', 'G', '9833803', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:46:15.518', 'F3', 'green', 2248);
+INSERT INTO component VALUES (2250, 'A', 'E', '66575746', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 20:37:55.136', 'A6', 'green', 2248);
+INSERT INTO device VALUES (2251, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '91347296', '2013-06-13 06:27:37.454', false, 2247);
+INSERT INTO component VALUES (2252, 'G', 'B', '36081997', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:36:22.036', 'F4', 'green', 2251);
+INSERT INTO component VALUES (2253, 'I', 'I', '49679902', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:41:02.034', 'G3', 'green', 2251);
+INSERT INTO location VALUES (2254, 'DA3', 'multimedia test', 'Franziska Meier', 2246);
+INSERT INTO device VALUES (2255, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '76325412', '2013-06-13 00:45:29.813', false, 2254);
+INSERT INTO component VALUES (2256, 'E', 'F', '94815719', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 23:37:16.267', 'G4', 'green', 2255);
+INSERT INTO component VALUES (2257, 'A', 'F', '7002084', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 04:28:17.649', 'H8', 'green', 2255);
+INSERT INTO device VALUES (2258, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '18730103', '2013-06-13 09:45:22.588', false, 2254);
+INSERT INTO component VALUES (2259, 'A', 'D', '17450651', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 19:12:59.548', 'B6', 'green', 2258);
+INSERT INTO component VALUES (2260, 'E', 'F', '27142571', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:31:01.935', 'E4', 'yellow', 2258);
+INSERT INTO line VALUES (2261, 'E2 Finish', 'Series 9', 53, 'rect497', 2230);
+INSERT INTO location VALUES (2262, 'BG5', 'transmission test', 'Sarah Schulze', 2261);
+INSERT INTO device VALUES (2263, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '22327504', '2013-06-12 20:33:26.011', false, 2262);
+INSERT INTO component VALUES (2264, 'E', 'H', '52298719', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 17:51:30.258', 'D6', 'green', 2263);
+INSERT INTO component VALUES (2265, 'G', 'A', '9763387', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 19:16:23.83', 'G3', 'green', 2263);
+INSERT INTO device VALUES (2266, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'F', '90877298', '2013-06-13 05:19:29.25', false, 2262);
+INSERT INTO component VALUES (2267, 'C', 'C', '85588996', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:49:12.189', 'B1', 'green', 2266);
+INSERT INTO component VALUES (2268, 'E', 'D', '17727449', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 22:21:19.296', 'B7', 'green', 2266);
+INSERT INTO location VALUES (2269, 'CG4', 'motor test', 'Peter Merkel', 2261);
+INSERT INTO device VALUES (2270, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '14708744', '2013-06-13 03:51:02.883', false, 2269);
+INSERT INTO component VALUES (2271, 'I', 'F', '32914933', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:26:38.721', 'C6', 'green', 2270);
+INSERT INTO component VALUES (2272, 'H', 'D', '22925368', 'Howard Joel Wolowitz', '2013-06-13 10:56:21.49', 'G8', 'green', 2270);
+INSERT INTO device VALUES (2273, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '7637655', '2013-06-13 09:42:59.8', false, 2269);
+INSERT INTO component VALUES (2274, 'D', 'G', '31032394', 'Howard Joel Wolowitz', '2013-06-13 10:57:14.969', 'I6', 'green', 2273);
+INSERT INTO component VALUES (2275, 'I', 'A', '23749043', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 01:55:11.718', 'A6', 'green', 2273);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -2351,7 +2354,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -2706,7 +2710,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 4;
-INSERT INTO hall VALUES (2276, 'A6', 'Assembly+Finish', 538, 2707, 'Audi A4', 2, 'path369', 4, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2276, 'C7', 'Assembly+Finish', 469, 2563, 'Audi A4', 2, 'path369', 4, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -2848,52 +2852,52 @@ INSERT INTO hall VALUES (2276, 'A6', 'Assembly+Finish', 538, 2707, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2277, 'A6 Assembly', 'Series 1', 38, 'rect217', 2276);
-INSERT INTO location VALUES (2278, 'EC9', 'transmission test', 'Peter Merkel', 2277);
-INSERT INTO device VALUES (2279, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'I', '78757204', '2013-06-11 04:16:38.019', false, 2278);
-INSERT INTO component VALUES (2280, 'G', 'F', '74561764', 'Howard Joel Wolowitz', '2013-06-12 02:51:36.924', 'A9', 'red', 2279);
-INSERT INTO component VALUES (2281, 'D', 'I', '6814517', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 22:58:50.842', 'G1', 'red', 2279);
-INSERT INTO device VALUES (2282, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '81306732', '2013-06-11 12:26:59.723', false, 2278);
-INSERT INTO component VALUES (2283, 'D', 'B', '4457390', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:26:30.791', 'D8', 'green', 2282);
-INSERT INTO component VALUES (2284, 'I', 'D', '5857844', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:45:19.629', 'D9', 'green', 2282);
-INSERT INTO location VALUES (2285, 'ID4', 'multimedia test', 'Robert Merkel', 2277);
-INSERT INTO device VALUES (2286, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '62855624', '2013-06-11 08:12:55.393', false, 2285);
-INSERT INTO component VALUES (2287, 'G', 'A', '98554690', 'Howard Joel Wolowitz', '2013-06-11 19:42:50.106', 'H9', 'green', 2286);
-INSERT INTO component VALUES (2288, 'C', 'H', '43215647', 'Howard Joel Wolowitz', '2013-06-11 04:49:57.663', 'B8', 'green', 2286);
-INSERT INTO device VALUES (2289, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '24720126', '2013-06-11 18:15:11.094', false, 2285);
-INSERT INTO component VALUES (2290, 'H', 'D', '72936309', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:46:11.823', 'C8', 'green', 2289);
-INSERT INTO component VALUES (2291, 'F', 'C', '79071945', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 17:06:44.057', 'B1', 'yellow', 2289);
-INSERT INTO line VALUES (2292, 'A6 PreSeries', 'Series 1', 37, 'polygon25', 2276);
-INSERT INTO location VALUES (2293, 'EF2', 'motor test', 'Franziska Mueller', 2292);
-INSERT INTO device VALUES (2294, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'D', '9770709', '2013-06-11 21:09:07.381', false, 2293);
-INSERT INTO component VALUES (2295, 'I', 'A', '87952830', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 07:40:16.092', 'E6', 'green', 2294);
-INSERT INTO component VALUES (2296, 'H', 'F', '77060610', 'Howard Joel Wolowitz', '2013-06-11 14:07:43.029', 'A3', 'green', 2294);
-INSERT INTO device VALUES (2297, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '55330222', '2013-06-11 20:40:08.3', false, 2293);
-INSERT INTO component VALUES (2298, 'B', 'G', '8451109', 'Howard Joel Wolowitz', '2013-06-11 19:03:12.636', 'A5', 'green', 2297);
-INSERT INTO component VALUES (2299, 'D', 'D', '89676554', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:42:46.008', 'G1', 'green', 2297);
-INSERT INTO location VALUES (2300, 'HD1', 'motor test', 'Peter Schmitt', 2292);
-INSERT INTO device VALUES (2301, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '10234689', '2013-06-11 11:47:28.154', false, 2300);
-INSERT INTO component VALUES (2302, 'B', 'B', '25445765', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:01:54.424', 'D9', 'green', 2301);
-INSERT INTO component VALUES (2303, 'A', 'E', '1523562', 'Howard Joel Wolowitz', '2013-06-11 16:37:50.278', 'D5', 'green', 2301);
-INSERT INTO device VALUES (2304, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '85889769', '2013-06-11 17:59:13.191', false, 2300);
-INSERT INTO component VALUES (2305, 'E', 'F', '2232557', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:02:22.279', 'I6', 'green', 2304);
-INSERT INTO component VALUES (2306, 'A', 'A', '30300732', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 08:28:23.714', 'I9', 'green', 2304);
-INSERT INTO line VALUES (2307, 'A6 Finish', 'Series 9', 31, 'rect497', 2276);
-INSERT INTO location VALUES (2308, 'GI3', 'ABS test', 'Peter Mueller', 2307);
-INSERT INTO device VALUES (2309, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '61292856', '2013-06-12 02:05:13.529', false, 2308);
-INSERT INTO component VALUES (2310, 'C', 'I', '58898558', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 07:56:53.678', 'A4', 'green', 2309);
-INSERT INTO component VALUES (2311, 'H', 'D', '35850480', 'Howard Joel Wolowitz', '2013-06-11 19:37:46.215', 'E8', 'green', 2309);
-INSERT INTO device VALUES (2312, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '3224169', '2013-06-11 16:02:29.936', false, 2308);
-INSERT INTO component VALUES (2313, 'B', 'E', '40860524', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:37:37.848', 'C9', 'green', 2312);
-INSERT INTO component VALUES (2314, 'A', 'E', '6030967', 'Howard Joel Wolowitz', '2013-06-11 16:02:21.487', 'A9', 'green', 2312);
-INSERT INTO location VALUES (2315, 'DB8', 'transmission test', 'Sarah Mueller', 2307);
-INSERT INTO device VALUES (2316, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'I', '26103095', '2013-06-11 11:12:41.744', true, 2315);
-INSERT INTO component VALUES (2317, 'A', 'I', '25711314', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:15:16.548', 'C8', 'green', 2316);
-INSERT INTO component VALUES (2318, 'D', 'H', '27323613', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 16:23:21.39', 'C7', 'green', 2316);
-INSERT INTO device VALUES (2319, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '88086944', '2013-06-11 07:58:23.011', false, 2315);
-INSERT INTO component VALUES (2320, 'G', 'H', '58868915', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:58:00.641', 'B5', 'green', 2319);
-INSERT INTO component VALUES (2321, 'F', 'F', '16108633', 'Howard Joel Wolowitz', '2013-06-11 12:32:36.87', 'F6', 'green', 2319);
-INSERT INTO hall VALUES (2322, 'A5', 'Assembly+Finish', 333, 2514, 'Audi A4', 2, 'polygon249', 4, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2277, 'C7 Assembly', 'Series 9', 1, 'rect217', 2276);
+INSERT INTO location VALUES (2278, 'EH5', 'transmission test', 'Hans Meier', 2277);
+INSERT INTO device VALUES (2279, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '68347658', '2013-06-13 09:13:44.995', false, 2278);
+INSERT INTO component VALUES (2280, 'E', 'H', '79837591', 'Howard Joel Wolowitz', '2013-06-12 15:29:32.094', 'B9', 'green', 2279);
+INSERT INTO component VALUES (2281, 'D', 'B', '36676916', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 22:39:46.569', 'C4', 'green', 2279);
+INSERT INTO device VALUES (2282, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '50250947', '2013-06-13 05:37:17.354', false, 2278);
+INSERT INTO component VALUES (2283, 'E', 'H', '95410278', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:09:31.74', 'I1', 'green', 2282);
+INSERT INTO component VALUES (2284, 'A', 'I', '79276802', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:17:37.03', 'D3', 'green', 2282);
+INSERT INTO location VALUES (2285, 'IB7', 'transmission test', 'Robert Schmitt', 2277);
+INSERT INTO device VALUES (2286, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '61086084', '2013-06-12 14:06:23.914', false, 2285);
+INSERT INTO component VALUES (2287, 'B', 'A', '44282259', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:44:15.262', 'A3', 'green', 2286);
+INSERT INTO component VALUES (2288, 'C', 'D', '35776039', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 22:48:58.081', 'D2', 'yellow', 2286);
+INSERT INTO device VALUES (2289, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '75508196', '2013-06-12 18:18:34.165', false, 2285);
+INSERT INTO component VALUES (2290, 'D', 'A', '71016207', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:10:59.226', 'G1', 'green', 2289);
+INSERT INTO component VALUES (2291, 'E', 'E', '30647168', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 04:11:04.613', 'E9', 'green', 2289);
+INSERT INTO line VALUES (2292, 'C7 PreSeries', 'Series 8', 66, 'polygon25', 2276);
+INSERT INTO location VALUES (2293, 'IA2', 'security test', 'Sarah Mueller', 2292);
+INSERT INTO device VALUES (2294, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '24819058', '2013-06-12 16:04:19.396', true, 2293);
+INSERT INTO component VALUES (2295, 'B', 'D', '43378380', 'Howard Joel Wolowitz', '2013-06-13 12:31:22.864', 'E2', 'green', 2294);
+INSERT INTO component VALUES (2296, 'G', 'C', '82682648', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:58:06.431', 'G6', 'green', 2294);
+INSERT INTO device VALUES (2297, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '17426825', '2013-06-13 05:23:48.508', false, 2293);
+INSERT INTO component VALUES (2298, 'H', 'B', '63311899', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 07:16:51.043', 'H2', 'green', 2297);
+INSERT INTO component VALUES (2299, 'A', 'H', '12033143', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 19:29:59.963', 'B6', 'green', 2297);
+INSERT INTO location VALUES (2300, 'HI6', 'motor test', 'Peter Schulze', 2292);
+INSERT INTO device VALUES (2301, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '23010710', '2013-06-12 17:56:45.807', false, 2300);
+INSERT INTO component VALUES (2302, 'A', 'B', '81090160', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 12:45:54.48', 'F6', 'green', 2301);
+INSERT INTO component VALUES (2303, 'C', 'A', '11804793', 'Howard Joel Wolowitz', '2013-06-13 03:39:08.665', 'E5', 'green', 2301);
+INSERT INTO device VALUES (2304, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'D', '55971185', '2013-06-13 06:43:54.783', false, 2300);
+INSERT INTO component VALUES (2305, 'I', 'C', '22183058', 'Howard Joel Wolowitz', '2013-06-13 05:31:01.844', 'E7', 'red', 2304);
+INSERT INTO component VALUES (2306, 'D', 'C', '16002442', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 11:45:20.543', 'F7', 'green', 2304);
+INSERT INTO line VALUES (2307, 'C7 Finish', 'Series 1', 37, 'rect497', 2276);
+INSERT INTO location VALUES (2308, 'DE1', 'motor test', 'Sarah Meier', 2307);
+INSERT INTO device VALUES (2309, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '57961949', '2013-06-13 00:01:25.437', false, 2308);
+INSERT INTO component VALUES (2310, 'D', 'G', '85407023', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:56:09.164', 'B1', 'green', 2309);
+INSERT INTO component VALUES (2311, 'D', 'F', '12321756', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:08:05.586', 'G3', 'green', 2309);
+INSERT INTO device VALUES (2312, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '39686455', '2013-06-13 10:31:24.288', false, 2308);
+INSERT INTO component VALUES (2313, 'E', 'B', '14372001', 'Howard Joel Wolowitz', '2013-06-12 14:29:07.607', 'D3', 'green', 2312);
+INSERT INTO component VALUES (2314, 'G', 'C', '71033643', 'Howard Joel Wolowitz', '2013-06-13 09:35:09.433', 'H3', 'green', 2312);
+INSERT INTO location VALUES (2315, 'FF4', 'motor test', 'Hans Schmitt', 2307);
+INSERT INTO device VALUES (2316, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '8378103', '2013-06-13 00:30:12.265', false, 2315);
+INSERT INTO component VALUES (2317, 'A', 'B', '87860417', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:24:58.16', 'A4', 'green', 2316);
+INSERT INTO component VALUES (2318, 'H', 'H', '12676867', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 14:55:40.555', 'H5', 'green', 2316);
+INSERT INTO device VALUES (2319, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '97255758', '2013-06-13 08:24:20.22', false, 2315);
+INSERT INTO component VALUES (2320, 'A', 'F', '34413004', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:17:17.943', 'D3', 'green', 2319);
+INSERT INTO component VALUES (2321, 'C', 'B', '49602336', 'Howard Joel Wolowitz', '2013-06-12 22:06:46.803', 'A9', 'green', 2319);
+INSERT INTO hall VALUES (2322, 'D2', 'Assembly+Finish', 592, 2946, 'Audi A4', 2, 'polygon249', 4, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -3035,51 +3039,51 @@ INSERT INTO hall VALUES (2322, 'A5', 'Assembly+Finish', 333, 2514, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2323, 'A5 Assembly', 'Series 8', 71, 'rect217', 2322);
-INSERT INTO location VALUES (2324, 'GI9', 'transmission test', 'Peter Schmitt', 2323);
-INSERT INTO device VALUES (2325, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '61262740', '2013-06-11 03:41:17.641', false, 2324);
-INSERT INTO component VALUES (2326, 'B', 'E', '41909220', 'Howard Joel Wolowitz', '2013-06-11 04:34:16.771', 'E6', 'green', 2325);
-INSERT INTO component VALUES (2327, 'H', 'E', '8217650', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 20:02:55.934', 'H3', 'yellow', 2325);
-INSERT INTO device VALUES (2328, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '1756666', '2013-06-11 22:58:56.153', true, 2324);
-INSERT INTO component VALUES (2329, 'B', 'G', '57565714', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 02:24:00.007', 'F7', 'green', 2328);
-INSERT INTO component VALUES (2330, 'I', 'F', '72960610', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 08:46:00.995', 'E9', 'green', 2328);
-INSERT INTO location VALUES (2331, 'GE7', 'motor test', 'Franziska Meier', 2323);
-INSERT INTO device VALUES (2332, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'H', '6241422', '2013-06-11 19:29:39.842', false, 2331);
-INSERT INTO component VALUES (2333, 'A', 'C', '31731454', 'Howard Joel Wolowitz', '2013-06-11 07:26:18.772', 'H4', 'green', 2332);
-INSERT INTO component VALUES (2334, 'H', 'C', '52340033', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 01:07:03.134', 'F6', 'green', 2332);
-INSERT INTO device VALUES (2335, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '23445358', '2013-06-11 13:07:24.585', false, 2331);
-INSERT INTO component VALUES (2336, 'H', 'G', '34597354', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 03:57:42.121', 'D5', 'green', 2335);
-INSERT INTO component VALUES (2337, 'C', 'G', '58225686', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 13:59:15.311', 'H2', 'green', 2335);
-INSERT INTO line VALUES (2338, 'A5 PreSeries', 'Series 6', 89, 'polygon25', 2322);
-INSERT INTO location VALUES (2339, 'BA6', 'multimedia test', 'Hans Schmitt', 2338);
-INSERT INTO device VALUES (2340, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '81207218', '2013-06-11 07:39:06.611', false, 2339);
-INSERT INTO component VALUES (2341, 'I', 'B', '35259729', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:36:10.383', 'A6', 'green', 2340);
-INSERT INTO component VALUES (2342, 'I', 'D', '4952206', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:08:46.614', 'F7', 'green', 2340);
-INSERT INTO device VALUES (2343, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '65652795', '2013-06-11 17:45:48.895', false, 2339);
-INSERT INTO component VALUES (2344, 'A', 'B', '41949401', 'Howard Joel Wolowitz', '2013-06-11 15:17:04.02', 'E1', 'green', 2343);
-INSERT INTO component VALUES (2345, 'I', 'A', '51149271', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:46:13.288', 'H5', 'red', 2343);
-INSERT INTO location VALUES (2346, 'EI8', 'multimedia test', 'Hans Schmitt', 2338);
-INSERT INTO device VALUES (2347, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '77188839', '2013-06-12 02:57:03.973', false, 2346);
-INSERT INTO component VALUES (2348, 'B', 'A', '32348733', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 21:51:05.396', 'C6', 'green', 2347);
-INSERT INTO component VALUES (2349, 'C', 'I', '2612800', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 20:44:24.163', 'C5', 'green', 2347);
-INSERT INTO device VALUES (2350, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '27251097', '2013-06-11 22:33:25.03', false, 2346);
-INSERT INTO component VALUES (2351, 'I', 'B', '89445253', 'Howard Joel Wolowitz', '2013-06-11 23:21:38.962', 'I4', 'green', 2350);
-INSERT INTO component VALUES (2352, 'E', 'E', '81028975', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:01:32.071', 'I2', 'green', 2350);
-INSERT INTO line VALUES (2353, 'A5 Finish', 'Series 4', 40, 'rect497', 2322);
-INSERT INTO location VALUES (2354, 'AB4', 'security test', 'Peter Merkel', 2353);
-INSERT INTO device VALUES (2355, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '20014902', '2013-06-11 04:55:46.405', false, 2354);
-INSERT INTO component VALUES (2356, 'H', 'F', '62324349', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:20:07.139', 'H8', 'yellow', 2355);
-INSERT INTO component VALUES (2357, 'A', 'E', '59737178', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 00:57:34.456', 'G8', 'green', 2355);
-INSERT INTO device VALUES (2358, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '86910649', '2013-06-11 22:26:31.84', false, 2354);
-INSERT INTO component VALUES (2359, 'B', 'H', '26581834', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:56:04.074', 'F5', 'green', 2358);
-INSERT INTO component VALUES (2360, 'A', 'B', '39943379', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:06:26.299', 'A3', 'green', 2358);
-INSERT INTO location VALUES (2361, 'CC9', 'security test', 'Hans Meier', 2353);
-INSERT INTO device VALUES (2362, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '92217844', '2013-06-11 21:47:56.21', false, 2361);
-INSERT INTO component VALUES (2363, 'I', 'B', '92159289', 'Howard Joel Wolowitz', '2013-06-12 02:20:18.455', 'A9', 'green', 2362);
-INSERT INTO component VALUES (2364, 'A', 'A', '20962952', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 03:34:37.821', 'C1', 'green', 2362);
-INSERT INTO device VALUES (2365, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '53427647', '2013-06-11 20:47:23.11', false, 2361);
-INSERT INTO component VALUES (2366, 'H', 'D', '6207940', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 21:59:06.552', 'A2', 'green', 2365);
-INSERT INTO component VALUES (2367, 'G', 'F', '34174155', 'Howard Joel Wolowitz', '2013-06-11 18:33:59.961', 'B7', 'yellow', 2365);
+INSERT INTO line VALUES (2323, 'D2 Assembly', 'Series 3', 3, 'rect217', 2322);
+INSERT INTO location VALUES (2324, 'GG6', 'ABS test', 'Hans Mueller', 2323);
+INSERT INTO device VALUES (2325, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '19081377', '2013-06-13 09:51:08.021', true, 2324);
+INSERT INTO component VALUES (2326, 'I', 'C', '235399', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:42:58.188', 'I1', 'green', 2325);
+INSERT INTO component VALUES (2327, 'H', 'C', '47356250', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:58:28.638', 'B3', 'yellow', 2325);
+INSERT INTO device VALUES (2328, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '54290018', '2013-06-13 01:50:07.434', false, 2324);
+INSERT INTO component VALUES (2329, 'E', 'I', '80716392', 'Howard Joel Wolowitz', '2013-06-13 01:12:36.617', 'B2', 'green', 2328);
+INSERT INTO component VALUES (2330, 'C', 'C', '39580561', 'Howard Joel Wolowitz', '2013-06-13 11:09:48.558', 'F9', 'green', 2328);
+INSERT INTO location VALUES (2331, 'CF4', 'security test', 'Sarah Mueller', 2323);
+INSERT INTO device VALUES (2332, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '32646115', '2013-06-12 13:12:53.821', false, 2331);
+INSERT INTO component VALUES (2333, 'C', 'F', '91391551', 'Howard Joel Wolowitz', '2013-06-12 17:29:58.241', 'B4', 'green', 2332);
+INSERT INTO component VALUES (2334, 'B', 'A', '3793405', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:24:12.462', 'B5', 'green', 2332);
+INSERT INTO device VALUES (2335, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'A', '2824028', '2013-06-13 05:41:29.782', false, 2331);
+INSERT INTO component VALUES (2336, 'I', 'H', '6945365', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:41:00.787', 'I9', 'red', 2335);
+INSERT INTO component VALUES (2337, 'I', 'G', '20566366', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 23:23:47.619', 'C3', 'green', 2335);
+INSERT INTO line VALUES (2338, 'D2 PreSeries', 'Series 6', 41, 'polygon25', 2322);
+INSERT INTO location VALUES (2339, 'GD9', 'transmission test', 'Franziska Meier', 2338);
+INSERT INTO device VALUES (2340, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '14500678', '2013-06-13 09:24:43.286', false, 2339);
+INSERT INTO component VALUES (2341, 'F', 'I', '21214025', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:36:38.968', 'D1', 'green', 2340);
+INSERT INTO component VALUES (2342, 'G', 'F', '55700930', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 08:26:14.4', 'E2', 'red', 2340);
+INSERT INTO device VALUES (2343, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '4071865', '2013-06-12 23:24:16.104', false, 2339);
+INSERT INTO component VALUES (2344, 'F', 'G', '26124473', 'Howard Joel Wolowitz', '2013-06-12 20:24:15.753', 'C8', 'green', 2343);
+INSERT INTO component VALUES (2345, 'E', 'F', '47152881', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 05:12:12.774', 'A3', 'green', 2343);
+INSERT INTO location VALUES (2346, 'CC5', 'security test', 'Franziska Meier', 2338);
+INSERT INTO device VALUES (2347, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '33352801', '2013-06-13 01:13:04.209', false, 2346);
+INSERT INTO component VALUES (2348, 'D', 'A', '21465752', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 12:12:10.27', 'D4', 'green', 2347);
+INSERT INTO component VALUES (2349, 'D', 'C', '22475324', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 11:33:53.232', 'D5', 'yellow', 2347);
+INSERT INTO device VALUES (2350, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '11327772', '2013-06-13 10:32:34.905', false, 2346);
+INSERT INTO component VALUES (2351, 'H', 'D', '81092898', 'Howard Joel Wolowitz', '2013-06-12 13:18:03.601', 'G1', 'green', 2350);
+INSERT INTO component VALUES (2352, 'G', 'B', '20439805', 'Howard Joel Wolowitz', '2013-06-13 10:42:47.848', 'H7', 'green', 2350);
+INSERT INTO line VALUES (2353, 'D2 Finish', 'Series 3', 46, 'rect497', 2322);
+INSERT INTO location VALUES (2354, 'GC1', 'security test', 'Robert Schulze', 2353);
+INSERT INTO device VALUES (2355, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '61709028', '2013-06-12 18:17:57.216', false, 2354);
+INSERT INTO component VALUES (2356, 'C', 'C', '664148', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:13:31.8', 'B5', 'green', 2355);
+INSERT INTO component VALUES (2357, 'G', 'B', '65636996', 'Howard Joel Wolowitz', '2013-06-12 17:14:52.421', 'D8', 'green', 2355);
+INSERT INTO device VALUES (2358, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '44743003', '2013-06-13 01:56:04.178', false, 2354);
+INSERT INTO component VALUES (2359, 'B', 'B', '90809810', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:38:01.74', 'F2', 'green', 2358);
+INSERT INTO component VALUES (2360, 'C', 'D', '7440031', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 04:44:26.754', 'G3', 'green', 2358);
+INSERT INTO location VALUES (2361, 'CB9', 'ABS test', 'Franziska Meier', 2353);
+INSERT INTO device VALUES (2362, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '16902084', '2013-06-12 16:52:28.611', false, 2361);
+INSERT INTO component VALUES (2363, 'A', 'D', '43350281', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:12:10.018', 'C3', 'green', 2362);
+INSERT INTO component VALUES (2364, 'F', 'D', '44639231', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 01:19:10.328', 'F9', 'green', 2362);
+INSERT INTO device VALUES (2365, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '10012330', '2013-06-13 09:00:13.535', false, 2361);
+INSERT INTO component VALUES (2366, 'G', 'I', '2797213', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:21:07.813', 'C8', 'green', 2365);
+INSERT INTO component VALUES (2367, 'H', 'D', '62794623', 'Howard Joel Wolowitz', '2013-06-13 01:47:33.109', 'B7', 'green', 2365);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -3093,7 +3097,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -3448,7 +3453,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 5;
-INSERT INTO hall VALUES (2368, 'B9', 'Assembly+Finish', 374, 6757, 'Audi A4', 2, 'path369', 5, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2368, 'G3', 'Assembly+Finish', 305, 6215, 'Audi A4', 2, 'path369', 5, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -3590,52 +3595,52 @@ INSERT INTO hall VALUES (2368, 'B9', 'Assembly+Finish', 374, 6757, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2369, 'B9 Assembly', 'Series 5', 83, 'rect217', 2368);
-INSERT INTO location VALUES (2370, 'FE8', 'transmission test', 'Franziska Schmitt', 2369);
-INSERT INTO device VALUES (2371, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '31742425', '2013-06-11 09:43:55.837', true, 2370);
-INSERT INTO component VALUES (2372, 'H', 'B', '25132623', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 04:01:18.805', 'C8', 'green', 2371);
-INSERT INTO component VALUES (2373, 'C', 'E', '78683837', 'Howard Joel Wolowitz', '2013-06-12 02:02:47.57', 'D3', 'green', 2371);
-INSERT INTO device VALUES (2374, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '62629331', '2013-06-12 03:10:06.125', false, 2370);
-INSERT INTO component VALUES (2375, 'F', 'I', '53737430', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:32:56.819', 'D1', 'green', 2374);
-INSERT INTO component VALUES (2376, 'I', 'A', '13199092', 'Howard Joel Wolowitz', '2013-06-11 08:15:29.678', 'G5', 'green', 2374);
-INSERT INTO location VALUES (2377, 'EC3', 'multimedia test', 'Sarah Schulze', 2369);
-INSERT INTO device VALUES (2378, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '77740135', '2013-06-12 01:49:21.109', true, 2377);
-INSERT INTO component VALUES (2379, 'H', 'D', '38470975', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 08:39:13.686', 'I8', 'green', 2378);
-INSERT INTO component VALUES (2380, 'E', 'D', '33486241', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 22:44:43.143', 'G2', 'green', 2378);
-INSERT INTO device VALUES (2381, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '73691097', '2013-06-11 21:03:11.364', false, 2377);
-INSERT INTO component VALUES (2382, 'C', 'F', '92461221', 'Howard Joel Wolowitz', '2013-06-11 22:10:51.802', 'I7', 'green', 2381);
-INSERT INTO component VALUES (2383, 'F', 'C', '15976055', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 02:39:05.914', 'H7', 'green', 2381);
-INSERT INTO line VALUES (2384, 'B9 PreSeries', 'Series 5', 15, 'polygon25', 2368);
-INSERT INTO location VALUES (2385, 'CD3', 'ABS test', 'Robert Meier', 2384);
-INSERT INTO device VALUES (2386, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '89103612', '2013-06-11 19:23:24.593', false, 2385);
-INSERT INTO component VALUES (2387, 'A', 'A', '62500402', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 11:58:54.68', 'A4', 'yellow', 2386);
-INSERT INTO component VALUES (2388, 'I', 'E', '4687697', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 13:13:40.445', 'E9', 'green', 2386);
-INSERT INTO device VALUES (2389, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '22138989', '2013-06-11 20:10:06.675', false, 2385);
-INSERT INTO component VALUES (2390, 'A', 'H', '35124236', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:29:19.493', 'C4', 'green', 2389);
-INSERT INTO component VALUES (2391, 'G', 'B', '56178387', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 12:29:03.485', 'C1', 'green', 2389);
-INSERT INTO location VALUES (2392, 'AI3', 'motor test', 'Hans Schulze', 2384);
-INSERT INTO device VALUES (2393, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'G', '66555402', '2013-06-11 15:06:32.673', false, 2392);
-INSERT INTO component VALUES (2394, 'G', 'B', '15756252', 'Howard Joel Wolowitz', '2013-06-12 03:04:38.615', 'C6', 'green', 2393);
-INSERT INTO component VALUES (2395, 'A', 'I', '67170975', 'Howard Joel Wolowitz', '2013-06-11 20:26:43.86', 'I8', 'green', 2393);
-INSERT INTO device VALUES (2396, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '74647251', '2013-06-11 10:04:31.663', false, 2392);
-INSERT INTO component VALUES (2397, 'A', 'F', '36653456', 'Howard Joel Wolowitz', '2013-06-11 19:36:10.6', 'I6', 'green', 2396);
-INSERT INTO component VALUES (2398, 'I', 'H', '43876137', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 17:22:40.657', 'H3', 'green', 2396);
-INSERT INTO line VALUES (2399, 'B9 Finish', 'Series 6', 67, 'rect497', 2368);
-INSERT INTO location VALUES (2400, 'GB4', 'motor test', 'Peter Merkel', 2399);
-INSERT INTO device VALUES (2401, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '59249301', '2013-06-11 22:41:42.012', false, 2400);
-INSERT INTO component VALUES (2402, 'I', 'B', '35408214', 'Howard Joel Wolowitz', '2013-06-11 12:23:17.504', 'E2', 'green', 2401);
-INSERT INTO component VALUES (2403, 'B', 'A', '64037903', 'Howard Joel Wolowitz', '2013-06-11 21:44:27.023', 'A1', 'green', 2401);
-INSERT INTO device VALUES (2404, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '2232494', '2013-06-11 13:09:04.391', false, 2400);
-INSERT INTO component VALUES (2405, 'H', 'H', '85120755', 'Howard Joel Wolowitz', '2013-06-11 15:55:40.104', 'B9', 'red', 2404);
-INSERT INTO component VALUES (2406, 'D', 'E', '11146029', 'Howard Joel Wolowitz', '2013-06-11 19:21:34.434', 'I8', 'green', 2404);
-INSERT INTO location VALUES (2407, 'GF1', 'ABS test', 'Robert Schulze', 2399);
-INSERT INTO device VALUES (2408, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '36394814', '2013-06-11 20:01:18.016', false, 2407);
-INSERT INTO component VALUES (2409, 'D', 'G', '98973160', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:47:06.333', 'B7', 'yellow', 2408);
-INSERT INTO component VALUES (2410, 'D', 'I', '56763769', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:26:58.012', 'A8', 'red', 2408);
-INSERT INTO device VALUES (2411, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '30617921', '2013-06-12 01:10:30.082', false, 2407);
-INSERT INTO component VALUES (2412, 'D', 'C', '41224213', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 01:42:01.93', 'E5', 'green', 2411);
-INSERT INTO component VALUES (2413, 'I', 'F', '90404449', 'Howard Joel Wolowitz', '2013-06-11 08:51:06.736', 'E3', 'green', 2411);
-INSERT INTO hall VALUES (2414, 'I3', 'Assembly+Finish', 855, 9181, 'Audi A4', 2, 'polygon249', 5, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2369, 'G3 Assembly', 'Series 5', 36, 'rect217', 2368);
+INSERT INTO location VALUES (2370, 'BH3', 'security test', 'Franziska Meier', 2369);
+INSERT INTO device VALUES (2371, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '73468545', '2013-06-13 10:02:52.747', false, 2370);
+INSERT INTO component VALUES (2372, 'C', 'D', '72544141', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:45:17.039', 'F3', 'yellow', 2371);
+INSERT INTO component VALUES (2373, 'D', 'I', '93718308', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:34:45.648', 'D5', 'red', 2371);
+INSERT INTO device VALUES (2374, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '86609217', '2013-06-13 10:33:25.559', false, 2370);
+INSERT INTO component VALUES (2375, 'D', 'H', '82935277', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 02:33:55.125', 'F8', 'green', 2374);
+INSERT INTO component VALUES (2376, 'G', 'D', '15067655', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:30:54.492', 'D4', 'red', 2374);
+INSERT INTO location VALUES (2377, 'GB9', 'motor test', 'Robert Schulze', 2369);
+INSERT INTO device VALUES (2378, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '82944792', '2013-06-13 06:34:54.764', false, 2377);
+INSERT INTO component VALUES (2379, 'F', 'G', '74985803', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:32:00.969', 'I3', 'green', 2378);
+INSERT INTO component VALUES (2380, 'I', 'G', '82162290', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 11:29:28.217', 'G4', 'green', 2378);
+INSERT INTO device VALUES (2381, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '6066717', '2013-06-12 18:48:27.994', false, 2377);
+INSERT INTO component VALUES (2382, 'A', 'D', '63500887', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:12:11.882', 'E4', 'green', 2381);
+INSERT INTO component VALUES (2383, 'I', 'G', '47951334', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 11:31:17.503', 'F6', 'green', 2381);
+INSERT INTO line VALUES (2384, 'G3 PreSeries', 'Series 2', 45, 'polygon25', 2368);
+INSERT INTO location VALUES (2385, 'CG1', 'transmission test', 'Hans Schulze', 2384);
+INSERT INTO device VALUES (2386, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '53160430', '2013-06-13 00:15:08.871', false, 2385);
+INSERT INTO component VALUES (2387, 'B', 'B', '84353647', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:34:19.491', 'G5', 'green', 2386);
+INSERT INTO component VALUES (2388, 'G', 'D', '21716388', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 19:48:19.151', 'G2', 'red', 2386);
+INSERT INTO device VALUES (2389, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '2128749', '2013-06-12 19:23:41.675', false, 2385);
+INSERT INTO component VALUES (2390, 'B', 'I', '8665946', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:11:16.581', 'B3', 'green', 2389);
+INSERT INTO component VALUES (2391, 'E', 'B', '93023969', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:46:31.655', 'B7', 'green', 2389);
+INSERT INTO location VALUES (2392, 'BG1', 'ABS test', 'Franziska Meier', 2384);
+INSERT INTO device VALUES (2393, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '69695480', '2013-06-12 17:57:35.521', false, 2392);
+INSERT INTO component VALUES (2394, 'E', 'H', '75821621', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:15:19.361', 'F1', 'green', 2393);
+INSERT INTO component VALUES (2395, 'D', 'H', '46819510', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:32:56.317', 'E3', 'green', 2393);
+INSERT INTO device VALUES (2396, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '33582832', '2013-06-12 20:57:21.931', false, 2392);
+INSERT INTO component VALUES (2397, 'F', 'G', '37519055', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 04:06:01.257', 'E5', 'green', 2396);
+INSERT INTO component VALUES (2398, 'F', 'E', '1561475', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 02:33:52.359', 'G1', 'green', 2396);
+INSERT INTO line VALUES (2399, 'G3 Finish', 'Series 3', 47, 'rect497', 2368);
+INSERT INTO location VALUES (2400, 'EH7', 'transmission test', 'Robert Schulze', 2399);
+INSERT INTO device VALUES (2401, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'F', '24207889', '2013-06-12 19:21:45.369', false, 2400);
+INSERT INTO component VALUES (2402, 'D', 'D', '76764351', 'Howard Joel Wolowitz', '2013-06-12 16:51:38.992', 'A6', 'red', 2401);
+INSERT INTO component VALUES (2403, 'H', 'H', '25501825', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 09:50:38.827', 'A4', 'green', 2401);
+INSERT INTO device VALUES (2404, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '31698221', '2013-06-13 08:01:46.229', false, 2400);
+INSERT INTO component VALUES (2405, 'A', 'B', '8941895', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:32:18.806', 'G4', 'green', 2404);
+INSERT INTO component VALUES (2406, 'A', 'D', '16001035', 'Howard Joel Wolowitz', '2013-06-12 18:00:27.505', 'D1', 'red', 2404);
+INSERT INTO location VALUES (2407, 'EI6', 'security test', 'Sarah Schmitt', 2399);
+INSERT INTO device VALUES (2408, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '48131167', '2013-06-13 09:30:25.043', true, 2407);
+INSERT INTO component VALUES (2409, 'A', 'H', '60147595', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 14:38:31.243', 'F7', 'green', 2408);
+INSERT INTO component VALUES (2410, 'B', 'B', '73788364', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 17:47:03.663', 'F6', 'green', 2408);
+INSERT INTO device VALUES (2411, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '98468470', '2013-06-13 10:27:24.219', false, 2407);
+INSERT INTO component VALUES (2412, 'H', 'G', '45733911', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:21:55.47', 'C7', 'green', 2411);
+INSERT INTO component VALUES (2413, 'G', 'C', '99185602', 'Howard Joel Wolowitz', '2013-06-12 17:07:37.793', 'A6', 'green', 2411);
+INSERT INTO hall VALUES (2414, 'E5', 'Assembly+Finish', 230, 5024, 'Audi A4', 2, 'polygon249', 5, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -3777,51 +3782,51 @@ INSERT INTO hall VALUES (2414, 'I3', 'Assembly+Finish', 855, 9181, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2415, 'I3 Assembly', 'Series 2', 100, 'rect217', 2414);
-INSERT INTO location VALUES (2416, 'BF9', 'motor test', 'Robert Merkel', 2415);
-INSERT INTO device VALUES (2417, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '96162283', '2013-06-11 03:46:35.147', false, 2416);
-INSERT INTO component VALUES (2418, 'C', 'E', '15792073', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 17:16:30.717', 'C7', 'green', 2417);
-INSERT INTO component VALUES (2419, 'C', 'D', '62254986', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:31:15.395', 'E9', 'green', 2417);
-INSERT INTO device VALUES (2420, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'C', '42348538', '2013-06-11 22:33:03.118', false, 2416);
-INSERT INTO component VALUES (2421, 'I', 'F', '65127394', 'Howard Joel Wolowitz', '2013-06-11 17:31:29.296', 'A1', 'green', 2420);
-INSERT INTO component VALUES (2422, 'B', 'I', '19989643', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 00:58:28.353', 'D5', 'green', 2420);
-INSERT INTO location VALUES (2423, 'DE1', 'motor test', 'Sarah Schmitt', 2415);
-INSERT INTO device VALUES (2424, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '70348358', '2013-06-11 22:58:10.14', false, 2423);
-INSERT INTO component VALUES (2425, 'D', 'I', '94723314', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 10:39:35.976', 'I4', 'green', 2424);
-INSERT INTO component VALUES (2426, 'I', 'D', '11659506', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:47:48.188', 'A5', 'green', 2424);
-INSERT INTO device VALUES (2427, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '99686432', '2013-06-11 20:56:26.705', false, 2423);
-INSERT INTO component VALUES (2428, 'D', 'C', '79005332', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 16:33:44.576', 'H1', 'green', 2427);
-INSERT INTO component VALUES (2429, 'H', 'C', '45694792', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:19:40.599', 'D9', 'green', 2427);
-INSERT INTO line VALUES (2430, 'I3 PreSeries', 'Series 3', 27, 'polygon25', 2414);
-INSERT INTO location VALUES (2431, 'DE9', 'transmission test', 'Sarah Mueller', 2430);
-INSERT INTO device VALUES (2432, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '9173123', '2013-06-11 14:24:57.523', false, 2431);
-INSERT INTO component VALUES (2433, 'D', 'F', '51687513', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 11:35:45.66', 'B8', 'green', 2432);
-INSERT INTO component VALUES (2434, 'A', 'I', '25985922', 'Howard Joel Wolowitz', '2013-06-11 19:40:34.15', 'B6', 'green', 2432);
-INSERT INTO device VALUES (2435, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '51406157', '2013-06-11 05:13:48.973', false, 2431);
-INSERT INTO component VALUES (2436, 'G', 'G', '55536050', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:21:58.041', 'D1', 'green', 2435);
-INSERT INTO component VALUES (2437, 'B', 'A', '102506', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:28:42.124', 'A4', 'green', 2435);
-INSERT INTO location VALUES (2438, 'BB6', 'transmission test', 'Hans Schulze', 2430);
-INSERT INTO device VALUES (2439, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '20864110', '2013-06-12 00:52:12.556', false, 2438);
-INSERT INTO component VALUES (2440, 'B', 'A', '49315306', 'Howard Joel Wolowitz', '2013-06-11 22:14:01.847', 'C7', 'green', 2439);
-INSERT INTO component VALUES (2441, 'I', 'I', '6398085', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 10:44:21.118', 'B3', 'green', 2439);
-INSERT INTO device VALUES (2442, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '24210161', '2013-06-11 04:21:23.675', false, 2438);
-INSERT INTO component VALUES (2443, 'B', 'B', '27932608', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 12:38:19.728', 'D2', 'green', 2442);
-INSERT INTO component VALUES (2444, 'I', 'H', '49912372', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 08:56:22.284', 'A5', 'green', 2442);
-INSERT INTO line VALUES (2445, 'I3 Finish', 'Series 1', 100, 'rect497', 2414);
-INSERT INTO location VALUES (2446, 'FE6', 'motor test', 'Robert Meier', 2445);
-INSERT INTO device VALUES (2447, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '6951548', '2013-06-12 00:39:41.304', false, 2446);
-INSERT INTO component VALUES (2448, 'C', 'B', '27919117', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 07:53:27.643', 'B7', 'yellow', 2447);
-INSERT INTO component VALUES (2449, 'E', 'H', '43960065', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 19:47:57.037', 'G8', 'green', 2447);
-INSERT INTO device VALUES (2450, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '68770001', '2013-06-11 12:42:21.589', false, 2446);
-INSERT INTO component VALUES (2451, 'I', 'F', '11626959', 'Howard Joel Wolowitz', '2013-06-12 01:03:10.277', 'C8', 'green', 2450);
-INSERT INTO component VALUES (2452, 'H', 'C', '91442730', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 05:12:58.502', 'G5', 'green', 2450);
-INSERT INTO location VALUES (2453, 'CA3', 'security test', 'Peter Schulze', 2445);
-INSERT INTO device VALUES (2454, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'D', '88151264', '2013-06-11 05:12:03.971', false, 2453);
-INSERT INTO component VALUES (2455, 'C', 'A', '25842066', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:38:35.816', 'H7', 'green', 2454);
-INSERT INTO component VALUES (2456, 'A', 'C', '53850786', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 01:48:54.115', 'H7', 'red', 2454);
-INSERT INTO device VALUES (2457, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '63122051', '2013-06-11 14:46:45.633', false, 2453);
-INSERT INTO component VALUES (2458, 'D', 'H', '32321673', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 04:57:35.836', 'B6', 'green', 2457);
-INSERT INTO component VALUES (2459, 'H', 'H', '54543898', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:20:29.089', 'D2', 'green', 2457);
+INSERT INTO line VALUES (2415, 'E5 Assembly', 'Series 4', 83, 'rect217', 2414);
+INSERT INTO location VALUES (2416, 'BD5', 'motor test', 'Peter Schmitt', 2415);
+INSERT INTO device VALUES (2417, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '50124846', '2013-06-13 10:40:08.927', false, 2416);
+INSERT INTO component VALUES (2418, 'E', 'F', '65956332', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 13:03:44.556', 'I9', 'green', 2417);
+INSERT INTO component VALUES (2419, 'I', 'C', '5072267', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 11:39:29.014', 'F5', 'green', 2417);
+INSERT INTO device VALUES (2420, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '1876975', '2013-06-13 00:53:22.913', false, 2416);
+INSERT INTO component VALUES (2421, 'H', 'G', '81127098', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:27:37.279', 'D5', 'green', 2420);
+INSERT INTO component VALUES (2422, 'H', 'A', '68258449', 'Howard Joel Wolowitz', '2013-06-13 09:31:34.359', 'E8', 'green', 2420);
+INSERT INTO location VALUES (2423, 'GE9', 'multimedia test', 'Robert Merkel', 2415);
+INSERT INTO device VALUES (2424, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '14496426', '2013-06-13 03:46:22.307', true, 2423);
+INSERT INTO component VALUES (2425, 'G', 'E', '9534276', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:21:24.298', 'G4', 'green', 2424);
+INSERT INTO component VALUES (2426, 'E', 'A', '29675765', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 13:42:39.779', 'H2', 'green', 2424);
+INSERT INTO device VALUES (2427, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'I', '53229104', '2013-06-12 18:07:23.281', false, 2423);
+INSERT INTO component VALUES (2428, 'H', 'H', '13854470', 'Howard Joel Wolowitz', '2013-06-13 06:50:11.39', 'D3', 'green', 2427);
+INSERT INTO component VALUES (2429, 'D', 'A', '9780861', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 15:58:46.026', 'D7', 'green', 2427);
+INSERT INTO line VALUES (2430, 'E5 PreSeries', 'Series 9', 68, 'polygon25', 2414);
+INSERT INTO location VALUES (2431, 'BF3', 'motor test', 'Sarah Meier', 2430);
+INSERT INTO device VALUES (2432, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '69283504', '2013-06-12 22:14:26.272', true, 2431);
+INSERT INTO component VALUES (2433, 'G', 'F', '97653206', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 05:04:35.908', 'H2', 'green', 2432);
+INSERT INTO component VALUES (2434, 'G', 'I', '29533404', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:13:02.204', 'F1', 'green', 2432);
+INSERT INTO device VALUES (2435, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '74134768', '2013-06-12 13:11:40.334', true, 2431);
+INSERT INTO component VALUES (2436, 'A', 'H', '87358353', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 02:03:55.091', 'D9', 'green', 2435);
+INSERT INTO component VALUES (2437, 'D', 'I', '35858808', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:22:59.84', 'C9', 'green', 2435);
+INSERT INTO location VALUES (2438, 'CE8', 'transmission test', 'Franziska Merkel', 2430);
+INSERT INTO device VALUES (2439, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '5782583', '2013-06-13 03:54:38.369', false, 2438);
+INSERT INTO component VALUES (2440, 'A', 'E', '66842489', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 11:24:49.115', 'A7', 'green', 2439);
+INSERT INTO component VALUES (2441, 'F', 'D', '32509848', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:13:19.558', 'G3', 'green', 2439);
+INSERT INTO device VALUES (2442, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '78757474', '2013-06-12 16:06:33.876', false, 2438);
+INSERT INTO component VALUES (2443, 'A', 'I', '66021492', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:33:25.926', 'A7', 'green', 2442);
+INSERT INTO component VALUES (2444, 'C', 'B', '38502399', 'Howard Joel Wolowitz', '2013-06-13 07:04:31.471', 'E4', 'green', 2442);
+INSERT INTO line VALUES (2445, 'E5 Finish', 'Series 6', 6, 'rect497', 2414);
+INSERT INTO location VALUES (2446, 'II4', 'security test', 'Peter Merkel', 2445);
+INSERT INTO device VALUES (2447, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '12994080', '2013-06-12 23:52:47.077', false, 2446);
+INSERT INTO component VALUES (2448, 'B', 'C', '54395120', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:34:54.313', 'H5', 'green', 2447);
+INSERT INTO component VALUES (2449, 'I', 'F', '78440427', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 06:47:22.847', 'E6', 'green', 2447);
+INSERT INTO device VALUES (2450, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '25393926', '2013-06-13 00:19:47.106', false, 2446);
+INSERT INTO component VALUES (2451, 'B', 'H', '98429644', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 14:43:57.439', 'E3', 'green', 2450);
+INSERT INTO component VALUES (2452, 'A', 'C', '70590144', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:23:34.011', 'E3', 'green', 2450);
+INSERT INTO location VALUES (2453, 'IF1', 'security test', 'Robert Meier', 2445);
+INSERT INTO device VALUES (2454, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '59548431', '2013-06-13 06:10:52.672', false, 2453);
+INSERT INTO component VALUES (2455, 'H', 'C', '80281508', 'Howard Joel Wolowitz', '2013-06-12 20:46:52.211', 'G4', 'green', 2454);
+INSERT INTO component VALUES (2456, 'C', 'I', '69562206', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 16:18:49.5', 'C4', 'green', 2454);
+INSERT INTO device VALUES (2457, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '12645709', '2013-06-12 14:37:15.094', false, 2453);
+INSERT INTO component VALUES (2458, 'G', 'H', '81095229', 'Howard Joel Wolowitz', '2013-06-12 14:55:09.936', 'H5', 'green', 2457);
+INSERT INTO component VALUES (2459, 'D', 'I', '58033641', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 18:38:55.379', 'F4', 'green', 2457);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -3835,7 +3840,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -4190,7 +4196,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 6;
-INSERT INTO hall VALUES (2460, 'D1', 'Assembly+Finish', 912, 9531, 'Audi A4', 2, 'path369', 6, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2460, 'I8', 'Assembly+Finish', 4, 3489, 'Audi A4', 2, 'path369', 6, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -4332,52 +4338,52 @@ INSERT INTO hall VALUES (2460, 'D1', 'Assembly+Finish', 912, 9531, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2461, 'D1 Assembly', 'Series 3', 40, 'rect217', 2460);
-INSERT INTO location VALUES (2462, 'AC5', 'multimedia test', 'Sarah Merkel', 2461);
-INSERT INTO device VALUES (2463, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'G', '8276208', '2013-06-11 14:11:48.578', false, 2462);
-INSERT INTO component VALUES (2464, 'D', 'H', '9651171', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 14:22:12.084', 'A8', 'green', 2463);
-INSERT INTO component VALUES (2465, 'D', 'G', '60744481', 'Howard Joel Wolowitz', '2013-06-11 14:31:48.371', 'E9', 'green', 2463);
-INSERT INTO device VALUES (2466, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '96686040', '2013-06-11 12:03:43.994', false, 2462);
-INSERT INTO component VALUES (2467, 'H', 'I', '99735725', 'Howard Joel Wolowitz', '2013-06-12 00:43:55.969', 'D8', 'green', 2466);
-INSERT INTO component VALUES (2468, 'A', 'B', '86797064', 'Howard Joel Wolowitz', '2013-06-11 08:26:09.948', 'E5', 'green', 2466);
-INSERT INTO location VALUES (2469, 'CG8', 'motor test', 'Sarah Meier', 2461);
-INSERT INTO device VALUES (2470, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '54779989', '2013-06-11 03:52:37.715', false, 2469);
-INSERT INTO component VALUES (2471, 'C', 'I', '76171025', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 13:24:27.909', 'E9', 'green', 2470);
-INSERT INTO component VALUES (2472, 'I', 'E', '21561423', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 01:10:20.256', 'F6', 'green', 2470);
-INSERT INTO device VALUES (2473, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '47559784', '2013-06-11 09:58:18.461', false, 2469);
-INSERT INTO component VALUES (2474, 'E', 'E', '80538750', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 18:15:02.567', 'F5', 'green', 2473);
-INSERT INTO component VALUES (2475, 'G', 'B', '6670437', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 21:26:19.332', 'I5', 'green', 2473);
-INSERT INTO line VALUES (2476, 'D1 PreSeries', 'Series 5', 57, 'polygon25', 2460);
-INSERT INTO location VALUES (2477, 'DI6', 'security test', 'Sarah Mueller', 2476);
-INSERT INTO device VALUES (2478, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '36402975', '2013-06-11 23:43:44.937', false, 2477);
-INSERT INTO component VALUES (2479, 'C', 'D', '77132230', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 03:04:59.788', 'B7', 'green', 2478);
-INSERT INTO component VALUES (2480, 'G', 'I', '5484772', 'Howard Joel Wolowitz', '2013-06-12 03:09:21.647', 'G7', 'yellow', 2478);
-INSERT INTO device VALUES (2481, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '34306608', '2013-06-11 17:08:02.905', false, 2477);
-INSERT INTO component VALUES (2482, 'H', 'I', '93013122', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:36:50.183', 'E7', 'yellow', 2481);
-INSERT INTO component VALUES (2483, 'F', 'E', '26564328', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:46:39.234', 'D2', 'green', 2481);
-INSERT INTO location VALUES (2484, 'GA5', 'security test', 'Franziska Schmitt', 2476);
-INSERT INTO device VALUES (2485, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '65863313', '2013-06-11 16:04:10.579', false, 2484);
-INSERT INTO component VALUES (2486, 'I', 'I', '20407961', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 10:45:36.425', 'C1', 'green', 2485);
-INSERT INTO component VALUES (2487, 'F', 'E', '80063884', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 01:36:11.879', 'D7', 'green', 2485);
-INSERT INTO device VALUES (2488, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'D', '36222190', '2013-06-11 19:58:51.769', false, 2484);
-INSERT INTO component VALUES (2489, 'H', 'A', '46268615', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 16:55:35.828', 'F5', 'green', 2488);
-INSERT INTO component VALUES (2490, 'B', 'D', '27376186', 'Howard Joel Wolowitz', '2013-06-11 23:55:27.329', 'F8', 'green', 2488);
-INSERT INTO line VALUES (2491, 'D1 Finish', 'Series 2', 27, 'rect497', 2460);
-INSERT INTO location VALUES (2492, 'BC4', 'multimedia test', 'Sarah Mueller', 2491);
-INSERT INTO device VALUES (2493, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '39352557', '2013-06-11 05:05:37.475', false, 2492);
-INSERT INTO component VALUES (2494, 'A', 'A', '50387773', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 20:52:02.002', 'D2', 'green', 2493);
-INSERT INTO component VALUES (2495, 'I', 'D', '54241243', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 05:06:34.843', 'A3', 'green', 2493);
-INSERT INTO device VALUES (2496, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '86522913', '2013-06-12 03:30:08.148', false, 2492);
-INSERT INTO component VALUES (2497, 'B', 'D', '27124843', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 03:29:40.06', 'F3', 'green', 2496);
-INSERT INTO component VALUES (2498, 'H', 'H', '31604843', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 10:51:47.29', 'I8', 'green', 2496);
-INSERT INTO location VALUES (2499, 'DI9', 'motor test', 'Sarah Merkel', 2491);
-INSERT INTO device VALUES (2500, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '23331802', '2013-06-11 05:58:21.117', false, 2499);
-INSERT INTO component VALUES (2501, 'C', 'F', '54887419', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 05:14:47.942', 'I5', 'green', 2500);
-INSERT INTO component VALUES (2502, 'B', 'F', '94206941', 'Howard Joel Wolowitz', '2013-06-11 16:16:06.576', 'F6', 'green', 2500);
-INSERT INTO device VALUES (2503, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '4364735', '2013-06-11 16:03:56.265', false, 2499);
-INSERT INTO component VALUES (2504, 'H', 'F', '99881294', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 06:18:40.504', 'D2', 'green', 2503);
-INSERT INTO component VALUES (2505, 'H', 'A', '58036094', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 20:10:12.744', 'E2', 'green', 2503);
-INSERT INTO hall VALUES (2506, 'H8', 'Assembly+Finish', 918, 6421, 'Audi A4', 2, 'polygon249', 6, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2461, 'I8 Assembly', 'Series 9', 1, 'rect217', 2460);
+INSERT INTO location VALUES (2462, 'DI7', 'multimedia test', 'Hans Meier', 2461);
+INSERT INTO device VALUES (2463, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'E', '39645480', '2013-06-13 01:34:54.833', false, 2462);
+INSERT INTO component VALUES (2464, 'C', 'F', '88666351', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 04:08:54.497', 'D5', 'green', 2463);
+INSERT INTO component VALUES (2465, 'F', 'B', '98282009', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 13:49:03.636', 'H8', 'green', 2463);
+INSERT INTO device VALUES (2466, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '720088', '2013-06-13 04:17:49.314', false, 2462);
+INSERT INTO component VALUES (2467, 'B', 'H', '12861928', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 13:30:26.443', 'G3', 'green', 2466);
+INSERT INTO component VALUES (2468, 'A', 'C', '43120495', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:25:08.081', 'G2', 'green', 2466);
+INSERT INTO location VALUES (2469, 'BH8', 'ABS test', 'Hans Schmitt', 2461);
+INSERT INTO device VALUES (2470, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '64827464', '2013-06-13 07:47:17.413', false, 2469);
+INSERT INTO component VALUES (2471, 'D', 'F', '29020553', 'Howard Joel Wolowitz', '2013-06-13 10:56:08.399', 'H4', 'green', 2470);
+INSERT INTO component VALUES (2472, 'E', 'H', '62405678', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:10:30.553', 'F4', 'red', 2470);
+INSERT INTO device VALUES (2473, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '19333607', '2013-06-13 05:01:43.414', false, 2469);
+INSERT INTO component VALUES (2474, 'B', 'B', '28745801', 'Howard Joel Wolowitz', '2013-06-13 11:47:37.001', 'A6', 'green', 2473);
+INSERT INTO component VALUES (2475, 'I', 'B', '56218406', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 11:20:42.343', 'G5', 'green', 2473);
+INSERT INTO line VALUES (2476, 'I8 PreSeries', 'Series 8', 2, 'polygon25', 2460);
+INSERT INTO location VALUES (2477, 'IF6', 'security test', 'Hans Schulze', 2476);
+INSERT INTO device VALUES (2478, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'G', '79613880', '2013-06-12 22:38:31.388', false, 2477);
+INSERT INTO component VALUES (2479, 'G', 'D', '33028564', 'Howard Joel Wolowitz', '2013-06-12 21:14:30.996', 'B2', 'yellow', 2478);
+INSERT INTO component VALUES (2480, 'I', 'H', '91359850', 'Howard Joel Wolowitz', '2013-06-12 21:03:13.52', 'E7', 'green', 2478);
+INSERT INTO device VALUES (2481, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '19743735', '2013-06-13 07:49:24.27', false, 2477);
+INSERT INTO component VALUES (2482, 'F', 'I', '97092139', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:38:59.335', 'H9', 'green', 2481);
+INSERT INTO component VALUES (2483, 'H', 'D', '38362542', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:40:35.945', 'A4', 'green', 2481);
+INSERT INTO location VALUES (2484, 'AB1', 'transmission test', 'Hans Mueller', 2476);
+INSERT INTO device VALUES (2485, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '35168383', '2013-06-13 10:24:14.141', false, 2484);
+INSERT INTO component VALUES (2486, 'C', 'C', '39428621', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 14:02:45.448', 'I2', 'green', 2485);
+INSERT INTO component VALUES (2487, 'C', 'D', '21463971', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:34:03.215', 'F7', 'green', 2485);
+INSERT INTO device VALUES (2488, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '72322347', '2013-06-12 20:26:24.835', false, 2484);
+INSERT INTO component VALUES (2489, 'D', 'G', '64925414', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 23:00:29.208', 'I2', 'green', 2488);
+INSERT INTO component VALUES (2490, 'B', 'G', '48608316', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:10:31.534', 'H2', 'green', 2488);
+INSERT INTO line VALUES (2491, 'I8 Finish', 'Series 9', 68, 'rect497', 2460);
+INSERT INTO location VALUES (2492, 'BG5', 'multimedia test', 'Robert Merkel', 2491);
+INSERT INTO device VALUES (2493, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '82028452', '2013-06-13 02:58:45.81', false, 2492);
+INSERT INTO component VALUES (2494, 'A', 'B', '88960921', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 10:31:54.067', 'D3', 'green', 2493);
+INSERT INTO component VALUES (2495, 'C', 'F', '49547219', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:01:17.551', 'C3', 'green', 2493);
+INSERT INTO device VALUES (2496, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '12407954', '2013-06-12 15:32:10.591', false, 2492);
+INSERT INTO component VALUES (2497, 'I', 'A', '75290392', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:19:36.16', 'G3', 'red', 2496);
+INSERT INTO component VALUES (2498, 'B', 'H', '75334665', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:50:22.024', 'D1', 'green', 2496);
+INSERT INTO location VALUES (2499, 'EE4', 'transmission test', 'Hans Schmitt', 2491);
+INSERT INTO device VALUES (2500, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '22624249', '2013-06-13 04:25:53.117', false, 2499);
+INSERT INTO component VALUES (2501, 'C', 'F', '77832636', 'Howard Joel Wolowitz', '2013-06-12 21:45:17.343', 'I9', 'green', 2500);
+INSERT INTO component VALUES (2502, 'G', 'I', '58859261', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 16:46:53.971', 'E1', 'green', 2500);
+INSERT INTO device VALUES (2503, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '1329555', '2013-06-12 19:19:08.097', false, 2499);
+INSERT INTO component VALUES (2504, 'F', 'A', '14074943', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:16:45.553', 'D7', 'green', 2503);
+INSERT INTO component VALUES (2505, 'C', 'B', '48539159', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:53:32.28', 'C5', 'green', 2503);
+INSERT INTO hall VALUES (2506, 'D5', 'Assembly+Finish', 731, 9867, 'Audi A4', 2, 'polygon249', 6, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -4519,51 +4525,51 @@ INSERT INTO hall VALUES (2506, 'H8', 'Assembly+Finish', 918, 6421, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2507, 'H8 Assembly', 'Series 3', 89, 'rect217', 2506);
-INSERT INTO location VALUES (2508, 'IB6', 'security test', 'Robert Merkel', 2507);
-INSERT INTO device VALUES (2509, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '50106407', '2013-06-11 14:32:21.288', false, 2508);
-INSERT INTO component VALUES (2510, 'D', 'G', '89798540', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:20:08.101', 'G1', 'green', 2509);
-INSERT INTO component VALUES (2511, 'I', 'D', '25020597', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 17:14:05.578', 'I4', 'green', 2509);
-INSERT INTO device VALUES (2512, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '31756481', '2013-06-11 11:29:01.788', false, 2508);
-INSERT INTO component VALUES (2513, 'E', 'H', '83870581', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 02:37:33.812', 'I8', 'yellow', 2512);
-INSERT INTO component VALUES (2514, 'D', 'H', '9981699', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 10:28:12.987', 'A4', 'green', 2512);
-INSERT INTO location VALUES (2515, 'FC5', 'security test', 'Franziska Meier', 2507);
-INSERT INTO device VALUES (2516, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'C', '19536088', '2013-06-11 09:48:51.619', false, 2515);
-INSERT INTO component VALUES (2517, 'H', 'E', '98406718', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 14:58:49.369', 'E1', 'green', 2516);
-INSERT INTO component VALUES (2518, 'E', 'F', '35856747', 'Howard Joel Wolowitz', '2013-06-11 23:21:24.16', 'A6', 'green', 2516);
-INSERT INTO device VALUES (2519, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '34477076', '2013-06-12 01:10:47.286', false, 2515);
-INSERT INTO component VALUES (2520, 'H', 'G', '96455119', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:48:01.073', 'A6', 'green', 2519);
-INSERT INTO component VALUES (2521, 'I', 'A', '48713483', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 13:29:15.212', 'I3', 'green', 2519);
-INSERT INTO line VALUES (2522, 'H8 PreSeries', 'Series 3', 76, 'polygon25', 2506);
-INSERT INTO location VALUES (2523, 'AC3', 'transmission test', 'Sarah Schulze', 2522);
-INSERT INTO device VALUES (2524, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '72271954', '2013-06-12 00:06:13.19', false, 2523);
-INSERT INTO component VALUES (2525, 'F', 'D', '23624803', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 00:39:34.297', 'G1', 'yellow', 2524);
-INSERT INTO component VALUES (2526, 'F', 'G', '6439563', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 00:32:15.219', 'I5', 'green', 2524);
-INSERT INTO device VALUES (2527, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '39114955', '2013-06-11 15:08:14.632', false, 2523);
-INSERT INTO component VALUES (2528, 'B', 'E', '99932177', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 17:24:58.768', 'D7', 'green', 2527);
-INSERT INTO component VALUES (2529, 'A', 'D', '91272849', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 15:58:31.581', 'C8', 'green', 2527);
-INSERT INTO location VALUES (2530, 'HC5', 'ABS test', 'Sarah Mueller', 2522);
-INSERT INTO device VALUES (2531, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '88219375', '2013-06-11 12:23:53.925', false, 2530);
-INSERT INTO component VALUES (2532, 'I', 'I', '7284221', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:07:29.011', 'F1', 'green', 2531);
-INSERT INTO component VALUES (2533, 'B', 'H', '43534809', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:11:16.494', 'A4', 'green', 2531);
-INSERT INTO device VALUES (2534, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'I', '22922292', '2013-06-11 07:58:46.766', false, 2530);
-INSERT INTO component VALUES (2535, 'H', 'F', '83566629', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:13:38.824', 'A1', 'red', 2534);
-INSERT INTO component VALUES (2536, 'H', 'E', '40194525', 'Howard Joel Wolowitz', '2013-06-11 18:28:49.407', 'C5', 'green', 2534);
-INSERT INTO line VALUES (2537, 'H8 Finish', 'Series 4', 85, 'rect497', 2506);
-INSERT INTO location VALUES (2538, 'GF2', 'ABS test', 'Sarah Merkel', 2537);
-INSERT INTO device VALUES (2539, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '17294906', '2013-06-11 12:54:00.375', false, 2538);
-INSERT INTO component VALUES (2540, 'F', 'F', '38374716', 'Howard Joel Wolowitz', '2013-06-11 08:46:01.972', 'F8', 'green', 2539);
-INSERT INTO component VALUES (2541, 'A', 'A', '92625364', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:55:24.634', 'H5', 'green', 2539);
-INSERT INTO device VALUES (2542, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '88207891', '2013-06-11 13:40:28.776', false, 2538);
-INSERT INTO component VALUES (2543, 'H', 'H', '47469943', 'Howard Joel Wolowitz', '2013-06-11 16:07:41.435', 'G3', 'green', 2542);
-INSERT INTO component VALUES (2544, 'I', 'E', '59529540', 'Howard Joel Wolowitz', '2013-06-11 09:16:56.778', 'A3', 'green', 2542);
-INSERT INTO location VALUES (2545, 'BG2', 'transmission test', 'Hans Mueller', 2537);
-INSERT INTO device VALUES (2546, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '71328817', '2013-06-11 07:14:55.783', false, 2545);
-INSERT INTO component VALUES (2547, 'C', 'I', '64197088', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 09:39:17.452', 'H7', 'green', 2546);
-INSERT INTO component VALUES (2548, 'I', 'E', '13787426', 'Howard Joel Wolowitz', '2013-06-11 16:13:28.701', 'D7', 'green', 2546);
-INSERT INTO device VALUES (2549, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'H', '47725239', '2013-06-11 04:37:39.647', false, 2545);
-INSERT INTO component VALUES (2550, 'E', 'D', '71529013', 'Howard Joel Wolowitz', '2013-06-11 14:08:28.609', 'E4', 'green', 2549);
-INSERT INTO component VALUES (2551, 'D', 'D', '47311121', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 11:14:43.7', 'G4', 'green', 2549);
+INSERT INTO line VALUES (2507, 'D5 Assembly', 'Series 5', 25, 'rect217', 2506);
+INSERT INTO location VALUES (2508, 'BB2', 'security test', 'Franziska Schmitt', 2507);
+INSERT INTO device VALUES (2509, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '50919443', '2013-06-12 17:57:00.346', true, 2508);
+INSERT INTO component VALUES (2510, 'H', 'A', '77186910', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 22:10:08.295', 'H4', 'green', 2509);
+INSERT INTO component VALUES (2511, 'B', 'C', '74884833', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:41:54.989', 'H4', 'green', 2509);
+INSERT INTO device VALUES (2512, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '75724084', '2013-06-13 11:42:10.051', false, 2508);
+INSERT INTO component VALUES (2513, 'H', 'H', '48328454', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:30:11.265', 'B7', 'green', 2512);
+INSERT INTO component VALUES (2514, 'D', 'H', '93247687', 'Howard Joel Wolowitz', '2013-06-12 13:58:33.578', 'B8', 'red', 2512);
+INSERT INTO location VALUES (2515, 'IH2', 'security test', 'Franziska Merkel', 2507);
+INSERT INTO device VALUES (2516, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '97476114', '2013-06-12 16:42:27.996', false, 2515);
+INSERT INTO component VALUES (2517, 'H', 'I', '25099344', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 01:49:56.686', 'C2', 'green', 2516);
+INSERT INTO component VALUES (2518, 'D', 'E', '10589322', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:49:26.602', 'D5', 'green', 2516);
+INSERT INTO device VALUES (2519, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '68502682', '2013-06-13 04:08:08.604', false, 2515);
+INSERT INTO component VALUES (2520, 'F', 'D', '10581634', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 04:13:10.589', 'C6', 'green', 2519);
+INSERT INTO component VALUES (2521, 'G', 'G', '28647807', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 22:42:18.329', 'A8', 'green', 2519);
+INSERT INTO line VALUES (2522, 'D5 PreSeries', 'Series 4', 88, 'polygon25', 2506);
+INSERT INTO location VALUES (2523, 'BH1', 'motor test', 'Peter Merkel', 2522);
+INSERT INTO device VALUES (2524, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'D', '98872448', '2013-06-13 10:04:04.453', false, 2523);
+INSERT INTO component VALUES (2525, 'B', 'C', '48935928', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:19:22.77', 'C3', 'green', 2524);
+INSERT INTO component VALUES (2526, 'D', 'D', '71411979', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:10:41.743', 'D5', 'red', 2524);
+INSERT INTO device VALUES (2527, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '38120990', '2013-06-13 12:34:54.467', false, 2523);
+INSERT INTO component VALUES (2528, 'A', 'G', '36109823', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:35:45.372', 'I3', 'green', 2527);
+INSERT INTO component VALUES (2529, 'I', 'H', '5994821', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 14:42:59.2', 'I4', 'green', 2527);
+INSERT INTO location VALUES (2530, 'HB5', 'motor test', 'Peter Merkel', 2522);
+INSERT INTO device VALUES (2531, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '37732973', '2013-06-13 01:37:23.109', false, 2530);
+INSERT INTO component VALUES (2532, 'C', 'H', '24306263', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:18:00.376', 'D7', 'green', 2531);
+INSERT INTO component VALUES (2533, 'B', 'E', '81593212', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 06:43:46.201', 'D7', 'green', 2531);
+INSERT INTO device VALUES (2534, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '38114070', '2013-06-13 05:01:11.001', false, 2530);
+INSERT INTO component VALUES (2535, 'I', 'G', '51562150', 'Howard Joel Wolowitz', '2013-06-13 06:31:40.847', 'G2', 'green', 2534);
+INSERT INTO component VALUES (2536, 'E', 'F', '87169944', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:19:05.897', 'F2', 'green', 2534);
+INSERT INTO line VALUES (2537, 'D5 Finish', 'Series 1', 73, 'rect497', 2506);
+INSERT INTO location VALUES (2538, 'CB2', 'ABS test', 'Robert Schulze', 2537);
+INSERT INTO device VALUES (2539, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '55243908', '2013-06-12 17:43:47.918', false, 2538);
+INSERT INTO component VALUES (2540, 'E', 'G', '50532498', 'Howard Joel Wolowitz', '2013-06-13 08:48:34.694', 'D6', 'red', 2539);
+INSERT INTO component VALUES (2541, 'A', 'C', '12679844', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:59:45.16', 'E4', 'green', 2539);
+INSERT INTO device VALUES (2542, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '89076782', '2013-06-12 21:27:43.701', false, 2538);
+INSERT INTO component VALUES (2543, 'F', 'F', '99411236', 'Howard Joel Wolowitz', '2013-06-12 17:42:57.162', 'F9', 'green', 2542);
+INSERT INTO component VALUES (2544, 'G', 'G', '78794297', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:33:44.476', 'F3', 'green', 2542);
+INSERT INTO location VALUES (2545, 'AG3', 'motor test', 'Hans Merkel', 2537);
+INSERT INTO device VALUES (2546, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '17893704', '2013-06-12 22:18:14.21', false, 2545);
+INSERT INTO component VALUES (2547, 'G', 'B', '97368470', 'Howard Joel Wolowitz', '2013-06-13 06:12:10.19', 'C9', 'green', 2546);
+INSERT INTO component VALUES (2548, 'B', 'H', '10092625', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 18:23:30.806', 'H4', 'red', 2546);
+INSERT INTO device VALUES (2549, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '90449085', '2013-06-12 13:16:50.143', false, 2545);
+INSERT INTO component VALUES (2550, 'H', 'D', '49617094', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:25:01.579', 'D7', 'green', 2549);
+INSERT INTO component VALUES (2551, 'C', 'F', '36025229', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:37:32.498', 'D7', 'green', 2549);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -4577,7 +4583,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -4932,7 +4939,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 7;
-INSERT INTO hall VALUES (2552, 'E2', 'Assembly+Finish', 273, 2856, 'Audi A4', 2, 'path369', 7, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2552, 'B3', 'Assembly+Finish', 561, 272, 'Audi A4', 2, 'path369', 7, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -5074,52 +5081,52 @@ INSERT INTO hall VALUES (2552, 'E2', 'Assembly+Finish', 273, 2856, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2553, 'E2 Assembly', 'Series 8', 83, 'rect217', 2552);
-INSERT INTO location VALUES (2554, 'GD7', 'transmission test', 'Robert Meier', 2553);
-INSERT INTO device VALUES (2555, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '67805977', '2013-06-11 10:35:48.155', false, 2554);
-INSERT INTO component VALUES (2556, 'C', 'C', '78096162', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:43:25.545', 'I3', 'green', 2555);
-INSERT INTO component VALUES (2557, 'B', 'C', '46444075', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 10:19:50.387', 'F4', 'green', 2555);
-INSERT INTO device VALUES (2558, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '5111376', '2013-06-11 14:56:13.126', false, 2554);
-INSERT INTO component VALUES (2559, 'F', 'A', '40418852', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 16:43:26.435', 'H1', 'green', 2558);
-INSERT INTO component VALUES (2560, 'C', 'G', '35410836', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:37:36.73', 'F8', 'green', 2558);
-INSERT INTO location VALUES (2561, 'EF1', 'ABS test', 'Sarah Mueller', 2553);
-INSERT INTO device VALUES (2562, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '77768611', '2013-06-11 15:51:10.424', false, 2561);
-INSERT INTO component VALUES (2563, 'C', 'I', '18535512', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 19:22:05.976', 'A4', 'green', 2562);
-INSERT INTO component VALUES (2564, 'G', 'A', '61879538', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:23:05.285', 'E5', 'green', 2562);
-INSERT INTO device VALUES (2565, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '88575684', '2013-06-12 03:17:09.951', false, 2561);
-INSERT INTO component VALUES (2566, 'A', 'G', '46490218', 'Howard Joel Wolowitz', '2013-06-11 18:13:24.191', 'H5', 'green', 2565);
-INSERT INTO component VALUES (2567, 'B', 'H', '50983125', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 21:07:11.759', 'B3', 'green', 2565);
-INSERT INTO line VALUES (2568, 'E2 PreSeries', 'Series 9', 90, 'polygon25', 2552);
-INSERT INTO location VALUES (2569, 'CC6', 'ABS test', 'Robert Mueller', 2568);
-INSERT INTO device VALUES (2570, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '31586274', '2013-06-11 09:02:00.855', false, 2569);
-INSERT INTO component VALUES (2571, 'H', 'G', '77420542', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:06:41.922', 'E3', 'green', 2570);
-INSERT INTO component VALUES (2572, 'H', 'C', '89931795', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 12:02:44.118', 'B4', 'green', 2570);
-INSERT INTO device VALUES (2573, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '75907104', '2013-06-11 11:41:57.077', false, 2569);
-INSERT INTO component VALUES (2574, 'F', 'I', '15309699', 'Howard Joel Wolowitz', '2013-06-11 20:35:06.471', 'A6', 'green', 2573);
-INSERT INTO component VALUES (2575, 'A', 'A', '64531610', 'Howard Joel Wolowitz', '2013-06-11 20:35:26.658', 'A7', 'yellow', 2573);
-INSERT INTO location VALUES (2576, 'HF4', 'motor test', 'Sarah Mueller', 2568);
-INSERT INTO device VALUES (2577, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '57352529', '2013-06-11 17:56:48.383', false, 2576);
-INSERT INTO component VALUES (2578, 'D', 'I', '79886539', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 17:23:17.023', 'E8', 'green', 2577);
-INSERT INTO component VALUES (2579, 'C', 'D', '37793979', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:33:00.869', 'C8', 'green', 2577);
-INSERT INTO device VALUES (2580, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '97175548', '2013-06-11 03:43:12.742', false, 2576);
-INSERT INTO component VALUES (2581, 'A', 'A', '14929238', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:31:44.321', 'I2', 'green', 2580);
-INSERT INTO component VALUES (2582, 'I', 'H', '668209', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:33:39.001', 'B8', 'green', 2580);
-INSERT INTO line VALUES (2583, 'E2 Finish', 'Series 8', 50, 'rect497', 2552);
-INSERT INTO location VALUES (2584, 'FG5', 'security test', 'Peter Merkel', 2583);
-INSERT INTO device VALUES (2585, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '1738403', '2013-06-12 01:58:46.957', false, 2584);
-INSERT INTO component VALUES (2586, 'F', 'G', '31484363', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:50:48.924', 'A8', 'green', 2585);
-INSERT INTO component VALUES (2587, 'C', 'I', '22744010', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 22:52:01.698', 'F1', 'yellow', 2585);
-INSERT INTO device VALUES (2588, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '26205237', '2013-06-12 00:02:16.153', false, 2584);
-INSERT INTO component VALUES (2589, 'H', 'D', '58519990', 'Howard Joel Wolowitz', '2013-06-11 15:02:54.264', 'G7', 'green', 2588);
-INSERT INTO component VALUES (2590, 'I', 'E', '43247369', 'Howard Joel Wolowitz', '2013-06-11 11:42:41.856', 'H9', 'green', 2588);
-INSERT INTO location VALUES (2591, 'DE4', 'multimedia test', 'Sarah Meier', 2583);
-INSERT INTO device VALUES (2592, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '48333647', '2013-06-12 02:09:25.181', false, 2591);
-INSERT INTO component VALUES (2593, 'C', 'C', '18427644', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:04:29.769', 'H5', 'red', 2592);
-INSERT INTO component VALUES (2594, 'I', 'A', '25348580', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 03:01:41.357', 'C6', 'green', 2592);
-INSERT INTO device VALUES (2595, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '69693929', '2013-06-11 05:09:44.27', false, 2591);
-INSERT INTO component VALUES (2596, 'I', 'E', '31212422', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 12:13:18.426', 'E9', 'green', 2595);
-INSERT INTO component VALUES (2597, 'E', 'E', '31559866', 'Howard Joel Wolowitz', '2013-06-11 15:43:08.913', 'G9', 'green', 2595);
-INSERT INTO hall VALUES (2598, 'E4', 'Assembly+Finish', 712, 1705, 'Audi A4', 2, 'polygon249', 7, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2553, 'B3 Assembly', 'Series 4', 73, 'rect217', 2552);
+INSERT INTO location VALUES (2554, 'AF4', 'motor test', 'Peter Meier', 2553);
+INSERT INTO device VALUES (2555, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '36248505', '2013-06-12 18:31:58.173', false, 2554);
+INSERT INTO component VALUES (2556, 'I', 'A', '74888688', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:24:52.304', 'F9', 'green', 2555);
+INSERT INTO component VALUES (2557, 'F', 'B', '43074748', 'Howard Joel Wolowitz', '2013-06-13 09:45:04.601', 'D8', 'green', 2555);
+INSERT INTO device VALUES (2558, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '52212555', '2013-06-13 12:41:14.115', true, 2554);
+INSERT INTO component VALUES (2559, 'G', 'G', '72743949', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:54:49.795', 'C4', 'green', 2558);
+INSERT INTO component VALUES (2560, 'E', 'F', '96875498', 'Howard Joel Wolowitz', '2013-06-13 09:35:09.745', 'A5', 'green', 2558);
+INSERT INTO location VALUES (2561, 'DE3', 'security test', 'Hans Mueller', 2553);
+INSERT INTO device VALUES (2562, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '45832520', '2013-06-12 22:43:03.051', false, 2561);
+INSERT INTO component VALUES (2563, 'C', 'H', '4878295', 'Howard Joel Wolowitz', '2013-06-13 01:21:00.871', 'B2', 'green', 2562);
+INSERT INTO component VALUES (2564, 'A', 'F', '77319045', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 11:32:11.716', 'C4', 'green', 2562);
+INSERT INTO device VALUES (2565, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '33557109', '2013-06-12 13:57:53.054', true, 2561);
+INSERT INTO component VALUES (2566, 'A', 'G', '87454806', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:28:53.262', 'B9', 'yellow', 2565);
+INSERT INTO component VALUES (2567, 'D', 'C', '19163116', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:48:12.386', 'D4', 'green', 2565);
+INSERT INTO line VALUES (2568, 'B3 PreSeries', 'Series 7', 55, 'polygon25', 2552);
+INSERT INTO location VALUES (2569, 'FE1', 'motor test', 'Peter Schmitt', 2568);
+INSERT INTO device VALUES (2570, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '8701932', '2013-06-13 12:29:35.161', false, 2569);
+INSERT INTO component VALUES (2571, 'B', 'B', '55292111', 'Howard Joel Wolowitz', '2013-06-12 14:02:40.202', 'E4', 'green', 2570);
+INSERT INTO component VALUES (2572, 'A', 'D', '96722755', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 06:41:25.061', 'F9', 'green', 2570);
+INSERT INTO device VALUES (2573, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '95805784', '2013-06-12 22:26:21.174', false, 2569);
+INSERT INTO component VALUES (2574, 'H', 'A', '12527310', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:43:02.226', 'A2', 'green', 2573);
+INSERT INTO component VALUES (2575, 'G', 'F', '36703811', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 10:38:39.424', 'I7', 'green', 2573);
+INSERT INTO location VALUES (2576, 'ED4', 'security test', 'Franziska Meier', 2568);
+INSERT INTO device VALUES (2577, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '18420712', '2013-06-13 10:43:32.505', false, 2576);
+INSERT INTO component VALUES (2578, 'B', 'I', '68496957', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 05:30:44.381', 'B4', 'green', 2577);
+INSERT INTO component VALUES (2579, 'A', 'I', '58748325', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 15:05:14.582', 'D6', 'green', 2577);
+INSERT INTO device VALUES (2580, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '42687278', '2013-06-13 07:13:10.249', false, 2576);
+INSERT INTO component VALUES (2581, 'I', 'E', '76582567', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 18:45:59.177', 'I8', 'green', 2580);
+INSERT INTO component VALUES (2582, 'G', 'C', '2501630', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:56:44.137', 'B9', 'green', 2580);
+INSERT INTO line VALUES (2583, 'B3 Finish', 'Series 3', 27, 'rect497', 2552);
+INSERT INTO location VALUES (2584, 'HG2', 'ABS test', 'Sarah Mueller', 2583);
+INSERT INTO device VALUES (2585, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '22276557', '2013-06-12 15:18:07.75', false, 2584);
+INSERT INTO component VALUES (2586, 'C', 'C', '41836417', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 12:07:28.445', 'I8', 'yellow', 2585);
+INSERT INTO component VALUES (2587, 'D', 'G', '98959119', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 14:38:00.749', 'C8', 'green', 2585);
+INSERT INTO device VALUES (2588, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '54756176', '2013-06-12 18:15:33.27', true, 2584);
+INSERT INTO component VALUES (2589, 'A', 'G', '19199505', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 11:15:23.809', 'F2', 'green', 2588);
+INSERT INTO component VALUES (2590, 'D', 'A', '98811367', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 03:38:40.647', 'C6', 'green', 2588);
+INSERT INTO location VALUES (2591, 'FD4', 'ABS test', 'Peter Schmitt', 2583);
+INSERT INTO device VALUES (2592, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '83087329', '2013-06-13 01:13:16.49', false, 2591);
+INSERT INTO component VALUES (2593, 'F', 'D', '84653025', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 04:33:08.142', 'A4', 'yellow', 2592);
+INSERT INTO component VALUES (2594, 'F', 'H', '59503710', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:24:58.776', 'G4', 'green', 2592);
+INSERT INTO device VALUES (2595, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '4558736', '2013-06-12 23:24:20.633', false, 2591);
+INSERT INTO component VALUES (2596, 'H', 'G', '94095024', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:06:37.393', 'A9', 'green', 2595);
+INSERT INTO component VALUES (2597, 'A', 'D', '17500096', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:20:35.413', 'I3', 'green', 2595);
+INSERT INTO hall VALUES (2598, 'E8', 'Assembly+Finish', 768, 4510, 'Audi A4', 2, 'polygon249', 7, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -5261,51 +5268,51 @@ INSERT INTO hall VALUES (2598, 'E4', 'Assembly+Finish', 712, 1705, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2599, 'E4 Assembly', 'Series 8', 23, 'rect217', 2598);
-INSERT INTO location VALUES (2600, 'HG6', 'motor test', 'Hans Schmitt', 2599);
-INSERT INTO device VALUES (2601, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '99655203', '2013-06-11 23:58:24.026', false, 2600);
-INSERT INTO component VALUES (2602, 'B', 'G', '46865804', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:54:36.355', 'I8', 'yellow', 2601);
-INSERT INTO component VALUES (2603, 'C', 'H', '56823780', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 05:42:55.809', 'A3', 'green', 2601);
-INSERT INTO device VALUES (2604, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '53962139', '2013-06-11 21:57:57.272', false, 2600);
-INSERT INTO component VALUES (2605, 'A', 'A', '23522940', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 05:03:30.332', 'E1', 'green', 2604);
-INSERT INTO component VALUES (2606, 'D', 'I', '73219541', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 21:35:09.943', 'C3', 'green', 2604);
-INSERT INTO location VALUES (2607, 'AD6', 'transmission test', 'Peter Mueller', 2599);
-INSERT INTO device VALUES (2608, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '65574407', '2013-06-11 20:21:37.818', false, 2607);
-INSERT INTO component VALUES (2609, 'D', 'B', '40053597', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:59:52.902', 'H5', 'green', 2608);
-INSERT INTO component VALUES (2610, 'I', 'G', '13084449', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 06:40:04.737', 'H8', 'green', 2608);
-INSERT INTO device VALUES (2611, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'E', '52973115', '2013-06-11 08:00:54.909', true, 2607);
-INSERT INTO component VALUES (2612, 'H', 'C', '57144343', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 01:39:09.272', 'C9', 'green', 2611);
-INSERT INTO component VALUES (2613, 'C', 'I', '4005868', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 10:11:48.957', 'I3', 'green', 2611);
-INSERT INTO line VALUES (2614, 'E4 PreSeries', 'Series 5', 48, 'polygon25', 2598);
-INSERT INTO location VALUES (2615, 'BH9', 'multimedia test', 'Sarah Meier', 2614);
-INSERT INTO device VALUES (2616, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '88693950', '2013-06-11 15:48:37.942', false, 2615);
-INSERT INTO component VALUES (2617, 'H', 'H', '67291406', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 21:33:06.514', 'G6', 'green', 2616);
-INSERT INTO component VALUES (2618, 'C', 'D', '78495289', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 15:57:43.161', 'E4', 'green', 2616);
-INSERT INTO device VALUES (2619, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '30646821', '2013-06-11 09:37:23.627', false, 2615);
-INSERT INTO component VALUES (2620, 'H', 'I', '16732764', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 13:21:26.715', 'I1', 'yellow', 2619);
-INSERT INTO component VALUES (2621, 'G', 'G', '56236376', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 18:01:31.395', 'D1', 'green', 2619);
-INSERT INTO location VALUES (2622, 'II9', 'motor test', 'Hans Meier', 2614);
-INSERT INTO device VALUES (2623, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'G', '17111107', '2013-06-11 22:35:19.842', false, 2622);
-INSERT INTO component VALUES (2624, 'E', 'H', '77731168', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 06:12:15.062', 'B3', 'green', 2623);
-INSERT INTO component VALUES (2625, 'A', 'I', '27080698', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 12:28:12.137', 'E8', 'green', 2623);
-INSERT INTO device VALUES (2626, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '85650442', '2013-06-11 11:12:37.861', false, 2622);
-INSERT INTO component VALUES (2627, 'D', 'F', '33397086', 'Howard Joel Wolowitz', '2013-06-11 06:47:10.504', 'B1', 'green', 2626);
-INSERT INTO component VALUES (2628, 'C', 'E', '91178012', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:08:42.507', 'C6', 'green', 2626);
-INSERT INTO line VALUES (2629, 'E4 Finish', 'Series 4', 75, 'rect497', 2598);
-INSERT INTO location VALUES (2630, 'EH8', 'motor test', 'Franziska Merkel', 2629);
-INSERT INTO device VALUES (2631, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '94127498', '2013-06-12 02:43:23.007', false, 2630);
-INSERT INTO component VALUES (2632, 'B', 'I', '55611358', 'Howard Joel Wolowitz', '2013-06-11 05:04:28.5', 'G2', 'yellow', 2631);
-INSERT INTO component VALUES (2633, 'G', 'G', '64332867', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 20:12:47.848', 'A6', 'green', 2631);
-INSERT INTO device VALUES (2634, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'G', '76699356', '2013-06-11 17:18:11.155', false, 2630);
-INSERT INTO component VALUES (2635, 'C', 'E', '55579338', 'Howard Joel Wolowitz', '2013-06-11 18:14:47.459', 'D4', 'green', 2634);
-INSERT INTO component VALUES (2636, 'I', 'B', '84966973', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 02:24:37.281', 'B2', 'green', 2634);
-INSERT INTO location VALUES (2637, 'GA7', 'transmission test', 'Robert Mueller', 2629);
-INSERT INTO device VALUES (2638, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '95543046', '2013-06-11 11:26:28.593', false, 2637);
-INSERT INTO component VALUES (2639, 'B', 'H', '60526842', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 03:51:04.506', 'D7', 'green', 2638);
-INSERT INTO component VALUES (2640, 'F', 'C', '74622257', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 02:20:45.168', 'F5', 'green', 2638);
-INSERT INTO device VALUES (2641, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '35330651', '2013-06-11 07:25:45.972', false, 2637);
-INSERT INTO component VALUES (2642, 'C', 'G', '63669615', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 08:14:18.37', 'C4', 'green', 2641);
-INSERT INTO component VALUES (2643, 'I', 'H', '5773934', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 05:59:24.069', 'I5', 'green', 2641);
+INSERT INTO line VALUES (2599, 'E8 Assembly', 'Series 5', 32, 'rect217', 2598);
+INSERT INTO location VALUES (2600, 'EB8', 'multimedia test', 'Robert Meier', 2599);
+INSERT INTO device VALUES (2601, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '42609858', '2013-06-12 18:30:56.737', false, 2600);
+INSERT INTO component VALUES (2602, 'D', 'B', '10090643', 'Howard Joel Wolowitz', '2013-06-13 11:41:30.012', 'D7', 'green', 2601);
+INSERT INTO component VALUES (2603, 'H', 'I', '60714082', 'Howard Joel Wolowitz', '2013-06-13 04:00:00.255', 'B2', 'green', 2601);
+INSERT INTO device VALUES (2604, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '76250072', '2013-06-13 09:57:21.986', false, 2600);
+INSERT INTO component VALUES (2605, 'H', 'C', '11061790', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 19:19:47.008', 'F9', 'green', 2604);
+INSERT INTO component VALUES (2606, 'I', 'E', '81385407', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:30:07.41', 'E1', 'green', 2604);
+INSERT INTO location VALUES (2607, 'FF2', 'security test', 'Robert Schmitt', 2599);
+INSERT INTO device VALUES (2608, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '51660278', '2013-06-13 11:57:49.256', false, 2607);
+INSERT INTO component VALUES (2609, 'B', 'D', '71226348', 'Howard Joel Wolowitz', '2013-06-12 20:16:09.917', 'H3', 'green', 2608);
+INSERT INTO component VALUES (2610, 'D', 'C', '31406585', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 07:32:21.292', 'F6', 'green', 2608);
+INSERT INTO device VALUES (2611, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '48947254', '2013-06-12 18:03:57.495', true, 2607);
+INSERT INTO component VALUES (2612, 'I', 'H', '91090361', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 22:51:48.336', 'B2', 'green', 2611);
+INSERT INTO component VALUES (2613, 'I', 'G', '93176956', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 14:17:55.661', 'C7', 'green', 2611);
+INSERT INTO line VALUES (2614, 'E8 PreSeries', 'Series 3', 90, 'polygon25', 2598);
+INSERT INTO location VALUES (2615, 'CH2', 'motor test', 'Franziska Merkel', 2614);
+INSERT INTO device VALUES (2616, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '94111992', '2013-06-13 02:14:15.823', false, 2615);
+INSERT INTO component VALUES (2617, 'C', 'I', '23125361', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 05:57:38.992', 'B5', 'green', 2616);
+INSERT INTO component VALUES (2618, 'D', 'D', '74414824', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:51:06.065', 'I8', 'green', 2616);
+INSERT INTO device VALUES (2619, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '83648746', '2013-06-13 06:47:10.715', false, 2615);
+INSERT INTO component VALUES (2620, 'F', 'A', '32372062', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 19:44:23.549', 'E4', 'green', 2619);
+INSERT INTO component VALUES (2621, 'D', 'I', '2429946', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 16:14:49.752', 'B1', 'green', 2619);
+INSERT INTO location VALUES (2622, 'CC9', 'security test', 'Peter Mueller', 2614);
+INSERT INTO device VALUES (2623, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '22693730', '2013-06-13 10:18:01.949', false, 2622);
+INSERT INTO component VALUES (2624, 'F', 'C', '39215721', 'Howard Joel Wolowitz', '2013-06-12 23:02:59.239', 'D1', 'yellow', 2623);
+INSERT INTO component VALUES (2625, 'H', 'B', '38517836', 'Howard Joel Wolowitz', '2013-06-13 07:19:28.169', 'A6', 'green', 2623);
+INSERT INTO device VALUES (2626, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '3923956', '2013-06-13 10:11:00.768', false, 2622);
+INSERT INTO component VALUES (2627, 'A', 'G', '88209386', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:59:18.211', 'E1', 'green', 2626);
+INSERT INTO component VALUES (2628, 'I', 'E', '85832736', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 14:39:30.26', 'F1', 'green', 2626);
+INSERT INTO line VALUES (2629, 'E8 Finish', 'Series 3', 64, 'rect497', 2598);
+INSERT INTO location VALUES (2630, 'DA3', 'multimedia test', 'Robert Schulze', 2629);
+INSERT INTO device VALUES (2631, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '29480511', '2013-06-12 15:31:12.359', false, 2630);
+INSERT INTO component VALUES (2632, 'I', 'F', '98104657', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:16:39.268', 'I5', 'green', 2631);
+INSERT INTO component VALUES (2633, 'A', 'F', '44424365', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 05:47:24.792', 'H8', 'green', 2631);
+INSERT INTO device VALUES (2634, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '13416642', '2013-06-12 20:30:47.642', false, 2630);
+INSERT INTO component VALUES (2635, 'A', 'G', '82680407', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:16:07.94', 'B8', 'green', 2634);
+INSERT INTO component VALUES (2636, 'F', 'H', '53951584', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 10:07:41.549', 'G9', 'green', 2634);
+INSERT INTO location VALUES (2637, 'HA5', 'motor test', 'Hans Schulze', 2629);
+INSERT INTO device VALUES (2638, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '59995436', '2013-06-12 14:10:33.426', false, 2637);
+INSERT INTO component VALUES (2639, 'C', 'H', '31316417', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 07:47:50.005', 'G2', 'green', 2638);
+INSERT INTO component VALUES (2640, 'C', 'E', '54704945', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 18:55:39.176', 'F2', 'green', 2638);
+INSERT INTO device VALUES (2641, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '99616005', '2013-06-13 04:11:49.533', false, 2637);
+INSERT INTO component VALUES (2642, 'F', 'C', '39393956', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 14:38:11.149', 'A6', 'green', 2641);
+INSERT INTO component VALUES (2643, 'A', 'H', '86638029', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 15:14:05.594', 'I1', 'red', 2641);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -5319,7 +5326,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -5674,7 +5682,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 8;
-INSERT INTO hall VALUES (2644, 'B3', 'Assembly+Finish', 811, 158, 'Audi A4', 2, 'path369', 8, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2644, 'C9', 'Assembly+Finish', 344, 5563, 'Audi A4', 2, 'path369', 8, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -5816,52 +5824,52 @@ INSERT INTO hall VALUES (2644, 'B3', 'Assembly+Finish', 811, 158, 'Audi A4', 2, 
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2645, 'B3 Assembly', 'Series 4', 33, 'rect217', 2644);
-INSERT INTO location VALUES (2646, 'ID6', 'motor test', 'Sarah Schmitt', 2645);
-INSERT INTO device VALUES (2647, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'D', '57259376', '2013-06-11 03:51:40.733', false, 2646);
-INSERT INTO component VALUES (2648, 'F', 'A', '42422179', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:14:45.505', 'C8', 'green', 2647);
-INSERT INTO component VALUES (2649, 'I', 'I', '42417442', 'Howard Joel Wolowitz', '2013-06-11 09:45:37.472', 'I4', 'green', 2647);
-INSERT INTO device VALUES (2650, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'D', '95091003', '2013-06-12 00:15:51.067', false, 2646);
-INSERT INTO component VALUES (2651, 'D', 'F', '27588141', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:52:37.762', 'G9', 'green', 2650);
-INSERT INTO component VALUES (2652, 'B', 'C', '23279818', 'Howard Joel Wolowitz', '2013-06-11 08:49:15.537', 'I2', 'green', 2650);
-INSERT INTO location VALUES (2653, 'AH4', 'transmission test', 'Hans Schmitt', 2645);
-INSERT INTO device VALUES (2654, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'H', '3848032', '2013-06-11 15:00:44.811', false, 2653);
-INSERT INTO component VALUES (2655, 'E', 'H', '3703593', 'Howard Joel Wolowitz', '2013-06-11 10:50:11.941', 'D1', 'green', 2654);
-INSERT INTO component VALUES (2656, 'D', 'E', '68159087', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 13:34:27.103', 'A2', 'green', 2654);
-INSERT INTO device VALUES (2657, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '76224054', '2013-06-12 01:51:27.85', false, 2653);
-INSERT INTO component VALUES (2658, 'I', 'I', '23436824', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 08:35:05.033', 'A8', 'green', 2657);
-INSERT INTO component VALUES (2659, 'H', 'I', '95120272', 'Howard Joel Wolowitz', '2013-06-11 16:48:57.503', 'A3', 'green', 2657);
-INSERT INTO line VALUES (2660, 'B3 PreSeries', 'Series 5', 41, 'polygon25', 2644);
-INSERT INTO location VALUES (2661, 'GG3', 'multimedia test', 'Robert Meier', 2660);
-INSERT INTO device VALUES (2662, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '56753777', '2013-06-11 20:56:21.295', false, 2661);
-INSERT INTO component VALUES (2663, 'E', 'G', '62175524', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 12:09:56.228', 'C7', 'green', 2662);
-INSERT INTO component VALUES (2664, 'D', 'C', '39354231', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 09:24:33.865', 'D5', 'green', 2662);
-INSERT INTO device VALUES (2665, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'D', '74747300', '2013-06-11 10:01:57.878', false, 2661);
-INSERT INTO component VALUES (2666, 'F', 'F', '18190986', 'Howard Joel Wolowitz', '2013-06-11 06:38:52.537', 'F7', 'green', 2665);
-INSERT INTO component VALUES (2667, 'H', 'I', '29457951', 'Howard Joel Wolowitz', '2013-06-11 21:04:38.293', 'F1', 'green', 2665);
-INSERT INTO location VALUES (2668, 'GC5', 'multimedia test', 'Peter Schmitt', 2660);
-INSERT INTO device VALUES (2669, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '34226927', '2013-06-12 00:16:34.306', false, 2668);
-INSERT INTO component VALUES (2670, 'G', 'H', '18459837', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 20:08:44.461', 'C3', 'green', 2669);
-INSERT INTO component VALUES (2671, 'A', 'E', '26682443', 'Howard Joel Wolowitz', '2013-06-12 02:54:55.4', 'H1', 'green', 2669);
-INSERT INTO device VALUES (2672, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '93888881', '2013-06-12 00:18:00.166', false, 2668);
-INSERT INTO component VALUES (2673, 'E', 'B', '34900330', 'Howard Joel Wolowitz', '2013-06-12 02:50:44.48', 'C1', 'green', 2672);
-INSERT INTO component VALUES (2674, 'A', 'B', '71251263', 'Howard Joel Wolowitz', '2013-06-11 17:14:35.631', 'F5', 'red', 2672);
-INSERT INTO line VALUES (2675, 'B3 Finish', 'Series 2', 67, 'rect497', 2644);
-INSERT INTO location VALUES (2676, 'AA9', 'ABS test', 'Peter Meier', 2675);
-INSERT INTO device VALUES (2677, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '47496838', '2013-06-11 14:20:50.767', false, 2676);
-INSERT INTO component VALUES (2678, 'B', 'A', '88957117', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 14:28:07.231', 'E7', 'green', 2677);
-INSERT INTO component VALUES (2679, 'D', 'A', '11446846', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 19:11:04.975', 'G5', 'green', 2677);
-INSERT INTO device VALUES (2680, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '82315164', '2013-06-11 22:04:46.679', false, 2676);
-INSERT INTO component VALUES (2681, 'H', 'A', '33874270', 'Howard Joel Wolowitz', '2013-06-12 00:03:13.782', 'I4', 'green', 2680);
-INSERT INTO component VALUES (2682, 'B', 'A', '82249056', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 05:32:45.352', 'F4', 'green', 2680);
-INSERT INTO location VALUES (2683, 'II7', 'motor test', 'Peter Schmitt', 2675);
-INSERT INTO device VALUES (2684, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '86860972', '2013-06-11 23:58:18.147', false, 2683);
-INSERT INTO component VALUES (2685, 'D', 'E', '25339514', 'Howard Joel Wolowitz', '2013-06-11 12:24:14.64', 'D4', 'green', 2684);
-INSERT INTO component VALUES (2686, 'F', 'D', '63729640', 'Howard Joel Wolowitz', '2013-06-11 05:16:10.155', 'C6', 'green', 2684);
-INSERT INTO device VALUES (2687, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '17654670', '2013-06-11 06:27:54.092', true, 2683);
-INSERT INTO component VALUES (2688, 'I', 'A', '49757717', 'Howard Joel Wolowitz', '2013-06-11 22:00:47.459', 'C9', 'green', 2687);
-INSERT INTO component VALUES (2689, 'B', 'E', '38965432', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 07:19:48.203', 'E6', 'green', 2687);
-INSERT INTO hall VALUES (2690, 'H2', 'Assembly+Finish', 607, 4283, 'Audi A4', 2, 'polygon249', 8, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2645, 'C9 Assembly', 'Series 4', 36, 'rect217', 2644);
+INSERT INTO location VALUES (2646, 'GD8', 'security test', 'Franziska Schmitt', 2645);
+INSERT INTO device VALUES (2647, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '34812402', '2013-06-12 21:29:08.148', false, 2646);
+INSERT INTO component VALUES (2648, 'C', 'A', '42066344', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:03:23.881', 'C6', 'green', 2647);
+INSERT INTO component VALUES (2649, 'E', 'I', '47204897', 'Howard Joel Wolowitz', '2013-06-13 06:09:18.431', 'A2', 'green', 2647);
+INSERT INTO device VALUES (2650, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '79520979', '2013-06-12 18:02:46.237', false, 2646);
+INSERT INTO component VALUES (2651, 'B', 'E', '88681615', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 15:36:39.353', 'A4', 'green', 2650);
+INSERT INTO component VALUES (2652, 'G', 'D', '61049374', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:31:05.023', 'G9', 'green', 2650);
+INSERT INTO location VALUES (2653, 'EG5', 'ABS test', 'Robert Merkel', 2645);
+INSERT INTO device VALUES (2654, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '50802626', '2013-06-13 10:36:02.821', true, 2653);
+INSERT INTO component VALUES (2655, 'I', 'I', '2861437', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 15:57:30.776', 'I5', 'green', 2654);
+INSERT INTO component VALUES (2656, 'C', 'A', '2921197', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:32:25.797', 'A4', 'green', 2654);
+INSERT INTO device VALUES (2657, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '7232268', '2013-06-13 07:52:55.992', false, 2653);
+INSERT INTO component VALUES (2658, 'C', 'I', '21633749', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 22:43:06.728', 'D8', 'green', 2657);
+INSERT INTO component VALUES (2659, 'D', 'E', '61551775', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 19:40:11.325', 'A3', 'red', 2657);
+INSERT INTO line VALUES (2660, 'C9 PreSeries', 'Series 4', 52, 'polygon25', 2644);
+INSERT INTO location VALUES (2661, 'CE3', 'transmission test', 'Franziska Schulze', 2660);
+INSERT INTO device VALUES (2662, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '52866671', '2013-06-13 13:06:21.467', false, 2661);
+INSERT INTO component VALUES (2663, 'G', 'I', '88685922', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 23:56:54.213', 'F2', 'green', 2662);
+INSERT INTO component VALUES (2664, 'C', 'I', '56795918', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 14:47:54.562', 'E1', 'green', 2662);
+INSERT INTO device VALUES (2665, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '67530709', '2013-06-12 17:41:36.236', false, 2661);
+INSERT INTO component VALUES (2666, 'D', 'H', '83905879', 'Howard Joel Wolowitz', '2013-06-13 02:19:29.661', 'F2', 'green', 2665);
+INSERT INTO component VALUES (2667, 'C', 'I', '99798945', 'Howard Joel Wolowitz', '2013-06-12 13:55:53.398', 'F9', 'green', 2665);
+INSERT INTO location VALUES (2668, 'IA4', 'security test', 'Sarah Merkel', 2660);
+INSERT INTO device VALUES (2669, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '11499499', '2013-06-12 23:10:59.943', false, 2668);
+INSERT INTO component VALUES (2670, 'D', 'H', '95400603', 'Howard Joel Wolowitz', '2013-06-12 22:50:27.747', 'H4', 'green', 2669);
+INSERT INTO component VALUES (2671, 'D', 'H', '52551223', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 08:33:22.141', 'A1', 'yellow', 2669);
+INSERT INTO device VALUES (2672, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '60513561', '2013-06-12 16:35:30.411', false, 2668);
+INSERT INTO component VALUES (2673, 'F', 'C', '5217492', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 00:43:18.356', 'I7', 'green', 2672);
+INSERT INTO component VALUES (2674, 'C', 'G', '11588191', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:37:14.104', 'F3', 'green', 2672);
+INSERT INTO line VALUES (2675, 'C9 Finish', 'Series 7', 42, 'rect497', 2644);
+INSERT INTO location VALUES (2676, 'IA9', 'security test', 'Robert Schmitt', 2675);
+INSERT INTO device VALUES (2677, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '43245372', '2013-06-13 10:15:46.677', false, 2676);
+INSERT INTO component VALUES (2678, 'H', 'F', '50157528', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 05:25:51.419', 'F1', 'green', 2677);
+INSERT INTO component VALUES (2679, 'E', 'A', '94051463', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:33:55.224', 'A3', 'green', 2677);
+INSERT INTO device VALUES (2680, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '57090191', '2013-06-12 15:04:19.578', false, 2676);
+INSERT INTO component VALUES (2681, 'E', 'B', '39886607', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 18:40:02.415', 'C7', 'green', 2680);
+INSERT INTO component VALUES (2682, 'G', 'F', '72100685', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:22:41.058', 'H3', 'green', 2680);
+INSERT INTO location VALUES (2683, 'HG7', 'motor test', 'Hans Mueller', 2675);
+INSERT INTO device VALUES (2684, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'C', '75479730', '2013-06-13 08:38:20.284', false, 2683);
+INSERT INTO component VALUES (2685, 'D', 'E', '88085450', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 10:25:11.534', 'A6', 'green', 2684);
+INSERT INTO component VALUES (2686, 'E', 'F', '74378341', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 06:44:20.614', 'H3', 'green', 2684);
+INSERT INTO device VALUES (2687, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '62150389', '2013-06-13 00:39:41.921', false, 2683);
+INSERT INTO component VALUES (2688, 'D', 'C', '93184594', 'Howard Joel Wolowitz', '2013-06-13 09:20:26.114', 'A7', 'red', 2687);
+INSERT INTO component VALUES (2689, 'C', 'I', '68985545', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 15:52:29.792', 'E1', 'green', 2687);
+INSERT INTO hall VALUES (2690, 'E8', 'Assembly+Finish', 678, 1666, 'Audi A4', 2, 'polygon249', 8, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -6003,51 +6011,51 @@ INSERT INTO hall VALUES (2690, 'H2', 'Assembly+Finish', 607, 4283, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2691, 'H2 Assembly', 'Series 1', 13, 'rect217', 2690);
-INSERT INTO location VALUES (2692, 'CD1', 'multimedia test', 'Sarah Schmitt', 2691);
-INSERT INTO device VALUES (2693, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '30204905', '2013-06-11 20:10:24.465', false, 2692);
-INSERT INTO component VALUES (2694, 'G', 'B', '5787875', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 13:41:34.9', 'H3', 'red', 2693);
-INSERT INTO component VALUES (2695, 'E', 'I', '93446093', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 04:17:26.642', 'G4', 'green', 2693);
-INSERT INTO device VALUES (2696, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '32786257', '2013-06-11 09:56:30.983', false, 2692);
-INSERT INTO component VALUES (2697, 'D', 'C', '5700314', 'Howard Joel Wolowitz', '2013-06-11 17:30:37.961', 'G3', 'green', 2696);
-INSERT INTO component VALUES (2698, 'F', 'F', '56775745', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 12:47:31.153', 'F5', 'green', 2696);
-INSERT INTO location VALUES (2699, 'HG7', 'transmission test', 'Hans Schulze', 2691);
-INSERT INTO device VALUES (2700, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '8012048', '2013-06-11 07:44:55.25', false, 2699);
-INSERT INTO component VALUES (2701, 'I', 'F', '90414625', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 12:12:01.552', 'D4', 'green', 2700);
-INSERT INTO component VALUES (2702, 'A', 'A', '80879710', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:45:26.753', 'D9', 'green', 2700);
-INSERT INTO device VALUES (2703, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '64437428', '2013-06-11 10:48:34.169', true, 2699);
-INSERT INTO component VALUES (2704, 'B', 'D', '12775422', 'Howard Joel Wolowitz', '2013-06-11 10:54:58.687', 'C6', 'green', 2703);
-INSERT INTO component VALUES (2705, 'F', 'H', '95105739', 'Howard Joel Wolowitz', '2013-06-11 13:08:48.062', 'I2', 'green', 2703);
-INSERT INTO line VALUES (2706, 'H2 PreSeries', 'Series 4', 89, 'polygon25', 2690);
-INSERT INTO location VALUES (2707, 'AG6', 'transmission test', 'Peter Merkel', 2706);
-INSERT INTO device VALUES (2708, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'F', '20327323', '2013-06-11 08:19:45.257', false, 2707);
-INSERT INTO component VALUES (2709, 'H', 'C', '92077627', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 04:00:05.587', 'G7', 'green', 2708);
-INSERT INTO component VALUES (2710, 'H', 'G', '17036909', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 04:00:32.041', 'B4', 'green', 2708);
-INSERT INTO device VALUES (2711, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '81203742', '2013-06-11 21:33:37.093', false, 2707);
-INSERT INTO component VALUES (2712, 'B', 'G', '23441031', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:11:38.235', 'D3', 'green', 2711);
-INSERT INTO component VALUES (2713, 'E', 'D', '11349207', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 07:22:18.175', 'D3', 'green', 2711);
-INSERT INTO location VALUES (2714, 'IA1', 'security test', 'Peter Schulze', 2706);
-INSERT INTO device VALUES (2715, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '70373729', '2013-06-11 08:22:07.599', false, 2714);
-INSERT INTO component VALUES (2716, 'D', 'I', '61407135', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 15:58:59.924', 'G3', 'green', 2715);
-INSERT INTO component VALUES (2717, 'C', 'H', '41966437', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 06:30:36.142', 'D8', 'green', 2715);
-INSERT INTO device VALUES (2718, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'G', '27881422', '2013-06-11 19:15:51.018', false, 2714);
-INSERT INTO component VALUES (2719, 'C', 'H', '81197510', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 11:22:19.069', 'G8', 'green', 2718);
-INSERT INTO component VALUES (2720, 'C', 'E', '78045518', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 01:37:39.106', 'B3', 'green', 2718);
-INSERT INTO line VALUES (2721, 'H2 Finish', 'Series 1', 47, 'rect497', 2690);
-INSERT INTO location VALUES (2722, 'CF7', 'transmission test', 'Franziska Schulze', 2721);
-INSERT INTO device VALUES (2723, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'A', '29133698', '2013-06-11 15:18:16.391', false, 2722);
-INSERT INTO component VALUES (2724, 'G', 'D', '8063159', 'Howard Joel Wolowitz', '2013-06-11 22:35:01.65', 'I9', 'green', 2723);
-INSERT INTO component VALUES (2725, 'C', 'E', '44144957', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 04:31:35.958', 'I3', 'green', 2723);
-INSERT INTO device VALUES (2726, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '61223697', '2013-06-11 10:07:37.632', false, 2722);
-INSERT INTO component VALUES (2727, 'E', 'A', '18145004', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 02:08:06.134', 'G6', 'green', 2726);
-INSERT INTO component VALUES (2728, 'G', 'C', '75207634', 'Howard Joel Wolowitz', '2013-06-12 00:19:36.667', 'H4', 'green', 2726);
-INSERT INTO location VALUES (2729, 'AI2', 'security test', 'Sarah Mueller', 2721);
-INSERT INTO device VALUES (2730, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '1036539', '2013-06-12 00:18:49.808', false, 2729);
-INSERT INTO component VALUES (2731, 'G', 'I', '68969607', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:25:16.146', 'G7', 'green', 2730);
-INSERT INTO component VALUES (2732, 'I', 'F', '27855995', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 07:32:21.552', 'H5', 'green', 2730);
-INSERT INTO device VALUES (2733, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '69321399', '2013-06-11 20:27:04.266', false, 2729);
-INSERT INTO component VALUES (2734, 'C', 'G', '69236580', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 13:34:44.491', 'E8', 'red', 2733);
-INSERT INTO component VALUES (2735, 'G', 'I', '93511809', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 23:27:20.907', 'D5', 'green', 2733);
+INSERT INTO line VALUES (2691, 'E8 Assembly', 'Series 3', 90, 'rect217', 2690);
+INSERT INTO location VALUES (2692, 'CI5', 'transmission test', 'Sarah Merkel', 2691);
+INSERT INTO device VALUES (2693, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '17543623', '2013-06-12 19:18:43.348', false, 2692);
+INSERT INTO component VALUES (2694, 'I', 'E', '70809180', 'Howard Joel Wolowitz', '2013-06-13 07:12:18.84', 'B8', 'green', 2693);
+INSERT INTO component VALUES (2695, 'A', 'C', '99275086', 'Howard Joel Wolowitz', '2013-06-13 00:00:57.619', 'A4', 'green', 2693);
+INSERT INTO device VALUES (2696, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '92972745', '2013-06-13 08:30:43.268', false, 2692);
+INSERT INTO component VALUES (2697, 'A', 'G', '71563787', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:57:18.944', 'D1', 'green', 2696);
+INSERT INTO component VALUES (2698, 'I', 'B', '97274477', 'Howard Joel Wolowitz', '2013-06-12 14:39:10.842', 'F5', 'green', 2696);
+INSERT INTO location VALUES (2699, 'GG9', 'security test', 'Sarah Schmitt', 2691);
+INSERT INTO device VALUES (2700, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '8497767', '2013-06-13 12:39:33.133', false, 2699);
+INSERT INTO component VALUES (2701, 'B', 'G', '15578513', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 13:04:36.332', 'A9', 'green', 2700);
+INSERT INTO component VALUES (2702, 'B', 'I', '79456353', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 02:34:58.913', 'E4', 'green', 2700);
+INSERT INTO device VALUES (2703, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '78818870', '2013-06-13 12:18:33.214', false, 2699);
+INSERT INTO component VALUES (2704, 'I', 'B', '50646344', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 03:08:14.978', 'A4', 'green', 2703);
+INSERT INTO component VALUES (2705, 'F', 'H', '44465726', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:32:16.969', 'D2', 'green', 2703);
+INSERT INTO line VALUES (2706, 'E8 PreSeries', 'Series 1', 31, 'polygon25', 2690);
+INSERT INTO location VALUES (2707, 'II1', 'transmission test', 'Robert Schulze', 2706);
+INSERT INTO device VALUES (2708, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'B', '3869669', '2013-06-12 22:23:20.317', false, 2707);
+INSERT INTO component VALUES (2709, 'E', 'C', '15841991', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 07:56:20.986', 'D4', 'green', 2708);
+INSERT INTO component VALUES (2710, 'I', 'H', '63992385', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 20:03:35.498', 'H1', 'green', 2708);
+INSERT INTO device VALUES (2711, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '66484712', '2013-06-12 19:10:06.665', false, 2707);
+INSERT INTO component VALUES (2712, 'F', 'A', '52149258', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 00:39:54.465', 'F2', 'green', 2711);
+INSERT INTO component VALUES (2713, 'C', 'G', '25765174', 'Howard Joel Wolowitz', '2013-06-13 13:04:36.402', 'I6', 'green', 2711);
+INSERT INTO location VALUES (2714, 'II9', 'ABS test', 'Robert Merkel', 2706);
+INSERT INTO device VALUES (2715, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '21729655', '2013-06-13 08:39:33.502', false, 2714);
+INSERT INTO component VALUES (2716, 'H', 'B', '17965475', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 02:57:48.814', 'I3', 'red', 2715);
+INSERT INTO component VALUES (2717, 'F', 'D', '21699915', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:58:43.033', 'B9', 'green', 2715);
+INSERT INTO device VALUES (2718, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '65239633', '2013-06-13 11:22:54.645', false, 2714);
+INSERT INTO component VALUES (2719, 'B', 'E', '27396525', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 15:50:23.194', 'H1', 'green', 2718);
+INSERT INTO component VALUES (2720, 'F', 'C', '42228956', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 10:35:13.778', 'A8', 'green', 2718);
+INSERT INTO line VALUES (2721, 'E8 Finish', 'Series 5', 47, 'rect497', 2690);
+INSERT INTO location VALUES (2722, 'ED1', 'multimedia test', 'Robert Schulze', 2721);
+INSERT INTO device VALUES (2723, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'H', '47834597', '2013-06-13 10:26:56.98', true, 2722);
+INSERT INTO component VALUES (2724, 'I', 'A', '66621432', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:43:39.124', 'D9', 'green', 2723);
+INSERT INTO component VALUES (2725, 'C', 'G', '42483416', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 22:53:28.455', 'G6', 'green', 2723);
+INSERT INTO device VALUES (2726, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '66075129', '2013-06-12 16:04:05.307', false, 2722);
+INSERT INTO component VALUES (2727, 'D', 'C', '30081576', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 05:51:33.285', 'G6', 'green', 2726);
+INSERT INTO component VALUES (2728, 'H', 'E', '11858201', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 08:05:16.076', 'A1', 'green', 2726);
+INSERT INTO location VALUES (2729, 'GI7', 'transmission test', 'Franziska Schulze', 2721);
+INSERT INTO device VALUES (2730, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '40500008', '2013-06-12 14:09:26.587', true, 2729);
+INSERT INTO component VALUES (2731, 'B', 'A', '12379986', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 13:28:55.734', 'D3', 'green', 2730);
+INSERT INTO component VALUES (2732, 'I', 'B', '1973514', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 22:32:17.909', 'F1', 'green', 2730);
+INSERT INTO device VALUES (2733, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '38947993', '2013-06-13 02:43:46.445', false, 2729);
+INSERT INTO component VALUES (2734, 'G', 'C', '27959564', 'Howard Joel Wolowitz', '2013-06-12 20:42:43.378', 'F8', 'green', 2733);
+INSERT INTO component VALUES (2735, 'G', 'G', '17123288', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:54:41.132', 'A3', 'green', 2733);
 UPDATE factory SET map = '
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
@@ -6061,7 +6069,8 @@ UPDATE factory SET map = '
    version="1.1"
    width="221.57703"
    height="165.85001"
-   id="SVGPlan">
+   id="SVGPlan"
+   viewBox="0 0 221.57703 165.85001">
   <defs
      id="defs3825" />
   <metadata
@@ -6416,7 +6425,7 @@ UPDATE factory SET map = '
      style="fill:none;stroke:#414141;stroke-width:0.80000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
 ' WHERE id = 9;
-INSERT INTO hall VALUES (2736, 'G7', 'Assembly+Finish', 227, 395, 'Audi A4', 2, 'path369', 9, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO hall VALUES (2736, 'C2', 'Assembly+Finish', 796, 4839, 'Audi A4', 2, 'path369', 9, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -6558,52 +6567,52 @@ INSERT INTO hall VALUES (2736, 'G7', 'Assembly+Finish', 227, 395, 'Audi A4', 2, 
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2737, 'G7 Assembly', 'Series 3', 26, 'rect217', 2736);
-INSERT INTO location VALUES (2738, 'FA9', 'multimedia test', 'Franziska Schmitt', 2737);
-INSERT INTO device VALUES (2739, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '43907504', '2013-06-11 10:28:43.959', false, 2738);
-INSERT INTO component VALUES (2740, 'A', 'C', '71283984', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 16:27:36.035', 'G8', 'green', 2739);
-INSERT INTO component VALUES (2741, 'E', 'B', '54266651', 'Howard Joel Wolowitz', '2013-06-12 03:20:41.631', 'E8', 'green', 2739);
-INSERT INTO device VALUES (2742, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'A', '60304524', '2013-06-11 19:11:23.023', false, 2738);
-INSERT INTO component VALUES (2743, 'B', 'E', '78606522', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 00:34:27.254', 'H6', 'green', 2742);
-INSERT INTO component VALUES (2744, 'G', 'G', '30670889', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 07:14:54.182', 'D1', 'red', 2742);
-INSERT INTO location VALUES (2745, 'HI3', 'security test', 'Peter Merkel', 2737);
-INSERT INTO device VALUES (2746, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'A', '37759465', '2013-06-11 06:45:15.515', false, 2745);
-INSERT INTO component VALUES (2747, 'H', 'B', '63976299', 'Howard Joel Wolowitz', '2013-06-11 07:40:35.232', 'G9', 'green', 2746);
-INSERT INTO component VALUES (2748, 'E', 'A', '54840027', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 21:32:11.362', 'E7', 'green', 2746);
-INSERT INTO device VALUES (2749, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '11147196', '2013-06-11 19:13:35.166', false, 2745);
-INSERT INTO component VALUES (2750, 'A', 'A', '49975161', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 02:18:13.603', 'C9', 'green', 2749);
-INSERT INTO component VALUES (2751, 'E', 'I', '80356881', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 11:35:34.361', 'C2', 'green', 2749);
-INSERT INTO line VALUES (2752, 'G7 PreSeries', 'Series 3', 71, 'polygon25', 2736);
-INSERT INTO location VALUES (2753, 'CC3', 'transmission test', 'Hans Meier', 2752);
-INSERT INTO device VALUES (2754, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '7281436', '2013-06-11 19:36:26.698', true, 2753);
-INSERT INTO component VALUES (2755, 'C', 'A', '13638687', 'Howard Joel Wolowitz', '2013-06-11 20:16:00.8', 'A4', 'green', 2754);
-INSERT INTO component VALUES (2756, 'D', 'G', '95765148', 'Howard Joel Wolowitz', '2013-06-11 06:36:58.978', 'A3', 'green', 2754);
-INSERT INTO device VALUES (2757, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'I', '58396534', '2013-06-11 23:37:36.175', false, 2753);
-INSERT INTO component VALUES (2758, 'H', 'D', '85465617', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:35:40.515', 'B9', 'green', 2757);
-INSERT INTO component VALUES (2759, 'A', 'H', '10852949', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 06:45:57.135', 'C6', 'green', 2757);
-INSERT INTO location VALUES (2760, 'BA1', 'transmission test', 'Robert Meier', 2752);
-INSERT INTO device VALUES (2761, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '41096371', '2013-06-11 10:07:25.183', false, 2760);
-INSERT INTO component VALUES (2762, 'H', 'C', '89254004', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 00:59:08.992', 'I2', 'green', 2761);
-INSERT INTO component VALUES (2763, 'E', 'C', '8857200', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 15:47:36.956', 'C2', 'green', 2761);
-INSERT INTO device VALUES (2764, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '20688967', '2013-06-11 07:13:48.687', false, 2760);
-INSERT INTO component VALUES (2765, 'I', 'B', '83151193', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 08:33:10.823', 'E3', 'green', 2764);
-INSERT INTO component VALUES (2766, 'G', 'B', '99113944', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 07:11:58.905', 'C9', 'green', 2764);
-INSERT INTO line VALUES (2767, 'G7 Finish', 'Series 9', 68, 'rect497', 2736);
-INSERT INTO location VALUES (2768, 'HG7', 'transmission test', 'Franziska Merkel', 2767);
-INSERT INTO device VALUES (2769, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '77891244', '2013-06-11 06:32:35.807', true, 2768);
-INSERT INTO component VALUES (2770, 'E', 'E', '6337883', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 04:21:57.701', 'A6', 'green', 2769);
-INSERT INTO component VALUES (2771, 'C', 'B', '77213557', 'Howard Joel Wolowitz', '2013-06-11 13:05:59.424', 'A6', 'green', 2769);
-INSERT INTO device VALUES (2772, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'C', '35866225', '2013-06-11 05:27:53.325', false, 2768);
-INSERT INTO component VALUES (2773, 'H', 'D', '20701000', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:24:22.917', 'G5', 'green', 2772);
-INSERT INTO component VALUES (2774, 'C', 'C', '94050012', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 00:32:41.131', 'F4', 'green', 2772);
-INSERT INTO location VALUES (2775, 'EE2', 'motor test', 'Peter Mueller', 2767);
-INSERT INTO device VALUES (2776, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '40737070', '2013-06-11 17:58:00.421', false, 2775);
-INSERT INTO component VALUES (2777, 'H', 'G', '57124096', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 00:07:54.385', 'C1', 'green', 2776);
-INSERT INTO component VALUES (2778, 'E', 'H', '86150178', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 18:04:50.006', 'E8', 'green', 2776);
-INSERT INTO device VALUES (2779, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'D', '84622335', '2013-06-12 00:19:19.455', false, 2775);
-INSERT INTO component VALUES (2780, 'I', 'E', '10438484', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 23:09:43.035', 'E8', 'green', 2779);
-INSERT INTO component VALUES (2781, 'F', 'F', '63595059', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 11:07:25.26', 'F9', 'green', 2779);
-INSERT INTO hall VALUES (2782, 'E3', 'Assembly+Finish', 587, 1396, 'Audi A4', 2, 'polygon249', 9, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+INSERT INTO line VALUES (2737, 'C2 Assembly', 'Series 9', 59, 'rect217', 2736);
+INSERT INTO location VALUES (2738, 'HF1', 'motor test', 'Hans Schmitt', 2737);
+INSERT INTO device VALUES (2739, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '28810418', '2013-06-13 02:35:30.6', false, 2738);
+INSERT INTO component VALUES (2740, 'D', 'B', '92142590', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 21:32:53.392', 'C1', 'green', 2739);
+INSERT INTO component VALUES (2741, 'E', 'I', '7952441', 'Howard Joel Wolowitz', '2013-06-13 09:25:23.645', 'C1', 'green', 2739);
+INSERT INTO device VALUES (2742, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'C', '44741111', '2013-06-12 20:49:26.61', true, 2738);
+INSERT INTO component VALUES (2743, 'E', 'C', '90894754', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 05:02:33.799', 'F5', 'green', 2742);
+INSERT INTO component VALUES (2744, 'I', 'G', '79945152', 'Howard Joel Wolowitz', '2013-06-13 00:46:48.759', 'A6', 'green', 2742);
+INSERT INTO location VALUES (2745, 'AH6', 'security test', 'Hans Merkel', 2737);
+INSERT INTO device VALUES (2746, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'B', '26598732', '2013-06-13 05:36:14.887', false, 2745);
+INSERT INTO component VALUES (2747, 'E', 'C', '46603928', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:38:54.631', 'I3', 'green', 2746);
+INSERT INTO component VALUES (2748, 'H', 'E', '35545958', 'Howard Joel Wolowitz', '2013-06-12 20:41:13.971', 'G3', 'green', 2746);
+INSERT INTO device VALUES (2749, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '56445276', '2013-06-12 18:04:16.943', false, 2745);
+INSERT INTO component VALUES (2750, 'G', 'H', '13249027', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 16:08:05.033', 'C9', 'green', 2749);
+INSERT INTO component VALUES (2751, 'C', 'C', '3305546', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 23:47:57.646', 'C5', 'red', 2749);
+INSERT INTO line VALUES (2752, 'C2 PreSeries', 'Series 3', 83, 'polygon25', 2736);
+INSERT INTO location VALUES (2753, 'GH1', 'ABS test', 'Hans Mueller', 2752);
+INSERT INTO device VALUES (2754, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'H', '70960958', '2013-06-13 07:10:26.808', false, 2753);
+INSERT INTO component VALUES (2755, 'B', 'A', '214714', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 05:29:22.125', 'D1', 'green', 2754);
+INSERT INTO component VALUES (2756, 'F', 'A', '12090224', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 11:58:44.798', 'A2', 'green', 2754);
+INSERT INTO device VALUES (2757, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'B', '9858539', '2013-06-12 23:58:43.387', false, 2753);
+INSERT INTO component VALUES (2758, 'H', 'E', '53242949', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 07:54:35.962', 'C9', 'yellow', 2757);
+INSERT INTO component VALUES (2759, 'H', 'B', '14332097', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 11:25:15.823', 'I7', 'green', 2757);
+INSERT INTO location VALUES (2760, 'DF3', 'security test', 'Franziska Meier', 2752);
+INSERT INTO device VALUES (2761, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'F', '31397868', '2013-06-12 19:44:01.249', false, 2760);
+INSERT INTO component VALUES (2762, 'D', 'C', '45893376', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 12:05:12.658', 'I3', 'green', 2761);
+INSERT INTO component VALUES (2763, 'C', 'E', '73010466', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:38:08.435', 'E5', 'green', 2761);
+INSERT INTO device VALUES (2764, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '99991849', '2013-06-12 14:26:53.235', false, 2760);
+INSERT INTO component VALUES (2765, 'B', 'E', '77439870', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 21:14:43.645', 'I2', 'green', 2764);
+INSERT INTO component VALUES (2766, 'G', 'E', '42153865', 'Howard Joel Wolowitz', '2013-06-12 18:52:54.28', 'I5', 'green', 2764);
+INSERT INTO line VALUES (2767, 'C2 Finish', 'Series 1', 3, 'rect497', 2736);
+INSERT INTO location VALUES (2768, 'AI1', 'transmission test', 'Robert Merkel', 2767);
+INSERT INTO device VALUES (2769, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '92010516', '2013-06-12 17:31:03.485', false, 2768);
+INSERT INTO component VALUES (2770, 'H', 'I', '69370838', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 09:52:08.457', 'E1', 'green', 2769);
+INSERT INTO component VALUES (2771, 'D', 'A', '26224740', 'Howard Joel Wolowitz', '2013-06-12 18:46:55.663', 'F5', 'green', 2769);
+INSERT INTO device VALUES (2772, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '30058673', '2013-06-13 10:03:08.179', false, 2768);
+INSERT INTO component VALUES (2773, 'I', 'H', '29447773', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 20:44:33.754', 'E2', 'green', 2772);
+INSERT INTO component VALUES (2774, 'H', 'B', '33185135', 'Howard Joel Wolowitz', '2013-06-12 16:51:20.451', 'D7', 'green', 2772);
+INSERT INTO location VALUES (2775, 'IE7', 'security test', 'Hans Merkel', 2767);
+INSERT INTO device VALUES (2776, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '68130021', '2013-06-12 17:07:14.304', false, 2775);
+INSERT INTO component VALUES (2777, 'C', 'B', '49524247', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:43:19.954', 'D7', 'red', 2776);
+INSERT INTO component VALUES (2778, 'A', 'B', '50173621', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 16:23:05.676', 'H8', 'green', 2776);
+INSERT INTO device VALUES (2779, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '63140603', '2013-06-12 16:30:23.654', false, 2775);
+INSERT INTO component VALUES (2780, 'G', 'D', '82872955', 'Howard Joel Wolowitz', '2013-06-12 15:40:18.992', 'E6', 'green', 2779);
+INSERT INTO component VALUES (2781, 'C', 'D', '59143489', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 08:27:01.964', 'H6', 'green', 2779);
+INSERT INTO hall VALUES (2782, 'E7', 'Assembly+Finish', 726, 9137, 'Audi A4', 2, 'polygon249', 9, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -6745,48 +6754,48 @@ INSERT INTO hall VALUES (2782, 'E3', 'Assembly+Finish', 587, 1396, 'Audi A4', 2,
    style="fill:#434343;fill-opacity:1;stroke:none" />
 </svg>
 ');
-INSERT INTO line VALUES (2783, 'E3 Assembly', 'Series 4', 14, 'rect217', 2782);
-INSERT INTO location VALUES (2784, 'FF4', 'security test', 'Franziska Merkel', 2783);
-INSERT INTO device VALUES (2785, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '7019601', '2013-06-11 09:13:06.546', true, 2784);
-INSERT INTO component VALUES (2786, 'I', 'I', '59046699', 'Howard Joel Wolowitz', '2013-06-12 02:35:53.196', 'H5', 'green', 2785);
-INSERT INTO component VALUES (2787, 'B', 'H', '23635418', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 18:46:51.335', 'F9', 'green', 2785);
-INSERT INTO device VALUES (2788, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'E', '22049678', '2013-06-11 23:01:40.799', false, 2784);
-INSERT INTO component VALUES (2789, 'D', 'B', '9988208', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 21:12:37.012', 'C9', 'green', 2788);
-INSERT INTO component VALUES (2790, 'C', 'A', '48669191', 'Howard Joel Wolowitz', '2013-06-11 11:06:52.826', 'F2', 'green', 2788);
-INSERT INTO location VALUES (2791, 'AI9', 'multimedia test', 'Peter Merkel', 2783);
-INSERT INTO device VALUES (2792, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '54940808', '2013-06-11 10:05:24.766', false, 2791);
-INSERT INTO component VALUES (2793, 'G', 'B', '3386551', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 09:08:55.279', 'H3', 'green', 2792);
-INSERT INTO component VALUES (2794, 'D', 'B', '30345815', 'Howard Joel Wolowitz', '2013-06-12 00:25:20.832', 'F2', 'green', 2792);
-INSERT INTO device VALUES (2795, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '52710470', '2013-06-11 12:10:46.934', false, 2791);
-INSERT INTO component VALUES (2796, 'D', 'G', '49141968', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 09:10:25.15', 'B8', 'green', 2795);
-INSERT INTO component VALUES (2797, 'F', 'H', '38627682', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 03:12:10.76', 'B3', 'green', 2795);
-INSERT INTO line VALUES (2798, 'E3 PreSeries', 'Series 4', 74, 'polygon25', 2782);
-INSERT INTO location VALUES (2799, 'GE9', 'security test', 'Robert Meier', 2798);
-INSERT INTO device VALUES (2800, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '15555364', '2013-06-11 09:46:06.126', false, 2799);
-INSERT INTO component VALUES (2801, 'H', 'I', '10537012', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 01:18:28.427', 'F1', 'green', 2800);
-INSERT INTO component VALUES (2802, 'C', 'C', '91243474', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 19:41:20.963', 'I4', 'green', 2800);
-INSERT INTO device VALUES (2803, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'C', '8900363', '2013-06-11 07:02:00.929', false, 2799);
-INSERT INTO component VALUES (2804, 'A', 'A', '80924023', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 18:55:36.87', 'G6', 'green', 2803);
-INSERT INTO component VALUES (2805, 'I', 'H', '76009329', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 11:57:47.643', 'C7', 'green', 2803);
-INSERT INTO location VALUES (2806, 'CA2', 'motor test', 'Hans Merkel', 2798);
-INSERT INTO device VALUES (2807, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'D', '98571905', '2013-06-11 22:55:19.986', false, 2806);
-INSERT INTO component VALUES (2808, 'C', 'C', '46735108', 'Howard Joel Wolowitz', '2013-06-11 10:44:04.543', 'A9', 'green', 2807);
-INSERT INTO component VALUES (2809, 'D', 'C', '96959470', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 01:01:37.292', 'B9', 'green', 2807);
-INSERT INTO device VALUES (2810, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'N/A', 'N/A', ' ', 'E', '56551973', '2013-06-11 21:16:38.086', false, 2806);
-INSERT INTO component VALUES (2811, 'A', 'A', '7923703', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 10:24:30.674', 'B8', 'green', 2810);
-INSERT INTO component VALUES (2812, 'A', 'G', '64678665', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 17:22:56.234', 'H3', 'green', 2810);
-INSERT INTO line VALUES (2813, 'E3 Finish', 'Series 7', 62, 'rect497', 2782);
-INSERT INTO location VALUES (2814, 'ID3', 'motor test', 'Franziska Meier', 2813);
-INSERT INTO device VALUES (2815, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'G', '88773235', '2013-06-11 11:51:17.305', false, 2814);
-INSERT INTO component VALUES (2816, 'E', 'F', '95693530', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 09:01:21.226', 'E3', 'green', 2815);
-INSERT INTO component VALUES (2817, 'A', 'G', '37048664', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:04:52.594', 'F3', 'green', 2815);
-INSERT INTO device VALUES (2818, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'I', '3074364', '2013-06-11 10:06:36.627', true, 2814);
-INSERT INTO component VALUES (2819, 'G', 'D', '48732893', 'Howard Joel Wolowitz', '2013-06-11 16:16:38.351', 'E3', 'red', 2818);
-INSERT INTO component VALUES (2820, 'G', 'H', '64830171', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-11 15:48:16.902', 'E6', 'green', 2818);
-INSERT INTO location VALUES (2821, 'AF7', 'ABS test', 'Robert Meier', 2813);
-INSERT INTO device VALUES (2822, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '79196321', '2013-06-11 14:32:42.967', false, 2821);
-INSERT INTO component VALUES (2823, 'B', 'G', '37160816', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 20:44:51.798', 'A7', 'green', 2822);
-INSERT INTO component VALUES (2824, 'F', 'B', '21837025', 'Dr. Leonard Leakey Hofstadter', '2013-06-11 04:23:22.371', 'B3', 'green', 2822);
-INSERT INTO device VALUES (2825, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '40585405', '2013-06-11 14:05:46.988', false, 2821);
-INSERT INTO component VALUES (2826, 'G', 'F', '10515368', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-11 23:51:18.074', 'D9', 'green', 2825);
-INSERT INTO component VALUES (2827, 'I', 'G', '19983442', 'Howard Joel Wolowitz', '2013-06-11 06:26:37.375', 'C5', 'green', 2825);
+INSERT INTO line VALUES (2783, 'E7 Assembly', 'Series 2', 30, 'rect217', 2782);
+INSERT INTO location VALUES (2784, 'CD9', 'transmission test', 'Hans Merkel', 2783);
+INSERT INTO device VALUES (2785, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'A', '57741483', '2013-06-13 09:04:55.877', false, 2784);
+INSERT INTO component VALUES (2786, 'H', 'F', '92356585', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 13:38:37.362', 'I7', 'green', 2785);
+INSERT INTO component VALUES (2787, 'G', 'G', '82927714', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 00:30:44.747', 'A2', 'green', 2785);
+INSERT INTO device VALUES (2788, 'UPS Printer', 'DSA Print Server Station', 'IBNA-PS1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '60089407', '2013-06-13 13:07:48.495', true, 2784);
+INSERT INTO component VALUES (2789, 'G', 'G', '9668947', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 21:40:55.897', 'D5', 'green', 2788);
+INSERT INTO component VALUES (2790, 'I', 'I', '60352923', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 14:26:53.048', 'A3', 'green', 2788);
+INSERT INTO location VALUES (2791, 'CE1', 'multimedia test', 'Robert Merkel', 2783);
+INSERT INTO device VALUES (2792, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'H', '41396217', '2013-06-12 21:51:11.336', false, 2791);
+INSERT INTO component VALUES (2793, 'I', 'A', '58919695', 'Howard Joel Wolowitz', '2013-06-13 06:46:45.131', 'C6', 'green', 2792);
+INSERT INTO component VALUES (2794, 'D', 'D', '3985087', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 22:42:04.625', 'G4', 'green', 2792);
+INSERT INTO device VALUES (2795, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'reachable', '10.xxx.xxx.xxx', ' ', 'B', '54456869', '2013-06-13 07:07:48.319', false, 2791);
+INSERT INTO component VALUES (2796, 'B', 'B', '71086962', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:46:14.305', 'D8', 'green', 2795);
+INSERT INTO component VALUES (2797, 'H', 'E', '61074007', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 03:19:24.233', 'A3', 'green', 2795);
+INSERT INTO line VALUES (2798, 'E7 PreSeries', 'Series 8', 80, 'polygon25', 2782);
+INSERT INTO location VALUES (2799, 'EG5', 'motor test', 'Sarah Schulze', 2798);
+INSERT INTO device VALUES (2800, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'F', '61312889', '2013-06-13 01:30:22.25', false, 2799);
+INSERT INTO component VALUES (2801, 'H', 'B', '78127158', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:06:34.927', 'I8', 'red', 2800);
+INSERT INTO component VALUES (2802, 'H', 'C', '43085013', 'Howard Joel Wolowitz', '2013-06-12 15:10:52.876', 'D8', 'green', 2800);
+INSERT INTO device VALUES (2803, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'I', '93795422', '2013-06-13 11:57:48.495', false, 2799);
+INSERT INTO component VALUES (2804, 'G', 'E', '5871568', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 02:19:07.973', 'G5', 'green', 2803);
+INSERT INTO component VALUES (2805, 'A', 'H', '77116559', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 02:19:49.869', 'E3', 'green', 2803);
+INSERT INTO location VALUES (2806, 'DF7', 'motor test', 'Peter Merkel', 2798);
+INSERT INTO device VALUES (2807, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '18371006', '2013-06-12 20:36:55.702', false, 2806);
+INSERT INTO component VALUES (2808, 'E', 'I', '47442681', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 23:58:22.137', 'B6', 'green', 2807);
+INSERT INTO component VALUES (2809, 'B', 'F', '76423145', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 09:58:11.616', 'C2', 'green', 2807);
+INSERT INTO device VALUES (2810, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'F', '43165245', '2013-06-13 05:53:03.962', true, 2806);
+INSERT INTO component VALUES (2811, 'G', 'G', '71223033', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-12 17:47:16.221', 'G5', 'green', 2810);
+INSERT INTO component VALUES (2812, 'A', 'G', '4159565', 'Howard Joel Wolowitz', '2013-06-13 11:53:30.683', 'C3', 'green', 2810);
+INSERT INTO line VALUES (2813, 'E7 Finish', 'Series 4', 54, 'rect497', 2782);
+INSERT INTO location VALUES (2814, 'BA9', 'motor test', 'Hans Schulze', 2813);
+INSERT INTO device VALUES (2815, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'reachable', '10.xxx.xxx.xxx', ' ', 'G', '51359909', '2013-06-12 16:17:20.728', false, 2814);
+INSERT INTO component VALUES (2816, 'H', 'G', '87214824', 'Dr. Leonard Leakey Hofstadter', '2013-06-12 16:07:56.792', 'F9', 'yellow', 2815);
+INSERT INTO component VALUES (2817, 'D', 'F', '95929561', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-13 01:40:36.021', 'F3', 'green', 2815);
+INSERT INTO device VALUES (2818, 'UPS MFT Cradle', 'DSA MFT Cradle for Power Supply and LAN connection', 'IBNA-LS3X2', 'N/A', 'N/A', ' ', 'E', '1054457', '2013-06-12 18:45:08.263', false, 2814);
+INSERT INTO component VALUES (2819, 'E', 'A', '78667415', 'Howard Joel Wolowitz', '2013-06-13 09:30:56.488', 'I4', 'green', 2818);
+INSERT INTO component VALUES (2820, 'G', 'I', '51111812', 'Dr. Leonard Leakey Hofstadter', '2013-06-13 00:23:12.411', 'A4', 'yellow', 2818);
+INSERT INTO location VALUES (2821, 'HG7', 'ABS test', 'Sarah Schmitt', 2813);
+INSERT INTO device VALUES (2822, 'UPS MFTD2X', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '10327353', '2013-06-12 22:24:09.166', true, 2821);
+INSERT INTO component VALUES (2823, 'B', 'B', '91948191', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 17:29:07.115', 'H3', 'green', 2822);
+INSERT INTO component VALUES (2824, 'I', 'A', '41641095', 'Howard Joel Wolowitz', '2013-06-13 09:18:12.948', 'C8', 'green', 2822);
+INSERT INTO device VALUES (2825, 'UPS Printer', 'EPSON Printer TN-220B', 'IBNA-PR1', 'N/A', 'N/A', ' ', 'A', '5369254', '2013-06-13 08:30:48.323', false, 2821);
+INSERT INTO component VALUES (2826, 'E', 'E', '2080860', 'Dr. Dr. Sheldon Lee Cooper', '2013-06-13 12:04:25.255', 'E2', 'green', 2825);
+INSERT INTO component VALUES (2827, 'G', 'H', '40928447', 'Dr. Rajesh Ramayan Koothrappali', '2013-06-12 14:05:47.478', 'G8', 'green', 2825);

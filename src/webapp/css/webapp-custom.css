@@ -59,7 +59,9 @@ h1, h2, h3, h4, h5, h6 {
 	stroke: black;
 }
 
-#SVGPlan path:hover{
+#SVGPlan .statusHallOk:hover,
+#SVGPlan .statusHallWarning:hover,
+#SVGPlan .statusHallCritical:hover{
 	cursor: pointer;
 }
 
