@@ -133,12 +133,12 @@ public class TestDataGenerator {
 
 	public static void initTables() throws IOException {
 
-		String s = "drop table if exists component; \n"
-				+ "drop table if exists device;\n"
-				+ "drop table if exists line;\n"
-				+ "drop table if exists location;\n"
-				+ "drop table if exists hall;\n"
-				+ "drop table if exists factory;\n" +
+		String s = "DROP TABLE IF EXISTS component CASCADE; \n"
+				+ "DROP TABLE IF EXISTS device CASCADE;\n"
+				+ "DROP TABLE IF EXISTS line CASCADE;\n"
+				+ "DROP TABLE IF EXISTS location CASCADE;\n"
+				+ "DROP TABLE IF EXISTS hall CASCADE;\n"
+				+ "DROP TABLE IF EXISTS factory CASCADE;\n" +
 
 				"create table factory(\n" 
 				+ "	id int PRIMARY KEY,\n"
@@ -183,15 +183,15 @@ public class TestDataGenerator {
 				+ ");\n" +
 
 				"CREATE TABLE location (\n" 
-				+ "	id integer,\n"
+				+ "	id integer PRIMARY KEY,\n"
 				+ "	name character varying(50),\n"
 				+ "	description character varying(100),\n"
 				+ "	personincharge character varying(100),\n"
-				+ "	parent integer\n" 
+				+ "	parent integer REFERENCES line(id) ON DELETE CASCADE\n" 
 				+ ");\n" +
 
 				"CREATE TABLE device (\n" 
-				+ "	id integer,\n"
+				+ "	id integer PRIMARY KEY,\n"
 				+ "	type character varying(50),\n"
 				+ "	description character varying(50),\n"
 				+ "	name character varying(50),\n"
@@ -202,11 +202,11 @@ public class TestDataGenerator {
 				+ "	serialnumber character varying(50),\n"
 				+ "	troubleperiod timestamp,\n"
 				+ "	testfailure boolean,\n" 
-				+ "	parent integer\n"
+				+ "	parent integer REFERENCES location(id) ON DELETE CASCADE\n"
 				+ ");\n" +
 
 				"CREATE TABLE component (\n" 
-				+ "	id integer,\n"
+				+ "	id integer PRIMARY KEY,\n"
 				+ "	sector character varying(50),\n"
 				+ "	category character varying(50),\n"
 				+ "	serialnumber character varying(50),\n"
@@ -214,7 +214,7 @@ public class TestDataGenerator {
 				+ "	troubleoccurrencetime timestamp,\n"
 				+ "	troubleoccurrencesite character varying(50),\n"
 				+ "	status character varying(20),\n"
-				+ "	parent integer\n" 
+				+ "	parent integer REFERENCES device(id) ON DELETE CASCADE\n" 
 				+ ");\n";
 
 		out.write(s);
@@ -384,7 +384,8 @@ public class TestDataGenerator {
 			// map
 			st.append(", ");
 			st.append("\'");
-			st.append(readFile("./src/resources/config/testhallmap.svg"));
+			if(factoryId == 8)st.append(readFile("./src/resources/config/testhallmap2.svg"));
+			else st.append(readFile("./src/resources/config/testhallmap.svg"));
 			st.append("\'");
 			st.append(");\n");
 
