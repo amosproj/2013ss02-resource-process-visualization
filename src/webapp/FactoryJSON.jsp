@@ -63,6 +63,7 @@
 	],
 	"parent": {
 		"id": "<%= factory.getId() %>",
+		"name": "<%= factory.getName() %>",
 		"type": "factory",
 		"parent": null
 	}

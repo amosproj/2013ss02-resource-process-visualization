@@ -179,7 +179,8 @@ $(document).ready(function(){
 					// Null // no object means: Links for global (anyways)
 					if(navElm && navElm != null && navElm instanceof Object) {
 						$('<a>', {
-						    text: navElm.type + ' '+navElm.id,
+						    //text: navElm.type + ' '+navElm.id,
+							text: navElm.name,
 						    title: navElm.type + ' '+navElm.id,
 						    href: '#',
 						    onclick: 'GlobalHierarchyHandler.hierarchyZoom("'+navElm.type+'", '+navElm.id+');',
