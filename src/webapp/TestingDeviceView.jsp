@@ -64,19 +64,11 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="testingDeviceDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="testingDeviceStatus"></td></tr>
 		<tr><td>Name</td><td id="testingDeviceName"></td></tr>
-		<tr><td>Description</td><td id="testingDeviceDescription"></td></tr>
-		<tr><td>Type</td><td id="testingDeviceCategory"></td></tr>
-		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
-		<tr><td>IP Address</td><td id="testingDeviceIpAddress"></td></tr>
-		<tr><td>Network Status</td><td id="testingDeviceNetworkStatus"></td></tr>
-		<tr><td>Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
 		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
-		<tr><td>Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
-		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr>
-		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -84,9 +76,6 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	TestingDevice.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
 		for(var i = 0; i < data.components.length; ++i) {
 			var rowClass = "";
 			
@@ -128,19 +117,10 @@ $(document).ready(function() {
 			$("#testingDeviceComponentsList tbody").append(rElm);
 		}	
 
-	    $("#dynamicHeading").html("Testing Device: "+data.name);
+	    $("#dynamicHeading").html(data.name+" (ID: <%= id %>)");
 	    $("#testingDeviceName").html(data.name);
-	    $("#testingDeviceSerialnumber").html(data.serialnumber);
-	    $("#testingDeviceCategory").html(data.category);
-	    $("#testingDeviceDescription").html(data.description);
-	    $("#testingDeviceIpAddress").html(data.ipaddress);
-	    $("#testingDeviceMaintainanceInfo").html(data.maintainanceinfo);
-	    $("#testingDeviceNetworkStatus").html(data.networkstatus);
 	    $("#testingDeviceStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#testingDevicesCountComponents").html(data.componentCount);
-	    $("#testingDevicesTroublePeriod").html(data.troubleperiod);	
-	    $("#testingDevicesFailure").html("" + data.testfailure);	
-	    $("#testingDevicesSector").html(data.sector);	
+	    $("#testingDevicesCountComponents").html(data.componentCount);	
 	});
 });
 </script>

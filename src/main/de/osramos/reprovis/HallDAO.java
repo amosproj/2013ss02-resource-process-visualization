@@ -20,17 +20,20 @@
  */
 package de.osramos.reprovis;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
-public class HallDAO extends HierarchieElementDAO {
+public class HallDAO {
 
-	public static String getName(int id) throws DatabaseException {
-		return (String) getAttribute(id, "name");
+
+
+	public static String getName(int id) {
+		return "Hall" + id;
 	}
 	
-/*	public static TrafficLight getStatus (int id){
+	public static TrafficLight getStatus (int id){
 		int r = ((int)(Math.random()*100))%10;
 		if (r < 6){
 			return TrafficLight.green;
@@ -40,92 +43,48 @@ public class HallDAO extends HierarchieElementDAO {
 			return TrafficLight.red;
 		}
 	}
-	*/
-	public static int getUpsServers(int id) throws DatabaseException{
-		return (Integer) getAttribute(id, "upsServers");
-	}
-	
-	public static String getType(int id) throws DatabaseException{
-		return (String) getAttribute(id, "type");
+
+	public static FactoryBean getFactory(int id) {
+/*
+		return new FactoryBean( (int) (id/10) );*/
+		return null;
 	}
 
-/*	public static FactoryBean getFactory(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT parent FROM hall WHERE id = " + id);
-			res.next();
-			FactoryBean factory = new FactoryBean(res.getInt(1));
-			stmt.close();
-			conn.close();
-			return factory;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
+	public static int getSizeOfStaff(int id) {
+		// TODO Auto-generated method stub
+		return 300;
+	}
+
+	public static String getPath(int id) {
+		if (id == 1){
+			return "m 117.38822,36.114366 143.94673,0 0,27.27411 -143.94673,0 z";
 		}
-
-	}*/
-
-	public static int getSizeOfStaff(int id) throws DatabaseException {
-		int i = (Integer) getAttribute(id, "staff");
-
-		return i;
-	}
-
-	public static String getPath(int id) throws DatabaseException {
-		String s = (String) getAttribute(id, "path");
-
-		return s;
+		if (id == 2){
+			return "m 103.79566,89.64308 28.21429,0 0,14.99995 -28.21429,0 z";
+		}
+		else{
+			return "m 132.36711,101.42883 14.28572,0 0,30.7143 -14.28572,0 z";
+		}
 	}
 	
-	public static int getProductionCapacity(int id) throws DatabaseException {
-		int i = (Integer) getAttribute(id, "capacity");
-
-		return i;
+	public static int getProductionCapacity() {
+		// TODO Auto-generated method stub
+		return 8000;
 	}
 
-	//private static int count = 0;
-/*	
-	public static List<Integer> getHallIds(int factoryId) throws DatabaseException {
+	private static int count = 0;
+	
+	public static List<Integer> getHallIds(int factoryId) {
 		List<Integer> l = new ArrayList<Integer>();
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT id FROM hall WHERE parent = " + factoryId);
-			while(res.next()){
-				l.add(res.getInt(1));
-			}
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
+		
+		for (int i =1; i < 5; i++)
+		{
+			l.add(i*10 + count);
 		}
-		return l;
-	}*/
-	
-	public static String getMap(int id) throws DatabaseException{
-		return (String) getAttribute(id, "map");
-	}
-	
-	public static List<Integer> getHallIds(int id) throws Exception {
-		List<Integer> l = getChildIds(id, "hall");
 
 		return l;
 	}
 	
-	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
-		return HierarchieElementDAO.getAttribute(id, attributeName, "hall");
-	}
 
-	public static String getVehicles(int id) throws DatabaseException {
-		String s = (String) getAttribute(id, "Vehicles");
 
-		return s;
-	}
-	
 }

@@ -23,11 +23,6 @@ package de.osramos.reprovis;
 
 import java.io.InputStream;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 
 public class MasterData {
 
@@ -70,19 +65,6 @@ public class MasterData {
 	public enum TrafficLight {
 		red, yellow, green
 	}
-	
-	public static TrafficLight stringToTrafficLight(String string) {
-		if (string.equals(TrafficLight.yellow.name())) {
-			return TrafficLight.yellow;
-		}
-		if (string.equals(TrafficLight.red.name())) {
-			return TrafficLight.red;
-		}
-		if (string.equals(TrafficLight.green.name())) {
-			return TrafficLight.green;
-		}
-		return null;
-	}
 
 	public static String getTrafficIconClass(TrafficLight status) {
 		switch (status) {
@@ -105,6 +87,4 @@ public class MasterData {
 			return "statusHallOk";
 		}
 	}
-	
-	
 }

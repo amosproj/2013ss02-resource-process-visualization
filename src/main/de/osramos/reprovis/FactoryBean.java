@@ -22,35 +22,30 @@
 package de.osramos.reprovis;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.naming.InitialContext;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import de.osramos.reprovis.MasterData.Company;
-import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class FactoryBean extends HierarchieElementBean {
 
 	public FactoryBean(int id) {
 		super(id);
-
-		
-		try {
-			name = FactoryDAO.getName(id);
-			country = FactoryDAO.getCountry(id);
-			city = FactoryDAO.getCity(id);
-			gpsLatitude = FactoryDAO.getGpsLatitude(id);
-			gpsLongitude = FactoryDAO.getGpsLongitude(id);
-			company = FactoryDAO.getCompany(id);
-			carModels = FactoryDAO.getCarModels(id);
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
-			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
-			upsSystems = FactoryDAO.getUPSSystems(id);
-			upsProvider = FactoryDAO.getUPSProvider(id);
-		} catch (DatabaseException e) {
-
-		}
+		name = FactoryDAO.getName(id);
+		country = FactoryDAO.getCountry(id);
+		/* city = FactoryDAO.getCity(id); */
+		gpsLatitude = FactoryDAO.getGpsLatitude(id);
+		gpsLongitude = FactoryDAO.getGpsLongitude(id);
+		company = FactoryDAO.getCompany(id);
+		carModels = FactoryDAO.getCarModels(id);
+		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+		numOfVehicles = FactoryDAO.getNumOfVehicles(id);
 	}
 
 	/*
@@ -62,20 +57,17 @@ public class FactoryBean extends HierarchieElementBean {
 	 * return (FactoryBean) GlobalBean.getElementById(id); }
 	 */
 
-	// private int id;
+	//private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
 	private double gpsLongitude;
-	private String city;
+	/* private String city; */
 	private Company company;
+	private GlobalBean parent;
 	private String[] carModels;
 	private int sizeOfStaff;
 	private int numOfVehicles;
-	private int upsServers;
-	private int upsSystems;
-	private String upsProvider;
-	private Date sizeOfStaffDate;
 
 	public String getName() {
 		return name;
@@ -86,58 +78,20 @@ public class FactoryBean extends HierarchieElementBean {
 	}
 
 	public int getSizeOfStaff() {
-		try {
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return sizeOfStaff;
 	}
-	
-	public Date getSizeOfStaffDate() {
-		try {
-			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sizeOfStaffDate;
-	}
 
-	public int getVehiclesPerYear() {
-		try {
-			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public int getNumOfVehicles() {
 		return numOfVehicles;
-	}
-	
-	public int getVehiclesPerDay(){
-		try {
-			return FactoryDAO.getVehiclesPerDay(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
 	}
 
 	public String[] getCarModels() {
-		try {
-			carModels = FactoryDAO.getCarModels(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return carModels;
 	}
 
-	public String getCity() {
-		return city;
-	}
+	/*
+	 * public String getCity(){ return city; }
+	 */
 
 	public double getGpsLatitude() {
 		return gpsLatitude;
@@ -150,51 +104,52 @@ public class FactoryBean extends HierarchieElementBean {
 	public Company getCompany() {
 		return company;
 	}
-	
-	public int getUPSSystems() {
-		try {
-			upsSystems = FactoryDAO.getUPSSystems(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return upsSystems;
-	}
 
-	public int getUPSServers() {
-		try {
-			upsServers = FactoryDAO.getUPSServers(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return upsServers;
-	}
-	
-	public String getUPSProvider() {
-		try {
-			upsProvider = FactoryDAO.getUPSProvider(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return upsProvider;
-	}
+	/*
+	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
+	 */
 
-	public int getUPSClients() {
-		
-		return getNumOfLeafs();
-	}
-	
-	public String getMap() {
-		try {
-			return FactoryDAO.getMap(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		}
-		return "Error";
-	}
-	
+	/*public int getId() {
+		return id;
+	}*/
+
+	/*
+	 * public FactoryBean(int id){
+	 * 
+	 * GlobalBean.getGlobal().reg.put(id, this); try { Context ctx = new
+	 * InitialContext(); ctx.bind("de.osramos/reprovis/HierarchieElement/"+id,
+	 * this); } catch (NamingException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } this.id = id;
+	 * 
+	 * }
+	 */
+
+	/*
+	 * public TrafficLight getStatus() throws Exception{
+	 * List<HierarchieElementBean> halls = getChilds();
+	 * 
+	 * TrafficLight status = TrafficLight.green;
+	 * 
+	 * for(HierarchieElementBean hall: halls){ // aggregate to worst status if (
+	 * status == TrafficLight.green){ try { status = hall.getStatus(); } catch
+	 * (Exception e) { // TODO Auto-generated catch block e.printStackTrace(); }
+	 * } else if (status == TrafficLight.yellow){ try { if (hall.getStatus() ==
+	 * TrafficLight.red){ status = TrafficLight.red; } } catch (Exception e) {
+	 * // TODO Auto-generated catch block e.printStackTrace(); } } } return
+	 * status; }
+	 */
+
+	/*
+	 * public List<HierarchieElementBean> getChilds() throws Exception{
+	 * 
+	 * List<Integer> hallIds = HallDAO.getHallIds(id);
+	 * List<HierarchieElementBean> halls = new
+	 * ArrayList<HierarchieElementBean>();
+	 * 
+	 * for(int hallId : hallIds){ halls.add(new HallBean(hallId)); } return
+	 * halls; }
+	 */
+
 	@Override
 	protected void initChilds() {
 		try {

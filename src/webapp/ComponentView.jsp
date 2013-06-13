@@ -35,7 +35,7 @@
 
 <div class="modal-body">
 	<div class="pull-right">
-		<button type="button" class="factoryBtn" onclick="notAvailable();">Print (soon available)</button>
+		<button type="button" class="btn" onclick="notAvailable();">Print (soon available)</button>
 	</div><br /><br />
 	
 	<table id="componentDetails" class="table table-striped table-hover">
@@ -47,11 +47,11 @@
 		<tr><td>Trouble Occurence Site:</td><td><%= component.getTroubleOccurrenceSite() %></td></tr>
 		<tr><td>Responsible Sector:</td><td><%= component.getSector() %></td></tr>
 		<tr><td>Shift Responsible:</td><td><%= component.getShiftResponsibility() %></td></tr>
-	<!-- 	<tr><td>More 1</td><td>More Information 1</td></tr>
-		<tr><td>More 2</td><td>More Information 2</td></tr> -->
+		<tr><td>More 1</td><td>More Information 1</td></tr>
+		<tr><td>More 2</td><td>More Information 2</td></tr>
 	</table>
 </div>
 
 <div class="modal-footer">
-	<button class="factoryBtn" data-dismiss="modal">Close</button>
+	<button class="btn" data-dismiss="modal">Close</button>
 </div>
