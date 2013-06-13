@@ -35,10 +35,10 @@ LineBean line = (LineBean)request.getAttribute("line");
 //This crashes as soon as the hierarchy structure will be altered
 //Therefore it must be generated automatically in future.
 //Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean hallParent = (HallBean)line.getParent();
+HallBean hallParent = (HallBean)line.getParent();
 int hallID = hallParent.getId();
 
-HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
+FactoryBean factoryParent = (FactoryBean)hallParent.getParent();
 int factoryID = factoryParent.getId(); 
 
 %>
@@ -61,12 +61,15 @@ int factoryID = factoryParent.getId();
 	],
 	"parent": {
 		"id": "<%= line.getId() %>",
+		"name": "<%= line.getName() %>",
 		"type": "line",
 		"parent": {
 			"id": "<%= hallID %>",
+			"name": "<%= hallParent.getName() %>",
 			"type": "hall",
 			"parent": {
 				"id": "<%= factoryID %>",
+				"name": "<%= factoryParent.getName() %>",
 				"type": "factory",
 				"parent": "null"
 			}

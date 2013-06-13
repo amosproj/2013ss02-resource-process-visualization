@@ -36,16 +36,16 @@ TestingDeviceBean device = (TestingDeviceBean)request.getAttribute("device");
 // This crashes as soon as the hierarchy structure will be altered
 // Therefore it must be generated automatically in future.
 // Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean locParent = (LocationBean)device.getParent();
+LocationBean locParent = (LocationBean)device.getParent();
 int locationID = locParent.getId();
 
-HierarchieElementBean lineParent = (LineBean)locParent.getParent();
+LineBean lineParent = (LineBean)locParent.getParent();
 int lineID = lineParent.getId();
 
-HierarchieElementBean hallParent = (HallBean)lineParent.getParent();
+HallBean hallParent = (HallBean)lineParent.getParent();
 int hallID = hallParent.getId();
 
-HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
+FactoryBean factoryParent = (FactoryBean)hallParent.getParent();
 int factoryID = factoryParent.getId(); 
 %>
 {
@@ -78,18 +78,23 @@ int factoryID = factoryParent.getId();
 	],
 	"parent": {
 		"id": "<%= device.getId() %>",
+		"name": "<%= device.getName() %>",
 		"type": "testingDevice",
 		"parent": {
 			"id" : "<%= locationID %>",
+			"name": "<%= locParent.getName() %>",
 			"type": "location",
 			"parent": {
 				"id": "<%= lineID %>",
+				"name": "<%= lineParent.getName() %>",
 				"type": "line",
 				"parent": {
 					"id": "<%= hallID %>",
+					"name": "<%= hallParent.getName() %>",
 					"type": "hall",
 					"parent": {
 						"id": "<%= factoryID %>",
+						"name": "<%= factoryParent.getName() %>",
 						"type": "factory",
 						"parent": "null"
 					}

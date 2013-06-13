@@ -35,7 +35,7 @@ HallBean hall = (HallBean)request.getAttribute("hall");
 //This crashes as soon as the hierarchy structure will be altered
 //Therefore it must be generated automatically in future.
 //Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean factoryParent = (FactoryBean)hall.getParent();
+FactoryBean factoryParent = (FactoryBean)hall.getParent();
 int factoryID = factoryParent.getId(); 
 
 %>
@@ -62,9 +62,11 @@ int factoryID = factoryParent.getId();
 	],
 	"parent": {
 		"id": "<%= hall.getId() %>",
+		"name": "<%= hall.getName() %>",
 		"type": "hall",
 		"parent": {
 			"id": "<%= factoryID %>",
+			"name": "<%= factoryParent.getName() %>",
 			"type": "factory",
 			"parent": "null"
 		}

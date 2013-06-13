@@ -36,13 +36,13 @@ LocationBean loc = (LocationBean) request.getAttribute("location");
 //This crashes as soon as the hierarchy structure will be altered
 //Therefore it must be generated automatically in future.
 //Due to time constraints, it is currently hardcoded in here.
-HierarchieElementBean lineParent = (LineBean)loc.getParent();
+LineBean lineParent = (LineBean)loc.getParent();
 int lineID = lineParent.getId();
 
-HierarchieElementBean hallParent = (HallBean)lineParent.getParent();
+HallBean hallParent = (HallBean)lineParent.getParent();
 int hallID = hallParent.getId();
 
-HierarchieElementBean factoryParent = (FactoryBean)hallParent.getParent();
+FactoryBean factoryParent = (FactoryBean)hallParent.getParent();
 int factoryID = factoryParent.getId(); 
 
 %>
@@ -66,15 +66,19 @@ int factoryID = factoryParent.getId();
 	],
 	"parent": {
 		"id": "<%= loc.getId() %>",
+		"name": "<%= loc.getName() %>",
 		"type": "location",
 		"parent": {
 			"id": "<%= lineID %>",
+			"name": "<%= lineParent.getName() %>",
 			"type": "line",
 			"parent": {
 				"id": "<%= hallID %>",
+				"name": "<%= hallParent.getName() %>",
 				"type": "hall",
 				"parent": {
 					"id": "<%= factoryID %>",
+					"name": "<%= factoryParent.getName() %>",
 					"type": "factory",
 					"parent": "null"
 				}
