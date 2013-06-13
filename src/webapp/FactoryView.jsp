@@ -40,7 +40,6 @@ int id = Integer.parseInt(request.getParameter("fid"));
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
 		<h3 id="dynamicHeading"></h3>
-		<!-- <svg id="SVGPlan"></svg> -->
 		<%= factory.getMap() %>
 	</div>
 	
