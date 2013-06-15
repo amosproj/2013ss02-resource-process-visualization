@@ -40,7 +40,7 @@ int id = Integer.parseInt(request.getParameter("fid"));
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
 		<h3 id="dynamicHeading"></h3>
-		<%= factory.getMap() %>
+		<div id="svgCanvas"></div>
 	</div>
 	
 	<div id="informationBlock" class="span4">
@@ -53,7 +53,7 @@ int id = Integer.parseInt(request.getParameter("fid"));
 			<tr><td>UPS Provider</td><td id="factoryUPSProvider"></td></tr>
 			<tr><td>UPS Servers</td><td id="factoryUPSServers"></td></tr>
 			<tr><td>UPS Clients</td><td id="factoryUPSClients"></td></tr>
-			<tr><td>Staff</td><td id="factoryStaff"></td></tr> <!--  -->
+			<tr><td>Staff</td><td id="factoryStaff"></td></tr>
 			<tr><td>Vehicles per year</td><td id="factoryVehiclesPerYear"></td></tr>
 			<tr><td>Vehicles per day</td><td id="factoryVehiclesPerDay"></td></tr>
 			<tr><td>Vehicles</td><td id="factoryCars"></td></tr>
@@ -61,13 +61,22 @@ int id = Integer.parseInt(request.getParameter("fid"));
 	</div>
 </div><br class="clear" />
 
+<div style="display: none;" id="DBDataHolder">
+<%= factory.getMap() %>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	Factory.getData(<%= id %>, function(a, data) {
 		// Create hierarchical navigation first
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
-	    // Draw the factory plan and attach click handler
+		// Draw the factory plan using Raphael and custom SVG Wrapper
+		var svgData = $.parseHTML($('#DBDataHolder').html());
+		console.log(svgData);
+		SVGWrapper.drawCanvas(svgData);
+		
+	    // Attach click handler
 	    for(var i = 0; i < data.halls.length; ++i) {
 	    	$("#" + data.halls[i].path)
 	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
@@ -91,8 +100,7 @@ $(document).ready(function() {
 	    $("#factoryUPSServers").html(data.upsservers);
 	    $("#factoryUPSClients").html(data.upsclients);
 	    $("#factoryUPSProvider").html(data.upsprovider);
-	    $("#factoryUPSSystems").html(data.upssystems);
-	    
+	    $("#factoryUPSSystems").html(data.upssystems);	    
 	    
 	    var factoryCars = "";
 	    for(var j = 0; j < data.brands.length; ++j) {
