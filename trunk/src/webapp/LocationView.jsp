@@ -43,11 +43,14 @@ int id = Integer.parseInt(request.getParameter("locid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationDevices">
-		<table id="locationDevicesList" class="table table-striped table-hover">
+		<div class="dropdown">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">+</a>
+		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="devicelistColumnAdd">
+		    </ul>
+	    </div>
+		<table id="devicelist" class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>Status</th>
-					<th>Device</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -71,30 +74,9 @@ $(document).ready(function() {
 	Location.getData(<%= id %>, function(a, data) {
 		// Create hierarchical navigation first
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
-		for(var i = 0; i < data.testDevices.length; ++i) {
-			var rowClass = "";
-			
-			switch(data.testDevices[i].status) {
-				case "green": rowClass = "success"; break;
-				case "yellow": rowClass = "warning"; break;
-				case "red": default: rowClass = "error"; break;
-			}
-			
-			var sElm = $("<td></td>")
-					.html("<div class=\""+getStatusClass(data.testDevices[i].status)+"\"></div>");
-			
-			var lElm = $("<td></td>")
-					.html(data.testDevices[i].name);
-			
-			var rElm = $("<tr></tr>")
-					.attr("class", rowClass)					
-	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'testingDevice\', '+data.testDevices[i].id+')')
-					.append(sElm)
-					.append(lElm);
-			
-			$("#locationDevicesList tbody").append(rElm);
-		}	
+	
+		elementList = new AMOSList("#devicelist", data.testDevices, 'testingDevice');
+		elementList.sortBy("status", [2, 1, 0]);
 
 	    $("#dynamicHeading").html("Location: "+data.name);
 	    $("#locationName").html(data.name);
