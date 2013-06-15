@@ -65,17 +65,17 @@ AMOSList.prototype.initFilter = function(){
 };
 
 AMOSList.prototype.showFilterModal = function(key){
-	var html = '<ul>';
+	var html = '<table>';
 	for(var entry in this.filter[key]){
-		html += '<li>';
-		html += '<input type="checkbox" ';
+		html += '<tr>';
+		html += '<td><input type="checkbox" ';
 		if(this.filter[key][entry])html += 'checked="checked" ';
 		html += 'onclick="elementList.toggleFilter(\'' + key + '\', \'' + entry + '\')"';
-		html += '/>';
+		html += '/></td><td>';
 		html += entry;
-		html += '</li>';
+		html += '</td></tr>';
 	}
-	html += '</ul>';
+	html += '</table>';
 	$("#filterModalBody").html(html);
 };
 
@@ -134,6 +134,7 @@ AMOSList.prototype.colNames = {
 AMOSList.prototype.updateColumnAdd = function(){
 	var list = $(this.tableId + 'ColumnAdd');
 	var listhtml = '';
+	var elements = 0;
 	for(var i = 0; i < this.keyOrder.length; ++i){
 		if(this.keyOrder[i] === 'id')continue;
 		if(!this.showKey[this.keyOrder[i]]){
@@ -142,7 +143,11 @@ AMOSList.prototype.updateColumnAdd = function(){
 			listhtml += '\')">Show ';
 			listhtml += this.keyOrder[i];
 			listhtml += '</a></li>';
+			elements++;
 		}
+	}
+	if(elements === 0){
+		listhtml = '<li><a>No additional columns to add</a></li>';
 	}
 	list.html(listhtml);
 };

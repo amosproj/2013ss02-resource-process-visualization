@@ -44,7 +44,7 @@ int id = Integer.parseInt(request.getParameter("locid"));
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationDevices">
 		<div class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">+</a>
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="addColumn">+</a>
 		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="devicelistColumnAdd">
 		    </ul>
 	    </div>
