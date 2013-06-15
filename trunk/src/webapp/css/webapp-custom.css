@@ -71,6 +71,17 @@ h1, h2, h3, h4, h5, h6 {
 	float: right;
 }
 
+#SVGPlanHolder {
+	height: 100%;
+}
+
+#locationPlan,
+#locationDevices,
+#testingDeviceComponents {
+	height: 88%;
+	overflow-y: scroll;
+}
+
 #addBlocks {
 	clear: both;
 }
