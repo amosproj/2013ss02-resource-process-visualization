@@ -54,6 +54,10 @@
 	<link href="./css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="./css/webapp-custom.css" rel="stylesheet">
 	<link href="./css/webapp-custom-audi.css" rel="stylesheet">
+
+	<!-- SVG Framework Raphael -->
+	<script src="./js/raphael-min_2-1-0.js"></script>
+	<script src="./js/webapp-svgWrapper.js"></script>
 	
 	<!-- HTML5 shiv, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
