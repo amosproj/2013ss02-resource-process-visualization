@@ -80,7 +80,8 @@
 	<script src="./js/webapp-line.js"></script>
 	<script src="./js/webapp-location.js"></script>
 	<script src="./js/webapp-testingDevice.js"></script>
-	<script src="./js/webapp-component.js"></script>	
+	<script src="./js/webapp-component.js"></script>
+	<script src="./js/webapp-list.js"></script>
 </head>
 
 <body>
@@ -110,6 +111,17 @@
 	  <div id="canvas">
 	      <div id="map"></div>
 		  <div id="dataLayer"></div>
+		  <div id="filterModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Filter</h3>
+			</div>
+			<div class="modal-body" id="filterModalBody">
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+		</div>
 	  </div>
 	  
 	  <div id="addBlocks" class="row-fluid">

@@ -43,14 +43,14 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="testingDeviceComponents">
-		<table id="testingDeviceComponentsList" class="table table-striped table-hover">
+		<div class="dropdown">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">+</a>
+		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="componentlistColumnAdd">
+		    </ul>
+	    </div>
+		<table id="componentlist" class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>Status</th>
-					<th>ID</th>
-					<th>Category</th>
-					<th>Trouble Period</th>
-					<th>Responsible Sector</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -87,47 +87,9 @@ $(document).ready(function() {
 		// Create hierarchical navigation first
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
-		for(var i = 0; i < data.components.length; ++i) {
-			var rowClass = "";
-			
-			switch(data.components[i].status) {
-				case "green": rowClass = "success"; break;
-				case "yellow": rowClass = "warning"; break;
-				case "red": default: rowClass = "error"; break;
-			}
-			
-			var sElm = $("<td></td>")
-					.html("<div class=\""+getStatusClass(data.components[i].status)+"\"></div>");
-
-			var iElm = $("<td></td>")
-					.html(data.components[i].id);
-
-			var cElm = $("<td></td>")
-					.html(data.components[i].category);
-
-			var tpElm = $("<td></td>")
-					.html(data.components[i].troublePeriod);
-
-			var secElm = $("<td></td>")
-					.html(data.components[i].sector);
-			
-			var rElm = $("<tr></tr>")
-					.attr("class", rowClass)
-					.append(sElm)
-					.append(iElm)
-					.append(cElm)
-					.append(tpElm)
-					.append(secElm);
-			
-			if(data.components[i].status == "red") {
-				// This component is in trouble; therefore make it clickable
-				rElm.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'component\', '+data.components[i].id+')')
-					.addClass("textUnderline");
-			}
-			
-			$("#testingDeviceComponentsList tbody").append(rElm);
-		}	
-
+		elementList = new AMOSList("#componentlist", data.components, 'component');
+		elementList.sortBy("status", [2, 1, 0]);
+		
 	    $("#dynamicHeading").html("Testing Device: "+data.name);
 	    $("#testingDeviceName").html(data.name);
 	    $("#testingDeviceSerialnumber").html(data.serialnumber);

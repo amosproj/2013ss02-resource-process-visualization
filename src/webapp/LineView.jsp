@@ -42,7 +42,12 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationPlan">
-		<table id="locationList" class="table table-striped table-hover">
+		<div class="dropdown">
+		    <a class="dropdown-toggle" data-toggle="dropdown" href="#">+</a>
+		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="testListColumnAdd">
+		    </ul>
+	    </div>
+		<table id="testList" class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>Status</th>
@@ -70,29 +75,9 @@ $(document).ready(function() {
 		// Create hierarchical navigation first
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
-		for(var i = 0; i < data.locations.length; ++i) {
-			var rowClass = "";
-			
-			switch(data.locations[i].status) {
-				case "green": rowClass = "success"; break;
-				case "yellow": rowClass = "warning"; break;
-				case "red": default: rowClass = "error"; break;
-			}
-			
-			var sElm = $("<td></td>")
-					.html("<div class=\""+getStatusClass(data.locations[i].status)+"\"></div>");
-			
-			var lElm = $("<td></td>")
-					.html(data.locations[i].name);
-			
-			var rElm = $("<tr></tr>")
-					.attr("class", rowClass)					
-	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'location\', '+data.locations[i].id+')')
-					.append(sElm)
-					.append(lElm);
-			
-			$("#locationList tbody").append(rElm);
-		}		
+		elementList = new AMOSList("#testList", data.locations, 'location');
+		elementList.sortBy("name");
+		elementList.sortBy("status", [2, 1, 0]);
 		
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
