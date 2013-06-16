@@ -23,10 +23,25 @@ SVGWrapper = {
 		// Fills the canvas with respect to SVG or VML conversion (IE 8)
 		drawCanvas: function(data) {
 			var SVGView = { };
+			var dataIndex = -1;
+			pdata = $.parseHTML(data);
+			if(!pdata) pdata = $(data);
 			
-			// Extract metadata and paths
+			$.each(pdata, function(k, v) {
+				if($(pdata).find("svg"))
+					dataIndex = k;
+			});
+			
+			if(dataIndex == -1) {
+				$("#svgCanvas").html("Error: The SVG output is not valid.");
+				return;
+			}
+			
+			var jqData = pdata[dataIndex];
+			
+			// Extract metadata and paths			
 			SVGView.metadata = SVGWrapper.extractMetadata(data);
-			SVGView.paths = SVGWrapper.extractPaths(data);
+			SVGView.paths = SVGWrapper.extractPaths(jqData);
 			
 			// Create Raphael object
 			if(SVGView.metadata.viewBox)
@@ -39,45 +54,58 @@ SVGWrapper = {
 			}
 			
 			var paper = Raphael("svgCanvas", SVGView.metadata.width, SVGView.metadata.height);
-			paper.setViewBox(dim[0], dim[1], dim[2], dim[3], true);			
+			paper.setViewBox(dim[0], dim[1], dim[2], dim[3], true);
+			
+			var raphaelElements = new Array();
 			
 			// Draw the path elements with Raphael
 			jQuery.each($(SVGView.paths), function(k, v) {
 				var e = paper.path(v.d);
 				e.attr({'id': v.id});
 				
-				if(v.style) {
-					e.attr({fill: v.fill, 'fill-opacity': v.fillopacity, });
-				}
+				if(v.style)
+					e.attr({fill: v.fill, 'fill-opacity': v.fillopacity});
+				
+				e.click(function () {
+		           alert("click");
+		        });
+				
+				raphaelElements.push(e);
 			});
+			
+			return raphaelElements;
 		},
 		
 		extractMetadata: function(data) {
 			//var jq = $.parseHTML(data);
 			var jq = data;
 			
-			if(!jq[5]) {
+			if(jq) {
 				var metadata = {};
 				// Something went wrong, so we need to do regex..
 				var a = data.match(/width="(.*?)"/im);
-				metadata.width = a[1];
+				if (a instanceof Array)
+					metadata.width = a[1];
 
 				var a = data.match(/height="(.*?)"/im);
-				metadata.height = a[1];
+				if (a instanceof Array)
+					metadata.height = a[1];
 
 				var a = data.match(/id="(.*?)"/im);
-				metadata.id = a[1];
+				if (a instanceof Array)
+					metadata.id = a[1];
 				
 				var a = data.match(/viewBox="(.*?)"/im);
-				metadata.viewBox = a[1];
+				if (a instanceof Array)
+					metadata.viewBox = a[1];
 			}
 			
 			else {			
 				var metadata = {
-					'width': $(jq[5]).attr('width'),
-					'height': $(jq[5]).attr('height'),
-					'id': $(jq[5]).attr('id'),
-					'viewBox': $(jq[5]).attr('viewbox')
+					'width': $(jq).attr('width'),
+					'height': $(jq).attr('height'),
+					'id': $(jq).attr('id'),
+					'viewBox': $(jq).attr('viewbox')
 				};			
 			}
 			
@@ -89,24 +117,34 @@ SVGWrapper = {
 			var jq = data;
 			var paths = [];
 
-			console.log($(data));
-			
-			jQuery.each($(data[5]).find("path"), function(k, v) {
+			jQuery.each($(data).find("path"), function(k, v) {
 				// Extract basic information
 				paths[k] = {
 					'd': $(v).attr('d'),
 					'id': $(v).attr('id')
 				};		
-				/*
+				
 				// Extract styling information (if available)
-				if($(v).attr('style')) {
-					var a = $(v).attr('style').match(/fill:(.?#?)([A-Z0-9]*)/im);
-					var b = $(v).attr('style').match(/fill-opacity:(.?#?)([A-Z0-9]*)/im);
+				var style = $(v).attr('style');
+				if(style) {
+					var a = style.match(/fill:(.?#?)([A-Z0-9]*)/im);
+					var b = style.match(/fill-opacity:(.?#?)([A-Z0-9]*)/im);
 					
-					paths[k].fill = '#'+a[2];
-					paths[k].fillopacity = b[2];
-					paths[k].style = $(v).attr('style');					
-				}*/
+					if (a instanceof Array)
+						paths[k].fill = '#'+a[2];
+					
+					else paths[k].fill = '#cccccc';
+					
+					if (b instanceof Array)
+						paths[k].fillopacity = b[2];
+					
+					else paths[k].fillopacity = '1';
+					
+					if (a instanceof Array)
+						paths[k].style = style;		
+					
+					else paths[k].style = '';
+				}
 			});
 			
 			return paths;

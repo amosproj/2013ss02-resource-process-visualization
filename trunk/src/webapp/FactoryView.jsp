@@ -28,7 +28,6 @@
 // If there is none, exit here.
 // @TODO: Only allow access if post parameter was submitted
 
-
 if(request.getParameter("fid") == null)
 	return;
 
@@ -40,7 +39,11 @@ int id = Integer.parseInt(request.getParameter("fid"));
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
 		<h3 id="dynamicHeading"></h3>
-		<div id="svgCanvas"></div>
+		<div id="svgCanvas">
+		<!--[if gt IE 8]>
+			<%= factory.getMap() %>
+		<![endif]-->
+		</div>
 	</div>
 	
 	<div id="informationBlock" class="span4">
@@ -72,10 +75,17 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 		// Draw the factory plan using Raphael and custom SVG Wrapper
-		var svgData = $.parseHTML($('#DBDataHolder').html());
-		console.log(svgData);
-		SVGWrapper.drawCanvas(svgData);
-		
+		if (BrowserDetect.browser == "Explorer" && BrowserDetect.version <= 9.0) {
+			var svgData = $('#DBDataHolder').html();
+			var raphaelElements = SVGWrapper.drawCanvas(svgData);
+			
+			$.each(raphaelElements, function(k, v) {
+				v.click(function () {
+		            alert("yes");
+		         });
+			});
+		}
+				
 	    // Attach click handler
 	    for(var i = 0; i < data.halls.length; ++i) {
 	    	$("#" + data.halls[i].path)

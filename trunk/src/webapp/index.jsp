@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="eng" dir="ltr">
 <!-- 
@@ -58,6 +58,7 @@
 	<!-- SVG Framework Raphael -->
 	<script src="./js/raphael-min_2-1-0.js"></script>
 	<script src="./js/webapp-svgWrapper.js"></script>
+	<script src="./js/browserdetect.js"></script>
 	
 	<!-- HTML5 shiv, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
