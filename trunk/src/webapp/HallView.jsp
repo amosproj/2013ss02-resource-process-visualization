@@ -71,6 +71,8 @@ $(document).ready(function() {
 	    	$("#" + data.lines[i].path)
 	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')')
 	    		.attr("class", getSvgClass(data.lines[i].status));
+
+    		location.hash = "line-"+data.lines[i].id;
 	    }
 	    
 	    // Refresh

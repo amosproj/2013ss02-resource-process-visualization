@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="eng" dir="ltr">
 <!-- 
@@ -83,6 +83,9 @@
 	<script src="./js/webapp-testingDevice.js"></script>
 	<script src="./js/webapp-component.js"></script>
 	<script src="./js/webapp-list.js"></script>
+
+	<!-- Misc -->
+	<script src="./js/jquery.ba-hashchange.min.js"></script>	
 </head>
 
 <body>
@@ -162,6 +165,20 @@
 
     </div> <!-- /container -->
  
+    <!-- jQuery hashchange>
+    <script type="text/javascript">
+    $(function() {
+    	  // Bind event to window.onhashchange
+    	  $(window).hashchange(function() {
+    	    var hash = location.hash;
+    	  })
+    	  
+    	  // Since the event is only triggered when the hash changes, we need to trigger
+    	  // the event now, to handle the hash the page may have loaded with.
+    	  $(window).hashchange();    	  
+    	});
+    </script>
+    
     <!-- Remaining JavaScript, placed at bottom for faster page load -->
     <script src="./js/bootstrap-transition.js"></script>
     <script src="./js/bootstrap-alert.js"></script>
