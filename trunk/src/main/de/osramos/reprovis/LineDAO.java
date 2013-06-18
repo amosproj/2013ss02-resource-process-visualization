@@ -20,6 +20,7 @@
  */
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,9 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class LineDAO {
+	
+	
+	private static AggreagationStrategie aggreagationStrategie = null;
 
 	public static String getName(int id) throws DatabaseException {
 		try {
@@ -155,5 +159,21 @@ public class LineDAO {
 			e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
+	}
+	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/line.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for lines set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
+
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
 	}
 }

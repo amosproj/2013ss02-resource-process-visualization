@@ -106,5 +106,25 @@ public class MasterData {
 		}
 	}
 	
-	
+	public static Class getHierarchieClassByString(String className){
+		if (className.equals("Factory")) {
+			return FactoryBean.class;
+		}
+		if (className.equals("Hall")) {
+			return HallBean.class;
+		}
+		if (className.equals("Line")) {
+			return LineBean.class;
+		}
+		if (className.equals("Location")) {
+			return LocationBean.class;
+		}
+		if (className.equals("TestingDevice")) {
+			return TestingDeviceBean.class;
+		}
+		if (className.equals("ElectricalComponent")) {
+			return ElectricalComponentBean.class;
+		}
+		return null;
+	}
 }

@@ -49,6 +49,7 @@ public class Database {
 	public static void initDB() throws DatabaseException {
 
 		try {
+			
 			String path = "../../config/init.sql";
 			String sql;
 
@@ -56,7 +57,6 @@ public class Database {
 					.getResourceAsStream(path);
 
 			sql = IOUtils.toString(resource);
-
 
 			DataSource db = Database.getDB();
 

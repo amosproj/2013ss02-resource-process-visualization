@@ -23,6 +23,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
@@ -30,6 +31,9 @@ import de.osramos.reprovis.exception.DatabaseException;
 
 
 public class LocationDAO extends HierarchieElementDAO {
+	
+	
+	private static AggreagationStrategie aggreagationStrategie = null;
 	
 	
 	// get Attributes by id
@@ -69,4 +73,20 @@ public class LocationDAO extends HierarchieElementDAO {
 	}
 
 	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/location.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for locations set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
+
+
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
+	}
 }

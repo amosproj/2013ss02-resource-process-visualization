@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 
 import java.util.Date;
@@ -31,6 +32,8 @@ import de.osramos.reprovis.exception.DatabaseException;
 
 public class FactoryDAO extends HierarchieElementDAO {
 
+	private static AggreagationStrategie aggreagationStrategie = null;
+	
 	// get all Elements
 	public static List<Integer> getFactoryIds(int id) throws Exception {
 		List<Integer> l = getChildIds(id, "factory");
@@ -147,6 +150,22 @@ public class FactoryDAO extends HierarchieElementDAO {
 		int i = (Integer) getAttribute(id, "vehiclesperday");
 
 		return i;
+	}
+	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/factory.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for factories set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
+
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
 	}
 
 }

@@ -22,6 +22,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,11 @@ public class LocationBean extends HierarchieElementBean {
 		try {
 			name = LocationDAO.getName(id);
 			description = LocationDAO.getDescription(id);
-			
+			this.aggreagationStrategie = LocationDAO.getAggreagationStrategie(id);
 		}catch(DatabaseException e){
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

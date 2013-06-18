@@ -40,4 +40,5 @@ public class TestingDeviceDAOTest {
 		assertTrue(testingDeviceIds.get(2) != testingDeviceIds.get(1));
 	}
 
+	
 }

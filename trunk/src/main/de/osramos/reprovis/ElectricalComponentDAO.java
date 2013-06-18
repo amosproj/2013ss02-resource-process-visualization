@@ -23,6 +23,7 @@
 package de.osramos.reprovis;
 
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,6 +34,8 @@ import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class ElectricalComponentDAO extends HierarchieElementDAO {
+	
+	private static AggreagationStrategie aggreagationStrategie = null;
 
 
 	public static TrafficLight getStatus(int id) throws DatabaseException {
@@ -88,5 +91,20 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 		
 		return HierarchieElementDAO.getAttribute(id, attributeName, "component");
 	}
+	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/component.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for electrical components set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
 
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
+	}
 }

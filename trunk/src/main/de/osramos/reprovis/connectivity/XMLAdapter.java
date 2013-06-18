@@ -19,34 +19,19 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis;
+package de.osramos.reprovis.connectivity;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import org.apache.camel.builder.RouteBuilder;
 
-public class ConfigHandler {
+public class XMLAdapter extends RouteBuilder{
 
-	public static void InitApplication(){
+	@Override
+	public void configure() throws Exception {
 		
+		from ("");
 		
-		try {
-			Registry.cleanRegistry();
-			Database.initDB();
-			Registry.initRegistry();
-			
-			FactoryDAO.resetCache();
-			HallDAO.resetCache();
-			LineDAO.resetCache();
-			LocationDAO.resetCache();
-			TestingDeviceDAO.resetCache();
-			ElectricalComponentDAO.resetCache();
-			
-			GlobalBean.resetGlobal();
-		} catch (DatabaseException e) {
-			
-			e.printStackTrace();
-		}
 		
 		
 	}
-	
+
 }

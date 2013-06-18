@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.Date;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
@@ -49,7 +50,11 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			setSector(ElectricalComponentDAO.getSector(id));
 			setShiftResponsibility(ElectricalComponentDAO
 					.getShiftResponsibility(id));
+			this.aggreagationStrategie = ElectricalComponentDAO.getAggreagationStrategie(id);
 		} catch (DatabaseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

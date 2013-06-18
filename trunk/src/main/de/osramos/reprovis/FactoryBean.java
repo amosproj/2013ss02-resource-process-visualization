@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,8 +49,12 @@ public class FactoryBean extends HierarchieElementBean {
 			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
 			upsSystems = FactoryDAO.getUPSSystems(id);
 			upsProvider = FactoryDAO.getUPSProvider(id);
+			this.aggreagationStrategie = FactoryDAO.getAggreagationStrategie(id);
 		} catch (DatabaseException e) {
 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

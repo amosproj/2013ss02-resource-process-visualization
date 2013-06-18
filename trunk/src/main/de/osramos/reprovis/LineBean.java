@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,11 @@ public class LineBean extends HierarchieElementBean {
 			path = LineDAO.getPath(id);
 			LineDAO.getproductionSeries(id);
 			LineDAO.getproductionCapacity(id);
+			this.aggreagationStrategie = LineDAO.getAggreagationStrategie(id);
 		} catch(DatabaseException e){
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

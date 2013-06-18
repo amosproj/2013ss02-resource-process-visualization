@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,18 +33,14 @@ public abstract class HierarchieElementBean {
 	protected List<HierarchieElementBean> childs;
 	protected HierarchieElementBean parent;
 
+	protected List<HierarchieElementBean> cache;
+	protected Class cacheLevel;
+
+	protected AggreagationStrategie aggreagationStrategie;
+
 	public HierarchieElementBean(int id) {
 
-		/* try { */
 		this.id = id;
-		/*
-		 * Context ctx = new InitialContext();
-		 * ctx.bind("de.osramos/reprovis/HierarchieElement" +id, this);
-		 */
-		/*
-		 * } catch (NamingException e1) { throw new
-		 * Exception("could not bind to registry"); }
-		 */
 
 		Registry.getRegistry().reg.put(id, this);
 
@@ -54,20 +51,10 @@ public abstract class HierarchieElementBean {
 
 	public static HierarchieElementBean getElementById(int id) {
 
-		/*
-		 * try { Context ctx = new InitialContext(); return
-		 * (HierarchieElementBean)
-		 * ctx.lookup("de.osramos/reprovis/HierarchieElement/"+id); } catch
-		 * (NamingException e) { return null; }
-		 */
 		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
 	}
 
 	protected void setParent(HierarchieElementBean parent) throws Exception {
-		/*
-		 * if (parent != null) { throw new
-		 * Exception("Element already initialized."); }
-		 */
 
 		this.parent = parent;
 	}
@@ -87,37 +74,44 @@ public abstract class HierarchieElementBean {
 	public TrafficLight getStatus() throws HierarchieException {
 
 		try {
-			return computeMinimalStatus();
-		} catch (Exception e1) {
+			return aggreagationStrategie.aggregate(this);
+		} catch (HierarchieException e) {
 
 		}
+
 		try {
 			return getDistinctStatus();
-		} catch (Exception e) {
+		} catch (HierarchieException e) {
 		}
 		throw new HierarchieException("Element has no status");
+
 	}
 
-	protected TrafficLight computeMinimalStatus() throws HierarchieException {
+	protected List<HierarchieElementBean> getChildsByClass(Class c) {
 
-		TrafficLight status = TrafficLight.green;
-		/*
-		 * double rand = Math.random(); if(rand > 0.5)return TrafficLight.green;
-		 * else if(rand > 0.25)return TrafficLight.yellow; else if(rand >=
-		 * 0)return TrafficLight.red; if (childs == null){ return status;
-		 * //throw new HierarchieException("no child Elements"); }
-		 */
-		for (HierarchieElementBean child : childs) {
-			// aggregate to worst status
-			if (status == TrafficLight.green) {
-				status = child.getStatus();
-			} else if (status == TrafficLight.yellow) {
-				if (child.getStatus() == TrafficLight.red) {
-					status = TrafficLight.red;
-				}
+		if (cacheLevel != null && cacheLevel.equals(c) && cache != null) {
+			return cache;
+		} else {
+			
+
+			List<HierarchieElementBean> l = getChilds();
+			if (l == null || l.isEmpty()) {
+				return null;
 			}
+
+			cacheLevel = c;
+			if (l.get(0).getClass().equals(c)) {
+				cache = l;
+			} else {
+				List<HierarchieElementBean> ls = new ArrayList<HierarchieElementBean>();
+				for (HierarchieElementBean h : l) {
+					ls.addAll(h.getChildsByClass(c));
+				}
+				cache = ls;
+			}
+			
+			return cache;
 		}
-		return status;
 
 	}
 

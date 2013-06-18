@@ -32,7 +32,16 @@
 		<dependency org="postgresql" name="postgresql" rev="9.1-901.jdbc4"
 			conf="provided->default" />
 
-		<dependency org="org.apache.commons" name="commons-io" rev="1.3.2" conf="default"/>
+		<dependency org="org.apache.commons" name="commons-io" rev="1.3.2"
+			conf="default" />
+
+
+		<dependency org="org.apache.camel" name="camel-core" rev="2.11.0"
+			conf="default" />
+		<dependency org="org.apache.camel" name="camel-servletlistener"
+			rev="2.11.0" conf="default" />
+		<dependency org="org.apache.camel" name="camel-servlet"
+			rev="2.11.0" conf="default" />
 
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="4.9" conf="test->default" />
@@ -44,5 +53,7 @@
 			rev="2.0-beta5" conf="default" />
 		<dependency org="org.apache.logging.log4j" name="log4j-core"
 			rev="2.0-beta5" conf="default" />
+		<dependency org="org.apache.tomcat" name="catalina" rev="6.0.16" conf="test->default"/>
+
 	</dependencies>
 </ivy-module>
