@@ -39,8 +39,10 @@ import static org.junit.Assert.*;
 
 import de.osramos.reprovis.AggreagationStrategie;
 import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.ElectricalComponentDAO;
 import de.osramos.reprovis.HierarchieElementDAO;
 import de.osramos.reprovis.PercentageAggregationStrategy;
+import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
 
 import org.postgresql.ds.PGSimpleDataSource;
@@ -191,7 +193,15 @@ public class HierarchieElementDAOTest {
 		assertTrue(a.getAggregationLevel().equals(ElectricalComponentBean.class));
 	}
 	
+	@Test
+	public void test1() throws DatabaseException{
+		System.out.println (TestingDeviceDAO.getIdByNames("Ingolstadt", "C6", "C6 Finish", "BC3", "MFTD2XI1-052"));
+	}
 	
+	@Test
+	public void test2() throws DatabaseException{
+		System.out.println (ElectricalComponentDAO.getIdByName("Tests", 2660));
+	}
 
 }
 

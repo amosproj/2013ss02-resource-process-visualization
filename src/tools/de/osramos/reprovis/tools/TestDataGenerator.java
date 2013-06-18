@@ -53,7 +53,7 @@ public class TestDataGenerator {
 	private static int numOfLines = 3;
 	private static int numOfLocations = 6;
 	private static int numOfDevices = 5;
-	private static int numOfComponents = 5;
+	private static int numOfComponents = 3;
 
 	private static String path = "./src/resources/config/init.sql";
 
@@ -207,6 +207,8 @@ public class TestDataGenerator {
 
 				"CREATE TABLE component (\n" 
 				+ "	id integer PRIMARY KEY,\n"
+				+ "	name character varying(50),\n"
+				+ "	value character varying(50),\n"
 				+ "	sector character varying(50),\n"
 				+ "	category character varying(50),\n"
 				+ "	serialnumber character varying(50),\n"
@@ -622,6 +624,10 @@ public class TestDataGenerator {
 		String[] names = { "Dr. Dr. Sheldon Lee Cooper",
 				"Dr. Leonard Leakey Hofstadter", "Howard Joel Wolowitz",
 				"Dr. Rajesh Ramayan Koothrappali" };
+		
+		String[] name = {"Tests", "Network", "Maintainance"};
+		
+		String[] values = {"Ok", "IP: 10.0.0.1", "no scheduled offtime"};
 
 		for (int i = 0; i < numOfComponents; i++) {
 			int id = id();
@@ -633,6 +639,16 @@ public class TestDataGenerator {
 			st.append("INSERT INTO component VALUES (");
 			// id
 			st.append(id);
+			
+			//name
+			st.append(", \'");
+			st.append(name[i]);
+			st.append("\'");
+			
+			//value
+			st.append(", \'");
+			st.append(values[i]);
+			st.append("\'");
 
 			// sector
 			st.append(", \'");

@@ -43,6 +43,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
 
+import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 
 public abstract class HierarchieElementDAO {
@@ -127,6 +128,12 @@ public abstract class HierarchieElementDAO {
 	protected static void updateString(int id, String attributeName, String attributeValue, String tableName) throws DatabaseException{
 		
 		updateAttribute(id, attributeName, "\'"+attributeValue+"\'", tableName);
+		
+	}
+	
+	protected static void updateStatus(int id, String attributeName, TrafficLight attributeValue, String tableName) throws DatabaseException{
+		
+		updateAttribute(id, attributeName, "\'"+attributeValue.toString()+"\'", tableName);
 		
 	}
 
