@@ -22,14 +22,26 @@
 
 package de.osramos.reprovis;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import org.apache.commons.io.IOUtils;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
@@ -91,5 +103,107 @@ public abstract class HierarchieElementDAO {
 			throw new DatabaseException("DB access Failed");
 		}
 	}
+	
+	private static void updateAttribute(int id, String attributeName, String attributeValue, String tableName) throws DatabaseException{
+		try {
+
+			DataSource db = Database.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			int result = statement.executeUpdate("UPDATE " + tableName+ " SET "   + attributeName+ "= " + attributeValue + " WHERE id = "
+					+ id);
+			
+			statement.close();
+			connection.close();
+			
+			
+		} catch (SQLException e) {
+			throw new DatabaseException("Error while updating data");
+		}
+		
+	}
+	
+	protected static void updateString(int id, String attributeName, String attributeValue, String tableName) throws DatabaseException{
+		
+		updateAttribute(id, attributeName, "\'"+attributeValue+"\'", tableName);
+		
+	}
+
+
+	protected static void updateNumber(int id, String attributeName,
+			Number attributeValue, String tableName) throws DatabaseException {
+		
+		updateAttribute(id, attributeName, attributeValue.toString(), tableName);
+		
+	}
+
+
+	public static void updateBool(int id, String attributeName,
+			boolean attributeValue, String tableName) throws DatabaseException {
+		
+		String boolString = "false";
+		if (attributeValue == true){
+			boolString = "true";
+		}
+		
+		updateAttribute(id, attributeName, boolString , tableName);
+		
+	}
+
+
+	public static void updateDate(int id, String attributeName,
+			Date attributeValue, String tableName) throws DatabaseException {
+		updateAttribute(id, attributeName, "\'" +new Timestamp(attributeValue.getTime()).toString() +"\'" , tableName);
+		
+	}
+	
+
+	
+	public static AggreagationStrategie getAggregationStrategie(String propfile) throws IOException{
+		
+
+		Properties properties = new Properties();
+		
+		File file = new File( HierarchieElementDAO.class.getClassLoader().getResource(propfile).getPath());
+		
+		if (file == null ||  !file.exists()){
+			throw new IOException("File not Found");
+		}
+		try {
+
+			InputStream i = new FileInputStream(file);
+			
+		/*	InputStream stream = HierarchieElementDAO.class.getClassLoader().getSystemResourceAsStream(propfile);
+			System.out.println(IOUtils.toString(stream));*/
+			
+			properties.load(i);
+			i.close();
+			String strategy = properties.getProperty("strategie");
+			if (strategy == null){
+				throw new IOException("no property found");
+			}
+			
+			if (strategy.equals("percentage")){
+				float redPercentageForRed = Float.parseFloat(properties.getProperty("redPercentageForRed"));
+				float yellowPercentageForRed = Float.parseFloat(properties.getProperty("yellowPercentageForRed"));
+				float redPercentageForYellow = Float.parseFloat(properties.getProperty("redPercentageForYellow"));
+				float yellowPercentageForYellow = Float.parseFloat(properties.getProperty("yellowPercentageForYellow"));
+				Class aggregationLevel = MasterData.getHierarchieClassByString(properties.getProperty("aggregationLevel"));
+				
+				return new PercentageAggregationStrategy(redPercentageForRed, yellowPercentageForRed, redPercentageForYellow, yellowPercentageForYellow, aggregationLevel);
+			}
+			if (strategy.equals("minimum")){
+				return new MinimumAggregationStrategy();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+			return new MinimumAggregationStrategy();
+			//throw new IOException("Error while parsing propfile", e);
+		}
+		return new MinimumAggregationStrategy();
+		
+	}
+	
 
 }

@@ -22,6 +22,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,8 @@ import de.osramos.reprovis.exception.DatabaseException;
 public class TestingDeviceDAO extends HierarchieElementDAO {
 
 
+	private static AggreagationStrategie aggreagationStrategie = null;
+	
 
 	// get all Elements
 	public static List<Integer> getTestingDeviceIds(int id) throws Exception {
@@ -118,7 +121,23 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		
 		return HierarchieElementDAO.getAttribute(id, attributeName, "device");
 	}
-	
 
+	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/device.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for testing devices set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
+
+
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
+	}
 
 }

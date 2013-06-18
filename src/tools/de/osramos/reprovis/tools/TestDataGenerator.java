@@ -52,8 +52,8 @@ public class TestDataGenerator {
 	private static int numOfHalls = 2;
 	private static int numOfLines = 3;
 	private static int numOfLocations = 6;
-	private static int numOfDevices = 20;
-	private static int numOfComponents = 1;
+	private static int numOfDevices = 5;
+	private static int numOfComponents = 5;
 
 	private static String path = "./src/resources/config/init.sql";
 

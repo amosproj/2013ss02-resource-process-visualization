@@ -21,32 +21,39 @@
 
 package de.osramos.reprovis;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
-public class ConfigHandler {
-
-	public static void InitApplication(){
-		
-		
-		try {
-			Registry.cleanRegistry();
-			Database.initDB();
-			Registry.initRegistry();
-			
-			FactoryDAO.resetCache();
-			HallDAO.resetCache();
-			LineDAO.resetCache();
-			LocationDAO.resetCache();
-			TestingDeviceDAO.resetCache();
-			ElectricalComponentDAO.resetCache();
-			
-			GlobalBean.resetGlobal();
-		} catch (DatabaseException e) {
-			
-			e.printStackTrace();
-		}
-		
+public class MinimumAggregationStrategy implements AggreagationStrategie{
+	
+	
+	public MinimumAggregationStrategy(){
 		
 	}
+
+	@Override
+	public TrafficLight aggregate(HierarchieElementBean element) throws HierarchieException {
+		TrafficLight status = TrafficLight.green;
+		
+		if(element.getChilds() == null || element.getChilds().isEmpty()){
+			throw new HierarchieException("Element has no Childs");
+		}
+
+		for (HierarchieElementBean child : element.getChilds()) {
+			// aggregate to worst status
+			if (status == TrafficLight.green) {
+				status = child.getStatus();
+			} else if (status == TrafficLight.yellow) {
+				if (child.getStatus() == TrafficLight.red) {
+					status = TrafficLight.red;
+				}
+			}
+		}
+		return status;
+	}
 	
+	public String toString(){
+		return "MinimumAggregationStrategy";
+	}
+
+
 }

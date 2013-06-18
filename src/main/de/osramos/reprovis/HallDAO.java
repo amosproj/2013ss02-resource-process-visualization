@@ -20,27 +20,22 @@
  */
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
 
 public class HallDAO extends HierarchieElementDAO {
+	
+	
+	private static AggreagationStrategie aggreagationStrategie = null;
+	
 
 	public static String getName(int id) throws DatabaseException {
 		return (String) getAttribute(id, "name");
 	}
 	
-/*	public static TrafficLight getStatus (int id){
-		int r = ((int)(Math.random()*100))%10;
-		if (r < 6){
-			return TrafficLight.green;
-		} else if (r < 8){
-			return TrafficLight.yellow;
-		} else {
-			return TrafficLight.red;
-		}
-	}
-	*/
+
 	public static int getUpsServers(int id) throws DatabaseException{
 		return (Integer) getAttribute(id, "upsServers");
 	}
@@ -48,25 +43,6 @@ public class HallDAO extends HierarchieElementDAO {
 	public static String getType(int id) throws DatabaseException{
 		return (String) getAttribute(id, "type");
 	}
-
-/*	public static FactoryBean getFactory(int id) throws DatabaseException {
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT parent FROM hall WHERE id = " + id);
-			res.next();
-			FactoryBean factory = new FactoryBean(res.getInt(1));
-			stmt.close();
-			conn.close();
-			return factory;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
-
-	}*/
 
 	public static int getSizeOfStaff(int id) throws DatabaseException {
 		int i = (Integer) getAttribute(id, "staff");
@@ -85,28 +61,6 @@ public class HallDAO extends HierarchieElementDAO {
 
 		return i;
 	}
-
-	//private static int count = 0;
-/*	
-	public static List<Integer> getHallIds(int factoryId) throws DatabaseException {
-		List<Integer> l = new ArrayList<Integer>();
-		try {
-			DataSource db = Database.getDB();
-			Connection conn = db.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT id FROM hall WHERE parent = " + factoryId);
-			while(res.next()){
-				l.add(res.getInt(1));
-			}
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DatabaseException("DB access Failed");
-		}
-		return l;
-	}*/
 	
 	public static String getMap(int id) throws DatabaseException{
 		return (String) getAttribute(id, "map");
@@ -126,6 +80,22 @@ public class HallDAO extends HierarchieElementDAO {
 		String s = (String) getAttribute(id, "Vehicles");
 
 		return s;
+	}
+	
+	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+		String propfile = "/../../config/hall.properties";
+		
+		if (aggreagationStrategie == null){
+			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
+			System.out.println("AggreagtionStragety for halls set to " + aggreagationStrategie.toString());
+		}
+		
+		return aggreagationStrategie;
+	}
+
+	public static void resetCache() {
+		aggreagationStrategie = null;
+		
 	}
 	
 }

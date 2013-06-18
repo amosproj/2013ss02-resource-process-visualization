@@ -21,32 +21,10 @@
 
 package de.osramos.reprovis;
 
-import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
-public class ConfigHandler {
+public interface AggreagationStrategie {
 
-	public static void InitApplication(){
-		
-		
-		try {
-			Registry.cleanRegistry();
-			Database.initDB();
-			Registry.initRegistry();
-			
-			FactoryDAO.resetCache();
-			HallDAO.resetCache();
-			LineDAO.resetCache();
-			LocationDAO.resetCache();
-			TestingDeviceDAO.resetCache();
-			ElectricalComponentDAO.resetCache();
-			
-			GlobalBean.resetGlobal();
-		} catch (DatabaseException e) {
-			
-			e.printStackTrace();
-		}
-		
-		
-	}
+	public TrafficLight aggregate(HierarchieElementBean element) throws HierarchieException;
 	
 }

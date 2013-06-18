@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +43,12 @@ public class HallBean extends HierarchieElementBean {
 		try {
 			sizeOfStaff = HallDAO.getSizeOfStaff(id);
 			productionCapacity = HallDAO.getProductionCapacity(id);
+			this.aggreagationStrategie = HallDAO.getAggreagationStrategie(id);
 		} catch (DatabaseException e) {
 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -21,6 +21,7 @@
 
 package de.osramos.reprovis;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +31,14 @@ import de.osramos.reprovis.exception.DatabaseException;
 public class TestingDeviceBean extends HierarchieElementBean {
 
 	public TestingDeviceBean(int id) {
+		
 		super(id);
+		try {
+			this.aggreagationStrategie = TestingDeviceDAO.getAggreagationStrategie(id);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
