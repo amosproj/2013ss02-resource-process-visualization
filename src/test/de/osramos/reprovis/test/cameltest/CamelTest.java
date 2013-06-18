@@ -98,11 +98,53 @@ public class CamelTest extends CamelTestSupport  {
 					.process(new ComponentUpdater())
 					.to("mock:out");
 				
+				
+				from("direct:testin")
+					.to("http://localhost:8080/audi/test")
+					.to("mock:2");
 			}
-
 		};
 		
 		
+	}
+	
+	
+	@Test
+	public void Test2() throws InterruptedException  {
+
+	
+		
+		MockEndpoint ende = getMockEndpoint("mock:2");
+		ende.expectedMessageCount(1);
+		
+
+		NotifyBuilder notify = new NotifyBuilder(this.context()).whenDone(
+				1).create();
+
+		
+		String message=
+			"<tasks>"+	
+			"<device factory=\"Ingolstadt\" hall=\"C6\" line=\"C6 Finish\" location=\"BC3\" name=\"MFTD2XI1-052\" >"+
+            "<component name=\"Network\">" +
+            "    <status>yellow</status>"+
+			"	<value>aaal</value>"+
+            "</component>"+
+            "<component name=\"Tests\">"+
+            "    <status>yellow</status>"+
+			"	<value>aaal</value>"+
+            "</component>"+
+            "<component name=\"Maintainance\">"+
+            "    <status>yellow</status>"+
+			"	<value>aaal</value>"+
+            "</component>"+
+            "</device>"+
+            "</tasks>";
+		
+		template.sendBody("direct:in" ,message);
+
+	
+		assertTrue(notify.matches(10, TimeUnit.SECONDS));
+		ende.assertIsSatisfied();
 	}
 	
 	@Test

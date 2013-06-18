@@ -75,6 +75,9 @@
 			
 			<dependency org="org.apache.camel" name="camel-test" rev="2.11.0"
 			conf="test->default" />
+			
+			<dependency org="org.apache.camel" name="camel-http" rev="2.11.0"
+			conf="test->default" />
 
 	</dependencies>
 </ivy-module>

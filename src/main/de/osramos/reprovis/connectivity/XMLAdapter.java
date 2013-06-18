@@ -31,7 +31,15 @@ public class XMLAdapter extends RouteBuilder{
 	@Override
 	public void configure() throws Exception {
 		
-		from ("servlet:///test")
+		from ("servlet:///input")
+/*		.process(new Processor() {
+			
+			@Override
+			public void process(Exchange exchange) throws Exception {
+				exchange.getIn().setBody(exchange.getIn().getHeader("request"));
+				
+			}
+		})*/
 		.to("seda:xmlIn");
 		
 		from("file:d://temp/camel")
@@ -58,10 +66,6 @@ public class XMLAdapter extends RouteBuilder{
 		
 		from("direct:components")
 			.process(new ComponentUpdater());
-		
-/*		from("seda:xmlOut")
-		.setHeader("CamelFileName", simple("${date:now:yyyyMMdd_hhmmss}.xml"))
-		.to("file:d://temp/camelout/");*/
 		
 		
 
