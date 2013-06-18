@@ -91,6 +91,8 @@ $(document).ready(function() {
 	    	$("#" + data.halls[i].path)
 	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
 	    		.attr("class", getSvgClass(data.halls[i].status));
+	    	
+	    		location.hash = "hall-"+data.halls[i].id;
 	    }
 	    
 	    // Refresh

@@ -46,7 +46,7 @@ $(document).ready(function() {
 		var result = '<div><p style="text-align: center;">'+factory.companyImg+'&nbsp;'+factory.flagImg+
 		             '</p><hr /><h4>'+factory.fName+'</h4>Status: '+factory.statusImg+'<hr />'+
 					 '<p style="text-align: center;"><p>'+factory.city+', '+factory.country+'<br />'+factory.sizeOfStaff+' Mitarbeiter</p>'+
-					 '<a href="#" onClick="GlobalHierarchyHandler.hierarchyZoom(\'factory\', this.id);" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="factoryBtn">View details</a>'
+					 '<a href="#factory-'+factory.fid+'" onClick="GlobalHierarchyHandler.hierarchyZoom(\'factory\', this.id);" id="fid-'+factory.fid+'" fid="'+factory.fid+'"role="button" class="factoryBtn">View details</a>'
 					 '</p></div>';	
 					 
 		return result;
