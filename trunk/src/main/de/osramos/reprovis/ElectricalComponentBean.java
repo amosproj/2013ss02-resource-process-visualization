@@ -66,6 +66,26 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 	
 	
+	public String getName(){
+		try {
+			return ElectricalComponentDAO.getName(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String getValue(){
+		try {
+			return ElectricalComponentDAO.getValue(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 
 	public String getShiftResponsibility() {
 		try {

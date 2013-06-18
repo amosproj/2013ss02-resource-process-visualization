@@ -21,16 +21,50 @@
 
 package de.osramos.reprovis.connectivity;
 
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 public class XMLAdapter extends RouteBuilder{
+	
 
 	@Override
 	public void configure() throws Exception {
 		
-		from ("");
+		from ("servlet:///test")
+		.to("seda:xmlIn");
+		
+		from("file:d://temp/camel")
+		.to("seda:xmlIn");
 		
 		
+		from("seda:xmlIn")
+		.split().tokenizeXML("device")
+		.choice()
+			.when().xpath("/device/component")
+				.to("direct:devices")
+			.otherwise()
+				.to("seda:fail");
+		
+		
+		from("direct:devices")
+			.process(new DeviceHandler())
+			.split().tokenizeXML("component")
+				.choice()
+					.when(header("id").isGreaterThan(0))
+						.to("direct:components")
+					.otherwise()
+						.to("seda:fail");
+		
+		from("direct:components")
+			.process(new ComponentUpdater());
+		
+/*		from("seda:xmlOut")
+		.setHeader("CamelFileName", simple("${date:now:yyyyMMdd_hhmmss}.xml"))
+		.to("file:d://temp/camelout/");*/
+		
+		
+
 		
 	}
 
