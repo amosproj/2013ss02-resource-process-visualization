@@ -133,7 +133,7 @@ public abstract class HierarchieElementDAO {
 	
 	protected static void updateStatus(int id, String attributeName, TrafficLight attributeValue, String tableName) throws DatabaseException{
 		
-		updateAttribute(id, attributeName, "\'"+attributeValue.toString()+"\'", tableName);
+		updateAttribute(id, attributeName, "\'"+attributeValue.name()+"\'", tableName);
 		
 	}
 
