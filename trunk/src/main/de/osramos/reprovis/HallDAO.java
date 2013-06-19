@@ -83,7 +83,7 @@ public class HallDAO extends HierarchieElementDAO {
 	}
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "/../../config/hall.properties";
+		String propfile = "../../config/hall.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

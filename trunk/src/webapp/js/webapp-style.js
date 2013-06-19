@@ -26,6 +26,8 @@ function getStatusClass(status){
 		c += "statusIconWarning";
 	}else if(status === "red"){
 		c += "statusIconCritical";
+	}else if(status === "grey"){
+		c += "statusIconUnknown";
 	}
 	return c;
 }
@@ -43,5 +45,7 @@ function getSvgClass(status){
 		return "statusHallWarning";
 	}else if(status === "red"){
 		return "statusHallCritical";
+	}else if(status === "grey"){
+		return "statusHallUnknown";
 	}
 }

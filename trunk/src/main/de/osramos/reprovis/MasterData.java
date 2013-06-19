@@ -68,7 +68,7 @@ public class MasterData {
 	}
 
 	public enum TrafficLight {
-		red, yellow, green
+		red, yellow, green, grey
 	}
 	
 	public static TrafficLight stringToTrafficLight(String string) {
@@ -81,6 +81,9 @@ public class MasterData {
 		if (string.equals(TrafficLight.green.name())) {
 			return TrafficLight.green;
 		}
+		if (string.equals(TrafficLight.grey.name())) {
+			return TrafficLight.grey;
+		}
 		return null;
 	}
 
@@ -90,8 +93,10 @@ public class MasterData {
 			return "statusIconCritical";
 		case yellow:
 			return "statusIconWarning";
-		default:
+		case green:
 			return "statusIconOk";
+		default:
+			return "statusIconUnknown";
 		}
 	}
 
@@ -101,8 +106,10 @@ public class MasterData {
 			return "statusHallCritical";
 		case yellow:
 			return "statusHallWarning";
-		default:
+		case green:
 			return "statusHallOk";
+		default:
+			return "statusHallUnknown";
 		}
 	}
 	

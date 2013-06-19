@@ -88,7 +88,7 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 		elementList = new AMOSList("#componentlist", data.components, 'component');
-		elementList.sortBy("status", [2, 1, 0]);
+		elementList.sortBy("status", [2, 1, 0, -1]);
 		
 	    $("#dynamicHeading").html("Testing Device: "+data.name);
 	    $("#testingDeviceName").html(data.name);
