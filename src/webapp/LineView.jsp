@@ -77,7 +77,7 @@ $(document).ready(function() {
 		
 		elementList = new AMOSList("#testList", data.locations, 'location');
 		elementList.sortBy("name");
-		elementList.sortBy("status", [2, 1, 0]);
+		elementList.sortBy("status", [2, 1, 0, -1]);
 		
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)

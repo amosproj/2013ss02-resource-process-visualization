@@ -170,7 +170,7 @@ AMOSList.prototype.updateHead = function(){
 				elem += '<li class="divider" role="presentation"></li>';
 				elem += '<li><a onclick="javascript:elementList.hide(\'' + order[i] + '\')">Hide Column</a></li>';
 			} else {
-				elem += '<li><a onclick="javascript:elementList.sortBy(\'' + order[i] + '\', [2, 1, 0])">Sort</a></li>';
+				elem += '<li><a onclick="javascript:elementList.sortBy(\'' + order[i] + '\', [2, 1, 0, -1])">Sort</a></li>';
 			}
 			elem += '<li class="divider" role="presentation"></li>';
 			elem += '<li><a href="#filterModal" data-toggle="modal" onclick="elementList.showFilterModal(\'' + order[i] + '\')">Filter</a></li>';
@@ -215,9 +215,12 @@ AMOSList.prototype.getRowClass = function(status){
 			return rowClass = "success";
 		case "yellow": 
 			return rowClass = "warning";
-		case "red": 
-		default: 
+		case "red":
 			return rowClass = "error";
+		case "grey":
+		default: 
+			return rowClass = "info";
+			
 	}
 };
 
@@ -238,8 +241,9 @@ AMOSList.prototype.sortBy = function(key, order){
 				switch(status){
 				case 'red': return 0;
 				case 'yellow': return 1;
-				case 'green':
-				default: return 2;
+				case 'green': return 2;
+				case 'grey':
+				default: return 3;
 				}
 			};
 			return order[assign(a.status)] < order[assign(b.status)]; 

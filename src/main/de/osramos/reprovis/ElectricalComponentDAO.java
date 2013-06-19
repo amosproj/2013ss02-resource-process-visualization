@@ -119,7 +119,7 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 	}
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "/../../config/component.properties";
+		String propfile = "../../config/component.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

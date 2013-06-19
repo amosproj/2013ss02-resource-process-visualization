@@ -131,6 +131,10 @@ h1, h2, h3, h4, h5, h6 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
+.statusIconUnknown {
+	background: #BBBBBB;
+}
+
 .statusHallOk {
 	fill: darkgreen;
 }
@@ -141,6 +145,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .statusHallCritical {
 	fill: darkred;
+}
+
+.statusHallUnknown {
+	fill: #BBBBBB;
 }
 
 .clear {

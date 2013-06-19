@@ -76,7 +76,7 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 	
 		elementList = new AMOSList("#devicelist", data.testDevices, 'testingDevice');
-		elementList.sortBy("status", [2, 1, 0]);
+		elementList.sortBy("status", [2, 1, 0, -1]);
 
 	    $("#dynamicHeading").html("Location: "+data.name);
 	    $("#locationName").html(data.name);

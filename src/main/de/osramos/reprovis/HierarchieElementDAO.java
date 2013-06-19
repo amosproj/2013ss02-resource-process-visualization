@@ -22,12 +22,8 @@
 
 package de.osramos.reprovis;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +34,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
@@ -172,20 +167,20 @@ public abstract class HierarchieElementDAO {
 
 		Properties properties = new Properties();
 		
-		File file = new File( HierarchieElementDAO.class.getClassLoader().getResource(propfile).getPath());
+		/*File file = new File( HierarchieElementDAO.class.getClassLoader().getResource(propfile).getPath());
 		
 		if (file == null ||  !file.exists()){
 			throw new IOException("File not Found");
-		}
+		}*/
 		try {
 
-			InputStream i = new FileInputStream(file);
+			//InputStream i = new FileInputStream(file);
 			
-		/*	InputStream stream = HierarchieElementDAO.class.getClassLoader().getSystemResourceAsStream(propfile);
-			System.out.println(IOUtils.toString(stream));*/
+			InputStream stream = HierarchieElementDAO.class.getClassLoader().getResourceAsStream(propfile);
+			System.out.println(IOUtils.toString(stream));
 			
-			properties.load(i);
-			i.close();
+			properties.load(stream);
+			//i.close();
 			String strategy = properties.getProperty("strategie");
 			if (strategy == null){
 				throw new IOException("no property found");
@@ -196,7 +191,7 @@ public abstract class HierarchieElementDAO {
 				float yellowPercentageForRed = Float.parseFloat(properties.getProperty("yellowPercentageForRed"));
 				float redPercentageForYellow = Float.parseFloat(properties.getProperty("redPercentageForYellow"));
 				float yellowPercentageForYellow = Float.parseFloat(properties.getProperty("yellowPercentageForYellow"));
-				Class aggregationLevel = MasterData.getHierarchieClassByString(properties.getProperty("aggregationLevel"));
+				Class<?> aggregationLevel = MasterData.getHierarchieClassByString(properties.getProperty("aggregationLevel"));
 				
 				return new PercentageAggregationStrategy(redPercentageForRed, yellowPercentageForRed, redPercentageForYellow, yellowPercentageForYellow, aggregationLevel);
 			}
