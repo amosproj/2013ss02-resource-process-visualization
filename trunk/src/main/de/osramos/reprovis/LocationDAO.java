@@ -74,7 +74,7 @@ public class LocationDAO extends HierarchieElementDAO {
 
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "../../config/location.properties";
+		String propfile = "/../../config/location.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

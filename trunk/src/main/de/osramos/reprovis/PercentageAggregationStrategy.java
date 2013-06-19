@@ -33,11 +33,10 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 	private float redPercentageForYellow = 20;
 	private float yellowPercentageForYellow = 40;
 
-
 	public PercentageAggregationStrategy(float redPercentageForRed,
 			float yellowPercentageForRed, float redPercentageForYellow,
 			float yellowPercentageForYellow, Class aggregationLevel) {
-		
+
 		this.setRedPercentageForRed(redPercentageForRed);
 		this.setYellowPercentageForRed(yellowPercentageForRed);
 		this.setRedPercentageForYellow(redPercentageForYellow);
@@ -46,8 +45,9 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 	}
 
 	@Override
-	public TrafficLight aggregate(HierarchieElementBean element) throws HierarchieException {
-		
+	public TrafficLight aggregate(HierarchieElementBean element)
+			throws HierarchieException {
+
 		if (this.getClass().equals(getAggregationLevel())) {
 			throw new HierarchieException("aggregation level reached");
 		}
@@ -56,7 +56,24 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 				.getChildsByClass(getAggregationLevel());
 
 		if (l == null) {
-			throw new HierarchieException("Element has no childs with class " + getAggregationLevel());
+			throw new HierarchieException("Element has no childs with class "
+					+ getAggregationLevel());
+		}
+
+		try {
+			if (element instanceof TestingDeviceBean) {
+				for (HierarchieElementBean h : element.getChilds()) {
+					if (h.getStatus().equals(TrafficLight.grey)) {
+						ElectricalComponentBean e = (ElectricalComponentBean) h;
+						if (e.getName().equals("Tests")
+								|| e.getName().equals("Network")) {
+							return TrafficLight.grey;
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+
 		}
 
 		int red = 0;
@@ -93,7 +110,7 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 			return TrafficLight.green;
 		}
 
-		return null;
+		return TrafficLight.grey;
 	}
 
 	public float getRedPercentageForRed() {
@@ -135,10 +152,12 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 	public void setAggregationLevel(Class aggregationLevel) {
 		this.aggregationLevel = aggregationLevel;
 	}
-	
-	public String toString(){
-		return "PercentageAggregationStrategie(" + aggregationLevel + ", " + redPercentageForRed + ", " + yellowPercentageForRed + ", "
-				+ redPercentageForYellow + ", " + yellowPercentageForYellow + ")";
+
+	public String toString() {
+		return "PercentageAggregationStrategie(" + aggregationLevel + ", "
+				+ redPercentageForRed + ", " + yellowPercentageForRed + ", "
+				+ redPercentageForYellow + ", " + yellowPercentageForYellow
+				+ ")";
 	}
 
 }

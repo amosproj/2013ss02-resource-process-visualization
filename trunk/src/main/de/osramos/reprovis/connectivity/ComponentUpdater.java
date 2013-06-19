@@ -22,6 +22,8 @@
 package de.osramos.reprovis.connectivity;
 
 import java.io.StringReader;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -35,31 +37,42 @@ import org.xml.sax.InputSource;
 import de.osramos.reprovis.ElectricalComponentDAO;
 import de.osramos.reprovis.MasterData;
 
-
-public class ComponentUpdater implements Processor{
+public class ComponentUpdater implements Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		
-		String body = (String) exchange.getIn().getBody();
 
-		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		InputSource is = new InputSource(new StringReader(body));
-		Document doc = builder.parse(is);
-		
-		Element device = (Element) doc.getElementsByTagName("component").item(0);
-		
-		String name = device.getAttribute("name");
-		String status = device.getElementsByTagName("status").item(0).getTextContent();
-		String value = device.getElementsByTagName("value").item(0).getTextContent();
+		try {
 
-		int deviceId = (Integer)exchange.getIn().getHeader("id");
-		
-		int id = ElectricalComponentDAO.getIdByName(name, deviceId);
-		
-		ElectricalComponentDAO.updateStatus(id, MasterData.stringToTrafficLight(status));
-		ElectricalComponentDAO.updateValue(id, value);
-		
+			String body = (String) exchange.getIn().getBody();
+
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance()
+					.newDocumentBuilder();
+			InputSource is = new InputSource(new StringReader(body));
+			Document doc = builder.parse(is);
+
+			Element device = (Element) doc.getElementsByTagName("component")
+					.item(0);
+
+			String name = device.getAttribute("name");
+			String status = device.getElementsByTagName("status").item(0)
+					.getTextContent();
+			String value = device.getElementsByTagName("value").item(0)
+					.getTextContent();
+
+			int deviceId = (Integer) exchange.getIn().getHeader("id");
+
+			int id = ElectricalComponentDAO.getIdByName(name, deviceId);
+
+			ElectricalComponentDAO.updateStatus(id,
+					MasterData.stringToTrafficLight(status));
+			ElectricalComponentDAO.updateValue(id, value);
+			ElectricalComponentDAO.updateLastChangeDate(id, new Date(
+					new GregorianCalendar().getTime().getTime()));
+		} catch (Exception e) {
+
+		}
+
 	}
 
 }

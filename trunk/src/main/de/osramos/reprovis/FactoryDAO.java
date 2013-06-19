@@ -153,7 +153,7 @@ public class FactoryDAO extends HierarchieElementDAO {
 	}
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "../../config/factory.properties";
+		String propfile = "/../../config/factory.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
