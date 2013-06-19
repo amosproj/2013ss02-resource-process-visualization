@@ -32,17 +32,6 @@ public class XMLAdapter extends RouteBuilder{
 	public void configure() throws Exception {
 		
 		from ("servlet:///input")
-/*		.process(new Processor() {
-			
-			@Override
-			public void process(Exchange exchange) throws Exception {
-				exchange.getIn().setBody(exchange.getIn().getHeader("request"));
-				
-			}
-		})*/
-		.to("seda:xmlIn");
-		
-		from("file:d://temp/camel")
 		.to("seda:xmlIn");
 		
 		

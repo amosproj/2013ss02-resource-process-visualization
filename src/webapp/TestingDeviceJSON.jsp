@@ -68,7 +68,7 @@ int factoryID = factoryParent.getId();
 		<% if(!first){out.print(","); }else first = false; %>
 			{
 				"id": <%= component.getId() %>,
-				"name": "Testing Device <%= component.getId() %>",
+				"name": "<%= component.getName() %>",
 				"status": "<%= component.getStatus() %>",
 				"category": "<%= component.getCategory() %>",
 				"troublePeriod": "<%= component.getTroubeOccurrenceTime() %>",

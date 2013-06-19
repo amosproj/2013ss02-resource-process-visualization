@@ -184,7 +184,7 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "../../config/device.properties";
+		String propfile = "/../../config/device.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

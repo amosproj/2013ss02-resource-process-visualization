@@ -100,6 +100,10 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 		HierarchieElementDAO.updateString(id, "value", Value, "component");
 	}
 	
+	public static void updateLastChangeDate(int id, Date Value) throws DatabaseException{
+		HierarchieElementDAO.updateDate(id, "troubleoccurrencetime", Value, "component");
+	}
+	
 	public static String getValue(int id) throws DatabaseException {
 		String s = (String) getAttribute(id, "value");
 
@@ -119,7 +123,7 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 	}
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "../../config/component.properties";
+		String propfile = "/../../config/component.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

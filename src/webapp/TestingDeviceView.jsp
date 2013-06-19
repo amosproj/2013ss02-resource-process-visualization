@@ -70,13 +70,13 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 		<tr><td>Description</td><td id="testingDeviceDescription"></td></tr>
 		<tr><td>Type</td><td id="testingDeviceCategory"></td></tr>
 		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
-		<tr><td>IP Address</td><td id="testingDeviceIpAddress"></td></tr>
-		<tr><td>Network Status</td><td id="testingDeviceNetworkStatus"></td></tr>
-		<tr><td>Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
+<!-- 		<tr><td>IP Address</td><td id="testingDeviceIpAddress"></td></tr>
+		<tr><td>Network Status</td><td id="testingDeviceNetworkStatus"></td></tr> -->
+<!-- 		<tr><td>Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
 		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
 		<tr><td>Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
-		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr>
-		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr>
+		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr> -->
+<!-- 		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />

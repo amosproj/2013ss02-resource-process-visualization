@@ -162,7 +162,7 @@ public class LineDAO {
 	}
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "../../config/line.properties";
+		String propfile = "/../../config/line.properties";
 		
 		if (aggreagationStrategie == null){
 			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);

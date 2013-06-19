@@ -22,6 +22,8 @@
 
 package de.osramos.reprovis;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -165,22 +167,21 @@ public abstract class HierarchieElementDAO {
 	public static AggreagationStrategie getAggregationStrategie(String propfile) throws IOException{
 		
 
-		Properties properties = new Properties();
 		
-		/*File file = new File( HierarchieElementDAO.class.getClassLoader().getResource(propfile).getPath());
-		
-		if (file == null ||  !file.exists()){
-			throw new IOException("File not Found");
-		}*/
 		try {
+			
+			Properties properties = new Properties();
+			
+			File file = new File( HierarchieElementDAO.class.getClassLoader().getResource(propfile).getPath());
+			
+			if (file == null ||  !file.exists()){
+				throw new IOException("File not Found");
+			}
 
-			//InputStream i = new FileInputStream(file);
+			InputStream i = new FileInputStream(file);
 			
-			InputStream stream = HierarchieElementDAO.class.getClassLoader().getResourceAsStream(propfile);
-			System.out.println(IOUtils.toString(stream));
-			
-			properties.load(stream);
-			//i.close();
+			properties.load(i);
+			i.close();
 			String strategy = properties.getProperty("strategie");
 			if (strategy == null){
 				throw new IOException("no property found");
@@ -191,7 +192,7 @@ public abstract class HierarchieElementDAO {
 				float yellowPercentageForRed = Float.parseFloat(properties.getProperty("yellowPercentageForRed"));
 				float redPercentageForYellow = Float.parseFloat(properties.getProperty("redPercentageForYellow"));
 				float yellowPercentageForYellow = Float.parseFloat(properties.getProperty("yellowPercentageForYellow"));
-				Class<?> aggregationLevel = MasterData.getHierarchieClassByString(properties.getProperty("aggregationLevel"));
+				Class aggregationLevel = MasterData.getHierarchieClassByString(properties.getProperty("aggregationLevel"));
 				
 				return new PercentageAggregationStrategy(redPercentageForRed, yellowPercentageForRed, redPercentageForYellow, yellowPercentageForYellow, aggregationLevel);
 			}
@@ -199,9 +200,7 @@ public abstract class HierarchieElementDAO {
 				return new MinimumAggregationStrategy();
 			}
 		} catch (Exception e) {
-			System.out.println(e);
 			return new MinimumAggregationStrategy();
-			//throw new IOException("Error while parsing propfile", e);
 		}
 		return new MinimumAggregationStrategy();
 		
