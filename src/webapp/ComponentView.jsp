@@ -35,25 +35,23 @@
 
 <div class="modal-body">
 	<div class="pull-right">
-		<button type="button" class="factoryBtn" onclick="notAvailable();">Print (soon available)</button>
+		<button type="button" class="btn" onclick="notAvailable();">Print (soon available)</button>
 	</div><br /><br />
 	
 	<table id="componentDetails" class="table table-striped table-hover">
-<%-- 		<tr><td>ID</td><td><%= component.getId() %></td></tr> --%>
-		<tr><td>Name</td><td><%= component.getName() %></td></tr>
-		<tr><td>Value</td><td><%= component.getValue() %></td></tr>
-		<%-- <tr><td>Serial Number</td><td><%= component.getSerialnumber() %></td></tr> --%>
-		<tr><td>Status</td><td><%= component.getStatus() %></td></tr>
-		<%-- <tr><td>Category</td><td><%= component.getCategory() %></td></tr> --%>
-		<tr><td>Last Status Change:</td><td><%= component.getTroubeOccurrenceTime() %></td></tr>
-		<%-- <tr><td>Trouble Occurence Site:</td><td><%= component.getTroubleOccurrenceSite() %></td></tr> --%>
-		<%-- <tr><td>Responsible Sector:</td><td><%= component.getSector() %></td></tr>
-		<tr><td>Shift Responsible:</td><td><%= component.getShiftResponsibility() %></td></tr> --%>
-	<!-- 	<tr><td>More 1</td><td>More Information 1</td></tr>
-		<tr><td>More 2</td><td>More Information 2</td></tr> -->
+		<tr><td>ID</td><td><%= component.getId() %></td></tr>
+		<tr><td>Serial Number</td><td><%= component.getSerialnumber() %></td></tr>
+		<tr><td>Test Status</td><td><%= component.getStatus() %></td></tr>
+		<tr><td>Category</td><td><%= component.getCategory() %></td></tr>
+		<tr><td>Trouble Occurence Time:</td><td><%= component.getTroubeOccurrenceTime() %></td></tr>
+		<tr><td>Trouble Occurence Site:</td><td><%= component.getTroubleOccurrenceSite() %></td></tr>
+		<tr><td>Responsible Sector:</td><td><%= component.getSector() %></td></tr>
+		<tr><td>Shift Responsible:</td><td><%= component.getShiftResponsibility() %></td></tr>
+		<tr><td>More 1</td><td>More Information 1</td></tr>
+		<tr><td>More 2</td><td>More Information 2</td></tr>
 	</table>
 </div>
 
 <div class="modal-footer">
-	<button class="factoryBtn" data-dismiss="modal">Close</button>
+	<button class="btn" data-dismiss="modal">Close</button>
 </div>

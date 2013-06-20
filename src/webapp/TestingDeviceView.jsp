@@ -43,14 +43,14 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="testingDeviceComponents">
-		<div class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="addColumn">+</a>
-		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="componentlistColumnAdd">
-		    </ul>
-	    </div>
-		<table id="componentlist" class="table table-striped table-hover">
+		<table id="testingDeviceComponentsList" class="table table-striped table-hover">
 			<thead>
 				<tr>
+					<th>Status</th>
+					<th>ID</th>
+					<th>Category</th>
+					<th>Trouble Period</th>
+					<th>Responsible Sector</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -64,19 +64,11 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="testingDeviceDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="testingDeviceStatus"></td></tr>
 		<tr><td>Name</td><td id="testingDeviceName"></td></tr>
-		<tr><td>Description</td><td id="testingDeviceDescription"></td></tr>
-		<tr><td>Type</td><td id="testingDeviceCategory"></td></tr>
-		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
-<!-- 		<tr><td>IP Address</td><td id="testingDeviceIpAddress"></td></tr>
-		<tr><td>Network Status</td><td id="testingDeviceNetworkStatus"></td></tr> -->
-<!-- 		<tr><td>Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
 		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
-		<tr><td>Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
-		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr> -->
-<!-- 		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />
@@ -84,25 +76,51 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	TestingDevice.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
-		elementList = new AMOSList("#componentlist", data.components, 'component');
-		elementList.sortBy("status", [2, 1, 0, -1]);
-		
-	    $("#dynamicHeading").html("Testing Device: "+data.name);
+		for(var i = 0; i < data.components.length; ++i) {
+			var rowClass = "";
+			
+			switch(data.components[i].status) {
+				case "green": rowClass = "success"; break;
+				case "yellow": rowClass = "warning"; break;
+				case "red": default: rowClass = "error"; break;
+			}
+			
+			var sElm = $("<td></td>")
+					.html("<div class=\""+getStatusClass(data.components[i].status)+"\"></div>");
+
+			var iElm = $("<td></td>")
+					.html(data.components[i].id);
+
+			var cElm = $("<td></td>")
+					.html(data.components[i].category);
+
+			var tpElm = $("<td></td>")
+					.html(data.components[i].troublePeriod);
+
+			var secElm = $("<td></td>")
+					.html(data.components[i].sector);
+			
+			var rElm = $("<tr></tr>")
+					.attr("class", rowClass)
+					.append(sElm)
+					.append(iElm)
+					.append(cElm)
+					.append(tpElm)
+					.append(secElm);
+			
+			if(data.components[i].status == "red") {
+				// This component is in trouble; therefore make it clickable
+				rElm.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'component\', '+data.components[i].id+')')
+					.addClass("textUnderline");
+			}
+			
+			$("#testingDeviceComponentsList tbody").append(rElm);
+		}	
+
+	    $("#dynamicHeading").html(data.name+" (ID: <%= id %>)");
 	    $("#testingDeviceName").html(data.name);
-	    $("#testingDeviceSerialnumber").html(data.serialnumber);
-	    $("#testingDeviceCategory").html(data.category);
-	    $("#testingDeviceDescription").html(data.description);
-	    $("#testingDeviceIpAddress").html(data.ipaddress);
-	    $("#testingDeviceMaintainanceInfo").html(data.maintainanceinfo);
-	    $("#testingDeviceNetworkStatus").html(data.networkstatus);
 	    $("#testingDeviceStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#testingDevicesCountComponents").html(data.componentCount);
-	    $("#testingDevicesTroublePeriod").html(data.troubleperiod);	
-	    $("#testingDevicesFailure").html("" + data.testfailure);	
-	    $("#testingDevicesSector").html(data.sector);	
+	    $("#testingDevicesCountComponents").html(data.componentCount);	
 	});
 });
 </script>

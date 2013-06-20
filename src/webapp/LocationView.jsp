@@ -43,14 +43,11 @@ int id = Integer.parseInt(request.getParameter("locid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationDevices">
-		<div class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="addColumn">+</a>
-		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="devicelistColumnAdd">
-		    </ul>
-	    </div>
-		<table id="devicelist" class="table table-striped table-hover">
+		<table id="locationDevicesList" class="table table-striped table-hover">
 			<thead>
 				<tr>
+					<th>Status</th>
+					<th>Device</th>
 				</tr>
 			</thead>
 			<tbody></tbody>
@@ -59,12 +56,11 @@ int id = Integer.parseInt(request.getParameter("locid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="locationDetails" class="table table-striped table-hover">
 		<tr><td>Status</td><td id="locationStatus"></td></tr>
 		<tr><td>Name</td><td id="locationName"></td></tr>
-		<!-- <tr><td>Description</td><td id="locationDescription"></td></tr> -->
-<!-- 		<tr><td>Person in charge</td><td id="locationPersonInCharge"></td></tr> -->
-		<tr><td>Devices</td><td id="locationCountOfDevices"></td></tr>
+		<tr><td>Number of types</td><td id="locationCountOfDevices"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -72,16 +68,32 @@ int id = Integer.parseInt(request.getParameter("locid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Location.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-	
-		elementList = new AMOSList("#devicelist", data.testDevices, 'testingDevice');
-		elementList.sortBy("status", [2, 1, 0, -1]);
+		for(var i = 0; i < data.testDevices.length; ++i) {
+			var rowClass = "";
+			
+			switch(data.testDevices[i].status) {
+				case "green": rowClass = "success"; break;
+				case "yellow": rowClass = "warning"; break;
+				case "red": default: rowClass = "error"; break;
+			}
+			
+			var sElm = $("<td></td>")
+					.html("<div class=\""+getStatusClass(data.testDevices[i].status)+"\"></div>");
+			
+			var lElm = $("<td></td>")
+					.html(data.testDevices[i].name);
+			
+			var rElm = $("<tr></tr>")
+					.attr("class", rowClass)					
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'testingDevice\', '+data.testDevices[i].id+')')
+					.append(sElm)
+					.append(lElm);
+			
+			$("#locationDevicesList tbody").append(rElm);
+		}	
 
-	    $("#dynamicHeading").html("Location: "+data.name);
+	    $("#dynamicHeading").html("Location: "+data.name+" (ID: <%= id %>)");
 	    $("#locationName").html(data.name);
-	    $("#locationDescription").html(data.description);
-	    $("#locationPersonInCharge").html(data.personincharge);
 	    $("#locationStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#locationCountOfDevices").html(data.testDeviceCount);	
 	});

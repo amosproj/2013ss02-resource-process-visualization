@@ -16,7 +16,6 @@
  You should have received a copy of the GNU Affero General Public
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
-<%@page import="de.osramos.reprovis.FactoryBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
@@ -42,20 +41,15 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
-	<%= hall.getMap() %>
+	<svg id="SVGPlan"></svg>
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="hallDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="hallStatus"></td></tr>
 		<tr><td>Name</td><td id="hallName"></td></tr>
-		<tr><td>Type</td><td id="hallType"></td></tr>
-		<tr><td>Vehicles</td><td id="hallVehicles"></td></tr>
-<!-- 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
-		<tr><td>Capacity</td><td id="hallCapacity"></td></tr> -->
-		<tr><td>UPS Server</td><td id="hallUpsServer"></td></tr>
-		<tr><td>UPS Clients</td><td id="hallUpsClients"></td></tr>
-		
+		<tr><td>Staff</td><td id="hallStaff"></td></tr>
+		<tr><td>Capacity</td><td id="hallCapacity"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -63,16 +57,14 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Hall.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
 	    // Draw the plan and attach click handler
 	    for(var i = 0; i < data.lines.length; ++i) {
-	    	$("#" + data.lines[i].path)
-	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')')
-	    		.attr("class", getSvgClass(data.lines[i].status));
-
-    		location.hash = "line-"+data.lines[i].id;
+	    	var svgPath = $("<path></path>")
+	    			.attr("d", data.lines[i].path)
+	    			.attr("class", getSvgClass(data.lines[i].status))
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')');
+	    	
+			$("#SVGPlan").append(svgPath);
 	    }
 	    
 	    // Refresh
@@ -81,15 +73,10 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Hall: "+data.name);
-	    $("#hallStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
+	    $("#dynamicHeading").html("Hall: "+data.name+" (ID: <%= id %>)");
 	    $("#hallName").html(data.name);
 	    $("#hallStaff").html(data.staff);
-	    $("#hallVehicles").html(""+data.vehicles);
 	    $("#hallCapacity").html(data.capacity);
-	    $("#hallType").html(""+data.type);
-	    $("#hallUpsServer").html(data.upsServer);
-	    $("#hallUpsClients").html(data.upsClients);
 	});
 });
 </script>

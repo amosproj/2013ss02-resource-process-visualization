@@ -21,151 +21,210 @@
 
 package de.osramos.reprovis;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import de.osramos.reprovis.MasterData.Company;
-import de.osramos.reprovis.exception.DatabaseException;
 
-public class FactoryDAO extends HierarchieElementDAO {
+public class FactoryDAO {
 
-	private static AggreagationStrategie aggreagationStrategie = null;
+	public static String getCity(int id) {
+
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("city");
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static String getCountry(int id) {
 	
-	// get all Elements
-	public static List<Integer> getFactoryIds(int id) throws Exception {
-		List<Integer> l = getChildIds(id, "factory");
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("name");
+		} catch (Exception e) {
+			return null;
+		}
+		
+		
+	}
+
+
+	public static String getName(int id) {
+
+		try {
+			Element factory = getFactoryById(id);
+			return factory.getAttribute("name");
+		} catch (Exception e) {
+			return null;
+		}	
+	}
+
+	public static Company getCompany(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			String brand = factory.getAttribute("brand");
+			return MasterData.stringToCompany(brand);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+/*	public static List<Integer> getFactoryIds() throws Exception {
+
+
+
+	}*/
+
+	public static String[] getCarModels(int id) {
+		
+		try {
+			Element factory = getFactoryById(id);
+			String vehicles = factory.getAttribute("vehicles");
+			return vehicles.split(", ");
+		} catch (Exception e) {
+			return null;
+		}	
+	}
+
+	public static int getSizeOfStaff(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Integer.parseInt(factory.getAttribute("sizeOfStaff"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+
+	public static int getNumOfVehicles(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Integer.parseInt(factory.getAttribute("numOfVehicles"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+	
+	public static double getGpsLatitude(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Double.parseDouble(factory.getAttribute("gpsLatitude"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+	
+	public static double getGpsLongitude(int id) {
+		try {
+			Element factory = getFactoryById(id);
+			return Double.parseDouble(factory.getAttribute("gpsLongitude"));
+		} catch (Exception e) {
+			return -1;
+		}	
+	}
+
+	private static NodeList getFactoriyNodes() throws Exception{
+		
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db;
+		try {
+			db = dbf.newDocumentBuilder();
+
+		Document doc = db.parse(FactoryDAO.class.getClassLoader().getResourceAsStream(MasterData.getConfigFile()));
+/*		Document doc = db.parse(MasterData.getConfigFile());*/
+		
+		doc.getDocumentElement().normalize();
+		
+		return doc.getElementsByTagName("factory");
+		} catch (Exception e) {
+			throw new Exception("no Elements found");
+		}
+		
+	}
+	
+	public static Element getFactoryById(int id) throws Exception{
+		
+		NodeList factories = getFactoriyNodes();
+		
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+	
+				if (id == getFactoryHash(element)){
+					return element;
+				}
+			}
+		}
+		throw new Exception("no Element found");
+		
+	}
+	
+	public static int getFactoryHash(Element factory){
+		String name = factory.getAttribute("name");
+		//double latitude = Double.parseDouble(factory.getAttribute("gpsLatitude"));
+		//double longitude = Double.parseDouble(factory.getAttribute("gpsLongitude"));
+		
+		return (int) (name.hashCode());
+		
+    }
+
+	public static List<Integer> getFactoryIds(int globalId) throws Exception {
+		List<Integer> l = new ArrayList<Integer>();
+		
+		NodeList factories = getFactoriyNodes();
+		
+		if (factories == null) {
+			throw new Exception("No factories initialized");
+		}
+
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
+
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+				l.add(getFactoryHash(element));
+			}
+		}
 
 		return l;
 	}
-
-	// Get Attributes by id
-	public static String getCity(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "City");
-
-		return s;
-	}
-
-	public static String[] getCarModels(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "CarModels");
-
-		s = s == null ? "" : s;
-		return s.split(", ");
-
-	}
-
-	public static String getCountry(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "Country");
-
-		return s;
-	}
-
-	public static String getName(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "Name");
-
-		return s;
-	}
-
-	public static Company getCompany(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "Company");
-
-		return MasterData.stringToCompany(s);
-	}
-
-	public static int getSizeOfStaff(int id) throws DatabaseException {
-
-		int i = (Integer) getAttribute(id, "SizeOfStaff");
-
-		return i;
-	}
-
-	public static Date getSizeOfStaffDate(int id) throws DatabaseException {
-
-		Timestamp t = (Timestamp) getAttribute(id, "SizeOfStaffDate");
-
-		return new Date(t.getTime());
-	}
-
-	public static int getVehiclesPerYear(int id) throws DatabaseException {
-
-		int i = (Integer) getAttribute(id, "vehiclesperyear");
-
-		return i;
-	}
-
-	public static double getGpsLatitude(int id) throws DatabaseException {
-
-		double d = (Double) getAttribute(id, "GpsLatitude");
-
-		return d;
-	}
-
-	public static double getGpsLongitude(int id) throws DatabaseException {
-
-		double d = (Double) getAttribute(id, "GpsLongitude");
-
-		return d;
-	}
-
-	public static int getUPSServers (int id) throws DatabaseException {
-
-		int i = (Integer) getAttribute(id, "UPSServers");
-
-		return i;
-	}
 	
-	public static int getUPSSystems (int id) throws DatabaseException {
-
-		int i = (Integer) getAttribute(id, "UPSSystems");
-
-		return i;
-	}
 	
-	public static String getUPSProvider(int id) throws DatabaseException {
-
-		String s = (String) getAttribute(id, "UPSProvider");
-
-		return s;
-	}
-	
-	public static String getMap(int id) throws DatabaseException{
-		return (String) getAttribute(id, "map");
-	}
-
-	private static Object getAttribute(int id, String attributeName)
-			throws DatabaseException {
-
-		return HierarchieElementDAO.getAttribute(id, attributeName, "factory");
-	}
-
-	public static int getVehiclesPerDay(int id) throws DatabaseException {
+/*	public static List<Integer> getChildIds(int id) throws Exception {
+		List<Integer> l = new ArrayList<Integer>();
 		
-		int i = (Integer) getAttribute(id, "vehiclesperday");
-
-		return i;
-	}
-	
-	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
-		String propfile = "/../../config/factory.properties";
+		NodeList factories = getFactoriyNodes();
 		
-		if (aggreagationStrategie == null){
-			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
-			System.out.println("AggreagtionStragety for factories set to " + aggreagationStrategie.toString());
+		if (factories == null) {
+			throw new Exception("No factories initialized");
 		}
-		
-		return aggreagationStrategie;
-	}
 
-	public static void resetCache() {
-		aggreagationStrategie = null;
-		
-	}
+		for (int i = 0; i < factories.getLength(); i++) {
+			
+			Node factory = factories.item(i);
 
+			if (factory.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) factory;
+				
+				l.add(getFactoryHash(element));
+			}
+		}
+
+		return l;
+	}*/
 }

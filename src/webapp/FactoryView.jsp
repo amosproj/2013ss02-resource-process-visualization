@@ -27,72 +27,42 @@
 // We only allow access to this template via request.
 // If there is none, exit here.
 // @TODO: Only allow access if post parameter was submitted
-
 if(request.getParameter("fid") == null)
 	return;
 
 // Process the post data here
 int id = Integer.parseInt(request.getParameter("fid"));
 %>
-<% FactoryBean factory = (FactoryBean)request.getAttribute("factory"); %>
 
 <div id="dataLayerContent" class="row">
 	<div id="SVGPlanHolder" class="span7">
 		<h3 id="dynamicHeading"></h3>
-		<div id="svgCanvas">
-		<!--[if gt IE 8]>
-			<%= factory.getMap() %>
-		<![endif]-->
-		</div>
+		<svg id="SVGPlan"></svg>
 	</div>
 	
 	<div id="informationBlock" class="span4">
+		<a href="javascript:showGlobalMap()">Go back to global view</a>
 		<table id="factoryDetails" class="table table-striped table-hover">
-			<tr><td>Status</td><td id="factoryStatus"></td></tr>
 			<tr><td>Country</td><td id="factoryCountry"></td></tr>
-			<tr><td>City</td><td id="factoryName"></td></tr>
-			<tr><td>Brands</td><td id="factoryBrand"></td></tr>
-			<tr><td>UPS Systems</td><td id="factoryUPSSystems"></td></tr>
-			<tr><td>UPS Provider</td><td id="factoryUPSProvider"></td></tr>
-			<tr><td>UPS Servers</td><td id="factoryUPSServers"></td></tr>
-			<tr><td>UPS Clients</td><td id="factoryUPSClients"></td></tr>
+			<tr><td>Name</td><td id="factoryName"></td></tr>
 			<tr><td>Staff</td><td id="factoryStaff"></td></tr>
-			<tr><td>Vehicles per year</td><td id="factoryVehiclesPerYear"></td></tr>
-			<tr><td>Vehicles per day</td><td id="factoryVehiclesPerDay"></td></tr>
-			<tr><td>Vehicles</td><td id="factoryCars"></td></tr>
+			<tr><td>Vehicles</td><td id="factoryVehicles"></td></tr>
+			<tr><td>Car Models</td><td id="factoryCars"></td></tr>
 		</table>
 	</div>
 </div><br class="clear" />
 
-<div style="display: none;" id="DBDataHolder">
-<%= factory.getMap() %>
-</div>
-
 <script type="text/javascript">
 $(document).ready(function() {
-	Factory.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
-		// Draw the factory plan using Raphael and custom SVG Wrapper
-		if (BrowserDetect.browser == "Explorer" && BrowserDetect.version <= 9.0) {
-			var svgData = $('#DBDataHolder').html();
-			var raphaelElements = SVGWrapper.drawCanvas(svgData);
-			
-			$.each(raphaelElements, function(k, v) {
-				v.click(function () {
-		            alert("yes");
-		         });
-			});
-		}
-				
-	    // Attach click handler
-	    for(var i = 0; i < data.halls.length; ++i) {
-	    	$("#" + data.halls[i].path)
-	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
-	    		.attr("class", getSvgClass(data.halls[i].status));
+	Factory.getData(<%= id %>, function(a, factoryData) {
+	    // Draw the factory plan and attach click handler
+	    for(var i = 0; i < factoryData.halls.length; ++i) {
+	    	var svgPath = $("<path></path>")
+	    			.attr("d", factoryData.halls[i].path)
+	    			.attr("class", getSvgClass(factoryData.halls[i].status))
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+factoryData.halls[i].id+')');
 	    	
-	    		location.hash = "hall-"+data.halls[i].id;
+			$("#SVGPlan").append(svgPath);
 	    }
 	    
 	    // Refresh
@@ -101,23 +71,16 @@ $(document).ready(function() {
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Factory: "+data.name+", "+data.country);
-	    $("#factoryStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#factoryCountry").html(data.country);
-	    $("#factoryName").html(data.name);
-	    $("#factoryStaff").html(data.staff+" ("+data.staffdate+")");
-	    $("#factoryVehiclesPerYear").html(data.vehiclesperyear);
-	    $("#factoryVehiclesPerDay").html(data.vehiclesperday);
-	    $("#factoryBrand").html(data.brand);
-	    $("#factoryUPSServers").html(data.upsservers);
-	    $("#factoryUPSClients").html(data.upsclients);
-	    $("#factoryUPSProvider").html(data.upsprovider);
-	    $("#factoryUPSSystems").html(data.upssystems);	    
+	    $("#dynamicHeading").html("Factory: "+factoryData.name+", "+factoryData.country+" (ID: <%= id %>)");
+	    $("#factoryCountry").html(factoryData.country);
+	    $("#factoryName").html(factoryData.name);
+	    $("#factoryStaff").html(factoryData.staff);
+	    $("#factoryVehicles").html(factoryData.vehicles);
 	    
 	    var factoryCars = "";
-	    for(var j = 0; j < data.brands.length; ++j) {
+	    for(var j = 0; j < factoryData.brands.length; ++j) {
 	    	if(j != 0) factoryCars += ", ";
-	    	factoryCars += data.brands[j];
+	    	factoryCars += factoryData.brands[j];
 	    }
 	    
 	    $("#factoryCars").html(factoryCars);

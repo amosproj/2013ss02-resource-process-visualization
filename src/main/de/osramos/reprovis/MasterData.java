@@ -23,11 +23,6 @@ package de.osramos.reprovis;
 
 import java.io.InputStream;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 
 public class MasterData {
 
@@ -68,23 +63,7 @@ public class MasterData {
 	}
 
 	public enum TrafficLight {
-		red, yellow, green, grey
-	}
-	
-	public static TrafficLight stringToTrafficLight(String string) {
-		if (string.equals(TrafficLight.yellow.name())) {
-			return TrafficLight.yellow;
-		}
-		if (string.equals(TrafficLight.red.name())) {
-			return TrafficLight.red;
-		}
-		if (string.equals(TrafficLight.green.name())) {
-			return TrafficLight.green;
-		}
-		if (string.equals(TrafficLight.grey.name())) {
-			return TrafficLight.grey;
-		}
-		return null;
+		red, yellow, green
 	}
 
 	public static String getTrafficIconClass(TrafficLight status) {
@@ -93,10 +72,8 @@ public class MasterData {
 			return "statusIconCritical";
 		case yellow:
 			return "statusIconWarning";
-		case green:
-			return "statusIconOk";
 		default:
-			return "statusIconUnknown";
+			return "statusIconOk";
 		}
 	}
 
@@ -106,32 +83,8 @@ public class MasterData {
 			return "statusHallCritical";
 		case yellow:
 			return "statusHallWarning";
-		case green:
-			return "statusHallOk";
 		default:
-			return "statusHallUnknown";
+			return "statusHallOk";
 		}
-	}
-	
-	public static Class getHierarchieClassByString(String className){
-		if (className.equals("Factory")) {
-			return FactoryBean.class;
-		}
-		if (className.equals("Hall")) {
-			return HallBean.class;
-		}
-		if (className.equals("Line")) {
-			return LineBean.class;
-		}
-		if (className.equals("Location")) {
-			return LocationBean.class;
-		}
-		if (className.equals("TestingDevice")) {
-			return TestingDeviceBean.class;
-		}
-		if (className.equals("ElectricalComponent")) {
-			return ElectricalComponentBean.class;
-		}
-		return null;
 	}
 }
