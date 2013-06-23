@@ -60,11 +60,11 @@ int id = Integer.parseInt(request.getParameter("locid"));
 
 <div id="informationBlock" class="span4">
 	<table id="locationDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="locationStatus"></td></tr>
-		<tr><td>Name</td><td id="locationName"></td></tr>
-		<!-- <tr><td>Description</td><td id="locationDescription"></td></tr> -->
-<!-- 		<tr><td>Person in charge</td><td id="locationPersonInCharge"></td></tr> -->
-		<tr><td>Devices</td><td id="locationCountOfDevices"></td></tr>
+		<tr><td class="keyCol">Status</td><td id="locationStatus"></td></tr>
+		<tr><td class="keyCol">Name</td><td id="locationName"></td></tr>
+		<!-- <tr><td class="keyCol">Description</td><td id="locationDescription"></td></tr> -->
+<!-- 		<tr><td class="keyCol">Person in charge</td><td id="locationPersonInCharge"></td></tr> -->
+		<tr><td class="keyCol">Devices</td><td id="locationCountOfDevices"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />

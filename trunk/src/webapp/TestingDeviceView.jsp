@@ -65,18 +65,18 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 
 <div id="informationBlock" class="span4">
 	<table id="testingDeviceDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="testingDeviceStatus"></td></tr>
-		<tr><td>Name</td><td id="testingDeviceName"></td></tr>
-		<tr><td>Description</td><td id="testingDeviceDescription"></td></tr>
-		<tr><td>Type</td><td id="testingDeviceCategory"></td></tr>
-		<tr><td>Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
-<!-- 		<tr><td>IP Address</td><td id="testingDeviceIpAddress"></td></tr>
-		<tr><td>Network Status</td><td id="testingDeviceNetworkStatus"></td></tr> -->
-<!-- 		<tr><td>Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
-		<tr><td>Components</td><td id="testingDevicesCountComponents"></td></tr>
-		<tr><td>Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
-		<tr><td>Testfailure</td><td id="testingDevicesFailure"></td></tr> -->
-<!-- 		<tr><td>Sektor</td><td id="testingDevicesSector"></td></tr> -->
+		<tr><td class="keyCol">Status</td><td id="testingDeviceStatus"></td></tr>
+		<tr><td class="keyCol">Name</td><td id="testingDeviceName"></td></tr>
+		<tr><td class="keyCol">Description</td><td id="testingDeviceDescription"></td></tr>
+		<tr><td class="keyCol">Type</td><td id="testingDeviceCategory"></td></tr>
+		<tr><td class="keyCol">Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
+<!-- 		<tr><td class="keyCol">IP Address</td><td id="testingDeviceIpAddress"></td></tr>
+		<tr><td class="keyCol">Network Status</td><td id="testingDeviceNetworkStatus"></td></tr> -->
+<!-- 		<tr><td class="keyCol">Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
+		<tr><td class="keyCol">Components</td><td id="testingDevicesCountComponents"></td></tr>
+		<tr><td class="keyCol">Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
+		<tr><td class="keyCol">Testfailure</td><td id="testingDevicesFailure"></td></tr> -->
+<!-- 		<tr><td class="keyCol">Sektor</td><td id="testingDevicesSector"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />

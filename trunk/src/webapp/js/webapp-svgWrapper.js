@@ -49,12 +49,22 @@ SVGWrapper = {
 			
 			else {
 				// Fallback
-				dim = new Array();
-				dim[2] = '670'; dim[3] = '300';
-			}
+				var dim = new Array();
+				dim[0] = 0; dim[1] = 0;
+				dim[2] = 670; dim[3] = 300;
+			}			
+
+			// Fix dimensions for now
+			dim[0] = 0; dim[1] = 0;
+			dim[2] = 670; dim[3] = 300;
 			
-			var paper = Raphael("svgCanvas", SVGView.metadata.width, SVGView.metadata.height);
-			paper.setViewBox(dim[0], dim[1], dim[2], dim[3], true);
+			// Create paper for Raphael canvas
+			var paper = Raphael("svgCanvas", 
+					parseInt(dim[2]),
+					parseInt(dim[3]));
+			
+			paper.setViewBox(parseInt(dim[0]), parseInt(dim[1]),
+					parseInt(dim[2]), parseInt(dim[3]), true);
 			
 			var raphaelElements = new Array();			
 			var objectList = SVGView.paths;

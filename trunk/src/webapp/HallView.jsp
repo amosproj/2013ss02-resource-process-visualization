@@ -51,14 +51,14 @@ int id = Integer.parseInt(request.getParameter("hid"));
 
 <div id="informationBlock" class="span4">
 	<table id="hallDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="hallStatus"></td></tr>
-		<tr><td>Name</td><td id="hallName"></td></tr>
-		<tr><td>Type</td><td id="hallType"></td></tr>
-		<tr><td>Vehicles</td><td id="hallVehicles"></td></tr>
-<!-- 		<tr><td>Staff</td><td id="hallStaff"></td></tr>
-		<tr><td>Capacity</td><td id="hallCapacity"></td></tr> -->
-		<tr><td>UPS Server</td><td id="hallUpsServer"></td></tr>
-		<tr><td>UPS Clients</td><td id="hallUpsClients"></td></tr>
+		<tr><td class="keyCol">Status</td><td id="hallStatus"></td></tr>
+		<tr><td class="keyCol">Name</td><td id="hallName"></td></tr>
+		<tr><td class="keyCol">Type</td><td id="hallType"></td></tr>
+		<tr><td class="keyCol">Vehicles</td><td id="hallVehicles"></td></tr>
+<!-- 		<tr><td class="keyCol">Staff</td><td id="hallStaff"></td></tr>
+		<tr><td class="keyCol">Capacity</td><td id="hallCapacity"></td></tr> -->
+		<tr><td class="keyCol">UPS Server</td><td id="hallUpsServer"></td></tr>
+		<tr><td class="keyCol">UPS Clients</td><td id="hallUpsClients"></td></tr>
 		
 	</table>
 </div>

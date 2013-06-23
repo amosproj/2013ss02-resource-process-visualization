@@ -61,10 +61,10 @@ int id = Integer.parseInt(request.getParameter("lid"));
 
 <div id="informationBlock" class="span4">
 	<table id="lineDetails" class="table table-striped table-hover">
-		<tr><td>Status</td><td id="lineStatus"></td></tr>
-		<tr><td>Name</td><td id="lineName"></td></tr>
-	<!-- 	<tr><td>Production Capacity</td><td id="lineProductionCapacity"></td></tr>
-		<tr><td>Production Series</td><td id="lineProductionSeries"></td></tr> -->
+		<tr><td class="keyCol">Status</td><td id="lineStatus"></td></tr>
+		<tr><td class="keyCol">Name</td><td id="lineName"></td></tr>
+	<!-- 	<tr><td class="keyCol">Production Capacity</td><td id="lineProductionCapacity"></td></tr>
+		<tr><td class="keyCol">Production Series</td><td id="lineProductionSeries"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />
