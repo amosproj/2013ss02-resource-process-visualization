@@ -21,8 +21,6 @@
 
 package de.osramos.reprovis.connectivity;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
 public class XMLAdapter extends RouteBuilder{
@@ -55,6 +53,9 @@ public class XMLAdapter extends RouteBuilder{
 		
 		from("direct:components")
 			.process(new ComponentUpdater());
+		
+		from("seda:fail")
+			.to("log:failedRequests");
 		
 		
 

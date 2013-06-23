@@ -34,6 +34,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 
 import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.exception.DatabaseException;
 
 public class DeviceHandler implements Processor {
 
@@ -42,21 +43,28 @@ public class DeviceHandler implements Processor {
 
 		String body = (String) exchange.getIn().getBody();
 
-		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		DocumentBuilder builder = DocumentBuilderFactory.newInstance()
+				.newDocumentBuilder();
 		InputSource is = new InputSource(new StringReader(body));
 		Document doc = builder.parse(is);
-		
+
 		Element device = (Element) doc.getElementsByTagName("device").item(0);
-		
+
 		String factory = device.getAttribute("factory");
 		String hall = device.getAttribute("hall");
 		String line = device.getAttribute("line");
 		String location = device.getAttribute("location");
 		String name = device.getAttribute("name");
-		
-		int id = TestingDeviceDAO.getIdByNames(factory, hall, line, location, name);
-		
-		exchange.getIn().setHeader("id", 2660);
+
+		int id = -1;
+
+		try {
+			id = TestingDeviceDAO.getIdByNames(factory, hall, line, location,
+					name);
+		} catch (DatabaseException e) {
+		}
+
+		exchange.getIn().setHeader("id", id);
 	}
 
 }
