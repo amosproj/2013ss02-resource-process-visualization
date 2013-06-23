@@ -42,7 +42,11 @@ int id = Integer.parseInt(request.getParameter("hid"));
 <div id="dataLayerContent" class="row">
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
-	<%= hall.getMap() %>
+	<div id="svgCanvas">
+	<!--[if gt IE 8]>
+		<%= hall.getMap() %>
+	<![endif]-->
+	</div>
 </div>
 
 <div id="informationBlock" class="span4">
@@ -60,23 +64,58 @@ int id = Integer.parseInt(request.getParameter("hid"));
 </div>
 </div><br class="clear" />
 
+<div style="display: none;" id="DBDataHolder">
+<%= hall.getMap() %>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	Hall.getData(<%= id %>, function(a, data) {
 		// Create hierarchical navigation first
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
-	    // Draw the plan and attach click handler
-	    for(var i = 0; i < data.lines.length; ++i) {
-	    	$("#" + data.lines[i].path)
-	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')')
-	    		.attr("class", getSvgClass(data.lines[i].status));
+		// Draw the factory plan using Raphael and custom SVG Wrapper
+	    if (BrowserDetect.browser == "Explorer" && BrowserDetect.version < 9.0) {
+	    	var svgData = $('#DBDataHolder').html();
+	    	var raphaelElements = SVGWrapper.drawCanvas(svgData);
+		}
+		
+		// Attach click handler
+	    for(var i = 0; i < data.lines.length; i++) {
 
-    		location.hash = "line-"+data.lines[i].id;
+	    	// Bad performance, but working hack for <= IE8
+	    	if (BrowserDetect.browser == "Explorer" && BrowserDetect.version < 9.0) {
+	    		for(var rEL in raphaelElements) {
+	    			if(raphaelElements[rEL].attr('id') == data.lines[i].path) {
+	    				raphaelElements[rEL].attr({fill: getVmlColor(data.lines[i].status)});
+	    				
+	    				var lineID = data.lines[i].id;
+	    				raphaelElements[rEL].click(function () {
+    						GlobalHierarchyHandler.hierarchyZoom('line', lineID);
+	    				});
+	    			}
+	    		}
+	    	}
+	    	
+	    	// All other browsers are just doing fine
+	    	else {
+		    	$("#" + data.lines[i].path)
+		    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'line\', '+data.lines[i].id+')')
+		    		.attr("class", getSvgClass(data.lines[i].status))
+		    		.hover(function() {
+		    			$(this).stop().animate({"opacity": "0.5"}, 300);
+		    		}, function() {
+		    			$(this).stop().animate({"opacity": "1.0"}, 300);
+		    		});
+	    	}
+	    	
+    		//location.hash = "line-"+data.lines[i].id;
 	    }
 	    
-	    // Refresh
-	    $("#SVGPlanHolder").html($("#SVGPlanHolder").html());
+	    if (BrowserDetect.browser != "Explorer" || BrowserDetect.version >= 9.0) {
+		    // Refresh only <> IE8 - otherwise clickhandlers crash!
+	    	$("#SVGPlanHolder").html($("#SVGPlanHolder").html());
+	    }
 	    
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)

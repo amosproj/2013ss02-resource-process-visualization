@@ -75,28 +75,52 @@ $(document).ready(function() {
 		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
 		
 		// Draw the factory plan using Raphael and custom SVG Wrapper
-		if (BrowserDetect.browser == "Explorer" && BrowserDetect.version <= 9.0) {
+		if (BrowserDetect.browser == "Explorer" && BrowserDetect.version < 9.0) {
 			var svgData = $('#DBDataHolder').html();
 			var raphaelElements = SVGWrapper.drawCanvas(svgData);
 			
-			$.each(raphaelElements, function(k, v) {
-				v.click(function () {
-		            alert("yes");
-		         });
-			});
+			//for(var rEL in raphaelElements) {
+				//raphaelElements[rEL].click(IEClickHandler);
+				//console.log("rEL: "+raphaelElements[rEL].attr('id'));
+			//}
 		}
 				
 	    // Attach click handler
-	    for(var i = 0; i < data.halls.length; ++i) {
-	    	$("#" + data.halls[i].path)
-	    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
-	    		.attr("class", getSvgClass(data.halls[i].status));
+	    for(var i = 0; i < data.halls.length; i++) {
 	    	
-	    		location.hash = "hall-"+data.halls[i].id;
+	    	// Bad performance, but working hack for <= IE8
+	    	if (BrowserDetect.browser == "Explorer" && BrowserDetect.version < 9.0) {
+	    		for(var rEL in raphaelElements) {
+	    			if(raphaelElements[rEL].attr('id') == data.halls[i].path) {
+	    				raphaelElements[rEL].attr({fill: getVmlColor(data.halls[i].status)});
+	    				
+	    				var hallID = data.halls[i].id;	    				
+	    				raphaelElements[rEL].click(function () {
+    						GlobalHierarchyHandler.hierarchyZoom('hall', hallID);
+	    				});
+	    			}
+	    		}
+	    	}
+	    	
+	    	// All other browsers are just doing fine
+	    	else {
+		    	$("#" + data.halls[i].path)
+		    		.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'hall\', '+data.halls[i].id+')')
+		    		.attr("class", getSvgClass(data.halls[i].status))
+		    		.hover(function() {
+		    			$(this).stop().animate({"opacity": "0.5"}, 300);
+		    		}, function() {
+		    			$(this).stop().animate({"opacity": "1.0"}, 300);
+		    		});
+		    	
+		    		//location.hash = "hall-"+data.halls[i].id;
+	    	}
 	    }
 	    
-	    // Refresh
-	    $("#SVGPlanHolder").html($("#SVGPlanHolder").html());
+	    if (BrowserDetect.browser != "Explorer" || BrowserDetect.version >= 9.0) {
+		    // Refresh only <> IE8 - otherwise clickhandlers crash!
+		    $("#SVGPlanHolder").html($("#SVGPlanHolder").html());
+	    }
 	    
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)

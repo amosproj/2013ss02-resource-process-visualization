@@ -56,22 +56,25 @@ SVGWrapper = {
 			var paper = Raphael("svgCanvas", SVGView.metadata.width, SVGView.metadata.height);
 			paper.setViewBox(dim[0], dim[1], dim[2], dim[3], true);
 			
-			var raphaelElements = new Array();
+			var raphaelElements = new Array();			
+			var objectList = SVGView.paths;
 			
-			// Draw the path elements with Raphael
-			jQuery.each($(SVGView.paths), function(k, v) {
-				var e = paper.path(v.d);
-				e.attr({'id': v.id});
+			for(var objID in objectList) {
+				var el = paper.path(objectList[objID].d)
+						.attr({'id': objectList[objID].id});
+				        //.click( clickHandler );
 				
-				if(v.style)
-					e.attr({fill: v.fill, 'fill-opacity': v.fillopacity});
+				if(objectList[objID].style)
+					el.attr({fill: objectList[objID].fill, 'fill-opacity': objectList[objID].fillopacity})
 				
-				e.click(function () {
-		           alert("click");
-		        });
-				
-				raphaelElements.push(e);
-			});
+				el.hover(function() {
+				          this.animate({ opacity: 0.5 }, 300);
+				      }, function() {
+				          this.animate({ opacity: 1.0 }, 300);
+				      });  
+			
+				raphaelElements.push(el);
+			}
 			
 			return raphaelElements;
 		},
