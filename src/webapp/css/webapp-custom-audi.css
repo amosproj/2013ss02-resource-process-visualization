@@ -148,7 +148,11 @@ a, a:visited, a:hover, a:focus, a:active {
 .modal-body a:active, .modal-body button, .modal-footer button {
 	color: #fff;
 	padding-right: 28px;
-}  
+}
+
+#informationBlock .keyCol {
+	width: 33%;
+}
 
 footer {
 	float: right;
