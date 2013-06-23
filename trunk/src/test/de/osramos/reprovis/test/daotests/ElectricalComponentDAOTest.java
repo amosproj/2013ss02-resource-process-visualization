@@ -24,16 +24,32 @@ package de.osramos.reprovis.test.daotests;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentDAO;
+import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 
 public class ElectricalComponentDAOTest {
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+
+	}
 
 	
 	@Test
 	public void initTest() throws Exception{
 		assertTrue( ElectricalComponentDAO.getElectricalComponentIds(0).size() == 1 );
+	}
+	
+	
+	@Test
+	public void test2() throws DatabaseException{
+		System.out.println (ElectricalComponentDAO.getIdByName("Tests", 2660));
 	}
 }

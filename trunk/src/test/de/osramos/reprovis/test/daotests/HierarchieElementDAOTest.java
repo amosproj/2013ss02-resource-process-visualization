@@ -26,150 +26,535 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Properties;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import de.osramos.reprovis.AggreagationStrategie;
 import de.osramos.reprovis.ElectricalComponentBean;
-import de.osramos.reprovis.ElectricalComponentDAO;
 import de.osramos.reprovis.HierarchieElementDAO;
+import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.PercentageAggregationStrategy;
-import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
-
-import org.postgresql.ds.PGSimpleDataSource;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class HierarchieElementDAOTest {
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 
-		System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
-
-		System.setProperty(Context.INITIAL_CONTEXT_FACTORY,
-				"org.apache.naming.java.javaURLContextFactory");
-
-		InitialContext ctx = new InitialContext();
-
-		ctx.createSubcontext("java:");
-		ctx.createSubcontext("java:comp");
-		ctx.createSubcontext("java:comp/env");
-		ctx.createSubcontext("java:comp/env/jdbc");
-
-		PGSimpleDataSource ds = new PGSimpleDataSource();
-		ds.setServerName(System.getenv("AMOS_DB_SERVER"));
-		ds.setPortNumber(Integer.parseInt(System.getenv("AMOS_DB_PORT")));
-		ds.setDatabaseName(System.getenv("AMOS_DB_NAME"));
-		ds.setUser(System.getenv("AMOS_DB_USER"));
-		ds.setPassword(System.getenv("AMOS_DB_PASSWORD"));
-
-		ctx.bind("java:comp/env/jdbc/postgresql", ds);
+		Setup.setUpTestDS();
 
 	}
 
+	@Before
+	public void setUpData() throws Exception {
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
 	@Test
-	public void updateStringTest() throws DatabaseException {
+	public void getAttributeTestCorrect() throws DatabaseException {
+		{
+			Object o = TestDAO.getAttribute(1, "id", "factory");
+			assertTrue(o instanceof Integer);
+			assertEquals(1, o);
+		}
+
+		{
+			Object o = TestDAO.getAttribute(1, "name", "factory");
+			assertTrue(o instanceof String);
+			assertEquals("Ingolstadt", o);
+		}
+		{
+			Object o = TestDAO.getAttribute(1, "gpslatitude", "factory");
+			assertTrue(o instanceof Double);
+			assertEquals(48.762201d, o);
+		}
+		{
+			Object o = TestDAO.getAttribute(1, "sizeofstaffdate", "factory");
+			assertTrue(o instanceof java.sql.Timestamp);
+		}
+	}
+	
+	@Test
+	public void getAttributeTestFailures() throws DatabaseException {
+		{
+			Exception exception = null;
+			Object o = null;
+		
+			try{
+				o = TestDAO.getAttribute(2, "id", "factory");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception  instanceof DatabaseException);
+		}
+
+		{
+			Exception exception = null;
+			Object o = null;
+		
+			try{
+				o = TestDAO.getAttribute(1, "wrongattribute", "factory");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception  instanceof DatabaseException);
+		}
+		
+		{
+			Exception exception = null;
+			Object o = null;
+		
+			try{
+				o = TestDAO.getAttribute(2, "id", "wrongtable");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception  instanceof DatabaseException);
+		}
+		
+		{
+			Exception exception = null;
+			Object o = null;
+		
+			try{
+				o = TestDAO.getAttribute(2, "wrongattribute", "wrongtable");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception  instanceof DatabaseException);
+		}
+		
+	}
+
+	@Test
+	public void getChildIdsTestCorrect() throws Exception {
+
+		List<Integer> childIds = TestDAO.getChildIds(1, "hall");
+		assertEquals(1, childIds.size());
+		assertTrue(childIds.get(0).equals(2));
+	}
+	
+	@Test
+	public void getChildIdsTestFailures() throws Exception {
+		
+		
+		{
+			Exception exception = null;
+			List<Integer> childIds = null;
+		
+			try{
+				childIds = TestDAO.getChildIds(-1, "hall");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNull(exception);
+			assertNotNull(childIds);
+			assertTrue(childIds.isEmpty());
+		}
+
+		
+		{
+			Exception exception = null;
+			List<Integer> childIds = null;
+		
+			try{
+				childIds = TestDAO.getChildIds(-1, "wrongtable");
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(childIds);
+			assertTrue(exception  instanceof DatabaseException);
+		}
+		
+	}
+
+	
+
+	@Test
+	public void updateStringTestCorrect() throws DatabaseException {
 
 		String testString = "test";
 
-		TestDAO.updateString(2003, "type", "other", "Device");
-		String attribute = (String) TestDAO
-				.getAttribute(2003, "type", "Device");
-		assertTrue(!attribute.equals(testString));
-		assertNotNull(attribute);
-
-		TestDAO.updateString(2003, "type", testString, "Device");
-		String updated = (String) TestDAO.getAttribute(2003, "type", "Device");
+		TestDAO.updateString(5, "type", testString, "device");
+		String updated = (String) TestDAO.getAttribute(5, "type", "device");
 
 		assertEquals(testString, updated);
 
 	}
+	
+	@Test
+	public void updateStringTestFailure() throws DatabaseException {
+		
+		{
+			Exception exception = null;
+		
+			try{
+				String testString = "test";
+
+				TestDAO.updateString(-1, "type", testString, "device");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				String testString = "test";
+
+				TestDAO.updateString(5, "wrongattribute", testString, "device");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				String testString = "test";
+
+				TestDAO.updateString(5, "type", testString, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				String testString = "test";
+
+				TestDAO.updateString(-1, "wrongAttribute", testString, "wrongTable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+	}
+	
 
 	@Test
-	public void updateIntTest() throws DatabaseException {
+	public void updateIntTestCorrect() throws DatabaseException {
 
 		int testInt = 42;
-		
-		TestDAO.updateNumber(2000, "staff", 41, "Hall");
 
-		int attribute = (Integer) TestDAO.getAttribute(2000, "staff",
-				"Hall");
-		assertTrue(attribute != testInt);
-		assertNotNull(attribute);
 
-		TestDAO.updateNumber(2000, "staff", testInt, "Hall");
-		int updated = (Integer) TestDAO.getAttribute(2000, "staff",
-				"Hall");
+		TestDAO.updateNumber(2, "staff", testInt, "Hall");
+		int updated = (Integer) TestDAO.getAttribute(2, "staff", "Hall");
 
 		assertEquals(testInt, updated);
 
 	}
 	
-	
 	@Test
-	public void updateDoubleTest() throws DatabaseException {
-
-		double testDouble = 42d;
+	public void updateIntTestFailure() throws DatabaseException {
 		
-		TestDAO.updateNumber(1, "gpslatitude", 77d, "Factory");
+		{
+			Exception exception = null;
+		
+			try{
+				int testInt = 42;
 
-		double attribute = (Double) TestDAO.getAttribute(1, "gpslatitude",
-				"Factory");
-		assertTrue(attribute!=testDouble);
-		assertNotNull(attribute);
+				TestDAO.updateNumber(-1, "staff", testInt, "Hall");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				int testInt = 42;
+
+				TestDAO.updateNumber(2, "wrongattribute", testInt, "Hall");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				int testInt = 42;
+
+				TestDAO.updateNumber(2, "staff", testInt, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				int testInt = 42;
+
+				TestDAO.updateNumber(-1, "wrongattribute", testInt, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+	}
+
+	@Test
+	public void updateDoubleTestCorrect() throws DatabaseException {
+
+		double testDouble = 42.13d;
 
 		TestDAO.updateNumber(1, "gpslatitude", testDouble, "Factory");
 		double updated = (Double) TestDAO.getAttribute(1, "gpslatitude",
 				"Factory");
 
-		assertTrue(testDouble==updated);
+		assertTrue(testDouble == updated);
 
 	}
 	
-	
 	@Test
-	public void updateBoolTest() throws DatabaseException {
+	public void updateDoubleTestFailure() throws DatabaseException {
+		
+		{
+			Exception exception = null;
+		
+			try{
+				double testDouble = 42.13d;
+
+				TestDAO.updateNumber(-1, "gpslatitude", testDouble, "Factory");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				double testDouble = 42.13d;
+
+				TestDAO.updateNumber(1, "wrongattribute", testDouble, "Factory");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				double testDouble = 42.13d;
+
+				TestDAO.updateNumber(1, "gpslatitude", testDouble, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				double testDouble = 42.13d;
+
+				TestDAO.updateNumber(-1, "wrongattribute", testDouble, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+
+	}
+
+	@Test
+	public void updateBoolTestCorrect() throws DatabaseException {
 
 		boolean testbool = true;
-		
-		TestDAO.updateBool(2003, "testfailure", false, "Device");
 
-		boolean attribute = (Boolean) TestDAO.getAttribute(2003, "testfailure",
-				"Device");
-		assertTrue(attribute!=testbool);
-		assertNotNull(attribute);
-
-		TestDAO.updateBool(2003, "testfailure", testbool, "Device");
-		boolean updated = (Boolean) TestDAO.getAttribute(2003, "testfailure",
+		TestDAO.updateBool(5, "testfailure", testbool, "Device");
+		boolean updated = (Boolean) TestDAO.getAttribute(5, "testfailure",
 				"Device");
 
-		assertTrue(testbool==updated);
+		assertTrue(testbool == updated);
 
 	}
 	
 	@Test
-	public void updateDateTest() throws DatabaseException {
-		
-		
-		Date testDate = new GregorianCalendar(2012, 11, 31).getTime();
-		
-		TestDAO.updateDate(1, "sizeofstaffdate", new GregorianCalendar(2011, 11, 31).getTime(), "Factory");
+	public void updateBoolTestFailure() throws DatabaseException {
 
-		Timestamp t = (Timestamp) TestDAO.getAttribute(1, "sizeofstaffdate",
-				"Factory");
-		Date attribute = new Date(t.getTime());
+		{
+			Exception exception = null;
 		
-		assertTrue(!attribute.equals(testDate));
-		assertNotNull(attribute);
+			try{
+				boolean testbool = true;
+
+				TestDAO.updateBool(-1, "testfailure", testbool, "Device");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}		
+		
+		{
+			Exception exception = null;
+		
+			try{
+				boolean testbool = true;
+
+				TestDAO.updateBool(5, "wrongattribute", testbool, "Device");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				boolean testbool = true;
+
+				TestDAO.updateBool(5, "testfailure", testbool, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				boolean testbool = true;
+
+				TestDAO.updateBool(5, "wrongattribute", testbool, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				boolean testbool = true;
+
+				TestDAO.updateBool(5, "id", testbool, "device");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+	}
+
+	@Test
+	public void updateDateTestCorrect() throws DatabaseException {
+
+		Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
 
 		TestDAO.updateDate(1, "sizeofstaffdate", testDate, "Factory");
 		Timestamp t2 = (Timestamp) TestDAO.getAttribute(1, "sizeofstaffdate",
@@ -181,26 +566,201 @@ public class HierarchieElementDAOTest {
 	}
 	
 	@Test
-	public void propTest() throws IOException{
-		AggreagationStrategie aggregationStrategie = TestDAO.getAggregationStrategie("./config/factory.properties");
-		assertTrue(aggregationStrategie instanceof PercentageAggregationStrategy);
+	public void updateDateTestFailure() throws DatabaseException {
 		
+		{
+			Exception exception = null;
+		
+			try{
+				Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
+
+				TestDAO.updateDate(-1, "sizeofstaffdate", testDate, "Factory");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
+
+				TestDAO.updateDate(1, "wrongattribute", testDate, "Factory");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+		
+		{
+			Exception exception = null;
+		
+			try{
+				Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
+
+				TestDAO.updateDate(1, "sizeofstaffdate", testDate, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+		
+		{
+			Exception exception = null;
+		
+			try{
+				Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
+
+				TestDAO.updateDate(-1, "wrongattribute", testDate, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+		
+		{
+			Exception exception = null;
+		
+			try{
+				Date testDate = new GregorianCalendar(1986, 9, 14).getTime();
+
+				TestDAO.updateDate(1, "id", testDate, "Factory");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+	}
+	
+	
+	@Test
+	public void updateStatusTestCorrect() throws DatabaseException {
+
+		TrafficLight status = TrafficLight.red;
+
+		TestDAO.updateStatus(6, "status", status, "component");
+		
+		
+		String attribute = (String)TestDAO.getAttribute(6, "status",
+				"component");
+		TrafficLight updated = MasterData.stringToTrafficLight(attribute);
+
+		assertTrue(status.equals(updated));
+
+	}
+	
+	@Test
+	public void updateStatusTestFailure() throws DatabaseException {
+		
+		{
+			Exception exception = null;
+		
+			try{
+				TrafficLight status = TrafficLight.red;
+
+				TestDAO.updateStatus(-1, "status", status, "component");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				TrafficLight status = TrafficLight.red;
+
+				TestDAO.updateStatus(6, "wrongattribute", status, "component");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				TrafficLight status = TrafficLight.red;
+
+				TestDAO.updateStatus(6, "status", status, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+		
+		{
+			Exception exception = null;
+		
+			try{
+				TrafficLight status = TrafficLight.red;
+
+				TestDAO.updateStatus(-1, "wrongattribute", status, "wrongtable");
+				
+			}
+			catch (Exception e){
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertTrue(exception  instanceof DatabaseException);
+
+		}
+
+	}
+	
+
+	@Test
+	public void propTest() throws IOException {
+		AggreagationStrategie aggregationStrategie = TestDAO
+				.getAggregationStrategie("./config/factory.properties");
+		assertTrue(aggregationStrategie instanceof PercentageAggregationStrategy);
+
 		PercentageAggregationStrategy a = (PercentageAggregationStrategy) aggregationStrategie;
 		assertTrue(a.getRedPercentageForRed() == 30);
 		assertTrue(a.getYellowPercentageForRed() == 50);
 		assertTrue(a.getRedPercentageForYellow() == 30);
 		assertTrue(a.getYellowPercentageForYellow() == 50);
-		assertTrue(a.getAggregationLevel().equals(ElectricalComponentBean.class));
-	}
-	
-	@Test
-	public void test1() throws DatabaseException{
-		System.out.println (TestingDeviceDAO.getIdByNames("Ingolstadt", "C6", "C6 Finish", "BC3", "MFTD2XI1-052"));
-	}
-	
-	@Test
-	public void test2() throws DatabaseException{
-		System.out.println (ElectricalComponentDAO.getIdByName("Tests", 2660));
+		assertTrue(a.getAggregationLevel()
+				.equals(ElectricalComponentBean.class));
 	}
 
 }
@@ -224,7 +784,7 @@ class TestDAO extends HierarchieElementDAO {
 	}
 
 	public static void updateNumber(int id, String attributeName,
-			Number attributeValue, String tableName) throws DatabaseException  {
+			Number attributeValue, String tableName) throws DatabaseException {
 		HierarchieElementDAO.updateNumber(id, attributeName, attributeValue,
 				tableName);
 	}
@@ -239,6 +799,11 @@ class TestDAO extends HierarchieElementDAO {
 			Date attributeValue, String tableName) throws DatabaseException {
 		HierarchieElementDAO.updateDate(id, attributeName, attributeValue,
 				tableName);
+	}
+	
+	public static void updateStatus(int id, String attributeName,
+			TrafficLight attributeValue, String tableName) throws DatabaseException {
+		HierarchieElementDAO.updateStatus(id, attributeName, attributeValue, tableName);
 	}
 
 }

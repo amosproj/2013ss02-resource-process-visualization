@@ -72,6 +72,15 @@ public abstract class HierarchieElementDAO {
 	}
 
 	
+	
+	
+	/**
+	 * @param id
+	 * @param attributeName
+	 * @param tableName
+	 * @return Database value after successfull request
+	 * @throws DatabaseException if id, attributeName oder tableName doesn't exist or Error during request occurred
+	 */
 	protected static Object getAttribute(int id, String attributeName, String tableName) throws DatabaseException{
 		Object o = null;
 
@@ -102,7 +111,20 @@ public abstract class HierarchieElementDAO {
 		}
 	}
 	
+	
+	
+	/**
+	 * @param id
+	 * @param attributeName
+	 * @param attributeValue
+	 * @param tableName
+	 * @throws DatabaseException if id, attributeName oder tableName doesn't exist or Error during request occurred
+	 */
 	private static void updateAttribute(int id, String attributeName, String attributeValue, String tableName) throws DatabaseException{
+		
+		getAttribute(id, attributeName, tableName);
+		
+		
 		try {
 
 			DataSource db = Database.getDB();

@@ -28,9 +28,18 @@ import org.junit.*;
 
 import de.osramos.reprovis.FactoryDAO;
 import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.test.testhelper.Setup;
 import static org.junit.Assert.*;
 
 public class FactoryDAOTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+
+	}
 
 	@Test
 	public void testGetFactoryIds() throws Exception{

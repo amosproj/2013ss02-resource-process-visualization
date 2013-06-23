@@ -24,13 +24,23 @@ package de.osramos.reprovis.test.daotests;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.HallDAO;
 import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class HallDAOTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+
+	}
 
 	
 	@Test
