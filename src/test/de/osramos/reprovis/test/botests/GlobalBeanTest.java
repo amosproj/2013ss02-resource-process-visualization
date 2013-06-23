@@ -41,5 +41,8 @@ public class GlobalBeanTest {
 		assertTrue(global.getChilds().get(0).getId() > 0);
 		/*assertTrue(!global.getChilds().get(0).getName().equals(global.getChilds().get(1).getName()));
 	*/}
+	
+	
+	
 
 }

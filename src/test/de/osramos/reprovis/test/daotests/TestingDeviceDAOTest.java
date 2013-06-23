@@ -26,11 +26,28 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class TestingDeviceDAOTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+
+	}
+	
+	
+	@Test
+	public void test1() throws DatabaseException{
+		System.out.println (TestingDeviceDAO.getIdByNames("Ingolstadt", "C6", "C6 Finish", "BC3", "MFTD2XI1-052"));
+	}
 	
 	@Test
 	public void initTest() throws Exception{
