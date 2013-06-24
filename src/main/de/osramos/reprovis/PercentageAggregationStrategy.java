@@ -24,6 +24,7 @@ package de.osramos.reprovis;
 import java.util.List;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.HierarchieException;
 
 public class PercentageAggregationStrategy implements AggreagationStrategie {
 

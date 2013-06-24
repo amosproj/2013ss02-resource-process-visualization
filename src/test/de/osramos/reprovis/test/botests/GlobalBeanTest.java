@@ -26,8 +26,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.HierarchieException;
-import de.osramos.reprovis.Registry;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 
 public class GlobalBeanTest {
 	
@@ -35,8 +35,7 @@ public class GlobalBeanTest {
 	public void GlobalBeanTest() throws HierarchieException{
 		GlobalBean global = GlobalBean.getGlobal();
 		assertNotNull(global.getChilds());
-		System.out.println(Registry.getRegistry().reg.size());
-		System.out.println(Registry.getRegistry().reg.values());
+
 		assertTrue(global.getChilds().size() > 2);
 		assertTrue(global.getChilds().get(0).getId() > 0);
 		/*assertTrue(!global.getChilds().get(0).getName().equals(global.getChilds().get(1).getName()));

@@ -15,8 +15,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.sql.DataSource;
 
-import de.osramos.reprovis.Database;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class TestStatusProvider extends HttpServlet {
 
@@ -116,9 +116,10 @@ public class TestStatusProvider extends HttpServlet {
 							switch(factory.getValue()){
 							case RANDOM:
 								double rand = Math.random();
-								if(rand > 0.5)componentUpdateStmt.setString(1, "green");
+								if(rand > 0.2)componentUpdateStmt.setString(1, "green");
 								else if(rand > 0.1)componentUpdateStmt.setString(1, "yellow");
-								else if(rand >= 0)componentUpdateStmt.setString(1, "red");
+								else if(rand >= 0.05)componentUpdateStmt.setString(1, "red");
+								else if(rand >= 0)componentUpdateStmt.setString(1, "grey");
 								break;
 							case GREEN:
 								componentUpdateStmt.setString(1, "green");
@@ -157,7 +158,7 @@ public class TestStatusProvider extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		try {
-			generator = new Thread(new RandomStatusGenerator(Database.getDB()));
+			generator = new Thread(new RandomStatusGenerator(DatabaseHandler.getDB()));
 			generator.start();
 		} catch (DatabaseException e) {
 			e.printStackTrace();

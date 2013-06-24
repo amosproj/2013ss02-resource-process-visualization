@@ -19,40 +19,41 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+package de.osramos.reprovis.handler;
 
+import de.osramos.reprovis.ElectricalComponentDAO;
+import de.osramos.reprovis.FactoryDAO;
+import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.HallDAO;
+import de.osramos.reprovis.LineDAO;
+import de.osramos.reprovis.LocationDAO;
+import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.exception.DatabaseException;
 
-package de.osramos.reprovis;
+public class ConfigHandler {
 
-import java.util.Map;
-import java.util.TreeMap;
-
-public class Registry {
-
-	private static Registry registry;
-	
-	public Map<Integer, Object> reg;
-	
-	public static Registry getRegistry(){
-		if (registry == null){
-			initRegistry();
+	public static void InitApplication(){
+		
+		
+		try {
+			Registry.cleanRegistry();
+			DatabaseHandler.initDB();
+			Registry.initRegistry();
+			
+			FactoryDAO.resetCache();
+			HallDAO.resetCache();
+			LineDAO.resetCache();
+			LocationDAO.resetCache();
+			TestingDeviceDAO.resetCache();
+			ElectricalComponentDAO.resetCache();
+			
+			GlobalBean.resetGlobal();
+		} catch (DatabaseException e) {
+			
+			e.printStackTrace();
 		}
 		
-		return registry;
+		
 	}
 	
-	public static void cleanRegistry(){
-		registry = null;
-	}
-	
-	public static void initRegistry(){
-		registry = new Registry();
-	}
-	
-	public Registry(){
-		reg = new TreeMap<Integer, Object>();
-	}
-	
-	public Object lookup(int id){
-		return reg.get(id);
-	}
 }

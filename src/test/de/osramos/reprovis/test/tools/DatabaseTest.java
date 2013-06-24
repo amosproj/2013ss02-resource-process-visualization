@@ -36,8 +36,8 @@ import javax.sql.DataSource;
 
 import org.junit.Test;
 
-import de.osramos.reprovis.Database;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 /**
  * @author Martin
@@ -47,7 +47,7 @@ public class DatabaseTest {
 
 	@Test
 	public void testDataSource() throws  SQLException, DatabaseException{
-		DataSource db = Database.getDB();
+		DataSource db = DatabaseHandler.getDB();
 		assertNotNull(db);
 		
 		assertNotNull(db.getConnection());
@@ -56,7 +56,7 @@ public class DatabaseTest {
 	
 	@Test
 	public void testInit() throws  SQLException, DatabaseException{
-		Database.initDB();
+		DatabaseHandler.initDB();
 	
 	}
 	

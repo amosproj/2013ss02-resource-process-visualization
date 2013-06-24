@@ -21,11 +21,12 @@
 
 package de.osramos.reprovis;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 
 public abstract class HierarchieElementBean {
 
@@ -42,27 +43,22 @@ public abstract class HierarchieElementBean {
 
 		this.id = id;
 
-		Registry.getRegistry().reg.put(id, this);
+		Registry.getRegistry().register(id, this);
 
 		childs = new ArrayList<HierarchieElementBean>();
 		initChilds();
 
 	}
 
-	public static HierarchieElementBean getElementById(int id) {
-
-		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
+	public int getId() {
+		return id;
 	}
 
 	protected void setParent(HierarchieElementBean parent) throws Exception {
 
 		this.parent = parent;
 	}
-
-	public int getId() {
-		return id;
-	}
-
+	
 	public HierarchieElementBean getParent() throws HierarchieException {
 		return parent;
 	}

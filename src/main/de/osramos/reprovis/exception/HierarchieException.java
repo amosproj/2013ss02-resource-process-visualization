@@ -19,34 +19,20 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis;
 
-import de.osramos.reprovis.exception.DatabaseException;
+package de.osramos.reprovis.exception;
 
-public class ConfigHandler {
+public class HierarchieException extends Exception{
 
-	public static void InitApplication(){
-		
-		
-		try {
-			Registry.cleanRegistry();
-			Database.initDB();
-			Registry.initRegistry();
-			
-			FactoryDAO.resetCache();
-			HallDAO.resetCache();
-			LineDAO.resetCache();
-			LocationDAO.resetCache();
-			TestingDeviceDAO.resetCache();
-			ElectricalComponentDAO.resetCache();
-			
-			GlobalBean.resetGlobal();
-		} catch (DatabaseException e) {
-			
-			e.printStackTrace();
-		}
-		
-		
+
+
+	public HierarchieException(String string) {
+		super(string);
 	}
-	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5313682256342114954L;
+
 }

@@ -42,6 +42,7 @@ import org.apache.commons.io.IOUtils;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public abstract class HierarchieElementDAO {
 
@@ -52,7 +53,7 @@ public abstract class HierarchieElementDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -87,7 +88,7 @@ public abstract class HierarchieElementDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -127,7 +128,7 @@ public abstract class HierarchieElementDAO {
 		
 		try {
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();

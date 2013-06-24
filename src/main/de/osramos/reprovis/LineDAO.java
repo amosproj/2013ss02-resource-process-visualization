@@ -32,6 +32,7 @@ import javax.sql.DataSource;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class LineDAO {
 	
@@ -40,7 +41,7 @@ public class LineDAO {
 
 	public static String getName(int id) throws DatabaseException {
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
@@ -69,7 +70,7 @@ public class LineDAO {
 	
 	public static String getPath(int id) throws DatabaseException{
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
@@ -88,7 +89,7 @@ public class LineDAO {
 	public static List<Integer> getLineIds(int id) throws DatabaseException {
 		List<Integer> l = new ArrayList<Integer>();
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
@@ -108,7 +109,7 @@ public class LineDAO {
 
 	public static String getproductionSeries(int id) throws DatabaseException {
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
@@ -127,7 +128,7 @@ public class LineDAO {
 
 	public static int getproductionCapacity(int id) throws DatabaseException {
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
@@ -145,7 +146,7 @@ public class LineDAO {
 	
 	public static HallBean getHall(int id) throws DatabaseException{
 		try {
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery(
