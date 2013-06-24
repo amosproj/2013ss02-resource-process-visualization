@@ -24,9 +24,10 @@ package de.osramos.reprovis;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public abstract class HierarchieElementBean {
 
@@ -49,16 +50,22 @@ public abstract class HierarchieElementBean {
 		initChilds();
 
 	}
-
-	public int getId() {
-		return id;
-	}
-
+	
+	
+	protected abstract void initChilds();
+	
 	protected void setParent(HierarchieElementBean parent) throws Exception {
 
 		this.parent = parent;
 	}
+
 	
+	// Simple getters
+	
+	public int getId() {
+		return id;
+	}
+
 	public HierarchieElementBean getParent() throws HierarchieException {
 		return parent;
 	}
@@ -66,6 +73,9 @@ public abstract class HierarchieElementBean {
 	public List<HierarchieElementBean> getChilds() {
 		return childs != null ? childs : new ArrayList<HierarchieElementBean>();
 	}
+	
+	
+	// Get Hierarchy Information
 
 	public TrafficLight getStatus() throws HierarchieException {
 
@@ -83,7 +93,7 @@ public abstract class HierarchieElementBean {
 
 	}
 
-	protected List<HierarchieElementBean> getChildsByClass(Class c) {
+	public List<HierarchieElementBean> getChildsByClass(Class c) {
 
 		if (cacheLevel != null && cacheLevel.equals(c) && cache != null) {
 			return cache;
@@ -115,7 +125,7 @@ public abstract class HierarchieElementBean {
 		throw new HierarchieException("Element has no distinct status");
 	}
 
-	protected abstract void initChilds();
+	
 
 	public int getNumOfLeafs() {
 

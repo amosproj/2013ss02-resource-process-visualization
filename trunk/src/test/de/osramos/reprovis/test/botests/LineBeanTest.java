@@ -29,9 +29,17 @@ import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HallBean;
 import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.LineBean;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 
 public class LineBeanTest {
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
 	@Test
 	public void initTest(){

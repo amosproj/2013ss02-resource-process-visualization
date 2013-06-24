@@ -26,7 +26,7 @@ import org.junit.Test;
 
 
 import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.handler.MasterData;
 import de.osramos.reprovis.handler.Registry;
 import static org.junit.Assert.*;
 

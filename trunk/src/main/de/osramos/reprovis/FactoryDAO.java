@@ -27,8 +27,10 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.Company;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class FactoryDAO extends HierarchieElementDAO {
 

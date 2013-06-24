@@ -35,15 +35,15 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import de.osramos.reprovis.AggreagationStrategie;
 import de.osramos.reprovis.ElectricalComponentBean;
 import de.osramos.reprovis.HierarchieElementDAO;
-import de.osramos.reprovis.MasterData;
-import de.osramos.reprovis.MinimumAggregationStrategy;
-import de.osramos.reprovis.MasterData.TrafficLight;
-import de.osramos.reprovis.PercentageAggregationStrategy;
 import de.osramos.reprovis.TestingDeviceBean;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
+import de.osramos.reprovis.statusaggregation.MinimumAggregationStrategy;
+import de.osramos.reprovis.statusaggregation.PercentageAggregationStrategy;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class HierarchieElementDAOTest {

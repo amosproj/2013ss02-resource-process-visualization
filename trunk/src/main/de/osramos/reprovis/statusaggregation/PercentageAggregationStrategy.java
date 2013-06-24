@@ -19,12 +19,16 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis;
+package de.osramos.reprovis.statusaggregation;
 
 import java.util.List;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.HierarchieElementBean;
+import de.osramos.reprovis.TestingDeviceBean;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
 
 public class PercentageAggregationStrategy implements AggreagationStrategie {
 

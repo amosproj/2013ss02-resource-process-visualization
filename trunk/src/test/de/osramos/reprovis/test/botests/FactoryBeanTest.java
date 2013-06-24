@@ -26,9 +26,19 @@ import org.junit.*;
 import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.FactoryDAO;
 import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.test.testhelper.Setup;
 import static org.junit.Assert.*;
 
 public class FactoryBeanTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
+
 	
 	@Test
 	public void FactoryTest() throws Exception{

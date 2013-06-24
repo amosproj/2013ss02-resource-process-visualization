@@ -25,7 +25,7 @@
 <%@ page import="de.osramos.reprovis.ElectricalComponentBean" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
-<%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="de.osramos.reprovis.handler.MasterData" %>
 <% ElectricalComponentBean component = (ElectricalComponentBean)request.getAttribute("component"); %>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

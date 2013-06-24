@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class HallDAO extends HierarchieElementDAO {
 	

@@ -23,13 +23,36 @@ package de.osramos.reprovis.test.botests;
 
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class GlobalBeanTest {
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
+	
+	
+	@Test
+	public void getParentTest(){
+		GlobalBean global = GlobalBean.getGlobal();
+		Exception exception = null;
+		
+		try{
+			global.getParent();
+		} catch(HierarchieException e){
+			exception = e;
+		}
+		assertNotNull(exception);
+	}
 	
 	@Test
 	public void GlobalBeanTest() throws HierarchieException{

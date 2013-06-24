@@ -19,7 +19,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis;
+package de.osramos.reprovis.handler;
 
 import java.io.InputStream;
 
@@ -27,6 +27,13 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.FactoryBean;
+import de.osramos.reprovis.HallBean;
+import de.osramos.reprovis.LineBean;
+import de.osramos.reprovis.LocationBean;
+import de.osramos.reprovis.TestingDeviceBean;
 
 
 public class MasterData {

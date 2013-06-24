@@ -28,11 +28,11 @@ import java.util.List;
 
 import org.junit.*;
 
-import de.osramos.reprovis.AggreagationStrategie;
 import de.osramos.reprovis.FactoryDAO;
-import de.osramos.reprovis.MasterData;
-import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.Company;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 import de.osramos.reprovis.test.testhelper.Setup;
 import static org.junit.Assert.*;
 

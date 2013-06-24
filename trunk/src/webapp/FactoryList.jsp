@@ -20,7 +20,7 @@
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.FactoryBean" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean" %>
-<%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="de.osramos.reprovis.handler.MasterData" %>
 <%@ page import="java.util.List" %>
 [
 <%! @SuppressWarnings("unchecked") %>

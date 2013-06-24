@@ -24,12 +24,22 @@ package de.osramos.reprovis.test.botests;
 
 import static org.junit.Assert.*;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentBean;
 import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class ElectricalComponentBeanTest {
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
+
 
 	@Test
 	public void initTest(){

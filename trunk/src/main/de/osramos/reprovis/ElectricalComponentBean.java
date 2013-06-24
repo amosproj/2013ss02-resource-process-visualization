@@ -24,8 +24,8 @@ package de.osramos.reprovis;
 import java.io.IOException;
 import java.util.Date;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
 
 public class ElectricalComponentBean extends HierarchieElementBean {
 
@@ -187,10 +187,6 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 
 	}
 
-	/*
-	 * @Override public List<HierarchieElementBean> getChilds() throws
-	 * HierarchieException{ throw new
-	 * HierarchieException("Element has no childs"); }
-	 */
+	
 
 }

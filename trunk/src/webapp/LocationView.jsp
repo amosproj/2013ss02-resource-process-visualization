@@ -23,7 +23,7 @@
 <%@ page import="de.osramos.reprovis.LocationBean" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
-<%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="de.osramos.reprovis.handler.MasterData" %>
 
 <%
 LocationBean location = (LocationBean)request.getAttribute("locid");

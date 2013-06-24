@@ -40,9 +40,13 @@ import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
+import de.osramos.reprovis.statusaggregation.MinimumAggregationStrategy;
+import de.osramos.reprovis.statusaggregation.PercentageAggregationStrategy;
 
 public abstract class HierarchieElementDAO {
 
