@@ -30,7 +30,7 @@
 <% ElectricalComponentBean component = (ElectricalComponentBean)request.getAttribute("component"); %>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	<h4 id="myModalLabel">Trouble Electrical Component (ID: <%= component.getId() %>)</h4>
+	<h4 id="myModalLabel">Trouble Electrical Component </h4>
 </div>
 
 <div class="modal-body">
@@ -39,18 +39,10 @@
 	</div><br /><br />
 	
 	<table id="componentDetails" class="table table-striped table-hover">
-<%-- 		<tr><td>ID</td><td><%= component.getId() %></td></tr> --%>
 		<tr><td>Name</td><td><%= component.getName() %></td></tr>
+		<tr><td>Status</td><td><%= MasterData.getTrafficDescription(component.getStatus()) %></td></tr>
 		<tr><td>Value</td><td><%= component.getValue() %></td></tr>
-		<%-- <tr><td>Serial Number</td><td><%= component.getSerialnumber() %></td></tr> --%>
-		<tr><td>Status</td><td><%= component.getStatus() %></td></tr>
-		<%-- <tr><td>Category</td><td><%= component.getCategory() %></td></tr> --%>
-		<tr><td>Last Status Change:</td><td><%= component.getTroubeOccurrenceTime() %></td></tr>
-		<%-- <tr><td>Trouble Occurence Site:</td><td><%= component.getTroubleOccurrenceSite() %></td></tr> --%>
-		<%-- <tr><td>Responsible Sector:</td><td><%= component.getSector() %></td></tr>
-		<tr><td>Shift Responsible:</td><td><%= component.getShiftResponsibility() %></td></tr> --%>
-	<!-- 	<tr><td>More 1</td><td>More Information 1</td></tr>
-		<tr><td>More 2</td><td>More Information 2</td></tr> -->
+		<tr><td>Last Status Change</td><td><%= component.getTroubeOccurrenceTime() %></td></tr>
 	</table>
 </div>
 

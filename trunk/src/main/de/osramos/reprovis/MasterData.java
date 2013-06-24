@@ -86,6 +86,19 @@ public class MasterData {
 		}
 		return null;
 	}
+	
+	public static String getTrafficDescription(TrafficLight status) {
+		switch (status) {
+		case red:
+			return "Critical";
+		case yellow:
+			return "Warning";
+		case green:
+			return "Ok";
+		default:
+			return "Unknown";
+		}
+	}
 
 	public static String getTrafficIconClass(TrafficLight status) {
 		switch (status) {
