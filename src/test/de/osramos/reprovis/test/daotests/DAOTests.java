@@ -27,6 +27,7 @@ import org.junit.runners.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
+		de.osramos.reprovis.test.daotests.HierarchieElementDAOTest.class,
 		de.osramos.reprovis.test.daotests.FactoryDAOTest.class,
 		de.osramos.reprovis.test.daotests.HallDAOTest.class,
 		de.osramos.reprovis.test.daotests.LineDAOTest.class,

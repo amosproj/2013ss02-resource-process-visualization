@@ -6,12 +6,12 @@ DROP TABLE IF EXISTS hall CASCADE;
 DROP TABLE IF EXISTS factory CASCADE;
 create table factory(
 	id int PRIMARY KEY,
-	name char varying(128), 
-	company char varying(128), 
-	city char varying(128), 
-	country char varying(128), 	
-	gpslatitude double precision , 
-	gpslongitude double precision, 
+	name char varying(128) NOT NULL DEFAULT '', 
+	company char varying(128) NOT NULL DEFAULT '', 
+	city char varying(128) NOT NULL DEFAULT '', 
+	country char varying(128) NOT NULL DEFAULT '', 
+	gpslatitude double precision NOT NULL DEFAULT 0, 
+	gpslongitude double precision NOT NULL DEFAULT 0, 
 	carmodels char varying(512), 
 	sizeofstaff int, 
 	sizeofstaffdate timestamp,
@@ -20,7 +20,7 @@ create table factory(
 	upssystems int, 
 	upsservers int, 
 	upsprovider char varying(128), 
-	parent integer, 
+	parent integer NOT NULL DEFAULT 0, 
 	map TEXT NOT NULL DEFAULT ''
 );
 CREATE TABLE hall (
