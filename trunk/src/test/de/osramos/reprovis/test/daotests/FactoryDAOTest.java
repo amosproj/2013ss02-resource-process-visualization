@@ -19,21 +19,25 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis.test.daotests;
 
+import java.io.IOException;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.*;
 
+import de.osramos.reprovis.AggreagationStrategie;
 import de.osramos.reprovis.FactoryDAO;
 import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.MasterData.Company;
+import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.test.testhelper.Setup;
 import static org.junit.Assert.*;
 
 public class FactoryDAOTest {
-	
-	
+
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 
@@ -41,56 +45,331 @@ public class FactoryDAOTest {
 
 	}
 
-	@Test
-	public void testGetFactoryIds() throws Exception{
-		List<Integer> ids = FactoryDAO.getFactoryIds(0);
-		assertTrue(ids.size() > 0);
-		/*assertEquals(ids.get(0), new Integer(1));*/
+	@Before
+	public void setUpData() throws Exception {
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
-	
+
 	@Test
-	public void testGetFactoryIdsPrint() throws Exception{
-		List<Integer> ids = FactoryDAO.getFactoryIds(0);
-		for(int id :ids){
-			System.out.println(id + ": " + FactoryDAO.getName(id));
+	public void getAggregtionStrategieTest() throws IOException {
+		AggreagationStrategie aggreagationStrategie = FactoryDAO
+				.getAggreagationStrategie(1);
+
+		assertNotNull(aggreagationStrategie);
+	}
+
+	@Test
+	public void getCarModelsTest() throws DatabaseException {
+
+		String[] expected = new String[] { "Audi A3", "Audi A3 Sportback" };
+		String[] carModels = FactoryDAO.getCarModels(1);
+
+		assertEquals(expected.length, carModels.length);
+		for (int i = 0; i < expected.length; i++) {
+			assertEquals(expected[i], carModels[i]);
 		}
-	}
-	
-	@Test
-	public void testGetFactoryById() throws Exception{
-	/*	List<Integer> ids = FactoryDAO.getFactoryIds(0);
-		assertNotNull(FactoryDAO.getFactoryById(ids.get(0)));*/
 
 	}
-	
+
 	@Test
-	public void testConfig() throws Exception{
-		int id = 1;// FactoryDAO.getFactoryIds(0).get(0);
-		
-		assertNotNull(FactoryDAO.getCarModels(id));
-		assertNotNull(FactoryDAO.getCompany(id));
-		assertNotNull(FactoryDAO.getCountry(id));
-		assertNotNull(FactoryDAO.getGpsLatitude(id));
-		assertNotNull(FactoryDAO.getGpsLongitude(id));
-		assertNotNull(FactoryDAO.getName(id));
-		assertNotSame(new Integer(-1), FactoryDAO.getVehiclesPerYear(id));
-		assertNotSame(new Integer(-1), FactoryDAO.getSizeOfStaff(id));
-		
+	public void getCityTest() throws DatabaseException {
+		String expected = "Ingolstadt";
+		String city = FactoryDAO.getCity(1);
+		assertEquals(expected, city);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getCity(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
 	}
-	
+
 	@Test
-	public void testConfigPrintln() throws Exception{
-		int id = FactoryDAO.getFactoryIds(0).get(0);
-		
-		System.out.println(FactoryDAO.getCarModels(id));
-		System.out.println(FactoryDAO.getCompany(id));
-		System.out.println(FactoryDAO.getCountry(id));
-		System.out.println(FactoryDAO.getGpsLatitude(id));
-		System.out.println(FactoryDAO.getGpsLongitude(id));
-		System.out.println(FactoryDAO.getName(id));
-		System.out.println(FactoryDAO.getVehiclesPerYear(id));
-		System.out.println(FactoryDAO.getSizeOfStaff(id));
-		
+	public void getCompanyTest() throws DatabaseException {
+
+		Company expected = Company.Audi;
+		Company company = FactoryDAO.getCompany(1);
+		assertEquals(expected, company);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getCompany(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
 	}
-	
+
+	@Test
+	public void getCountryTest() throws DatabaseException {
+		String expected = "Germany";
+		String country = FactoryDAO.getCountry(1);
+		assertEquals(expected, country);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getCountry(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+
+	}
+
+	@Test
+	public void getFactoryIdsTest() throws Exception {
+		{
+			List<Integer> factoryIds = FactoryDAO.getFactoryIds(0);
+			assertEquals(1, factoryIds.size());
+			assertTrue(1 == factoryIds.get(0));
+		}
+		{
+			List<Integer> factoryIds = FactoryDAO.getFactoryIds(-1);
+
+			assertTrue(factoryIds.isEmpty());
+		}
+	}
+
+	@Test
+	public void getGpsLatitudeTest() throws DatabaseException {
+		double gpsLatitude = FactoryDAO.getGpsLatitude(1);
+		assertEquals(48.762201d, gpsLatitude, 0);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getGpsLatitude(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getGpsLongitudeTest() throws DatabaseException {
+		double gpsLongitude = FactoryDAO.getGpsLongitude(1);
+		assertEquals(11.425374d, gpsLongitude, 0);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getGpsLongitude(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getMapTest() throws DatabaseException {
+		String map = FactoryDAO.getMap(1);
+		assertNotNull(map);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getMap(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getNameTest() throws DatabaseException {
+		String name = FactoryDAO.getName(1);
+		assertEquals("Ingolstadt", name);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getName(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getSizeOfStaffTest() throws DatabaseException {
+		int sizeOfStaff = FactoryDAO.getSizeOfStaff(1);
+		assertTrue(35386 == sizeOfStaff);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getSizeOfStaff(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getSizeOfStaffDateTest() throws DatabaseException {
+		Date sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(1);
+		assertEquals(
+				new Date(new GregorianCalendar(2012, 11, 31).getTimeInMillis()),
+				sizeOfStaffDate);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getSizeOfStaffDate(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getUPSProviderTest() throws DatabaseException {
+		String upsProvider = FactoryDAO.getUPSProvider(1);
+		assertEquals("DSA GmbH", upsProvider);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getUPSProvider(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getUPSServersTest() throws DatabaseException {
+		int upsServers = FactoryDAO.getUPSServers(1);
+		assertTrue(upsServers == 3);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getUPSServers(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getUPSSystemsTest() throws DatabaseException {
+		int upsSystems = FactoryDAO.getUPSSystems(1);
+		assertTrue(1 == upsSystems);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getUPSSystems(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getVehiclesPerDayTest() throws DatabaseException {
+		int vehiclesPerDay = FactoryDAO.getVehiclesPerDay(1);
+		assertTrue(2580 == vehiclesPerDay);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getVehiclesPerDay(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
+	@Test
+	public void getVehiclesPerYearTest() throws DatabaseException {
+		int vehiclesPerYear = FactoryDAO.getVehiclesPerYear(1);
+		assertTrue(551889 == vehiclesPerYear);
+
+		{
+			Exception exception = null;
+			Object o = null;
+
+			try {
+				o = FactoryDAO.getVehiclesPerYear(-1);
+			} catch (Exception e) {
+				exception = e;
+			}
+			assertNotNull(exception);
+			assertNull(o);
+			assertTrue(exception instanceof DatabaseException);
+		}
+	}
+
 }

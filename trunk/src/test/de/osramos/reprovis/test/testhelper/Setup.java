@@ -49,20 +49,26 @@ public class Setup {
 				"org.apache.naming.java.javaURLContextFactory");
 
 		InitialContext ctx = new InitialContext();
+		
+		try{
+			Object lookup = ctx.lookup("java:comp/env/jdbc/postgresql");
+		} catch (NamingException e){
+			ctx.createSubcontext("java:");
+			ctx.createSubcontext("java:comp");
+			ctx.createSubcontext("java:comp/env");
+			ctx.createSubcontext("java:comp/env/jdbc");
 
-		ctx.createSubcontext("java:");
-		ctx.createSubcontext("java:comp");
-		ctx.createSubcontext("java:comp/env");
-		ctx.createSubcontext("java:comp/env/jdbc");
+			PGSimpleDataSource ds = new PGSimpleDataSource();
+			ds.setServerName(System.getenv("AMOS_DB_SERVER"));
+			ds.setPortNumber(Integer.parseInt(System.getenv("AMOS_DB_PORT")));
+			ds.setDatabaseName(System.getenv("AMOS_DB_NAME"));
+			ds.setUser(System.getenv("AMOS_DB_USER"));
+			ds.setPassword(System.getenv("AMOS_DB_PASSWORD"));
 
-		PGSimpleDataSource ds = new PGSimpleDataSource();
-		ds.setServerName(System.getenv("AMOS_DB_SERVER"));
-		ds.setPortNumber(Integer.parseInt(System.getenv("AMOS_DB_PORT")));
-		ds.setDatabaseName(System.getenv("AMOS_DB_NAME"));
-		ds.setUser(System.getenv("AMOS_DB_USER"));
-		ds.setPassword(System.getenv("AMOS_DB_PASSWORD"));
+			ctx.bind("java:comp/env/jdbc/postgresql", ds);
+		}
 
-		ctx.bind("java:comp/env/jdbc/postgresql", ds);
+		
 		
 	}
 	
