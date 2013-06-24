@@ -30,8 +30,8 @@ import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentBean;
 import de.osramos.reprovis.ElectricalComponentDAO;
-import de.osramos.reprovis.Registry;
 import de.osramos.reprovis.TestingDeviceBean;
+import de.osramos.reprovis.handler.Registry;
 
 
 public class TestingDeviceBeanTest {
@@ -44,7 +44,7 @@ public class TestingDeviceBeanTest {
 
 		
 		assertTrue(b.getChilds().size() == childIds.size());
-		assertTrue(Registry.getRegistry().reg.size() == childIds.size() + 1);
+
 
 	}
 }

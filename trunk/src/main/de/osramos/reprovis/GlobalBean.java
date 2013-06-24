@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class GlobalBean extends HierarchieElementBean {
 
@@ -46,9 +48,9 @@ public class GlobalBean extends HierarchieElementBean {
 	}
 
 	public static GlobalBean getGlobal() {
-		if (!Database.init){
+		if (!DatabaseHandler.databaseIsInitialized()){
 			try {
-				Database.initDB();
+				DatabaseHandler.initDB();
 			} catch (DatabaseException e) {
 				e.printStackTrace();
 			}

@@ -20,19 +20,51 @@
  */
 
 
-package de.osramos.reprovis;
 
-public class HierarchieException extends Exception{
+package de.osramos.reprovis.handler;
 
+import java.util.Map;
+import java.util.TreeMap;
 
+import de.osramos.reprovis.HierarchieElementBean;
 
-	public HierarchieException(String string) {
-		super(string);
+public class Registry {
+
+	private static Registry registry;
+	
+	private Map<Integer, Object> reg;
+	
+	public static Registry getRegistry(){
+		if (registry == null){
+			initRegistry();
+		}
+		
+		return registry;
 	}
+	
+	public static void cleanRegistry(){
+		registry = null;
+	}
+	
+	public static void initRegistry(){
+		registry = new Registry();
+	}
+	
+	public static HierarchieElementBean getElementById(int id) {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5313682256342114954L;
+		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
+	}
+	
+	public void register(int id, HierarchieElementBean element){
+		reg.put(id, element);
+	}
+	
+	private Registry(){
+		reg = new TreeMap<Integer, Object>();
+	}
+	
+	public HierarchieElementBean lookup(int id){
+		return (HierarchieElementBean) reg.get(id);
+	}
 
 }

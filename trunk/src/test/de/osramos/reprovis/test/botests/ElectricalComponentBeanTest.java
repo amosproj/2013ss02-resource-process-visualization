@@ -24,10 +24,10 @@ package de.osramos.reprovis.test.botests;
 
 import static org.junit.Assert.*;
 
-import de.osramos.reprovis.Registry;
 import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.handler.Registry;
 
 public class ElectricalComponentBeanTest {
 
@@ -36,7 +36,7 @@ public class ElectricalComponentBeanTest {
 		ElectricalComponentBean b = new ElectricalComponentBean(0);
 		assertNotNull(b);
 		assertNull(b.getChilds());
-		assertTrue(Registry.getRegistry().reg.size() == 1);
+
 	}
 	
 }

@@ -23,7 +23,6 @@
 <%@ page import="de.osramos.reprovis.LocationBean" %>
 <%@ page import="de.osramos.reprovis.TestingDeviceBean" %>
 <%@ page import="de.osramos.reprovis.ElectricalComponentBean" %>
-<%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
 <%@ page import="de.osramos.reprovis.MasterData" %>

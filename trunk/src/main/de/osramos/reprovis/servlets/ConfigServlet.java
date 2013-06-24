@@ -29,8 +29,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.ConfigHandler;
 import de.osramos.reprovis.GlobalBean;
+import de.osramos.reprovis.handler.ConfigHandler;
 
 public class ConfigServlet extends HttpServlet  {
 

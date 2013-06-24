@@ -36,7 +36,7 @@ import javax.sql.DataSource;
 import org.apache.commons.io.IOUtils;
 import org.postgresql.ds.PGSimpleDataSource;
 
-import de.osramos.reprovis.Database;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 
 public class Setup {
@@ -85,7 +85,7 @@ public class Setup {
 
 			sql = IOUtils.toString(i);
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();

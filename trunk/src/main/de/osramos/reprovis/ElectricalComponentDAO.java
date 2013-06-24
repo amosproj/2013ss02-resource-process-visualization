@@ -38,6 +38,7 @@ import javax.sql.DataSource;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class ElectricalComponentDAO extends HierarchieElementDAO {
 	
@@ -148,7 +149,7 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();

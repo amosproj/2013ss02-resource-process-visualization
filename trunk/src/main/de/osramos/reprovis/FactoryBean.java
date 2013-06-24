@@ -51,23 +51,16 @@ public class FactoryBean extends HierarchieElementBean {
 			upsProvider = FactoryDAO.getUPSProvider(id);
 			this.aggreagationStrategie = FactoryDAO.getAggreagationStrategie(id);
 		} catch (DatabaseException e) {
+			
+			e.printStackTrace();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
 
-	/*
-	 * public static FactoryBean getElementById(int id){ try { Context ctx = new
-	 * InitialContext(); return (FactoryBean)
-	 * ctx.lookup("de.osramos/reprovis/HierarchieElement/"+id); } catch
-	 * (NamingException e) { return null; }
-	 * 
-	 * return (FactoryBean) GlobalBean.getElementById(id); }
-	 */
 
-	// private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
@@ -90,6 +83,22 @@ public class FactoryBean extends HierarchieElementBean {
 		return country;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public double getGpsLatitude() {
+		return gpsLatitude;
+	}
+
+	public double getGpsLongitude() {
+		return gpsLongitude;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+	
 	public int getSizeOfStaff() {
 		try {
 			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
@@ -140,21 +149,7 @@ public class FactoryBean extends HierarchieElementBean {
 		return carModels;
 	}
 
-	public String getCity() {
-		return city;
-	}
 
-	public double getGpsLatitude() {
-		return gpsLatitude;
-	}
-
-	public double getGpsLongitude() {
-		return gpsLongitude;
-	}
-
-	public Company getCompany() {
-		return company;
-	}
 	
 	public int getUPSSystems() {
 		try {
@@ -213,6 +208,7 @@ public class FactoryBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

@@ -142,12 +142,12 @@ public class TestDataGenerator {
 
 				"create table factory(\n" 
 				+ "	id int PRIMARY KEY,\n"
-				+ "	name char varying(128), \n"
-				+ "	company char varying(128), \n"
-				+ "	city char varying(128), \n"
-				+ "	country char varying(128), 	\n"
-				+ "	gpslatitude double precision , \n"
-				+ "	gpslongitude double precision, \n"
+				+ "	name char varying(128) NOT NULL DEFAULT '', \n"
+				+ "	company char varying(128) NOT NULL DEFAULT '', \n"
+				+ "	city char varying(128) NOT NULL DEFAULT '', \n"
+				+ "	country char varying(128) NOT NULL DEFAULT '', \n"
+				+ "	gpslatitude double precision NOT NULL DEFAULT 0, \n"
+				+ "	gpslongitude double precision NOT NULL DEFAULT 0, \n"
 				+ "	carmodels char varying(512), \n" 
 				+ "	sizeofstaff int, \n"
 				+ "	sizeofstaffdate timestamp,\n" 
@@ -155,7 +155,7 @@ public class TestDataGenerator {
 				+ "	vehiclesperday int, \n"
 				+ "	upssystems int, \n"
 				+ "	upsservers int, \n" + "	upsprovider char varying(128), \n"
-				+ "	parent integer, \n" 
+				+ "	parent integer NOT NULL DEFAULT 0, \n" 
 				+ "	map TEXT NOT NULL DEFAULT ''\n" 
 				+ ");\n" +
 

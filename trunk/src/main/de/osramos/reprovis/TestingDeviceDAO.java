@@ -34,6 +34,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class TestingDeviceDAO extends HierarchieElementDAO {
 
@@ -62,7 +63,7 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		try {
 			ResultSet res = null;
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();

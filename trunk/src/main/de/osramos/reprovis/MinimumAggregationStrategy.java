@@ -22,6 +22,7 @@
 package de.osramos.reprovis;
 
 import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.exception.HierarchieException;
 
 public class MinimumAggregationStrategy implements AggreagationStrategie{
 	

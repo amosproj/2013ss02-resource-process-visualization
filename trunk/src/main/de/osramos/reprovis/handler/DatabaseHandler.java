@@ -22,7 +22,7 @@
 /**
  * 
  */
-package de.osramos.reprovis;
+package de.osramos.reprovis.handler;
 
 
 import java.io.InputStream;
@@ -36,15 +36,16 @@ import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
 
+import de.osramos.reprovis.MasterData;
 import de.osramos.reprovis.exception.DatabaseException;
 
 /**
  * @author Martin
  * 
  */
-public class Database {
+public class DatabaseHandler {
 
-	static boolean init = false;
+	private static boolean init = false;
 
 	public static void initDB() throws DatabaseException {
 
@@ -58,7 +59,7 @@ public class Database {
 
 			sql = IOUtils.toString(resource);
 
-			DataSource db = Database.getDB();
+			DataSource db = DatabaseHandler.getDB();
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
@@ -68,7 +69,7 @@ public class Database {
 			statement.close();
 			connection.close();
 			
-			Database.init = true;
+			DatabaseHandler.init = true;
 			
 		} catch (Exception e) {
 			//throw new DatabaseException("could not init database");
@@ -95,5 +96,10 @@ public class Database {
 		return datasource;
 
 	}
+
+	public static boolean databaseIsInitialized() {
+		return init;
+	}
+
 	
 }
