@@ -128,6 +128,12 @@
 		</div>
 	  </div>
 	  
+	  <div class=caption>
+	  	<font color="#006400">green</font> = OK,
+ 		<font color="#FF8C00">yellow</font> = warning,
+  		<font color="#8B0000">red</font> = critical,
+  		<font color="#BBBBBB">grey</font> = unknown
+	  </div>
 	  <div id="addBlocks" class="row-fluid">
 		  <div class="span4">
 		  	<h5>Information Block 1</h5>
