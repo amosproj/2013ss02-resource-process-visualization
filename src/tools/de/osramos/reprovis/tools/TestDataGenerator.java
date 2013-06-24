@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
-import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.handler.MasterData;
 
 public class TestDataGenerator {
 

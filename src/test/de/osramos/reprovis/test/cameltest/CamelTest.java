@@ -23,19 +23,18 @@ package de.osramos.reprovis.test.cameltest;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 
 import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.postgresql.ds.PGSimpleDataSource;
 
 import de.osramos.reprovis.connectivity.ComponentUpdater;
 import de.osramos.reprovis.connectivity.DeviceHandler;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class CamelTest extends CamelTestSupport  {
 	
@@ -43,27 +42,13 @@ public class CamelTest extends CamelTestSupport  {
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 
-		System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
+		Setup.setUpTestDS();
 
-		System.setProperty(Context.INITIAL_CONTEXT_FACTORY,
-				"org.apache.naming.java.javaURLContextFactory");
-
-		InitialContext ctx = new InitialContext();
-
-		ctx.createSubcontext("java:");
-		ctx.createSubcontext("java:comp");
-		ctx.createSubcontext("java:comp/env");
-		ctx.createSubcontext("java:comp/env/jdbc");
-
-		PGSimpleDataSource ds = new PGSimpleDataSource();
-		ds.setServerName(System.getenv("AMOS_DB_SERVER"));
-		ds.setPortNumber(Integer.parseInt(System.getenv("AMOS_DB_PORT")));
-		ds.setDatabaseName(System.getenv("AMOS_DB_NAME"));
-		ds.setUser(System.getenv("AMOS_DB_USER"));
-		ds.setPassword(System.getenv("AMOS_DB_PASSWORD"));
-
-		ctx.bind("java:comp/env/jdbc/postgresql", ds);
-
+	}
+	
+	@Before
+	public void setUpData() throws Exception {
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
 
 	
@@ -98,10 +83,9 @@ public class CamelTest extends CamelTestSupport  {
 					.process(new ComponentUpdater())
 					.to("mock:out");
 				
-				
-				from("direct:testin")
-					.to("http://localhost:8080/audi/test")
-					.to("mock:2");
+				from("seda:fail")
+					.to("mock:fail");
+	
 			}
 		};
 		
@@ -109,43 +93,6 @@ public class CamelTest extends CamelTestSupport  {
 	}
 	
 	
-	@Test
-	public void Test2() throws InterruptedException  {
-
-	
-		
-		MockEndpoint ende = getMockEndpoint("mock:2");
-		ende.expectedMessageCount(1);
-		
-
-		NotifyBuilder notify = new NotifyBuilder(this.context()).whenDone(
-				1).create();
-
-		
-		String message=
-			"<tasks>"+	
-			"<device factory=\"Ingolstadt\" hall=\"C6\" line=\"C6 Finish\" location=\"BC3\" name=\"MFTD2XI1-052\" >"+
-            "<component name=\"Network\">" +
-            "    <status>yellow</status>"+
-			"	<value>aaal</value>"+
-            "</component>"+
-            "<component name=\"Tests\">"+
-            "    <status>yellow</status>"+
-			"	<value>aaal</value>"+
-            "</component>"+
-            "<component name=\"Maintainance\">"+
-            "    <status>yellow</status>"+
-			"	<value>aaal</value>"+
-            "</component>"+
-            "</device>"+
-            "</tasks>";
-		
-		template.sendBody("direct:in" ,message);
-
-	
-		assertTrue(notify.matches(10, TimeUnit.SECONDS));
-		ende.assertIsSatisfied();
-	}
 	
 	@Test
 	public void Test() throws InterruptedException  {
@@ -154,8 +101,10 @@ public class CamelTest extends CamelTestSupport  {
 		
 		MockEndpoint ende = getMockEndpoint("mock:out");
 		ende.expectedMessageCount(3);
-		ende.expectedHeaderReceived("id", 2660);
+		ende.expectedHeaderReceived("id", 5);
 		
+		MockEndpoint fail = getMockEndpoint("mock:out");
+		fail.expectedMessageCount(0);
 
 		NotifyBuilder notify = new NotifyBuilder(this.context()).whenDone(
 				1).create();
@@ -163,8 +112,8 @@ public class CamelTest extends CamelTestSupport  {
 		
 		String message=
 			"<tasks>"+	
-			"<device factory=\"Ingolstadt\" hall=\"C6\" line=\"C6 Finish\" location=\"BC3\" name=\"MFTD2XI1-052\" >"+
-            "<component name=\"Network\">" +
+			"<device factory=\"Ingolstadt\" hall=\"H1\" line=\"L1 Assembly\" location=\"Lo1\" name=\"D1\" >"+
+			"<component name=\"Network\">" +
             "    <status>red</status>"+
 			"	<value>N/A</value>"+
             "</component>"+
@@ -184,6 +133,7 @@ public class CamelTest extends CamelTestSupport  {
 	
 		assertTrue(notify.matches(10, TimeUnit.SECONDS));
 		ende.assertIsSatisfied();
+		fail.assertIsSatisfied();
 	}
 	
 }

@@ -28,9 +28,17 @@ import org.junit.*;
 import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.HallBean;
 import de.osramos.reprovis.HierarchieElementBean;
+import de.osramos.reprovis.test.testhelper.Setup;
 import static org.junit.Assert.*;
 
 public class HallBeanTest {
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
 	@Test
 	public void HallTest() throws Exception {

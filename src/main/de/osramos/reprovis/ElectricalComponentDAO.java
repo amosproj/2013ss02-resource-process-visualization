@@ -36,9 +36,11 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
+import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class ElectricalComponentDAO extends HierarchieElementDAO {
 	

@@ -24,7 +24,7 @@
 <%@ page import="de.osramos.reprovis.TestingDeviceBean" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
-<%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="de.osramos.reprovis.handler.MasterData" %>
 <%
 TestingDeviceBean testingDevice = (TestingDeviceBean)request.getAttribute("tdid");
 

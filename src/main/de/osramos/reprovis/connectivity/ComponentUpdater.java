@@ -35,7 +35,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 
 import de.osramos.reprovis.ElectricalComponentDAO;
-import de.osramos.reprovis.MasterData;
+import de.osramos.reprovis.handler.MasterData;
 
 public class ComponentUpdater implements Processor {
 

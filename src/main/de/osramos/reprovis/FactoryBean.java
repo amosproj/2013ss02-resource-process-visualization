@@ -27,8 +27,8 @@ import java.util.Date;
 import java.util.List;
 
 
-import de.osramos.reprovis.MasterData.Company;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.MasterData.Company;
 
 public class FactoryBean extends HierarchieElementBean {
 

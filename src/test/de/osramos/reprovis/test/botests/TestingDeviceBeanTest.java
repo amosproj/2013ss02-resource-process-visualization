@@ -26,15 +26,23 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.osramos.reprovis.ElectricalComponentBean;
 import de.osramos.reprovis.ElectricalComponentDAO;
 import de.osramos.reprovis.TestingDeviceBean;
-import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 
 public class TestingDeviceBeanTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
 	@Test
 	public void initTest() throws Exception{

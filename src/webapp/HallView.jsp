@@ -23,7 +23,7 @@
 <%@ page import="de.osramos.reprovis.LineBean" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
-<%@ page import="de.osramos.reprovis.MasterData" %>
+<%@ page import="de.osramos.reprovis.handler.MasterData" %>
 
 <%
 HallBean hall = (HallBean)request.getAttribute("hall");

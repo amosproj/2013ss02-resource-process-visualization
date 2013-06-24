@@ -36,7 +36,6 @@ import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
 
-import de.osramos.reprovis.MasterData;
 import de.osramos.reprovis.exception.DatabaseException;
 
 /**

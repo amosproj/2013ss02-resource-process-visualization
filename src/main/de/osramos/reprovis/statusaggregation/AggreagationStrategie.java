@@ -19,42 +19,15 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-package de.osramos.reprovis;
+package de.osramos.reprovis.statusaggregation;
 
-import de.osramos.reprovis.MasterData.TrafficLight;
+import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
 
-public class MinimumAggregationStrategy implements AggreagationStrategie{
+public interface AggreagationStrategie {
+
+	public TrafficLight aggregate(HierarchieElementBean element) throws HierarchieException;
 	
-	
-	public MinimumAggregationStrategy(){
-		
-	}
-
-	@Override
-	public TrafficLight aggregate(HierarchieElementBean element) throws HierarchieException {
-		TrafficLight status = TrafficLight.green;
-		
-		if(element.getChilds() == null || element.getChilds().isEmpty()){
-			throw new HierarchieException("Element has no Childs");
-		}
-
-		for (HierarchieElementBean child : element.getChilds()) {
-			// aggregate to worst status
-			if (status == TrafficLight.green) {
-				status = child.getStatus();
-			} else if (status == TrafficLight.yellow) {
-				if (child.getStatus() == TrafficLight.red) {
-					status = TrafficLight.red;
-				}
-			}
-		}
-		return status;
-	}
-	
-	public String toString(){
-		return "MinimumAggregationStrategy";
-	}
-
-
 }

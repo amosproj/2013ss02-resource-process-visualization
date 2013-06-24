@@ -24,13 +24,23 @@ package de.osramos.reprovis.test.botests;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.LocationBean;
 import de.osramos.reprovis.LocationDAO;
 import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 public class LocationBeanTest {
+	
+	
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+
+		Setup.setUpTestDS();
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
 	@Test
 	public void initTest() throws Exception{
