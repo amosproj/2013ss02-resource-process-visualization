@@ -26,9 +26,14 @@ import org.junit.runners.*;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-		de.osramos.reprovis.test.botests.FactoryBeanTest.class,
+	de.osramos.reprovis.test.botests.HierarchieElementBeanTest.class,
 		de.osramos.reprovis.test.botests.GlobalBeanTest.class,
+		de.osramos.reprovis.test.botests.FactoryBeanTest.class,
 		de.osramos.reprovis.test.botests.HallBeanTest.class,
-		de.osramos.reprovis.test.botests.LineBeanTest.class })
+		de.osramos.reprovis.test.botests.LineBeanTest.class,
+		de.osramos.reprovis.test.botests.LocationBeanTest.class,
+		de.osramos.reprovis.test.botests.TestingDeviceBeanTest.class,
+		de.osramos.reprovis.test.botests.ElectricalComponentBeanTest.class
+		})
 public class BOTests {
 }
