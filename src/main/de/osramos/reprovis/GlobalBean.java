@@ -30,9 +30,9 @@ import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class GlobalBean extends HierarchieElementBean {
 
-	private GlobalBean(int id){
+	private GlobalBean(int id) {
 		super(id);
-		
+
 	}
 
 	private static GlobalBean global;
@@ -41,25 +41,25 @@ public class GlobalBean extends HierarchieElementBean {
 	public HierarchieElementBean getParent() throws HierarchieException {
 		throw new HierarchieException("Element is root");
 	}
-	
-	public static void resetGlobal(){
+
+	public static void resetGlobal() {
 		global = null;
 		getGlobal();
 	}
 
 	public static GlobalBean getGlobal() {
-		if (!DatabaseHandler.databaseIsInitialized()){
+/*		if (!DatabaseHandler.databaseIsInitialized()) {
 			try {
 				DatabaseHandler.initDB();
 			} catch (DatabaseException e) {
 				e.printStackTrace();
 			}
-		}
-		
-		if (global == null){
+		}*/
+
+		if (global == null) {
 			global = new GlobalBean(0);
 		}
-		
+
 		return global;
 	}
 
@@ -69,9 +69,13 @@ public class GlobalBean extends HierarchieElementBean {
 			List<Integer> childIds = FactoryDAO.getFactoryIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				FactoryBean childBean = new FactoryBean(id);
-				childBean.setParent(this);
-				childs.add(childBean);
+				try {
+					FactoryBean childBean = new FactoryBean(id);
+					childBean.setParent(this);
+					childs.add(childBean);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

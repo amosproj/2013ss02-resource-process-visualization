@@ -79,15 +79,3 @@ CREATE TABLE component (
 	parent integer REFERENCES device(id) ON DELETE CASCADE
 );
 
-insert into factory values (1, 'Ingolstadt', 'Audi' ,'Ingolstadt', 'Germany', 48.762201, 11.425374, 
-		'Audi A3, Audi A3 Sportback',
-		35386, '2012-12-31 00:00:00.0', 551889, 2580, 1, 3, 'DSA GmbH', 1
-	);
-	
-INSERT INTO hall VALUES (2, 'H1', 'Assembly+Finish', 351, 1914, 'Audi A4', 2, 'polygon249', 2, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>');
-INSERT INTO line VALUES (3, 'L1 Assembly', 'Series 3', 98, 'rect217', 2);
-INSERT INTO location VALUES (4, 'Lo1', 'ABS test', 'Peter Merkel', 3);
-INSERT INTO device VALUES (5, 'D1', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '28994613', '2013-06-18 06:00:41.701', false, 4);
-INSERT INTO component VALUES (6, 'Tests', 'Ok', 'B', 'F', '70036775', 'Howard Joel Wolowitz', '2013-06-18 00:44:47.937', 'G5', 'green', 5);
-INSERT INTO component VALUES (7, 'Network', 'IP: 10.0.0.1', 'B', 'F', '71054617', 'Dr. Leonard Leakey Hofstadter', '2013-06-18 08:06:43.37', 'A3', 'green', 5);
-INSERT INTO component VALUES (8, 'Maintainance', 'no scheduled offtime', 'C', 'H', '32935192', 'Dr. Leonard Leakey Hofstadter', '2013-06-18 00:56:28.457', 'B8', 'green', 5);

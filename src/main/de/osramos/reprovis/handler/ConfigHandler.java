@@ -48,6 +48,7 @@ public class ConfigHandler {
 			ElectricalComponentDAO.resetCache();
 			
 			GlobalBean.resetGlobal();
+			GlobalBean.getGlobal();
 		} catch (DatabaseException e) {
 			
 			e.printStackTrace();
