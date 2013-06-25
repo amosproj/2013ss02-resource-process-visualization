@@ -28,11 +28,12 @@ import java.util.List;
 
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.MasterData.Company;
 
 public class FactoryBean extends HierarchieElementBean {
 
-	public FactoryBean(int id) {
+	public FactoryBean(int id) throws HierarchieException {
 		super(id);
 
 		
@@ -52,11 +53,11 @@ public class FactoryBean extends HierarchieElementBean {
 			this.aggreagationStrategie = FactoryDAO.getAggreagationStrategie(id);
 		} catch (DatabaseException e) {
 			
-			e.printStackTrace();
+			throw new HierarchieException("Element does not exist");
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			throw new HierarchieException("Element does not exist");
 		}
 	}
 
