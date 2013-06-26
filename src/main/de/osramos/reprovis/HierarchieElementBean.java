@@ -71,7 +71,7 @@ public abstract class HierarchieElementBean {
 	}
 
 	public List<HierarchieElementBean> getChilds() {
-		return childs != null ? childs : new ArrayList<HierarchieElementBean>();
+		return childs;
 	}
 	
 	
@@ -104,7 +104,7 @@ public abstract class HierarchieElementBean {
 
 			List<HierarchieElementBean> l = getChilds();
 			if (l == null || l.isEmpty()) {
-				return null;
+				return new ArrayList<HierarchieElementBean>();
 			}
 
 			cacheLevel = c;
@@ -129,17 +129,19 @@ public abstract class HierarchieElementBean {
 
 	
 
-	public int getNumOfLeafs() {
+public int getNumOfLeafs(Class LeafClass) {
 
-		if (this.getClass() == TestingDeviceBean.class) {
-			return 1;
+		List<HierarchieElementBean> l = getChilds();
+		if (l == null || l.isEmpty()) {
+			return 0;
+		} else if (getChilds().get(0).getClass() == LeafClass) {
+			return l.size();
 		} else {
 			int num = 0;
-			if (getChilds() != null) {
-				for (HierarchieElementBean child : getChilds()) {
-					num += child.getNumOfLeafs();
-				}
+			for (HierarchieElementBean child : l) {
+				num += child.getNumOfLeafs(LeafClass);
 			}
+
 			return num;
 		}
 	}

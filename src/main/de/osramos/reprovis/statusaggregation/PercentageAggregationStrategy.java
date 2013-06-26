@@ -60,7 +60,7 @@ public class PercentageAggregationStrategy implements AggreagationStrategie {
 		List<HierarchieElementBean> l = element
 				.getChildsByClass(getAggregationLevel());
 
-		if (l == null) {
+		if (l == null || l.isEmpty()) {
 			throw new HierarchieException("Element has no childs with class "
 					+ getAggregationLevel());
 		}
