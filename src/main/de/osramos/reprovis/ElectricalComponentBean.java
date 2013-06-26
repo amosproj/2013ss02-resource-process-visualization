@@ -73,7 +73,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return "";
 	}
 	
 	public String getValue(){
@@ -83,7 +83,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return "";
 	}
 	
 
@@ -95,7 +95,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return shiftResponsibility;
+		return shiftResponsibility != null ? shiftResponsibility : "";
 	}
 
 	private void setShiftResponsibility(String shiftResponsibility) {
@@ -109,7 +109,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return sector;
+		return sector != null? sector : "";
 	}
 
 	private void setSector(String sector) {
@@ -124,7 +124,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return troubleOccurrenceSite;
+		return troubleOccurrenceSite != null ? troubleOccurrenceSite : "";
 	}
 
 	private void setTroubleOccurrenceSite(String troubleOccurrenceSite) {
@@ -153,7 +153,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return category;
+		return category != null ? category : "";
 	}
 
 	private void setCategory(String category) {
@@ -166,7 +166,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 		}
-		return serialnumber;
+		return serialnumber != null ? serialnumber : "";
 	}
 
 	private void setSerialnumber(String serialnumber) {

@@ -22,13 +22,13 @@
 
 package de.osramos.reprovis.test.daotests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.LineDAO;
-import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -41,14 +41,64 @@ public class LineDAOTest {
 		Setup.setUpTestDS();
 
 	}
+	
+	@Before
+	public void setUp() throws Exception{
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
 
+	@Test
+	public void initTest() throws Exception{
+		assertEquals(LineDAO.getLineIds(2).size(), 1);
+	}
 	
 	@Test
-	public void initTest(){
-		try{
-		assertTrue( LineDAO.getLineIds(0).size() > 2);
-		}catch(DatabaseException e){
-			
-		}
+	public void getNameTest() throws Exception{
+		assertEquals(LineDAO.getName(3), "L1 Assembly");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void nameForInvalidTest() throws DatabaseException{
+		LineDAO.getName(-1);
+	}
+	
+	@Test
+	public void getSeriesTest() throws Exception{
+		assertEquals(LineDAO.getproductionSeries(3), "Series 3");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void seriesForInvalidTest() throws DatabaseException{
+		LineDAO.getproductionSeries(-1);
+	}
+	
+	@Test
+	public void getCapacityTest() throws Exception{
+		assertEquals(LineDAO.getproductionCapacity(3), 98);
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void capacityForInvalidTest() throws DatabaseException{
+		LineDAO.getproductionCapacity(-1);
+	}
+	
+	@Test
+	public void getPathTest() throws Exception{
+		assertEquals(LineDAO.getPath(3), "rect217");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void pathForInvalidTest() throws DatabaseException{
+		LineDAO.getPath(-1);
+	}
+	
+	@Test
+	public void getParentTest() throws Exception{
+		assertEquals(LineDAO.getHall(3).getId(), 2);
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void parentForInvalidTest() throws DatabaseException{
+		LineDAO.getHall(-1).getId();
 	}
 }

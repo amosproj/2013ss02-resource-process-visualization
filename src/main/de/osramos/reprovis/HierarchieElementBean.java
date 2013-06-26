@@ -83,6 +83,8 @@ public abstract class HierarchieElementBean {
 			return aggreagationStrategie.aggregate(this);
 		} catch (HierarchieException e) {
 
+		} catch (NullPointerException e){
+			
 		}
 
 		try {

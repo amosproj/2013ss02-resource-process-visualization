@@ -32,7 +32,6 @@ import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
-import de.osramos.reprovis.handler.MasterData.TrafficLight;
 import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class LineDAO {
@@ -53,21 +52,10 @@ public class LineDAO {
 			conn.close();
 			return name;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 	}
-
-	/*public static TrafficLight getStatus(int id) {
-		int r = ((int)(Math.random()*100))%10;
-		if (r < 8){
-			return TrafficLight.green;
-		} else if (r < 9){
-			return TrafficLight.yellow;
-		} else {
-			return TrafficLight.red;
-		}
-	}*/
 	
 	public static String getPath(int id) throws DatabaseException{
 		try {
@@ -82,7 +70,7 @@ public class LineDAO {
 			conn.close();
 			return path;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 	}
@@ -101,7 +89,7 @@ public class LineDAO {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 		return l;
@@ -121,7 +109,7 @@ public class LineDAO {
 			conn.close();
 			return path;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 	}
@@ -140,7 +128,7 @@ public class LineDAO {
 			conn.close();
 			return capacity;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 	}
@@ -158,7 +146,7 @@ public class LineDAO {
 			conn.close();
 			return hall;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
 	}

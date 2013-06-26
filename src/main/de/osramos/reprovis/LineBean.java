@@ -90,7 +90,7 @@ public class LineBean extends HierarchieElementBean {
 	}
 	
 	public String getPath() {
-		return path;
+		return path != null ? path : "";
 	}
 
 	public String getProductionSeries() {

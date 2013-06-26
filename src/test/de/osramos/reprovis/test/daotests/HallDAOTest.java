@@ -22,13 +22,13 @@
 
 package de.osramos.reprovis.test.daotests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.HallDAO;
-import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -37,18 +37,96 @@ public class HallDAOTest {
 	
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-
 		Setup.setUpTestDS();
-
+	}
+	
+	@Before
+	public void setUp() throws Exception{
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
 
-	
 	@Test
 	public void initTest() throws Exception{
-		try{
-		assertTrue( HallDAO.getHallIds(0).size() > 2);
-		}catch(DatabaseException e){
-		
-		}
+		assertEquals(HallDAO.getHallIds(1).size(), 1);
+	}
+	
+	@Test
+	public void getNameTest() throws Exception{
+		assertEquals(HallDAO.getName(2), "H1");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void nameForInvalidTest() throws DatabaseException{
+		HallDAO.getName(-1);
+	}
+	
+	@Test
+	public void getTypeTest() throws Exception{
+		assertEquals(HallDAO.getType(2), "Assembly+Finish");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void typeForInvalidTest() throws DatabaseException{
+		HallDAO.getType(-1);
+	}
+	
+	@Test
+	public void getStaffTest() throws Exception{
+		assertEquals(HallDAO.getSizeOfStaff(2), 351);
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void staffForInvalidTest() throws DatabaseException{
+		HallDAO.getSizeOfStaff(-1);
+	}
+	
+	@Test
+	public void getCapacityTest() throws Exception{
+		assertEquals(HallDAO.getProductionCapacity(2), 1914);
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void capacityForInvalidTest() throws DatabaseException{
+		HallDAO.getProductionCapacity(-1);
+	}
+	
+	@Test
+	public void getVehiclesTest() throws Exception{
+		assertEquals(HallDAO.getVehicles(2), "Audi A4");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void vehiclesForInvalidTest() throws DatabaseException{
+		HallDAO.getVehicles(-1);
+	}
+	
+	@Test
+	public void getUpsServersTest() throws Exception{
+		assertEquals(HallDAO.getUpsServers(2), 2);
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void upsServersForInvalidTest() throws DatabaseException{
+		HallDAO.getUpsServers(-1);
+	}
+	
+	@Test
+	public void getPathTest() throws Exception{
+		assertEquals(HallDAO.getPath(2), "polygon249");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void pathForInvalidTest() throws DatabaseException{
+		HallDAO.getPath(-1);
+	}
+	
+	@Test
+	public void getMapTest() throws Exception{
+		assertEquals(HallDAO.getMap(2), "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void mapForInvalidTest() throws DatabaseException{
+		HallDAO.getMap(-1);
 	}
 }

@@ -21,6 +21,8 @@
 
 package de.osramos.reprovis.test.botests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
@@ -42,12 +44,6 @@ public class LineBeanTest {
 	}
 
 	@Test
-	public void initTest(){
-		LineBean b = new LineBean(1);
-		assertTrue(b.getChilds().size() > 1);
-	}
-
-	@Test
 	public void hierarchieTest(){
 		GlobalBean g = GlobalBean.getGlobal();
 		HierarchieElementBean l = g.getChilds().get(0).getChilds().get(0).getChilds().get(0);
@@ -55,5 +51,33 @@ public class LineBeanTest {
 		assertTrue(!l.getClass().equals(HallBean.class));
 	}
 
-
+	@Test
+	public void notExistingTest(){
+		LineBean l = new LineBean(-1);
+		assertNotNull(l.getChilds());
+		assertNotNull(l.getName());
+		assertNotNull(l.getPath());
+		assertNotNull(l.getProductionCapacity());
+		assertNotNull(l.getProductionSeries());
+		assertNotNull(l.getType());
+	}
+	
+	@Test
+	public void parentTest(){
+		assertEquals(3, (new HallBean(2)).getChilds().get(0).getId());
+	}
+	
+	@Test
+	public void childTest(){
+		assertEquals(1, (new LineBean(3)).getChilds().size());
+	}
+	
+	@Test
+	public void getterTest(){
+		LineBean line = new LineBean(3);
+		assertEquals("L1 Assembly", line.getName());
+		assertEquals("Series 3", line.getProductionSeries());
+		assertEquals(98, line.getProductionCapacity());
+		assertEquals("rect217", line.getPath());
+	}
 }

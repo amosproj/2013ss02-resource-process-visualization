@@ -21,20 +21,25 @@
 
 package de.osramos.reprovis.test.daotests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import de.osramos.reprovis.FactoryDAO;
 import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.handler.MasterData;
 import de.osramos.reprovis.handler.MasterData.Company;
 import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 import de.osramos.reprovis.test.testhelper.Setup;
-import static org.junit.Assert.*;
 
 public class FactoryDAOTest {
 
