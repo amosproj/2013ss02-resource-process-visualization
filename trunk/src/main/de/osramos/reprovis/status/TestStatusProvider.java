@@ -1,5 +1,6 @@
 package de.osramos.reprovis.status;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +14,12 @@ import java.util.Set;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.handler.ConfigHandler;
 import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class TestStatusProvider extends HttpServlet {
@@ -155,8 +159,33 @@ public class TestStatusProvider extends HttpServlet {
 	}
 	
 	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		
+
+	}
+
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		String task = (String) req.getAttribute("task");
+		if(task.equals("start")){
+			start();
+		}else if (task.equals("stop")){
+			stop();
+		}
+	}
+	
+	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		
+		/*start();*/
+	}
+	
+	private void start(){
 		try {
 			generator = new Thread(new RandomStatusGenerator(DatabaseHandler.getDB()));
 			generator.start();
@@ -165,10 +194,14 @@ public class TestStatusProvider extends HttpServlet {
 		}
 	}
 	
+	private void stop(){
+		generator.interrupt();
+	}
+	
 	@Override
 	public void destroy() {
 		super.destroy();
-		generator.interrupt();
+		stop();
 	}
 
 }

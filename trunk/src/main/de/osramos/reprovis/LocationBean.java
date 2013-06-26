@@ -48,7 +48,7 @@ public class LocationBean extends HierarchieElementBean {
 	}
 	
 	public String getName(){
-		return name;
+		return name != null ? name : "";
 	}
 	
 	public String getDescription() {
@@ -61,7 +61,7 @@ public class LocationBean extends HierarchieElementBean {
 		} catch (DatabaseException e){
 			e.printStackTrace();
 		}
-		return null;
+		return "";
 	}
 
 	

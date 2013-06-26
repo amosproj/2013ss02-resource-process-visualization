@@ -81,7 +81,7 @@ public class HierarchieElementBeanTest {
 		}
 	}
 
-/*	@Test
+	@Test
 	public void getNumOfLeafsTest() {
 
 		{
@@ -117,7 +117,7 @@ public class HierarchieElementBeanTest {
 			}
 		}
 	}
-*/
+
 }
 
 class TestHierarchieElementBean extends HierarchieElementBean {

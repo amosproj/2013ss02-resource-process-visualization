@@ -184,7 +184,7 @@ public class FactoryBean extends HierarchieElementBean {
 
 	public int getUPSClients() {
 		
-		return getNumOfLeafs();
+		return getNumOfLeafs(TestingDeviceBean.class);
 	}
 	
 	public String getMap() {
