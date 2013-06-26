@@ -22,13 +22,15 @@
 
 package de.osramos.reprovis.test.botests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.osramos.reprovis.LineBean;
 import de.osramos.reprovis.LocationBean;
-import de.osramos.reprovis.LocationDAO;
 import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -43,8 +45,30 @@ public class LocationBeanTest {
 	}
 
 	@Test
-	public void initTest() throws Exception{
+	public void childTest() throws Exception{
 		LocationBean b = new LocationBean(1);
 		assertTrue(b.getChilds().size() == TestingDeviceDAO.getTestingDeviceIds(1).size());
+	}
+	
+	@Test
+	public void notExistingTest(){
+		LocationBean loc = new LocationBean(-1);
+		assertNotNull(loc.getChilds());
+		assertNotNull(loc.getDescription());
+		assertNotNull(loc.getName());
+		assertNotNull(loc.getPersonInCharge());
+	}
+	
+	@Test
+	public void parentTest(){
+		assertEquals(4, (new LineBean(3)).getChilds().get(0).getId());
+	}
+	
+	@Test
+	public void getterTest(){
+		LocationBean loc = new LocationBean(4);
+		assertEquals("Lo1", loc.getName());
+		assertEquals("ABS test", loc.getDescription());
+		assertEquals("Peter Merkel", loc.getPersonInCharge());
 	}
 }

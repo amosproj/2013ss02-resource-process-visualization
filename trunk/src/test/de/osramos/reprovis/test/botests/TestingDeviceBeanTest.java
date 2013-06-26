@@ -22,14 +22,18 @@
 
 package de.osramos.reprovis.test.botests;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.osramos.reprovis.ElectricalComponentDAO;
+import de.osramos.reprovis.LocationBean;
 import de.osramos.reprovis.TestingDeviceBean;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -45,14 +49,43 @@ public class TestingDeviceBeanTest {
 	}
 
 	@Test
-	public void initTest() throws Exception{
-		TestingDeviceBean b = new TestingDeviceBean(1);
-		List<Integer> childIds = ElectricalComponentDAO
-				.getElectricalComponentIds(0);
-
-		
-		assertTrue(b.getChilds().size() == childIds.size());
-
-
+	public void childTest(){
+		assertEquals(3, (new TestingDeviceBean(5)).getChilds().size());
+	}
+	
+	@Test
+	public void parentTest(){
+		assertEquals(5, (new LocationBean(4)).getChilds().get(0).getId());
+	}
+	
+	@Test
+	public void notExistingTest(){
+		TestingDeviceBean device = new TestingDeviceBean(-1);
+		assertNotNull(device.getType());
+		assertNotNull(device.getDescription());
+		assertNotNull(device.getName());
+		assertNotNull(device.getNetworkStatus());
+		assertNotNull(device.getIpAddress());
+		assertNotNull(device.getMaintainanceInfo());
+		assertNotNull(device.getSector());
+		assertNotNull(device.getSerialnumber());
+		assertNull(device.getTroublePeriod());
+		assertNotNull(device.isTestFailure());
+	}
+	
+	@Test
+	public void getterTest() throws Exception{
+		TestingDeviceBean device = new TestingDeviceBean(5);
+		assertEquals("D1", device.getType());
+		assertEquals("DSA Multifunction-tester Gen. 2", device.getDescription());
+		assertEquals("MFTD2XI1-052", device.getName());
+		assertEquals("N/A", device.getNetworkStatus());
+		assertEquals("N/A", device.getIpAddress());
+		assertEquals(" ", device.getMaintainanceInfo());
+		assertEquals("B", device.getSector());
+		assertEquals("28994613", device.getSerialnumber());
+		Date shouldBe = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")).parse("2013-06-18 06:00:41.701");
+		assertTrue(shouldBe.compareTo(device.getTroublePeriod()) == 0);
+		assertEquals(false, device.isTestFailure());
 	}
 }

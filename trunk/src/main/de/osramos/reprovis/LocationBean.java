@@ -52,7 +52,7 @@ public class LocationBean extends HierarchieElementBean {
 	}
 	
 	public String getDescription() {
-		return description;
+		return description != null ? description : "";
 	}
 	
 	public String getPersonInCharge() {

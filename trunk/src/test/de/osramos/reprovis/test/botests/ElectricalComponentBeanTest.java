@@ -22,13 +22,22 @@
 
 package de.osramos.reprovis.test.botests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentBean;
-import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.HierarchieElementBean;
+import de.osramos.reprovis.TestingDeviceBean;
+import de.osramos.reprovis.handler.MasterData.TrafficLight;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class ElectricalComponentBeanTest {
@@ -42,11 +51,53 @@ public class ElectricalComponentBeanTest {
 
 
 	@Test
-	public void initTest(){
-		ElectricalComponentBean b = new ElectricalComponentBean(0);
+	public void notExistingTest(){
+		ElectricalComponentBean b = new ElectricalComponentBean(-1);
 		assertNotNull(b);
-		assertNull(b.getChilds());
-
+		assertNotNull(b.getChilds());
+		assertNotNull(b.getName());
+		assertNotNull(b.getValue());
+		assertNotNull(b.getSector());
+		assertNotNull(b.getCategory());
+		assertNotNull(b.getSerialnumber());
+		assertNotNull(b.getShiftResponsibility());
+		assertNull(b.getTroubeOccurrenceTime());
+		assertNotNull(b.getTroubleOccurrenceSite());
 	}
 	
+	@Test
+	public void parentTest(){
+		boolean existing[] = {false, false, false};
+		List<HierarchieElementBean> children = (new TestingDeviceBean(5)).getChilds();
+		for(HierarchieElementBean h : children){
+			switch(h.getId()){
+			case 6:
+				existing[0] = true;
+				break;
+			case 7:
+				existing[1] = true;
+				break;
+			case 8:
+				existing[2] = true;
+				break;
+			}
+		}
+		assertTrue(existing[0] && existing[1] && existing[2]);
+	}
+	
+	@Test
+	public void getterTest() throws Exception{
+		ElectricalComponentBean eb = new ElectricalComponentBean(6);
+		assertEquals("Tests", eb.getName());
+		assertEquals("Ok", eb.getValue());
+		assertEquals("B", eb.getSector());
+		assertEquals("F", eb.getCategory());
+		assertEquals("70036775", eb.getSerialnumber());
+		assertEquals("Howard Joel Wolowitz", eb.getShiftResponsibility());
+		Date shouldBe = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS")).parse("2013-06-18 00:44:47.937");
+		assertTrue(shouldBe.compareTo(eb.getTroubeOccurrenceTime()) == 0);
+		assertEquals("G5", eb.getTroubleOccurrenceSite());
+		assertEquals(TrafficLight.green, eb.getStatus());
+		
+	}
 }

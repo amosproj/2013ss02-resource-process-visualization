@@ -22,13 +22,13 @@
 
 package de.osramos.reprovis.test.daotests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.LocationDAO;
-import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -42,13 +42,43 @@ public class LocationDAOTest {
 
 	}
 
-	
+	@Before
+	public void setUp() throws Exception{
+		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
+
 	@Test
 	public void initTest() throws Exception{
-		try{
-			assertTrue( LocationDAO.getLocationIds(0).size() > 2);
-		}catch(DatabaseException e){
-			
-		}
+		assertEquals(LocationDAO.getLocationIds(3).size(), 1);
+	}
+	
+	@Test
+	public void getNameTest() throws Exception{
+		assertEquals(LocationDAO.getName(4), "Lo1");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void nameForInvalidTest() throws DatabaseException{
+		LocationDAO.getName(-1);
+	}
+	
+	@Test
+	public void getDescriptionTest() throws Exception{
+		assertEquals(LocationDAO.getDescription(4), "ABS test");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void descriptionForInvalidTest() throws DatabaseException{
+		LocationDAO.getDescription(-1);
+	}
+	
+	@Test
+	public void getpersonInChargeTest() throws Exception{
+		assertEquals(LocationDAO.getPersonInCharge(4), "Peter Merkel");
+	}
+	
+	@Test (expected=DatabaseException.class)
+	public void personInChargeForInvalidTest() throws DatabaseException{
+		LocationDAO.getPersonInCharge(-1);
 	}
 }
