@@ -111,8 +111,6 @@ $(document).ready(function() {
 		    		}, function() {
 		    			$(this).stop().animate({"opacity": "1.0"}, 300);
 		    		});
-		    	
-		    		//location.hash = "hall-"+data.halls[i].id;
 	    	}
 	    }
 	    

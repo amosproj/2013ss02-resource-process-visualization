@@ -107,8 +107,6 @@ $(document).ready(function() {
 		    			$(this).stop().animate({"opacity": "1.0"}, 300);
 		    		});
 	    	}
-	    	
-    		//location.hash = "line-"+data.lines[i].id;
 	    }
 	    
 	    if (BrowserDetect.browser != "Explorer" || BrowserDetect.version >= 9.0) {
