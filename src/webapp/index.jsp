@@ -42,12 +42,12 @@
 	<!-- WORLDMAP Framework -->
 	<!-- Include leaflet open-source javascript library for mobile friendly interactive maps -->
 	<!-- PLEASE NOTE: Currently pulled from the server, maybe there is a need to hard-copy them to the system -->
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+	<link rel="stylesheet" href="./css/leaflet.css" />
 	<!--[if lte IE 8]>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+		<link rel="stylesheet" href="./css/leaflet.ie.css" />
 	<![endif]-->
-	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="./js/leaflet.js"></script>
+	<script src="./js/jquery.min.js"></script>
 	
 	<!-- CSS Framework -->
 	<link href="./css/bootstrap.css" rel="stylesheet">
@@ -82,10 +82,7 @@
 	<script src="./js/webapp-location.js"></script>
 	<script src="./js/webapp-testingDevice.js"></script>
 	<script src="./js/webapp-component.js"></script>
-	<script src="./js/webapp-list.js"></script>
-
-	<!-- Misc -->
-	<script src="./js/jquery.ba-hashchange.min.js"></script>	
+	<script src="./js/webapp-list.js"></script>	
 </head>
 
 <body>
@@ -171,20 +168,6 @@
 
     </div> <!-- /container -->
  
-    <!-- jQuery hashchange>
-    <script type="text/javascript">
-    $(function() {
-    	  // Bind event to window.onhashchange
-    	  $(window).hashchange(function() {
-    	    var hash = location.hash;
-    	  })
-    	  
-    	  // Since the event is only triggered when the hash changes, we need to trigger
-    	  // the event now, to handle the hash the page may have loaded with.
-    	  $(window).hashchange();    	  
-    	});
-    </script>
-    
     <!-- Remaining JavaScript, placed at bottom for faster page load -->
     <script src="./js/bootstrap-transition.js"></script>
     <script src="./js/bootstrap-alert.js"></script>
