@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
+ -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
+ -
+ - This file is part of the Resource Process Visualization application.
+ -
+ - This program is free software: you can redistribute it and/or modify
+ - it under the terms of the GNU Affero General Public License as
+ - published by the Free Software Foundation, either version 3 of the
+ - License, or (at your option) any later version.
+ -
+ - This program is distributed in the hope that it will be useful, 
+ - but WITHOUT ANY WARRANTY; without even the implied warranty of
+ - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ - GNU Affero General Public License for more details.
+ -
+ - You should have received a copy of the GNU Affero General Public
+ - License along with this program. If not, see
+ - <http://www.gnu.org/licenses/>.
+ -->
+<project name="ResourceProcessVisualization" xmlns:ivy="antlib:org.apache.ivy.ant" default="dist" basedir=".">
+	<description>
+	</description>
+
+	<property name="src" location="src" />
+	<property name="src.main" location="${src}/main" />
+	<property name="src.test" location="${src}/test" />
+	<property name="src.web" location="${src}/webapp" />
+	<property name="src.resources" location="${src}/resources" />
+	<property name="target" location="target" />
+	<property name="build" location="${target}/classes" />
+	<property name="lib" location="lib" />
+	<property name="lib.default" location="${lib}/default" />
+	<property name="lib.test" location="${lib}/test" />
+
+
+	<property environment="env" />
+	<!-- set up your CATALINA_HOME environment variable !!! -->
+	<property name="tomcat" location="${env.CATALINA_HOME}" />
+	<property name="tomcat.web" location="${tomcat}/webapps" />
+	<property name="tomcat.bin" location="${tomcat}/bin" />
+	
+	<target name="init">
+		<antcall target="clean" />
+		<mkdir dir="${build}" />
+		<mkdir dir="${lib}" />
+		<mkdir dir="${lib.default}" />
+	</target>
+
+
+	<target name="compile" depends="init,retrieve">
+		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path" target="1.6">
+			<src path="${src}" />
+			<src path="${lib.default}" />
+		</javac>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+
+		<war destfile="${target}/reprovis.war" webxml="src/webapp/WEB-INF/web.xml">
+			<classes dir="${build}" />
+			<fileset dir="${src.web}" />
+			<fileset dir="${src.resources}" />
+			<lib dir="${lib.default}"/>
+		</war>
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${target}" />
+	</target>
+
+	<target name="retrieve" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve pattern="${lib}/[conf]/[artifact].[ext]" />
+		<ivy:cachepath pathid="compile.path" />
+	</target>
+
+	<target name="package_release" depends="dist" description="create root.war for weekly delivery">
+		<copy file="${target}/reprovis.war" toFile="./ROOT.war" overwrite="true" />
+	</target>
+
+	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
+		<delete dir="${tomcat.web}/ROOT" />
+		<copy file="${target}/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
+	</target>
+
+
+	
+	<!--target name="tomcat_start">
+	    <java jar="${tomcat.bin}/bootstrap.jar" fork="true">
+	        <jvmarg value="-Dcatalina.home=${tomcat}"/>
+	    </java>
+	</target>
+	 
+	<target name="tomcat_stop">
+	    <java jar="${tomcat.bin}/bootstrap.jar" fork="true">
+	        <jvmarg value="-Dcatalina.home=${tomcat}"/>
+	        <arg line="stop"/>
+	    </java>
+	</target-->
+</project>
