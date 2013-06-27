@@ -23,16 +23,17 @@ package de.osramos.reprovis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.exception.HierarchieException;
-import de.osramos.reprovis.handler.DatabaseHandler;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public class GlobalBean extends HierarchieElementBean {
 
-	private GlobalBean(int id) {
+	private GlobalBean(int id){
 		super(id);
-
 	}
 
 	private static GlobalBean global;
@@ -42,24 +43,13 @@ public class GlobalBean extends HierarchieElementBean {
 		throw new HierarchieException("Element is root");
 	}
 
-	public static void resetGlobal() {
-		global = null;
-		getGlobal();
-	}
-
 	public static GlobalBean getGlobal() {
-/*		if (!DatabaseHandler.databaseIsInitialized()) {
-			try {
-				DatabaseHandler.initDB();
-			} catch (DatabaseException e) {
-				e.printStackTrace();
-			}
-		}*/
-
 		if (global == null) {
-			global = new GlobalBean(0);
+			try {
+				global = new GlobalBean(0);
+			} catch (Exception e) {
+			}
 		}
-
 		return global;
 	}
 
@@ -69,16 +59,11 @@ public class GlobalBean extends HierarchieElementBean {
 			List<Integer> childIds = FactoryDAO.getFactoryIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				try {
-					FactoryBean childBean = new FactoryBean(id);
-					childBean.setParent(this);
-					childs.add(childBean);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				FactoryBean childBean = new FactoryBean(id);
+				childBean.setParent(this);
+				childs.add(childBean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 	}

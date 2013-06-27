@@ -26,8 +26,6 @@ function getStatusClass(status){
 		c += "statusIconWarning";
 	}else if(status === "red"){
 		c += "statusIconCritical";
-	}else if(status === "grey"){
-		c += "statusIconUnknown";
 	}
 	return c;
 }
@@ -45,19 +43,5 @@ function getSvgClass(status){
 		return "statusHallWarning";
 	}else if(status === "red"){
 		return "statusHallCritical";
-	}else if(status === "grey"){
-		return "statusHallUnknown";
-	}
-}
-
-function getVmlColor(status) {
-	if(status === "green"){
-		return "#006400";
-	}else if(status === "yellow"){
-		return "#FF8C00";
-	}else if(status === "red"){
-		return "#8B0000";
-	}else if(status === "grey"){
-		return "#BBBBBB";
 	}
 }

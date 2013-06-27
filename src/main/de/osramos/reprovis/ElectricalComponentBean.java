@@ -1,101 +1,41 @@
-/*
- * Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
- *						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
- *
- * This file is part of the Resource Process Visualization application.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public
- * License along with this program. If not, see
- * <http://www.gnu.org/licenses/>.
- */
-
 package de.osramos.reprovis;
 
-import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.handler.MasterData.TrafficLight;
+
 
 public class ElectricalComponentBean extends HierarchieElementBean {
-
+	
 	private String serialnumber;
 	private String category;
 	private Date troubeOccurrenceTime;
 	private String troubleOccurrenceSite;
 	private String sector;
 	private String shiftResponsibility;
+	
 
-	public ElectricalComponentBean(int id) {
-
+	public ElectricalComponentBean(int id)  {
+		
 		super(id);
 
-		try {
-			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
-			setCategory(ElectricalComponentDAO.getCategory(id));
-			setTroubeOccurrenceTime(ElectricalComponentDAO
-					.getTroubeOccurrenceTime(id));
-			setTroubleOccurrenceSite(ElectricalComponentDAO
-					.getTroubleOccurrenceSite(id));
-			setSector(ElectricalComponentDAO.getSector(id));
-			setShiftResponsibility(ElectricalComponentDAO
-					.getShiftResponsibility(id));
-			this.aggreagationStrategie = ElectricalComponentDAO.getAggreagationStrategie(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
+		setCategory(ElectricalComponentDAO.getCategory(id));
+		setTroubeOccurrenceTime(ElectricalComponentDAO.getTroubeOccurrenceTime(id));
+		setTroubleOccurrenceSite(ElectricalComponentDAO.getTroubleOccurrenceSite(id));
+		setSector(ElectricalComponentDAO.getSector(id));
+		setShiftResponsibility(ElectricalComponentDAO.getShiftResponsibility(id));
 	}
 
 	@Override
 	protected void initChilds() {
 		childs = null;
-
+		
 	}
-	
-	
-	public String getName(){
-		try {
-			return ElectricalComponentDAO.getName(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
-	}
-	
-	public String getValue(){
-		try {
-			return ElectricalComponentDAO.getValue(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "";
-	}
-	
 
 	public String getShiftResponsibility() {
-		try {
-			setShiftResponsibility(ElectricalComponentDAO
-					.getShiftResponsibility(id));
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return shiftResponsibility != null ? shiftResponsibility : "";
+		return shiftResponsibility;
 	}
 
 	private void setShiftResponsibility(String shiftResponsibility) {
@@ -103,13 +43,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getSector() {
-		try {
-			setSector(ElectricalComponentDAO.getSector(id));
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sector != null? sector : "";
+		return sector;
 	}
 
 	private void setSector(String sector) {
@@ -117,14 +51,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getTroubleOccurrenceSite() {
-		try {
-			setTroubleOccurrenceSite(ElectricalComponentDAO
-					.getTroubleOccurrenceSite(id));
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return troubleOccurrenceSite != null ? troubleOccurrenceSite : "";
+		return troubleOccurrenceSite;
 	}
 
 	private void setTroubleOccurrenceSite(String troubleOccurrenceSite) {
@@ -132,13 +59,6 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public Date getTroubeOccurrenceTime() {
-		try {
-			setTroubeOccurrenceTime(ElectricalComponentDAO
-					.getTroubeOccurrenceTime(id));
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return troubeOccurrenceTime;
 	}
 
@@ -147,13 +67,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getCategory() {
-		try {
-			setCategory(ElectricalComponentDAO.getCategory(id));
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return category != null ? category : "";
+		return category;
 	}
 
 	private void setCategory(String category) {
@@ -161,32 +75,16 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	}
 
 	public String getSerialnumber() {
-		try {
-			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-		}
-		return serialnumber != null ? serialnumber : "";
+		return serialnumber;
 	}
 
 	private void setSerialnumber(String serialnumber) {
 		this.serialnumber = serialnumber;
 	}
 
-	
-	@Override
-	public TrafficLight getDistinctStatus() {
-		
-		try {
-			return ElectricalComponentDAO.getStatus(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-
-	}
-
-	
+/*	@Override
+	public List<HierarchieElementBean> getChilds() throws HierarchieException{
+		throw new HierarchieException("Element has no childs");
+	}*/
 
 }

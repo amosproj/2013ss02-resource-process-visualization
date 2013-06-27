@@ -30,8 +30,7 @@ import de.osramos.reprovis.test.tools.ToolsTest;
 @Suite.SuiteClasses({ 
 		de.osramos.reprovis.test.botests.BOTests.class,
 		de.osramos.reprovis.test.daotests.DAOTests.class,
-		de.osramos.reprovis.test.tools.ToolsTest.class,
-		de.osramos.reprovis.test.cameltest.CamelTest.class
+		de.osramos.reprovis.test.tools.ToolsTest.class
 })
 
 public class AllTests {
