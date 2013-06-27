@@ -1,7 +1,8 @@
 /* jasmine specs go here */
 
-describe("A suite", function() {
-  it("should return false at the first run", function() {
-    expect(false).toBe(true);
+describe("Test suite", function() {
+  it("should return true at the first run", function() {
+	  var a = true;
+	  expect(a).toBe(true);
   });
 }); 
