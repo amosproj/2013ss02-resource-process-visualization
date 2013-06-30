@@ -53,7 +53,6 @@ $(document).ready(function() {
 	}
 		
 	// Load factories ...
-	
 	function factoryGetAll() {
 		jQuery.getJSON('./factory', function(factories) {
 			// If applicable, delete old ones
@@ -80,8 +79,6 @@ $(document).ready(function() {
 				//}
 			}
 		});
-		
-		console.log("factories loaded");
 	}
 	
 	// Set interval to live-update the factories on the front map
