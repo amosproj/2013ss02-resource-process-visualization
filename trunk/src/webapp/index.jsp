@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%><!DOCTYPE html>
 <html lang="eng" dir="ltr">
 <!-- 
@@ -42,11 +42,11 @@
 	<!-- WORLDMAP Framework -->
 	<!-- Include leaflet open-source javascript library for mobile friendly interactive maps -->
 	<!-- PLEASE NOTE: Currently pulled from the server, maybe there is a need to hard-copy them to the system -->
-	<link rel="stylesheet" href="./css/leaflet.css" />
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 	<!--[if lte IE 8]>
-		<link rel="stylesheet" href="./css/leaflet.ie.css" />
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
 	<![endif]-->
-	<script src="./js/leaflet.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	
 	<!-- CSS Framework -->

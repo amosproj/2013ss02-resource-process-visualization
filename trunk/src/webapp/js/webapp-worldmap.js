@@ -67,7 +67,6 @@ $(document).ready(function() {
 			for(var i=0; i < data.factories.length; i++) {
 				var obj = data.factories[i];
 				
-				//for(var key in obj) {
 				var markerObj = L.marker([data.factories[i].lat, data.factories[i].lon]).addTo(map)
 								.bindPopup(data.factories[i].hardTpl);
 	
@@ -76,7 +75,6 @@ $(document).ready(function() {
 		        markerObj.bindPopup(factoryPopup(data.factories[i]), {offset: new L.Point(0,-10), autoPanPadding: new L.Point(10,30)});
 				if(data.factories[i].active == true || data.factories[i].active == 1)
 					markerObj.openPopup();
-				//}
 			}
 		});
 	}
