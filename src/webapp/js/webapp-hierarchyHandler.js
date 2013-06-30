@@ -19,7 +19,7 @@
  - <http://www.gnu.org/licenses/>.
 */
 
-$(document).ready(function(){
+$(document).ready(function() {
 	GlobalHierarchyHandler = {
 		// Generic hierarchy clickhandler
 		hierarchyZoom: function(hLevel, id) {
