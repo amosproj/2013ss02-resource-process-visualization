@@ -25,6 +25,7 @@ package de.osramos.reprovis.handler;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import de.osramos.reprovis.HierarchieElementBean;
 
@@ -55,16 +56,52 @@ public class Registry {
 		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
 	}
 	
-	public void register(int id, HierarchieElementBean element){
-		reg.put(id, element);
+	public void register(int id, HierarchieElementBean element) throws Exception{
+		
+//		Object object = reg.get(id);
+//		if (object == null || !(object instanceof HierarchieElementBean))
+//		{
+			reg.put(id, element);
+//		}
+//		else{
+//			throw new Exception("Element already registered");
+//		}
 	}
 	
 	private Registry(){
-		reg = new TreeMap<Integer, Object>();
+		reg = new ConcurrentHashMap<Integer, Object>();
 	}
 	
 	public HierarchieElementBean lookup(int id){
 		return (HierarchieElementBean) reg.get(id);
+	}
+	
+	private int nextId= 1000000;
+	
+	public int getNewId(){
+		
+		int start = nextId;
+		
+		while(reg.containsKey(nextId)){
+			
+			if (nextId != Integer.MAX_VALUE){
+				nextId++;
+			} else {
+				nextId = 1;
+			}
+			if (nextId == start){
+				throw new RuntimeException("no new id available");
+			}
+		}
+		
+		reg.put(nextId, new Object());
+		return nextId;
+		
+	}
+
+	public void remove(int id) {
+		reg.remove(id);
+		
 	}
 
 }

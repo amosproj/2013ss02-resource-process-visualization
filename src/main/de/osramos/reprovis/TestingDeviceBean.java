@@ -26,16 +26,49 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.ConfigHandler;
 
 public class TestingDeviceBean extends HierarchieElementBean {
 
-	public TestingDeviceBean(int id) {
-		
+	public TestingDeviceBean(int id) throws HierarchieException {
+
 		super(id);
 		try {
-			this.aggreagationStrategie = TestingDeviceDAO.getAggreagationStrategie(id);
+			this.aggreagationStrategie = TestingDeviceDAO
+					.getAggreagationStrategie(id);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static int createTestingDevice(int locationId) {
+
+		try {
+			int id = TestingDeviceDAO.createDevice(locationId);
+
+			ConfigHandler.reload();
+			return id;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	
+	public void delete() {
+
+		try {
+			TestingDeviceDAO.deleteDevice(id);
+
+			
+			getParent().initChilds();
+			ConfigHandler.reload();
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (HierarchieException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -62,84 +95,81 @@ public class TestingDeviceBean extends HierarchieElementBean {
 	}
 
 	public String getSector() {
-		try{
+		try {
 			return TestingDeviceDAO.getSector(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
 
 	public String getType() {
 		try {
 			return TestingDeviceDAO.getType(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
 
 	public String getSerialnumber() {
 		try {
 			return TestingDeviceDAO.getSerialnumber(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public String getDescription() {
 		try {
 			return TestingDeviceDAO.getDescription(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public String getIpAddress() {
 		try {
 			return TestingDeviceDAO.getIpAddress(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public String getName() {
 		try {
 			return TestingDeviceDAO.getName(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public String getNetworkStatus() {
 		try {
 			return TestingDeviceDAO.getNetworkStatus(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public String getMaintainanceInfo() {
 		try {
 			return TestingDeviceDAO.getMaintainanceInfo(id);
-		} catch (DatabaseException e){
-			return "Error";
+		} catch (DatabaseException e) {
+			return "N/A";
 		}
 	}
-	
+
 	public boolean isTestFailure() {
 		try {
 			return TestingDeviceDAO.getTestFailure(id);
 		} catch (DatabaseException e) {
-			e.printStackTrace();
 		}
 		return false;
 	}
-
 
 	public Date getTroublePeriod() {
 		try {
 			return TestingDeviceDAO.getTroublePeriod(id);
 		} catch (DatabaseException e) {
-			e.printStackTrace();
 		}
 		return null;
 	}

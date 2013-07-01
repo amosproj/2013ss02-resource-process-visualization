@@ -32,6 +32,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.ElectricalComponentDAO;
 import de.osramos.reprovis.TestingDeviceDAO;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.test.testhelper.Setup;
@@ -160,5 +162,14 @@ public class TestingDeviceDAOTest {
 	@Test (expected=DatabaseException.class)
 	public void failureForInvalidTest() throws DatabaseException{
 		TestingDeviceDAO.getTestFailure(-1);
+	}
+	
+	@Test
+	public void createDevice() throws Exception{
+		
+		int device = TestingDeviceDAO.createDevice(4);
+		assertEquals( 2, TestingDeviceDAO.getTestingDeviceIds(4).size());
+		assertEquals(3, ElectricalComponentDAO.getElectricalComponentIds(device).size());
+		
 	}
 }

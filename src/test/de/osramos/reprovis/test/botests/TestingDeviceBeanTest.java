@@ -30,11 +30,17 @@ import static org.junit.Assert.assertTrue;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.LocationBean;
 import de.osramos.reprovis.TestingDeviceBean;
+import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 
@@ -47,19 +53,25 @@ public class TestingDeviceBeanTest {
 		Setup.setUpTestDS();
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
 
 	@Test
-	public void childTest(){
+	public void childTest() throws HierarchieException{
 		assertEquals(3, (new TestingDeviceBean(5)).getChilds().size());
 	}
 	
 	@Test
-	public void parentTest(){
+	public void parentTest() throws HierarchieException{
 		assertEquals(5, (new LocationBean(4)).getChilds().get(0).getId());
 	}
 	
 	@Test
-	public void notExistingTest(){
+	public void notExistingTest() throws HierarchieException{
 		TestingDeviceBean device = new TestingDeviceBean(-1);
 		assertNotNull(device.getType());
 		assertNotNull(device.getDescription());
@@ -88,4 +100,15 @@ public class TestingDeviceBeanTest {
 		assertTrue(shouldBe.compareTo(device.getTroublePeriod()) == 0);
 		assertEquals(false, device.isTestFailure());
 	}
+	
+	@Test
+	public  void updateTest() throws HierarchieException, DatabaseException{
+		
+		TestingDeviceDAO.updateName(5, "bla");
+		
+		TestingDeviceBean device = new TestingDeviceBean(5);
+		assertEquals("bla", device.getName()); 
+		
+	}
+	
 }

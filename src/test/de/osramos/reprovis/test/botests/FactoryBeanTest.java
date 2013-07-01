@@ -31,14 +31,17 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.FactoryDAO;
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.handler.MasterData.Company;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -51,6 +54,12 @@ public class FactoryBeanTest {
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
 
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
+	
 	@Test
 	public void initChildsTest() throws Exception {
 

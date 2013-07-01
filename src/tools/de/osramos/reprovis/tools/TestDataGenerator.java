@@ -51,8 +51,8 @@ public class TestDataGenerator {
 
 	private static int numOfHalls = 2;
 	private static int numOfLines = 3;
-	private static int numOfLocations = 6;
-	private static int numOfDevices = 5;
+	private static int numOfLocations = 8;
+	private static int numOfDevices = 10;
 	private static int numOfComponents = 3;
 
 	private static String path = "./src/resources/config/init.sql";
@@ -132,6 +132,11 @@ public class TestDataGenerator {
 	}
 
 	public static void initTables() throws IOException {
+		
+		// time
+		Date d = new GregorianCalendar(2000, 0, 1).getTime();
+		String defaultTime = "\'" +new Timestamp(d.getTime()) + "\'";
+
 
 		String s = "DROP TABLE IF EXISTS component CASCADE; \n"
 				+ "DROP TABLE IF EXISTS device CASCADE;\n"
@@ -192,30 +197,30 @@ public class TestDataGenerator {
 
 				"CREATE TABLE device (\n" 
 				+ "	id integer PRIMARY KEY,\n"
-				+ "	type character varying(50),\n"
-				+ "	description character varying(50),\n"
-				+ "	name character varying(50),\n"
-				+ "	networkstatus character varying(50),\n"
-				+ "	ipaddress character varying(50),\n"
-				+ "	maintainanceinfo character varying(50),\n"
-				+ "	sector character varying(50),\n"
-				+ "	serialnumber character varying(50),\n"
-				+ "	troubleperiod timestamp,\n"
-				+ "	testfailure boolean,\n" 
+				+ "	type character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	description character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	name character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	networkstatus character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	ipaddress character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	maintainanceinfo character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	sector character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	serialnumber character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	troubleperiod timestamp NOT NULL DEFAULT " + defaultTime + ",\n"
+				+ "	testfailure boolean NOT NULL DEFAULT false,\n" 
 				+ "	parent integer REFERENCES location(id) ON DELETE CASCADE\n"
 				+ ");\n" +
 
 				"CREATE TABLE component (\n" 
 				+ "	id integer PRIMARY KEY,\n"
-				+ "	name character varying(50),\n"
-				+ "	value character varying(50),\n"
-				+ "	sector character varying(50),\n"
-				+ "	category character varying(50),\n"
-				+ "	serialnumber character varying(50),\n"
-				+ "	shiftresponsibility character varying(50),\n"
-				+ "	troubleoccurrencetime timestamp,\n"
-				+ "	troubleoccurrencesite character varying(50),\n"
-				+ "	status character varying(20),\n"
+				+ "	name character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	value character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	sector character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	category character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	serialnumber character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	shiftresponsibility character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	troubleoccurrencetime timestamp NOT NULL DEFAULT " + defaultTime + ",\n"
+				+ "	troubleoccurrencesite character varying(50) NOT NULL DEFAULT 'N/A',\n"
+				+ "	status character varying(20) NOT NULL DEFAULT 'grey',\n"
 				+ "	parent integer REFERENCES device(id) ON DELETE CASCADE\n" 
 				+ ");\n";
 
@@ -520,7 +525,7 @@ public class TestDataGenerator {
 		String[] categories = { "UPS Printer", "UPS Printer", "UPS MFTD2X",
 				"UPS MFT Cradle" };
 		String[] descriptions = { "EPSON Printer TN-220B", "DSA Print Server Station", "DSA Multifunction-tester Gen. 2", "DSA MFT Cradle for Power Supply and LAN connection" };
-		String[] name = {"IBNA-PR1", "IBNA-PS1", "MFTD2XI1-052", "IBNA-LS3X2"};
+		String[] name = {"IBNA-PR", "IBNA-PS", "MFTD2XI1-05", "IBNA-LS3X"};
 		
 		
 		String[] networkstatus = {"reachable", "N/A"};
@@ -563,7 +568,7 @@ public class TestDataGenerator {
 			
 			// name
 			st.append(", \'");
-			st.append(name[c]);
+			st.append(name[c] + i);
 			st.append("\'");
 			
 			//network status
@@ -625,7 +630,7 @@ public class TestDataGenerator {
 				"Dr. Leonard Leakey Hofstadter", "Howard Joel Wolowitz",
 				"Dr. Rajesh Ramayan Koothrappali" };
 		
-		String[] name = {"Tests", "Network", "Maintainance"};
+		String[] name = {"Tests", "Network", "Maintenance"};
 		
 		String[] values = {"Ok", "IP: 10.0.0.1", "no scheduled offtime"};
 

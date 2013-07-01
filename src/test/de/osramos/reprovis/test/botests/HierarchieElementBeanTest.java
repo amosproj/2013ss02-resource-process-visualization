@@ -26,14 +26,24 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HierarchieElementBean;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 
 public class HierarchieElementBeanTest {
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
 
 	@Test
-	public void getChildsTest() {
+	public void getChildsTest() throws HierarchieException {
 		HierarchieElementBean hierarchieElementBean = new TestHierarchieElementBean(
 				0);
 
@@ -44,7 +54,7 @@ public class HierarchieElementBeanTest {
 	}
 
 	@Test
-	public void getChildsByClassTest() {
+	public void getChildsByClassTest() throws HierarchieException {
 		{
 			HierarchieElementBean hierarchieElementBean = new TestHierarchieElementBean(
 					0);
@@ -55,6 +65,8 @@ public class HierarchieElementBeanTest {
 			assertNotNull(childs);
 			assertTrue(childs.isEmpty());
 		}
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
 
 		{
 			TestHierarchieElementBean hierarchieElementBean = new TestHierarchieElementBean(
@@ -82,7 +94,7 @@ public class HierarchieElementBeanTest {
 	}
 
 	@Test
-	public void getNumOfLeafsTest() {
+	public void getNumOfLeafsTest() throws HierarchieException {
 
 		{
 			HierarchieElementBean hierarchieElementBean = new TestHierarchieElementBean(
@@ -93,6 +105,9 @@ public class HierarchieElementBeanTest {
 
 			assertEquals(0, childs);
 		}
+		
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
 
 		{
 			TestHierarchieElementBean hierarchieElementBean = new TestHierarchieElementBean(
@@ -122,7 +137,7 @@ public class HierarchieElementBeanTest {
 
 class TestHierarchieElementBean extends HierarchieElementBean {
 
-	public TestHierarchieElementBean(int id) {
+	public TestHierarchieElementBean(int id) throws HierarchieException {
 		super(id);
 	}
 

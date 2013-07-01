@@ -55,20 +55,45 @@ public class ComponentUpdater implements Processor {
 					.item(0);
 
 			String name = device.getAttribute("name");
-			String status = device.getElementsByTagName("status").item(0)
-					.getTextContent();
-			String value = device.getElementsByTagName("value").item(0)
-					.getTextContent();
 
 			int deviceId = (Integer) exchange.getIn().getHeader("id");
 
 			int id = ElectricalComponentDAO.getIdByName(name, deviceId);
 
-			ElectricalComponentDAO.updateStatus(id,
-					MasterData.stringToTrafficLight(status));
-			ElectricalComponentDAO.updateValue(id, value);
-			ElectricalComponentDAO.updateLastChangeDate(id, new Date(
-					new GregorianCalendar().getTime().getTime()));
+			try {
+				String status = device.getElementsByTagName("status").item(0)
+						.getTextContent();
+				ElectricalComponentDAO.updateStatus(id,
+						MasterData.stringToTrafficLight(status));
+
+				ElectricalComponentDAO.updateLastChangeDate(id, new Date(
+						new GregorianCalendar().getTime().getTime()));
+			} catch (Exception e) {
+			}
+
+			try {
+				String value = device.getElementsByTagName("value").item(0)
+						.getTextContent();
+				ElectricalComponentDAO.updateValue(id, value);
+			} catch (Exception e) {
+			}
+
+			try {
+				String category = device.getElementsByTagName("category")
+						.item(0).getTextContent();
+				ElectricalComponentDAO.updateCategory(id, category);
+			} catch (Exception e) {
+			}
+
+			try {
+				String responsibleSector = device
+						.getElementsByTagName("responsibleSector").item(0)
+						.getTextContent();
+				ElectricalComponentDAO.updateResponsibleSector(id,
+						responsibleSector);
+			} catch (Exception e) {
+			}
+
 		} catch (Exception e) {
 
 		}

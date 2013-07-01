@@ -30,6 +30,7 @@ import org.junit.Test;
 
 import de.osramos.reprovis.LineDAO;
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class LineDAOTest {
@@ -98,7 +99,7 @@ public class LineDAOTest {
 	}
 	
 	@Test (expected=DatabaseException.class)
-	public void parentForInvalidTest() throws DatabaseException{
+	public void parentForInvalidTest() throws DatabaseException, HierarchieException{
 		LineDAO.getHall(-1).getId();
 	}
 }

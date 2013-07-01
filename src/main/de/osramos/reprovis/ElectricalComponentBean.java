@@ -22,9 +22,11 @@
 package de.osramos.reprovis;
 
 import java.io.IOException;
+
 import java.util.Date;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.MasterData.TrafficLight;
 
 public class ElectricalComponentBean extends HierarchieElementBean {
@@ -36,23 +38,13 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	private String sector;
 	private String shiftResponsibility;
 
-	public ElectricalComponentBean(int id) {
+	public ElectricalComponentBean(int id) throws HierarchieException {
 
 		super(id);
 
 		try {
-			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
-			setCategory(ElectricalComponentDAO.getCategory(id));
-			setTroubeOccurrenceTime(ElectricalComponentDAO
-					.getTroubeOccurrenceTime(id));
-			setTroubleOccurrenceSite(ElectricalComponentDAO
-					.getTroubleOccurrenceSite(id));
-			setSector(ElectricalComponentDAO.getSector(id));
-			setShiftResponsibility(ElectricalComponentDAO
-					.getShiftResponsibility(id));
 			this.aggreagationStrategie = ElectricalComponentDAO.getAggreagationStrategie(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,107 +62,73 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		try {
 			return ElectricalComponentDAO.getName(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return "";
+		return "N/A";
 	}
 	
 	public String getValue(){
 		try {
 			return ElectricalComponentDAO.getValue(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return "";
+		return "N/A";
 	}
 	
 
 	public String getShiftResponsibility() {
 		try {
-			setShiftResponsibility(ElectricalComponentDAO
-					.getShiftResponsibility(id));
+		return ElectricalComponentDAO
+					.getShiftResponsibility(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return shiftResponsibility != null ? shiftResponsibility : "";
+		return "N/A";
 	}
 
-	private void setShiftResponsibility(String shiftResponsibility) {
-		this.shiftResponsibility = shiftResponsibility;
-	}
+
 
 	public String getSector() {
 		try {
-			setSector(ElectricalComponentDAO.getSector(id));
+			return ElectricalComponentDAO.getSector(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return sector != null? sector : "";
+		return "N/A";
 	}
 
-	private void setSector(String sector) {
-		this.sector = sector;
-	}
 
 	public String getTroubleOccurrenceSite() {
 		try {
-			setTroubleOccurrenceSite(ElectricalComponentDAO
-					.getTroubleOccurrenceSite(id));
+			return ElectricalComponentDAO
+					.getTroubleOccurrenceSite(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return troubleOccurrenceSite != null ? troubleOccurrenceSite : "";
-	}
-
-	private void setTroubleOccurrenceSite(String troubleOccurrenceSite) {
-		this.troubleOccurrenceSite = troubleOccurrenceSite;
+		return "N/A";
 	}
 
 	public Date getTroubeOccurrenceTime() {
 		try {
-			setTroubeOccurrenceTime(ElectricalComponentDAO
-					.getTroubeOccurrenceTime(id));
+			return ElectricalComponentDAO
+					.getTroubeOccurrenceTime(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return troubeOccurrenceTime;
+		return null;
 	}
 
-	private void setTroubeOccurrenceTime(Date troubeOccurrenceTime) {
-		this.troubeOccurrenceTime = troubeOccurrenceTime;
-	}
 
 	public String getCategory() {
 		try {
-			setCategory(ElectricalComponentDAO.getCategory(id));
+			return ElectricalComponentDAO.getCategory(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return category != null ? category : "";
+		return "N/A";
 	}
 
-	private void setCategory(String category) {
-		this.category = category;
-	}
 
 	public String getSerialnumber() {
 		try {
-			setSerialnumber(ElectricalComponentDAO.getSerialnumber(id));
+			return ElectricalComponentDAO.getSerialnumber(id);
 		} catch (DatabaseException e) {
-			e.printStackTrace();
 		}
-		return serialnumber != null ? serialnumber : "";
-	}
-
-	private void setSerialnumber(String serialnumber) {
-		this.serialnumber = serialnumber;
+		return "N/A";
 	}
 
 	
@@ -180,12 +138,12 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		try {
 			return ElectricalComponentDAO.getStatus(id);
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return null;
+		return TrafficLight.grey;
 
 	}
+
+	
 
 	
 

@@ -26,12 +26,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.LineBean;
 import de.osramos.reprovis.LocationBean;
 import de.osramos.reprovis.TestingDeviceDAO;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class LocationBeanTest {
@@ -44,6 +48,12 @@ public class LocationBeanTest {
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
 
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
+	
 	@Test
 	public void childTest() throws Exception{
 		LocationBean b = new LocationBean(1);
@@ -51,7 +61,7 @@ public class LocationBeanTest {
 	}
 	
 	@Test
-	public void notExistingTest(){
+	public void notExistingTest() throws HierarchieException{
 		LocationBean loc = new LocationBean(-1);
 		assertNotNull(loc.getChilds());
 		assertNotNull(loc.getDescription());
@@ -60,12 +70,12 @@ public class LocationBeanTest {
 	}
 	
 	@Test
-	public void parentTest(){
+	public void parentTest() throws HierarchieException{
 		assertEquals(4, (new LineBean(3)).getChilds().get(0).getId());
 	}
 	
 	@Test
-	public void getterTest(){
+	public void getterTest() throws HierarchieException{
 		LocationBean loc = new LocationBean(4);
 		assertEquals("Lo1", loc.getName());
 		assertEquals("ABS test", loc.getDescription());

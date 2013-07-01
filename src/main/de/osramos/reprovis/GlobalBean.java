@@ -30,7 +30,7 @@ import de.osramos.reprovis.handler.DatabaseHandler;
 
 public class GlobalBean extends HierarchieElementBean {
 
-	private GlobalBean(int id) {
+	private GlobalBean(int id) throws HierarchieException {
 		super(id);
 
 	}
@@ -47,7 +47,7 @@ public class GlobalBean extends HierarchieElementBean {
 		getGlobal();
 	}
 
-	public static GlobalBean getGlobal() {
+	public static GlobalBean getGlobal()  {
 /*		if (!DatabaseHandler.databaseIsInitialized()) {
 			try {
 				DatabaseHandler.initDB();
@@ -57,7 +57,12 @@ public class GlobalBean extends HierarchieElementBean {
 		}*/
 
 		if (global == null) {
-			global = new GlobalBean(0);
+			try {
+				global = new GlobalBean(0);
+			} catch (HierarchieException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return global;

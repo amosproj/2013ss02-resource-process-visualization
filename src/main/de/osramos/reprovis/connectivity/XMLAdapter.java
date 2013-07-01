@@ -34,6 +34,37 @@ public class XMLAdapter extends RouteBuilder{
 		
 		
 		from("seda:xmlIn")
+		.split().tokenizeXML("task")
+		.choice()
+			.when().xpath("/task/@name =\"update\" ")
+				.to("seda:update")
+			.when().xpath("/task/@name =\"register\" ")
+				.to("seda:register")
+			.when().xpath("/task/@name =\"unregister\" ")
+				.to("seda:unregister")
+			.otherwise()
+				.to("seda:fail");
+		
+		
+		from("seda:register")
+		.split().tokenizeXML("device")
+		.choice()
+			.when().xpath("/device")
+				.process(new RegisterDevice())
+				.to("log:finished")
+			.otherwise()
+				.to("seda:fail");
+		
+		from("seda:unregister")
+		.split().tokenizeXML("device")
+		.choice()
+			.when().xpath("/device")
+				.process(new UnregisterDevice())
+				.to("log:finished")
+			.otherwise()
+				.to("seda:fail");
+		
+		from("seda:update")
 		.split().tokenizeXML("device")
 		.choice()
 			.when().xpath("/device/component")

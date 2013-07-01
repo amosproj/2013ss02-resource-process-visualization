@@ -127,7 +127,7 @@ public abstract class HierarchieElementDAO {
 	 */
 	private static void updateAttribute(int id, String attributeName, String attributeValue, String tableName) throws DatabaseException{
 		
-		getAttribute(id, attributeName, tableName);
+		/*getAttribute(id, attributeName, tableName);*/
 		
 		
 		try {
@@ -136,8 +136,10 @@ public abstract class HierarchieElementDAO {
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
-			int result = statement.executeUpdate("UPDATE " + tableName+ " SET "   + attributeName+ "= " + attributeValue + " WHERE id = "
-					+ id);
+			String query = "UPDATE " + tableName+ " SET "   + attributeName+ "= " + attributeValue + " WHERE id = "
+					+ id;
+			
+			int result = statement.executeUpdate(query);
 			
 			statement.close();
 			connection.close();
