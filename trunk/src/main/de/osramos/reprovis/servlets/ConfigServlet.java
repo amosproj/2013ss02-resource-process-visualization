@@ -32,14 +32,13 @@ import javax.servlet.http.HttpServletResponse;
 import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.handler.ConfigHandler;
 
-public class ConfigServlet extends HttpServlet  {
+public class ConfigServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4043793014993859892L;
 
-	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		ConfigHandler.InitApplication();
@@ -48,8 +47,15 @@ public class ConfigServlet extends HttpServlet  {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		ConfigHandler.reload();
 		
-		ConfigHandler.InitApplication();
+/*		if (req.getHeader("reload").equals("true")) {
+			
+		} else {
+
+			ConfigHandler.InitApplication();
+		}*/
 		resp.getOutputStream().println("Application initialized");
 
 	}

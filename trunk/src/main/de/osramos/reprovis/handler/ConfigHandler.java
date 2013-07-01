@@ -40,12 +40,7 @@ public class ConfigHandler {
 			DatabaseHandler.initDB();
 			Registry.initRegistry();
 			
-			FactoryDAO.resetCache();
-			HallDAO.resetCache();
-			LineDAO.resetCache();
-			LocationDAO.resetCache();
-			TestingDeviceDAO.resetCache();
-			ElectricalComponentDAO.resetCache();
+			cleanCaches();
 			
 			GlobalBean.resetGlobal();
 			GlobalBean.getGlobal();
@@ -53,6 +48,28 @@ public class ConfigHandler {
 			
 			e.printStackTrace();
 		}
+		
+		
+	}
+	
+	public static void cleanCaches(){
+		FactoryDAO.resetCache();
+		HallDAO.resetCache();
+		LineDAO.resetCache();
+		LocationDAO.resetCache();
+		TestingDeviceDAO.resetCache();
+		ElectricalComponentDAO.resetCache();
+	}
+	
+	public static void reload(){
+		
+		
+		Registry.cleanRegistry();
+		
+		cleanCaches();
+		
+		GlobalBean.resetGlobal();
+		GlobalBean.getGlobal();
 		
 		
 	}

@@ -27,13 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 
 public class LocationBean extends HierarchieElementBean {
 
 	private String name;
 	private String description;
 	
-	public LocationBean(int id) {
+	public LocationBean(int id) throws HierarchieException {
 		super(id);
 		try {
 			name = LocationDAO.getName(id);

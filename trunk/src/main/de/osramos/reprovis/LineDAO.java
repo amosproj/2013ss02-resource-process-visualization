@@ -31,6 +31,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.DatabaseHandler;
 import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
@@ -133,7 +134,7 @@ public class LineDAO {
 		}
 	}
 	
-	public static HallBean getHall(int id) throws DatabaseException{
+	public static HallBean getHall(int id) throws DatabaseException, HierarchieException{
 		try {
 			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();

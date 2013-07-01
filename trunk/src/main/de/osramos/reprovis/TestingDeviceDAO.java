@@ -35,6 +35,7 @@ import javax.sql.DataSource;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class TestingDeviceDAO extends HierarchieElementDAO {
@@ -50,16 +51,18 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		return l;
 	}
 	
-	public static int getIdByNames(String factory, String hall, String Line, String Location, String Device) throws DatabaseException{
+	public static int getIdByNames(String factory, String hall, String line, String location, String device) throws DatabaseException{
 		
 		int result;
 
 		String query = "select id from device where parent=" +
-				"(select id from location where name=\'" + Location +
-				"\' and parent=(select id from line where name=\'" + Line +
+				"(select id from location where name=\'" + location +
+				"\' and parent=(select id from line where name=\'" + line +
 				"\' and parent=(select id from hall where name=\'" + hall +
 				"\' and parent=(select id from factory where name=\'" +factory +
-				"\')))) and name='" + Device + "\'";
+				"\')))) and name='" + device + "\'";
+		
+		System.out.println(query);
 		
 		try {
 			ResultSet res = null;
@@ -83,7 +86,7 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 			
 			return result;
 		} catch (SQLException e) {
-			throw new DatabaseException("DB access Failed");
+			throw new DatabaseException("Could not get id");
 		}
 		
 		
@@ -98,12 +101,28 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 		HierarchieElementDAO.updateString(id, "networkstatus", status, "device");
 	}
 	
+	public static void updateName(int id, String name) throws DatabaseException{
+		HierarchieElementDAO.updateString(id, "name", name, "device");
+	}
+	
 	public static void updateTestfailure(int id, boolean failure) throws DatabaseException{
 		HierarchieElementDAO.updateBool(id, "testfailure", failure, "device");
 	}
 	
 	public static void updateTroublePeriod(int id, Date time) throws DatabaseException{
 		HierarchieElementDAO.updateDate(id, "troubleperiod", time, "device");
+	}
+	
+	public static void updateType(int id, String type) throws DatabaseException{
+		HierarchieElementDAO.updateString(id, "type", type, "device");
+	}
+	
+	public static void updateSerialnumber(int id, String serialnumber) throws DatabaseException{
+		HierarchieElementDAO.updateString(id, "serialnumber", serialnumber, "device");
+	}
+	
+	public static void updateDescription(int id, String description) throws DatabaseException{
+		HierarchieElementDAO.updateString(id, "description", description, "device");
 	}
 	
 	
@@ -199,6 +218,67 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 
 	public static void resetCache() {
 		aggreagationStrategie = null;
+		
+	}
+
+	public static int createDevice(int locationId) throws DatabaseException {
+		
+		int id = Registry.getRegistry().getNewId();
+
+		try {
+
+			
+
+			DataSource db = DatabaseHandler.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			statement
+					.execute("INSERT INTO device (id, parent) " +
+							"VALUES ("+ id + ", " + locationId + ")");
+
+
+			statement.close();
+			connection.close();
+			
+			
+		} catch (SQLException e) {
+			throw new DatabaseException("Creating new Device failed");
+		}
+		
+		ElectricalComponentDAO.createElectricalComponent(id, "Tests");
+		ElectricalComponentDAO.createElectricalComponent(id, "Network");
+		ElectricalComponentDAO.createElectricalComponent(id, "Maintenance");
+		
+		return id;
+
+		
+	}
+	
+	public static void deleteDevice(int id) throws DatabaseException {
+		
+		try {
+			DataSource db = DatabaseHandler.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			statement
+					.execute("DELETE FROM device " +
+							"WHERE id=" + id);
+
+
+			statement.close();
+			connection.close();
+			
+			
+		} catch (SQLException e) {
+			throw new DatabaseException("deleting Device failed");
+		}
+		
+		ElectricalComponentDAO.deleteElectricalComponent(id);
+
+		
+
 		
 	}
 

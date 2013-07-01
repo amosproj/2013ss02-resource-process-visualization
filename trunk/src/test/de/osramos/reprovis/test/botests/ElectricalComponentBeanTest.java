@@ -31,12 +31,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.ElectricalComponentBean;
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.TestingDeviceBean;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.handler.MasterData.TrafficLight;
 import de.osramos.reprovis.test.testhelper.Setup;
 
@@ -49,9 +53,15 @@ public class ElectricalComponentBeanTest {
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
 
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
 
 	@Test
-	public void notExistingTest(){
+	public void notExistingTest() throws HierarchieException{
 		ElectricalComponentBean b = new ElectricalComponentBean(-1);
 		assertNotNull(b);
 		assertNotNull(b.getChilds());
@@ -66,7 +76,7 @@ public class ElectricalComponentBeanTest {
 	}
 	
 	@Test
-	public void parentTest(){
+	public void parentTest() throws HierarchieException{
 		boolean existing[] = {false, false, false};
 		List<HierarchieElementBean> children = (new TestingDeviceBean(5)).getChilds();
 		for(HierarchieElementBean h : children){

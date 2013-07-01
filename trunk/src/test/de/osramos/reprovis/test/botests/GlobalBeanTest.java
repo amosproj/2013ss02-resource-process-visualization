@@ -25,12 +25,14 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class GlobalBeanTest {
@@ -42,6 +44,12 @@ public class GlobalBeanTest {
 
 	}
 
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
 	
 	@Test
 	public void singletonTest() throws Exception {

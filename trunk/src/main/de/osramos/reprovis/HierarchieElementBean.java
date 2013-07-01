@@ -40,11 +40,14 @@ public abstract class HierarchieElementBean {
 
 	protected AggreagationStrategie aggreagationStrategie;
 
-	public HierarchieElementBean(int id) {
+	public HierarchieElementBean(int id) throws HierarchieException{
 
 		this.id = id;
-
+		try{
 		Registry.getRegistry().register(id, this);
+		}catch(Exception e){
+			throw new HierarchieException("could not register Element");
+		}
 
 		childs = new ArrayList<HierarchieElementBean>();
 		initChilds();

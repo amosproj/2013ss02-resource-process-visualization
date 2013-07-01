@@ -31,6 +31,8 @@ import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HallBean;
 import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.LineBean;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 
@@ -42,6 +44,12 @@ public class LineBeanTest {
 		Setup.setUpTestDS();
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 	}
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
+	}
 
 	@Test
 	public void hierarchieTest(){
@@ -52,7 +60,7 @@ public class LineBeanTest {
 	}
 
 	@Test
-	public void notExistingTest(){
+	public void notExistingTest() throws HierarchieException{
 		LineBean l = new LineBean(-1);
 		assertNotNull(l.getChilds());
 		assertNotNull(l.getName());
@@ -63,17 +71,17 @@ public class LineBeanTest {
 	}
 	
 	@Test
-	public void parentTest(){
+	public void parentTest() throws HierarchieException{
 		assertEquals(3, (new HallBean(2)).getChilds().get(0).getId());
 	}
 	
 	@Test
-	public void childTest(){
+	public void childTest() throws HierarchieException{
 		assertEquals(1, (new LineBean(3)).getChilds().size());
 	}
 	
 	@Test
-	public void getterTest(){
+	public void getterTest() throws HierarchieException{
 		LineBean line = new LineBean(3);
 		assertEquals("L1 Assembly", line.getName());
 		assertEquals("Series 3", line.getProductionSeries());

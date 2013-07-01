@@ -28,12 +28,16 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.FactoryBean;
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.HallBean;
 import de.osramos.reprovis.HierarchieElementBean;
+import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class HallBeanTest {
@@ -43,6 +47,12 @@ public class HallBeanTest {
 
 		Setup.setUpTestDS();
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+	}
+	
+	@Before
+	public void resetGlobal(){
+		GlobalBean.resetGlobal();
+		Registry.cleanRegistry();
 	}
 	
 	@Test
@@ -87,7 +97,7 @@ public class HallBeanTest {
 	}*/
 	
 	@Test
-	public void getterTest(){
+	public void getterTest() throws HierarchieException{
 		HallBean hall = new HallBean(2);
 		assertEquals("H1", hall.getName());
 		assertEquals("Assembly+Finish", hall.getType());

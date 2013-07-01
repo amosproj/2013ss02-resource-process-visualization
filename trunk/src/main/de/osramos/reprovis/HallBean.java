@@ -26,13 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 
 public class HallBean extends HierarchieElementBean {
 
 	private int sizeOfStaff;
 	private int productionCapacity;
 
-	public HallBean(int id) {
+	public HallBean(int id) throws HierarchieException {
 		super(id);
 		/*
 		 * try { Context ctx = new InitialContext();

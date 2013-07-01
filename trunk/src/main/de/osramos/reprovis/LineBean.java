@@ -26,12 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
+import de.osramos.reprovis.exception.HierarchieException;
 
 public class LineBean extends HierarchieElementBean {
 
 	String name;
 	private String path;
-	public LineBean(int id) {
+	public LineBean(int id) throws HierarchieException {
 		super(id);
 
 		/*

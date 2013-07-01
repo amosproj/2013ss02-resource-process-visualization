@@ -19,9 +19,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 
-
 package de.osramos.reprovis;
-
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,13 +37,13 @@ import javax.sql.DataSource;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
 import de.osramos.reprovis.handler.MasterData;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.handler.MasterData.TrafficLight;
 import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
 
 public class ElectricalComponentDAO extends HierarchieElementDAO {
-	
-	private static AggreagationStrategie aggreagationStrategie = null;
 
+	private static AggreagationStrategie aggreagationStrategie = null;
 
 	public static TrafficLight getStatus(int id) throws DatabaseException {
 		String s = (String) getAttribute(id, "status");
@@ -53,7 +51,8 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 		return MasterData.stringToTrafficLight(s);
 	}
 
-	public static String getShiftResponsibility(int id) throws DatabaseException {
+	public static String getShiftResponsibility(int id)
+			throws DatabaseException {
 		String s = (String) getAttribute(id, "shiftresponsibility");
 
 		return s;
@@ -71,7 +70,8 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 		return new Date(t.getTime());
 	}
 
-	public static String getTroubleOccurrenceSite(int id) throws DatabaseException {
+	public static String getTroubleOccurrenceSite(int id)
+			throws DatabaseException {
 		String s = (String) getAttribute(id, "troubleoccurrencesite");
 
 		return s;
@@ -88,66 +88,87 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 		return s;
 	}
-	
+
 	public static String getName(int id) throws DatabaseException {
 		String s = (String) getAttribute(id, "name");
 
 		return s;
 	}
-	
-	public static void updateStatus(int id, TrafficLight status) throws DatabaseException{
+
+	public static void updateStatus(int id, TrafficLight status)
+			throws DatabaseException {
 		HierarchieElementDAO.updateStatus(id, "status", status, "component");
 	}
-	
-	public static void updateValue(int id, String Value) throws DatabaseException{
+
+	public static void updateValue(int id, String Value)
+			throws DatabaseException {
 		HierarchieElementDAO.updateString(id, "value", Value, "component");
 	}
-	
-	public static void updateLastChangeDate(int id, Date Value) throws DatabaseException{
-		HierarchieElementDAO.updateDate(id, "troubleoccurrencetime", Value, "component");
+
+	public static void updateResponsibleSector(int id, String responsibleSector)
+			throws DatabaseException {
+		HierarchieElementDAO.updateString(id, "sector", responsibleSector, "component");
 	}
 	
+	public static void updateCategory(int id, String category)
+			throws DatabaseException {
+		HierarchieElementDAO.updateString(id, "category", category, "component");
+	}
+	
+	public static void updateLastChangeDate(int id, Date Value)
+			throws DatabaseException {
+		HierarchieElementDAO.updateDate(id, "troubleoccurrencetime", Value,
+				"component");
+	}
+
 	public static String getValue(int id) throws DatabaseException {
 		String s = (String) getAttribute(id, "value");
 
 		return s;
 	}
 
-	public static List<Integer> getElectricalComponentIds(int id) throws Exception {
+	public static List<Integer> getElectricalComponentIds(int id)
+			throws Exception {
 		List<Integer> l = getChildIds(id, "component");
-		
+
 		return l;
 	}
-	
-	
-	private static Object getAttribute(int id, String attributeName) throws DatabaseException {
-		
-		return HierarchieElementDAO.getAttribute(id, attributeName, "component");
+
+	private static Object getAttribute(int id, String attributeName)
+			throws DatabaseException {
+
+		return HierarchieElementDAO
+				.getAttribute(id, attributeName, "component");
 	}
-	
-	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
+
+	public static AggreagationStrategie getAggreagationStrategie(int id)
+			throws IOException {
 		String propfile = "/../../config/component.properties";
-		
-		if (aggreagationStrategie == null){
-			aggreagationStrategie = HierarchieElementDAO.getAggregationStrategie(propfile);
-			System.out.println("AggreagtionStragety for electrical components set to " + aggreagationStrategie.toString());
+
+		if (aggreagationStrategie == null) {
+			aggreagationStrategie = HierarchieElementDAO
+					.getAggregationStrategie(propfile);
+			System.out
+					.println("AggreagtionStragety for electrical components set to "
+							+ aggreagationStrategie.toString());
 		}
-		
+
 		return aggreagationStrategie;
 	}
 
 	public static void resetCache() {
 		aggreagationStrategie = null;
-		
+
 	}
-	
-	public static int getIdByName(String name, int parentId) throws DatabaseException{
-		
+
+	public static int getIdByName(String name, int parentId)
+			throws DatabaseException {
+
 		int result;
 
-		String query = "select id from component where parent=" + parentId +" and name=\'" + name+"\'";
-		
-		
+		String query = "select id from component where parent=" + parentId
+				+ " and name=\'" + name + "\'";
+
 		try {
 			ResultSet res = null;
 
@@ -155,8 +176,7 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 			Connection connection = db.getConnection();
 			Statement statement = connection.createStatement();
-			res = statement
-					.executeQuery(query);
+			res = statement.executeQuery(query);
 
 			res.next();
 			result = res.getInt(1);
@@ -167,10 +187,60 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 			statement.close();
 			connection.close();
-			
+
 			return result;
 		} catch (SQLException e) {
 			throw new DatabaseException("DB access Failed");
 		}
+	}
+
+	public static void createElectricalComponent(int deviceId, String name)
+			throws DatabaseException {
+
+		int id = Registry.getRegistry().getNewId();
+
+		try {
+
+			DataSource db = DatabaseHandler.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			statement
+					.execute("INSERT INTO component (id, parent, status, name) "
+							+ "VALUES ("
+							+ id
+							+ ", "
+							+ deviceId
+							+ ", \'grey\', \'" + name + "\')");
+
+			statement.close();
+			connection.close();
+
+		} catch (SQLException e) {
+			throw new DatabaseException("Creating new Component failed");
+		}
+
+	}
+
+	public static void deleteElectricalComponent(int parentId) throws DatabaseException {
+		try {
+			DataSource db = DatabaseHandler.getDB();
+
+			Connection connection = db.getConnection();
+			Statement statement = connection.createStatement();
+			statement
+					.execute("DELETE FROM component " +
+							"WHERE parent=" + parentId);
+
+
+			statement.close();
+			connection.close();
+			
+			
+		} catch (SQLException e) {
+			throw new DatabaseException("deleting Component failed");
+		}
+		
+
 	}
 }
