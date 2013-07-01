@@ -78,6 +78,8 @@
 			
 			<dependency org="org.apache.camel" name="camel-http" rev="2.11.0"
 			conf="test->default" />
+			
+		<dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.33.0" conf="test->default"/>
 
 	</dependencies>
 </ivy-module>
