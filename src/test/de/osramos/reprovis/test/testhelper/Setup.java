@@ -24,9 +24,9 @@ package de.osramos.reprovis.test.testhelper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -34,9 +34,12 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.test.selenium.NavigateTo;
 
 
 public class Setup {
@@ -51,7 +54,7 @@ public class Setup {
 		InitialContext ctx = new InitialContext();
 		
 		try{
-			Object lookup = ctx.lookup("java:comp/env/jdbc/postgresql");
+			/*Object lookup = */ctx.lookup("java:comp/env/jdbc/postgresql");
 		} catch (NamingException e){
 			ctx.createSubcontext("java:");
 			ctx.createSubcontext("java:comp");
@@ -73,9 +76,6 @@ public class Setup {
 	}
 	
 	public static void loadDBData(String path) throws Exception {
-
-		
-
 			String sql;
 
 			String resource = Setup.class.getClassLoader()
@@ -94,11 +94,16 @@ public class Setup {
 
 			statement.close();
 			connection.close();
-			
-			
-
-		
-
+	}
+	
+	public static void setUpDBForSelenium() throws Exception{
+		setUpTestDS();
+		loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		NavigateTo.config(driver);
+		NavigateTo.config(driver);
+		driver.quit();
 	}
 	
 

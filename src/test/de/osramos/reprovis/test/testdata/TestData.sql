@@ -81,10 +81,65 @@ CREATE TABLE component (
 
 insert into factory values (1, 'Ingolstadt', 'Audi' ,'Ingolstadt', 'Germany', 48.762201, 11.425374, 
 		'Audi A3, Audi A3 Sportback',
-		35386, '2012-12-31 00:00:00.0', 551889, 2580, 1, 3, 'DSA GmbH', 0
+		35386, '2012-12-31 00:00:00.0', 551889, 2580, 1, 3, 'DSA GmbH', 0,
+		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+		<!-- Created with Inkscape (http://www.inkscape.org/) -->
+		
+		<svg
+		   xmlns:dc="http://purl.org/dc/elements/1.1/"
+		   xmlns:cc="http://creativecommons.org/ns#"
+		   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		   xmlns:svg="http://www.w3.org/2000/svg"
+		   xmlns="http://www.w3.org/2000/svg"
+		   version="1.1"
+		   width="221.57703"
+		   height="165.85001"
+		   id="SVGPlan"
+		   viewBox="0 0 221.57703 165.85001">
+		  <defs
+		     id="defs3825" />
+		  <metadata
+		     id="metadata3828">
+		    <rdf:RDF>
+		      <cc:Work
+		         rdf:about="">
+		        <dc:format>image/svg+xml</dc:format>
+		        <dc:type
+		           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+		        <dc:title></dc:title>
+		      </cc:Work>
+		    </rdf:RDF>
+		  </metadata>
+		  <path
+		     d="m 159.97063,4.344321 -6,0 0,-3.75 -16.125,0 0,3.75 -3.125,0 0,37.125 25.25,0 z"
+		     id="polygon249" />
+		</svg>'
 	);
 	
-INSERT INTO hall VALUES (2, 'H1', 'Assembly+Finish', 351, 1914, 'Audi A4', 2, 'polygon249', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>');
+INSERT INTO hall VALUES (2, 'H1', 'Assembly+Finish', 351, 1914, 'Audi A4', 2, 'polygon249', 1, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="623.62"
+   height="311.81"
+   viewBox="0 0 623.62 311.81"
+   id="SVGPlan"
+   xml:space="preserve"><metadata
+   id="metadata4065"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs4063">
+</defs>
+<path
+   d="m 71.934998,200.967 429.500002,0 0,17.33399 -429.500002,0 z"
+   id="rect217"/>
+</svg>');
 INSERT INTO line VALUES (3, 'L1 Assembly', 'Series 3', 98, 'rect217', 2);
 INSERT INTO location VALUES (4, 'Lo1', 'ABS test', 'Peter Merkel', 3);
 INSERT INTO device VALUES (5, 'D1', 'DSA Multifunction-tester Gen. 2', 'MFTD2XI1-052', 'N/A', 'N/A', ' ', 'B', '28994613', '2013-06-18 06:00:41.701', false, 4);
