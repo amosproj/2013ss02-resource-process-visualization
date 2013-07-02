@@ -5,7 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class NavigateTo {
 
-	private static String baseUrl = "http://localhost:8080/ResourceProcessVisualization/";
+	//private static String baseUrl = "http://localhost:8080/ResourceProcessVisualization/";
+	private static String baseUrl = "http://localhost:8080/";
 	
 	public static void config(WebDriver driver){
 		driver.get(baseUrl + "config");
