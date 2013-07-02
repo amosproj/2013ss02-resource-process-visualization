@@ -106,7 +106,6 @@ public class HallBeanTest {
 		assertEquals("Audi A4", hall.getVehicles());
 		assertEquals(2, hall.getUpsServer());
 		assertEquals("polygon249", hall.getPath());
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>", hall.getMap());
 	}
 	
 }

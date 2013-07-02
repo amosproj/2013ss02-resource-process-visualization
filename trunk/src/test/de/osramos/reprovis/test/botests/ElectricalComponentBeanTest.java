@@ -64,7 +64,7 @@ public class ElectricalComponentBeanTest {
 	public void notExistingTest() throws HierarchieException{
 		ElectricalComponentBean b = new ElectricalComponentBean(-1);
 		assertNotNull(b);
-		assertNotNull(b.getChilds());
+		assertNull(b.getChilds());
 		assertNotNull(b.getName());
 		assertNotNull(b.getValue());
 		assertNotNull(b.getSector());
