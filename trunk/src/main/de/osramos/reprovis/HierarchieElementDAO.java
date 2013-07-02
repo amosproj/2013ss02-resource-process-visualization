@@ -38,8 +38,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.io.IOUtils;
-
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
 import de.osramos.reprovis.handler.MasterData;
@@ -140,6 +138,7 @@ public abstract class HierarchieElementDAO {
 					+ id;
 			
 			int result = statement.executeUpdate(query);
+			if(result != 1)throw new DatabaseException("Invalid number of entries were updated.");
 			
 			statement.close();
 			connection.close();
