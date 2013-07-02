@@ -11,7 +11,7 @@ public class NavigateTo {
 		driver.get(baseUrl + "config");
 	}
 	
-	private static synchronized void waitForAjaxLoad() throws Exception{
+	public static synchronized void waitForAjaxLoad() throws Exception{
 		// the ajax part has half a second time to load
 		NavigateTo.class.wait(500);
 	}

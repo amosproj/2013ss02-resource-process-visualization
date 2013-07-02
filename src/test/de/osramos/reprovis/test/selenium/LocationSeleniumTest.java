@@ -42,6 +42,14 @@ public class LocationSeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.location(driver);
+		driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).get(3).click();
+		NavigateTo.waitForAjaxLoad();
+		assertTrue(driver.findElement(By.id("dynamicHeading")).getText().contains("Assembly Line:"));
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.location(driver);
 		assertEquals("Lo1", driver.findElement(By.id("locationName")).getText());

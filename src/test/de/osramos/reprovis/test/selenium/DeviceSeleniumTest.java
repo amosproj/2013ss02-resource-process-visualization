@@ -42,6 +42,14 @@ public class DeviceSeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.device(driver);
+		driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).get(4).click();
+		NavigateTo.waitForAjaxLoad();
+		assertTrue(driver.findElement(By.id("dynamicHeading")).getText().contains("Location:"));
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.device(driver);
 		assertEquals("MFTD2XI1-052", driver.findElement(By.id("testingDeviceName")).getText());
