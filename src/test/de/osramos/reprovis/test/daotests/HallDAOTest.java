@@ -120,11 +120,6 @@ public class HallDAOTest {
 		HallDAO.getPath(-1);
 	}
 	
-	@Test
-	public void getMapTest() throws Exception{
-		assertEquals(HallDAO.getMap(2), "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
-	}
-	
 	@Test (expected=DatabaseException.class)
 	public void mapForInvalidTest() throws DatabaseException{
 		HallDAO.getMap(-1);
