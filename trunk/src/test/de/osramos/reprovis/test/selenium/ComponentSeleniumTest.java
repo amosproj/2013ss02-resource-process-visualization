@@ -45,6 +45,14 @@ public class ComponentSeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.component(driver);
+		driver.findElement(By.id("componentModal")).findElements(By.tagName("button")).get(1).click();
+		NavigateTo.waitForAjaxLoad();
+		assertTrue(driver.findElement(By.id("dynamicHeading")).getText().contains("Testing Device:"));
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.component(driver);
 		HashMap<String, String> attributeStore = new HashMap<String, String>();

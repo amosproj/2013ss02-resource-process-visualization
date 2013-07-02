@@ -42,6 +42,14 @@ public class HallSeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.hall(driver);
+		driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).get(1).click();
+		NavigateTo.waitForAjaxLoad();
+		assertTrue(driver.findElement(By.id("dynamicHeading")).getText().contains("Factory:"));
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.hall(driver);
 		assertEquals("H1", driver.findElement(By.id("hallName")).getText());

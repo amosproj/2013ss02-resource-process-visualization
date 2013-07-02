@@ -42,6 +42,14 @@ public class LineSeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.line(driver);
+		driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).get(2).click();
+		NavigateTo.waitForAjaxLoad();
+		assertTrue(driver.findElement(By.id("dynamicHeading")).getText().contains("Hall:"));
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.line(driver);
 		assertEquals("L1 Assembly", driver.findElement(By.id("lineName")).getText());

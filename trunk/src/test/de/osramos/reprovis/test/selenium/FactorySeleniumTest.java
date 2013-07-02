@@ -42,6 +42,14 @@ public class FactorySeleniumTest {
 	}
 	
 	@Test
+	public void navigateBackTest() throws Exception{
+		NavigateTo.factory(driver);
+		driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).get(0).click();
+		NavigateTo.waitForAjaxLoad();
+		assertEquals(1, driver.findElement(By.id("breadCrumbNavi")).findElements(By.tagName("a")).size());
+	}
+	
+	@Test
 	public void dataTest() throws Exception{
 		NavigateTo.factory(driver);
 		assertEquals("Germany", driver.findElement(By.id("factoryCountry")).getText());
