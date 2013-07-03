@@ -128,7 +128,10 @@ AMOSList.prototype.colNames = {
 	name: "Name",
 	category: "Category",
 	troublePeriod: "Trouble Period",
-	sector: "Responsible Sector"
+	sector: "Responsible Sector",
+	serialnumber: "Serial Number",
+	type: "Type",
+	description: "Description"
 };
 
 AMOSList.prototype.updateColumnAdd = function(){

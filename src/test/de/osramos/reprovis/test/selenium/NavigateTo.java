@@ -14,7 +14,7 @@ public class NavigateTo {
 	
 	public static synchronized void waitForAjaxLoad() throws Exception{
 		// the ajax part has half a second time to load
-		NavigateTo.class.wait(500);
+		NavigateTo.class.wait(1000);
 	}
 	
 	public static void global(WebDriver driver){
@@ -24,7 +24,9 @@ public class NavigateTo {
 	public static synchronized void factory(WebDriver driver) throws Exception{
 		global(driver);
 		driver.findElement(By.className("leaflet-clickable")).click();
+		waitForAjaxLoad();
 		driver.findElement(By.className("factoryBtn")).click();
+		//driver.findElement(By.id("fid-1")).click();
 		waitForAjaxLoad();
 	}
 	
