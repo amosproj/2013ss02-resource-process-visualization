@@ -24,20 +24,18 @@
  */
 package de.osramos.reprovis.test.tools;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.test.testhelper.Setup;
 
 /**
  * @author Martin
@@ -45,6 +43,11 @@ import de.osramos.reprovis.handler.DatabaseHandler;
  */
 public class DatabaseTest {
 
+	@BeforeClass
+	public static void setUpClass() throws Exception {
+		Setup.setUpTestDS();
+	}
+	
 	@Test
 	public void testDataSource() throws  SQLException, DatabaseException{
 		DataSource db = DatabaseHandler.getDB();

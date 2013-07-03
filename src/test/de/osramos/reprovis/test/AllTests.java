@@ -28,8 +28,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ 
 		de.osramos.reprovis.test.botests.BOTests.class,
 		de.osramos.reprovis.test.daotests.DAOTests.class,
-		de.osramos.reprovis.test.tools.ToolsTest.class,
-		de.osramos.reprovis.test.cameltest.CamelTest.class
+		de.osramos.reprovis.test.tools.ToolTests.class,
+		de.osramos.reprovis.test.cameltest.CamelTest.class,
+		de.osramos.reprovis.test.selenium.SeleniumTests.class
 })
 
 public class AllTests {

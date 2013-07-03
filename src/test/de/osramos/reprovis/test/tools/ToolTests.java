@@ -32,8 +32,6 @@ import org.junit.runners.Suite;
 		de.osramos.reprovis.test.tools.DatabaseTest.class,
  })
 
-public class ToolsTest {
+public class ToolTests {
 	
-
-
 }
