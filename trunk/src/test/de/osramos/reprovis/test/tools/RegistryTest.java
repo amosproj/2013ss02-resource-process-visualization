@@ -35,16 +35,15 @@ public class RegistryTest {
 	@Test
 	public void RegistyTest(){
 		GlobalBean global = GlobalBean.getGlobal();
+		assertNotNull(global);
 		Registry r = Registry.getRegistry();
-
+		assertNotNull(r);
 	}
 	
 	@Test
 	public void ConfigTest(){
 		String c = MasterData.getConfigFile();
 		assertNotNull(c);
-
-		
 	}
 
 }
