@@ -76,6 +76,7 @@ $(document).ready(function() {
 	
 		elementList = new AMOSList("#devicelist", data.testDevices, 'testingDevice');
 		elementList.sortBy("status", [2, 1, 0, -1]);
+		elementList.hide("serialnumber");
 
 	    $("#dynamicHeading").html("Location: "+data.name);
 	    $("#locationName").html(data.name);

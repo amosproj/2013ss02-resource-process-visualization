@@ -60,7 +60,10 @@ int factoryID = factoryParent.getId();
 			{
 				"id": <%= device.getId() %>,
 				"name": "<%= device.getName() %>",
-				"status": "<%= device.getStatus() %>"
+				"status": "<%= device.getStatus() %>",
+				"description": "<%= device.getDescription() %>",
+				"type": "<%= device.getType() %>",
+				"serialnumber": "<%= device.getSerialnumber() %>"
 			}
 		<% } %>
 	],
