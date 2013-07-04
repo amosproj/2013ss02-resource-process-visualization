@@ -194,6 +194,8 @@ $(document).ready(function() {
 			
 				// .. and append the DOM elements to the navigation div
 				$('#breadCrumbNavi').html('').append(navDOM);
+				
+				return true;
 			}
 		}
 	};
