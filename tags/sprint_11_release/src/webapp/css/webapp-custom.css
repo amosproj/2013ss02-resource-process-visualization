@@ -1,0 +1,187 @@
+/*
+ - Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
+ -						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
+ -
+ - This file is part of the Resource Process Visualization application.
+ -
+ - This program is free software: you can redistribute it and/or modify
+ - it under the terms of the GNU Affero General Public License as
+ - published by the Free Software Foundation, either version 3 of the
+ - License, or (at your option) any later version.
+ -
+ - This program is distributed in the hope that it will be useful, 
+ - but WITHOUT ANY WARRANTY; without even the implied warranty of
+ - MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ - GNU Affero General Public License for more details.
+ -
+ - You should have received a copy of the GNU Affero General Public
+ - License along with this program. If not, see
+ - <http://www.gnu.org/licenses/>.
+*/
+
+body {
+	overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+#canvas, #map {
+	height: 400px;
+}
+
+#canvas:after {
+	clear: both;
+}
+
+#dataLayerContent {
+	height: 100%;
+}
+
+#dynamicHeading {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#breadCrumbNavi {
+	width: 100%;
+	height: 20px;
+	padding-bottom: 10px;
+}
+
+#SVGPlan, #svgCanvas {
+	width: 100%;
+	height: 300px;
+}
+
+#SVGPlan path {
+	stroke: black;
+}
+
+#SVGPlan .statusHallOk:hover,
+#SVGPlan .statusHallWarning:hover,
+#SVGPlan .statusHallCritical:hover{
+	cursor: pointer;
+}
+
+#informationBlock {
+	height: 100%;
+	overflow-y: scroll;
+	float: right;
+}
+
+#SVGPlanHolder {
+	height: 100%;
+}
+
+#locationPlan,
+#locationDevices,
+#testingDeviceComponents {
+	height: 88%;
+	overflow-y: scroll;
+}
+
+#addBlocks {
+	clear: both;
+}
+
+.companyImgSmall, .flagImgSmall {
+	width: 50px;
+	height: 30px;
+}
+
+.statusIcon {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+}
+
+.statusIconOk {
+	background: #9dd53a; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9dd53a 0%, #a1d54f 50%, #80c217 51%, #7cbc0a 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9dd53a), color-stop(50%,#a1d54f), color-stop(51%,#80c217), color-stop(100%,#7cbc0a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #9dd53a 0%,#a1d54f 50%,#80c217 51%,#7cbc0a 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
+}
+
+.statusIconWarning {
+	background: #fceabb; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+}
+
+.statusIconCritical {
+	background: #f85032; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f85032), color-stop(50%,#f16f5c), color-stop(51%,#f6290c), color-stop(71%,#f02f17), color-stop(100%,#e73827)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f85032 0%,#f16f5c 50%,#f6290c 51%,#f02f17 71%,#e73827 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
+}
+
+.statusIconUnknown {
+	background: #BBBBBB;
+}
+
+.statusHallOk {
+	fill: darkgreen;
+}
+
+.statusHallWarning {
+	fill: darkorange;
+}
+
+.statusHallCritical {
+	fill: darkred;
+}
+
+.statusHallUnknown {
+	fill: #BBBBBB;
+}
+
+.clear {
+	clear: both;
+}
+
+.textUnderline {
+	text-decoration: underline;
+}
+
+#filterModalBody td input{
+	margin: auto;
+}
+
+#addColumn {
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	z-index: 1;
+}
+
+#testListColumnAdd,
+#devicelistColumnAdd,
+#componentlistColumnAdd {
+	position: absolute;
+	right: 1em;
+	top: 3em;
+}
+
+.table tbody tr.info > td {
+	background: #dddddd;
+}
+
+.table-hover tbody tr.info:hover > td {
+	background: #eeeeee;
+}

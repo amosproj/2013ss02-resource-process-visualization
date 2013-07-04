@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+        <file>config.json</file>
+        <file>qml/main.qml</file>
+        <file>qml/Summary.qml</file>
+        <file>qml/ConnectForm.qml</file>
+        <file>qml/Tabs.qml</file>
+        <file>qml/HierarchyGlobal.qml</file>
+        <file>qml/FactoryCreate.qml</file>
+        <file>qml/JPButton.qml</file>
+        <file>qml/JPText.qml</file>
+        <file>qml/TableControl.qml</file>
+        <file>qml/TableOverview.qml</file>
+        <file>qml/HierarchyFactory.qml</file>
+        <file>qml/Hierarchy.qml</file>
+        <file>qml/FactoryProperties.qml</file>
+        <file>qml/JPList.qml</file>
+        <file>qml/HierarchyHall.qml</file>
+        <file>qml/ChildrenList.qml</file>
+        <file>qml/HierarchyLine.qml</file>
+        <file>qml/HierarchyComponent.qml</file>
+        <file>qml/HierarchyDevice.qml</file>
+        <file>qml/HierarchyLocation.qml</file>
+        <file>qml/ComponentCreate.qml</file>
+        <file>qml/ComponentProperties.qml</file>
+        <file>qml/DeviceCreate.qml</file>
+        <file>qml/DeviceProperties.qml</file>
+        <file>qml/HallCreate.qml</file>
+        <file>qml/HallProperties.qml</file>
+        <file>qml/LineCreate.qml</file>
+        <file>qml/LineProperties.qml</file>
+        <file>qml/LocationCreate.qml</file>
+        <file>qml/LocationProperties.qml</file>
+    </qresource>
+</RCC>
