@@ -33,8 +33,6 @@
 	<property name="lib" location="lib" />
 	<property name="lib.default" location="${lib}/default" />
 	<property name="lib.test" location="${lib}/test" />
-	<property name="lib.provided" location="${lib}/provided" />
-	<property name="report.dir" value="${build}/junitreport"/>
 
 
 	<property environment="env" />
@@ -48,8 +46,6 @@
 		<mkdir dir="${build}" />
 		<mkdir dir="${lib}" />
 		<mkdir dir="${lib.default}" />
-		<mkdir dir="${lib.test}" />
-		<mkdir dir="${lib.provided}" />
 	</target>
 
 
@@ -57,8 +53,6 @@
 		<javac destdir="${build}" includeantruntime="false" classpathref="compile.path" target="1.6">
 			<src path="${src}" />
 			<src path="${lib.default}" />
-			<src path="${lib.provided}" />
-			<src path="${lib.test}" />
 		</javac>
 	</target>
 
@@ -74,7 +68,6 @@
 
 	<target name="clean" description="clean up">
 		<delete dir="${target}" />
-		<delete dir="${lib}" />
 	</target>
 
 	<target name="retrieve" description="--> retrieve dependencies with ivy">
@@ -86,34 +79,11 @@
 		<copy file="${target}/reprovis.war" toFile="./ROOT.war" overwrite="true" />
 	</target>
 
-	<target name="tomcat_deploy" description="deploy to local tomcat">
+	<target name="tomcat_deploy" depends="dist" description="deploy to local tomcat">
 		<delete dir="${tomcat.web}/ROOT" />
 		<copy file="${target}/reprovis.war" toFile="${tomcat.web}/ROOT.war" overwrite="true" />
 	</target>
 
-	<target name="test" description="Run tests" depends="compile">
-		<copy todir="${build}/de/osramos/reprovis/test/testdata">
-			<fileset dir="${src.test}/de/osramos/reprovis/test/testdata"/>
-		</copy>
-		<mkdir dir="${report.dir}" />
-		<junit printsummary="yes">
-			<classpath>
-				<path refid="compile.path" />
-				<pathelement location="${build}"/>
-			</classpath>
-			<formatter type="xml"/>
-			<batchtest fork="yes" todir="${report.dir}">
-				<fileset dir="${src.test}" includes="de/osramos/reprovis/test/**/*Test.java"/>
-			</batchtest>
-		</junit>
-	</target>
-
-	<target name="junitreport">
-		<junitreport todir="${report.dir}">
-			<fileset dir="${report.dir}" includes="TEST-*.xml" />
-			<report todir="${report.dir}" />
-		</junitreport>
-	</target>
 
 	
 	<!--target name="tomcat_start">

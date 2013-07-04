@@ -17,31 +17,18 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
-<%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.FactoryBean"%>
-<%@ page import="de.osramos.reprovis.HallBean"%>
-<%@ page import="de.osramos.reprovis.LineBean" %>
-<%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.TestingDeviceBean"%>
-<%@ page import="de.osramos.reprovis.ElectricalComponentBean"%>
+<%@ page import="de.osramos.reprovis.FactoryBean" %>
+<%@ page import="de.osramos.reprovis.HallBean" %>
+<%@page import="de.osramos.reprovis.HierarchieElementBean"%>
+{
 <% assert (request.getAttribute("factory") != null); %>
 <% HierarchieElementBean helem = (HierarchieElementBean)request.getAttribute("factory"); %>
 <% FactoryBean factory = (FactoryBean)helem; %>
-{
 	"name": "<%= factory.getName() %>",
 	"status": "<%= factory.getStatus() %>",
 	"country": "<%= factory.getCountry() %>",
-	"vehiclesperyear": <%= factory.getVehiclesPerYear() %>,
-	"vehiclesperday": <%= factory.getVehiclesPerDay() %>,
-	"brand": "<%= factory.getCompany().toString() %>",
+	"vehicles": <%= factory.getNumOfVehicles() %>,
 	"staff": <%= factory.getSizeOfStaff() %>,
-	"staffdate": "<%= ""+ factory.getSizeOfStaffDate().getDay()  
-					+ "." + (factory.getSizeOfStaffDate().getMonth() + 1) 
-					+"." + (factory.getSizeOfStaffDate().getYear() + 1900) %>",
-	"upsclients": <%= factory.getUPSClients()%>,
-	"upsservers": <%= factory.getUPSServers()%>,
-	"upssystems": <%= factory.getUPSSystems()%>,
-	"upsprovider": "<%= factory.getUPSProvider()%>",
 	"brands": [
 		<% boolean first = true; %>
 		<% for(String brand: factory.getCarModels()){ %>
@@ -60,11 +47,5 @@
 			"status": "<%= hall.getStatus() %>"
 		}
 		<% } %>	
-	],
-	"parent": {
-		"id": "<%= factory.getId() %>",
-		"name": "<%= factory.getName() %>",
-		"type": "factory",
-		"parent": null
-	}
+	]
 }

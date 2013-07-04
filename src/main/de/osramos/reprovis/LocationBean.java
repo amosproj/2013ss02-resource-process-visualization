@@ -1,73 +1,15 @@
-/*
- * Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
- *						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
- *
- * This file is part of the Resource Process Visualization application.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public
- * License along with this program. If not, see
- * <http://www.gnu.org/licenses/>.
- */
-
-
 package de.osramos.reprovis;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.exception.HierarchieException;
-
 public class LocationBean extends HierarchieElementBean {
 
-	private String name;
-	private String description;
-	
-	public LocationBean(int id) throws HierarchieException {
+	public LocationBean(int id) {
 		super(id);
-		try {
-			name = LocationDAO.getName(id);
-			description = LocationDAO.getDescription(id);
-			this.aggreagationStrategie = LocationDAO.getAggreagationStrategie(id);
-		}catch(DatabaseException e){
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public String getName(){
-		return name != null ? name : "";
-	}
-	
-	public String getDescription() {
-		return description != null ? description : "";
-	}
-	
-	public String getPersonInCharge() {
-		try{
-			return LocationDAO.getPersonInCharge(id);
-		} catch (DatabaseException e){
-			e.printStackTrace();
-		}
-		return "";
+		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	
 	@Override
 	protected void initChilds() {
 		try {
@@ -79,12 +21,7 @@ public class LocationBean extends HierarchieElementBean {
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
-
-	
-
-
 
 }

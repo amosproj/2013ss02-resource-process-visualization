@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.GlobalBean;
 
 public class LocationServlet extends HttpServlet {
 
@@ -45,13 +45,13 @@ public class LocationServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("location", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("location", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/LocationJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("locid", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("locid", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/LocationView.jsp").forward(req, resp);
 			}
 		}

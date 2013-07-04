@@ -29,8 +29,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.osramos.reprovis.FactoryBean;
 import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.HierarchieException;
 
 public class FactoryServlet extends HttpServlet {
 
@@ -38,11 +39,19 @@ public class FactoryServlet extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		// getServletContext().setAttribute("testdata", new
+		// TestData(getServletContext().getResourceAsStream("config.json")));
 	}
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		/*
+		 * TestData global =
+		 * (TestData)getServletContext().getAttribute("testdata");
+		 * req.setAttribute("factories", global.getFactories());
+		 */
 
 		req.setAttribute("factories", GlobalBean.getGlobal().getChilds());
 
@@ -73,7 +82,7 @@ public class FactoryServlet extends HttpServlet {
 			if (req.getParameter("getData") != null) {
 				// Call the data handler
 				req.setAttribute("factory",
-						Registry.getElementById(Integer.valueOf(id)));
+						FactoryBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/FactoryJSON.jsp")
 						.forward(req, resp);
 			}
@@ -81,7 +90,7 @@ public class FactoryServlet extends HttpServlet {
 			else {
 				// Call the view handler
 				req.setAttribute("factory",
-						Registry.getElementById(Integer.valueOf(id)));
+						FactoryBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/FactoryView.jsp")
 						.forward(req, resp);
 			}

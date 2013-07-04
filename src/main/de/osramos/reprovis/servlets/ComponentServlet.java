@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import de.osramos.reprovis.handler.Registry;
+import de.osramos.reprovis.GlobalBean;
 
 public class ComponentServlet extends HttpServlet {
 
@@ -45,13 +45,13 @@ public class ComponentServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("cid", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("cid", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/ComponentJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("component", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("component", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/ComponentView.jsp").forward(req, resp);
 			}
 		}

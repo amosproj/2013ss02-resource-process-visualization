@@ -21,71 +21,20 @@
 
 package de.osramos.reprovis.test.botests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.*;
 
-import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.HallBean;
-import de.osramos.reprovis.HierarchieElementBean;
 import de.osramos.reprovis.LineBean;
-import de.osramos.reprovis.exception.HierarchieException;
-import de.osramos.reprovis.handler.Registry;
-import de.osramos.reprovis.test.testhelper.Setup;
 
 
 public class LineBeanTest {
-	
-	@BeforeClass
-	public static void setUpClass() throws Exception {
-
-		Setup.setUpTestDS();
-		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
-	}
-	
-	@Before
-	public void resetGlobal(){
-		GlobalBean.resetGlobal();
-		Registry.cleanRegistry();
-	}
 
 	@Test
-	public void hierarchieTest(){
-		GlobalBean g = GlobalBean.getGlobal();
-		HierarchieElementBean l = g.getChilds().get(0).getChilds().get(0).getChilds().get(0);
-		assertTrue(l.getClass().equals(LineBean.class));
-		assertTrue(!l.getClass().equals(HallBean.class));
+	public void initTest(){
+		LineBean b = new LineBean(1);
+		assertTrue(b.getChilds().size() > 1);
 	}
 
-	@Test
-	public void notExistingTest() throws HierarchieException{
-		LineBean l = new LineBean(-1);
-		assertNotNull(l.getChilds());
-		assertNotNull(l.getName());
-		assertNotNull(l.getPath());
-		assertNotNull(l.getProductionCapacity());
-		assertNotNull(l.getProductionSeries());
-		assertNotNull(l.getType());
-	}
 	
-	@Test
-	public void parentTest() throws HierarchieException{
-		assertEquals(3, (new HallBean(2)).getChilds().get(0).getId());
-	}
-	
-	@Test
-	public void childTest() throws HierarchieException{
-		assertEquals(1, (new LineBean(3)).getChilds().size());
-	}
-	
-	@Test
-	public void getterTest() throws HierarchieException{
-		LineBean line = new LineBean(3);
-		assertEquals("L1 Assembly", line.getName());
-		assertEquals("Series 3", line.getProductionSeries());
-		assertEquals(98, line.getProductionCapacity());
-		assertEquals("rect217", line.getPath());
-	}
 }
