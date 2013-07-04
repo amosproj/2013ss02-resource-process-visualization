@@ -1,5 +1,4 @@
 // Leaflet workd map testings
-
 describe("Leaflet world map", function() {
 	it("should initialize the map object", function() {
 		expect(typeof map).toBe("object");
@@ -19,7 +18,7 @@ describe("Leaflet world map", function() {
 	
 	it("should have maxzoom", function() {
 		expect(pluginConf.maxZoom).not.toBeFalsy();
-	});
+	}); 
 	
 	it("should have startHeight", function() {
 		expect(pluginConf.startHeight).not.toBeFalsy();
@@ -37,4 +36,80 @@ describe("Global Hierarchy Handler", function() {
 			GlobalHierarchyHandler.hierarchyZoom("global", 0);
 		})
 	})
+	
+	it("should zoom into factory level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("factory", 1);
+		})
+	})
+	
+	it("should zoom into hall level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("hall", 1);
+		})
+	})
+	
+	it("should zoom into line level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("line", 1);
+		})
+	})
+	
+	it("should zoom into location level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("location", 1);
+		})
+	})
+	
+	it("should zoom into testingDevice level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("testingDevice", 1);
+		})
+	})
+	
+	it("should zoom into component level", function() {
+		runs(function() {
+			GlobalHierarchyHandler.hierarchyZoom("component", 1);
+		})
+	})
+});
+
+describe("Navigation hierarchy", function() {
+	it("should create the object", function() {
+		expect(typeof GlobalHierarchyHandler.Navigation).toBe("object");
+	});
+	
+	it("should compose navigation elements", function() {
+		expect(typeof GlobalHierarchyHandler.Navigation.composeNavElements()).toBe("object");
+	});
+	
+	it("should create breadcrumb", function() {
+		expect(GlobalHierarchyHandler.Navigation.createBreadcrumb()).not.toBeFalsy();
+	});
+});
+
+describe("Hierarchie elements", function() {
+	it("should create the Testing Device object", function() {
+		expect(typeof TestingDevice).toBe("object");
+	});
+	
+	it("should create the Factory object", function() {
+		expect(typeof Factory).toBe("object");
+	});
+	
+	it("should create the Hall object", function() {
+		expect(typeof Hall).toBe("object");
+	});
+	
+	it("should create the Line object", function() {
+		expect(typeof Line).toBe("object");
+	});
+	
+	it("should create the Location object", function() {
+		expect(typeof Location).toBe("object");
+	});
+	
+	it("should create the TestingDevice object", function() {
+		expect(typeof TestingDevice).toBe("object");
+	});
 });
