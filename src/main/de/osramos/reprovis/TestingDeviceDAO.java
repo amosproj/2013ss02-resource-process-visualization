@@ -180,8 +180,11 @@ public class TestingDeviceDAO extends HierarchieElementDAO {
 	public static Date getTroublePeriod(int id) throws DatabaseException {
 		
 		Timestamp t = (Timestamp) getAttribute(id, "troubleperiod");
+		if (t != null){
+			return new Date (t.getTime());
+		}
 
-		return new Date (t.getTime());
+		return null;
 	}
 
 	public static boolean getTestFailure(int id) throws DatabaseException  {

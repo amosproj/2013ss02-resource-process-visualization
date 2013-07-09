@@ -51,10 +51,10 @@ public class Registry {
 		registry = new Registry();
 	}
 	
-	public static HierarchieElementBean getElementById(int id) {
+/*	public static HierarchieElementBean getElementById(int id) {
 
 		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
-	}
+	}*/
 	
 	public void register(int id, HierarchieElementBean element) throws Exception{
 		
@@ -68,7 +68,7 @@ public class Registry {
 //		}
 	}
 	
-	private Registry(){
+	public Registry(){
 		reg = new ConcurrentHashMap<Integer, Object>();
 	}
 	

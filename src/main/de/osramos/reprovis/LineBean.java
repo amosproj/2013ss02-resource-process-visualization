@@ -27,28 +27,29 @@ import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 
 public class LineBean extends HierarchieElementBean {
-
-	String name;
+	
+	
+	private String name;
 	private String path;
-	public LineBean(int id) throws HierarchieException {
-		super(id);
+	private int productionCapacity;
+	private String productionSeries;
 
-		/*
-		 * try { Context ctx = new InitialContext();
-		 * ctx.bind("de.orsamos/reprovis/factory/"+id, this); } catch
-		 * (NamingException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 */
+
+	
+
+	public LineBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
+		super(id, parent,  registry);
+		
+		initName();
+		initPath();
+		initProductionCapacity();
+		initProductionSeries();
+
 		try{
-			name = LineDAO.getName(id);
-			path = LineDAO.getPath(id);
-			LineDAO.getproductionSeries(id);
-			LineDAO.getproductionCapacity(id);
 			this.aggreagationStrategie = LineDAO.getAggreagationStrategie(id);
-		} catch(DatabaseException e){
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,52 +63,71 @@ public class LineBean extends HierarchieElementBean {
 			List<Integer> childIds = LocationDAO.getLocationIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				LocationBean childBean = new LocationBean(id);
+				LocationBean childBean = new LocationBean(id, this, registry);
 
-				childBean.setParent(this);
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-/*	@Override
-	protected TrafficLight getDistinctStatus() {
-		return LineDAO.getStatus(id);
-
-	}*/
-
-	public String getName() {
+	
+	
+	public void initName() {
 		try {
-			return LineDAO.getName(id);
+			name = LineDAO.getName(id);
 		} catch (DatabaseException e){
-			return "Error";
+			name = "Error";
+		}
+	}
+	
+	public void initPath() {
+		try {
+			path = LineDAO.getPath(id);
+		} catch (DatabaseException e){
+			path = "Error";
 		}
 	}
 
-	public String getType() {
-		return "";
+	public void initProductionSeries() {
+		try {
+			productionSeries = LineDAO.getproductionSeries(id);
+		} catch(DatabaseException e){
+			productionSeries = "Error";
+		}
+	}
+
+	public void initProductionCapacity() {
+		try {
+			productionCapacity = LineDAO.getproductionCapacity(id);
+		} catch (DatabaseException e){
+			productionCapacity = -1;
+		}
 	}
 	
+	
+	
+	public String getName(){
+		return name;
+	}
+	
+	
 	public String getPath() {
-		return path != null ? path : "";
+		return path;
 	}
 
 	public String getProductionSeries() {
-		try {
-			return LineDAO.getproductionSeries(id);
-		} catch(DatabaseException e){
-			return "Error";
-		}
+		return productionSeries;
 	}
 
 	public int getProductionCapacity() {
-		try {
-			return LineDAO.getproductionCapacity(id);
-		} catch (DatabaseException e){
-			return -1;
-		}
+		return productionCapacity;
+	}
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

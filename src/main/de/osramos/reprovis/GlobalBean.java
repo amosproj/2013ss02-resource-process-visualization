@@ -27,15 +27,35 @@ import java.util.List;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.DatabaseHandler;
+import de.osramos.reprovis.handler.Registry;
 
 public class GlobalBean extends HierarchieElementBean {
 
-	private GlobalBean(int id) throws HierarchieException {
-		super(id);
+	private static Object lock = new Object();
+
+	private static GlobalBean instance = null;
+
+	public Registry getRegistry() {
+		return registry;
+	}
+
+	private GlobalBean(int id, Registry registry) throws HierarchieException {
+		super(id, null, registry);
 
 	}
 
-	private static GlobalBean global;
+	public static GlobalBean createInstance() {
+		GlobalBean global = null;
+		try {
+			Registry r = new Registry();
+			global = new GlobalBean(0, r);
+			//global.initAggregatedAttributes();
+			return global;
+		} catch (HierarchieException e) {
+			e.printStackTrace();
+		}
+		return global;
+	}
 
 	@Override
 	public HierarchieElementBean getParent() throws HierarchieException {
@@ -43,29 +63,26 @@ public class GlobalBean extends HierarchieElementBean {
 	}
 
 	public static void resetGlobal() {
-		global = null;
-		getGlobal();
+		instance = null;
+		getInstance();
 	}
 
-	public static GlobalBean getGlobal()  {
-/*		if (!DatabaseHandler.databaseIsInitialized()) {
-			try {
-				DatabaseHandler.initDB();
-			} catch (DatabaseException e) {
-				e.printStackTrace();
-			}
-		}*/
-
-		if (global == null) {
-			try {
-				global = new GlobalBean(0);
-			} catch (HierarchieException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	public static void setInstance(GlobalBean global) {
+		synchronized (lock) {
+			instance = global;
 		}
+	}
 
-		return global;
+	public static GlobalBean getInstance() {
+
+		synchronized (lock) {
+
+			if (instance == null) {
+				instance = createInstance();
+			}
+
+			return instance;
+		}
 	}
 
 	@Override
@@ -75,8 +92,7 @@ public class GlobalBean extends HierarchieElementBean {
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
 				try {
-					FactoryBean childBean = new FactoryBean(id);
-					childBean.setParent(this);
+					FactoryBean childBean = new FactoryBean(id, this, registry);
 					childs.add(childBean);
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -85,6 +101,12 @@ public class GlobalBean extends HierarchieElementBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
 
 	}
 

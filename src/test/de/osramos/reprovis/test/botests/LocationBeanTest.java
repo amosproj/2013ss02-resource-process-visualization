@@ -56,13 +56,13 @@ public class LocationBeanTest {
 	
 	@Test
 	public void childTest() throws Exception{
-		LocationBean b = new LocationBean(1);
+		LocationBean b = new LocationBean(1, null, new Registry());
 		assertTrue(b.getChilds().size() == TestingDeviceDAO.getTestingDeviceIds(1).size());
 	}
 	
 	@Test
 	public void notExistingTest() throws HierarchieException{
-		LocationBean loc = new LocationBean(-1);
+		LocationBean loc = new LocationBean(-1, null, new Registry());
 		assertNotNull(loc.getChilds());
 		assertNotNull(loc.getDescription());
 		assertNotNull(loc.getName());
@@ -71,12 +71,12 @@ public class LocationBeanTest {
 	
 	@Test
 	public void parentTest() throws HierarchieException{
-		assertEquals(4, (new LineBean(3)).getChilds().get(0).getId());
+		assertEquals(4, (new LineBean(3, null, new Registry())).getChilds().get(0).getId());
 	}
 	
 	@Test
 	public void getterTest() throws HierarchieException{
-		LocationBean loc = new LocationBean(4);
+		LocationBean loc = new LocationBean(4, null, new Registry());
 		assertEquals("Lo1", loc.getName());
 		assertEquals("ABS test", loc.getDescription());
 		assertEquals("Peter Merkel", loc.getPersonInCharge());

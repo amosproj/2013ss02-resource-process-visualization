@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.osramos.reprovis.GlobalBean;
 import de.osramos.reprovis.handler.Registry;
 
 public class HallServlet extends HttpServlet {
@@ -45,13 +46,13 @@ public class HallServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("hall", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("hall", GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/HallJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("hall", Registry.getElementById(Integer.valueOf(id)));
+				req.setAttribute("hall", GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/HallView.jsp").forward(req, resp);				
 			}
 		}

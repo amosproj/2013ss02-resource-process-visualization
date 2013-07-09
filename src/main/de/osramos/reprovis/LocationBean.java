@@ -28,41 +28,73 @@ import java.util.List;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 
 public class LocationBean extends HierarchieElementBean {
 
 	private String name;
 	private String description;
+	private String personInCharge;
 	
-	public LocationBean(int id) throws HierarchieException {
-		super(id);
+	public LocationBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
+		super(id, parent, registry);
+		
+		initName();
+		initDescription();
+		initPersonInCharge();
+		
 		try {
-			name = LocationDAO.getName(id);
-			description = LocationDAO.getDescription(id);
 			this.aggreagationStrategie = LocationDAO.getAggreagationStrategie(id);
-		}catch(DatabaseException e){
-			e.printStackTrace();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	
+	public void initName(){
+		try {
+			name = LocationDAO.getName(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			name = "N/A";
+		}
+	}
+	
+	public void initDescription() {
+		try {
+			description = LocationDAO.getDescription(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			description = "N/A";
+		}
+	}
+	
+	public void initPersonInCharge() {
+		try{
+			personInCharge = LocationDAO.getPersonInCharge(id);
+		} catch (DatabaseException e){
+			e.printStackTrace();
+			personInCharge = "N/A";
+		}
+		
+	}
+
+	
+	
 	public String getName(){
-		return name != null ? name : "";
+		return name ;
 	}
 	
 	public String getDescription() {
-		return description != null ? description : "";
+		return description;
 	}
 	
 	public String getPersonInCharge() {
-		try{
-			return LocationDAO.getPersonInCharge(id);
-		} catch (DatabaseException e){
-			e.printStackTrace();
-		}
-		return "";
+		return personInCharge;
 	}
 
 	
@@ -74,13 +106,19 @@ public class LocationBean extends HierarchieElementBean {
 			List<Integer> childIds = TestingDeviceDAO.getTestingDeviceIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				TestingDeviceBean childBean = new TestingDeviceBean(id);
-				childBean.setParent(this);
+				TestingDeviceBean childBean = new TestingDeviceBean(id, this, registry);
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

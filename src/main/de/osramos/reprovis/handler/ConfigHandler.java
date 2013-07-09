@@ -37,13 +37,15 @@ public class ConfigHandler {
 		
 		try {
 			Registry.cleanRegistry();
+			System.out.println("Initializing Database");
 			DatabaseHandler.initDB();
 			Registry.initRegistry();
 			
 			cleanCaches();
 			
+			System.out.println("Getting new Global Element");
 			GlobalBean.resetGlobal();
-			GlobalBean.getGlobal();
+			GlobalBean.getInstance();
 		} catch (DatabaseException e) {
 			
 			e.printStackTrace();
@@ -69,7 +71,7 @@ public class ConfigHandler {
 		cleanCaches();
 		
 		GlobalBean.resetGlobal();
-		GlobalBean.getGlobal();
+		GlobalBean.getInstance();
 		
 		
 	}

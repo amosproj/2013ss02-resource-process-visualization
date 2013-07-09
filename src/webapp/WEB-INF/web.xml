@@ -38,13 +38,35 @@
 		<param-value>de.osramos.reprovis.connectivity.XMLAdapter</param-value>
 	</context-param>
 
-	<servlet> <servlet-name>CamelServlet</servlet-name> <servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class> 
-		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>CamelServlet</servlet-name> 
-		<url-pattern>/audi/*</url-pattern> </servlet-mapping>
+	<servlet>
+		<servlet-name>CamelServlet</servlet-name>
+		<servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CamelServlet</servlet-name>
+		<url-pattern>/audi/*</url-pattern>
+	</servlet-mapping>
 
-	<servlet> <servlet-name>configServlet</servlet-name> <servlet-class>de.osramos.reprovis.servlets.ConfigServlet</servlet-class> 
-		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>configServlet</servlet-name> 
-		<url-pattern>/config</url-pattern> </servlet-mapping>
+	<servlet>
+		<servlet-name>configServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.servlets.ConfigServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>configServlet</servlet-name>
+		<url-pattern>/config</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>updaterServlet</servlet-name>
+		<servlet-class>de.osramos.reprovis.handler.HierarchyUpdater</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+
+
 	<servlet>
 		<servlet-name>factoryServlet</servlet-name>
 		<servlet-class>de.osramos.reprovis.servlets.FactoryServlet</servlet-class>
@@ -66,7 +88,7 @@
 		<servlet-class>de.osramos.reprovis.status.TestStatusProvider</servlet-class>
 		<load-on-startup>5</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>testStatusProviderServlet</servlet-name>
 		<url-pattern>/status</url-pattern>

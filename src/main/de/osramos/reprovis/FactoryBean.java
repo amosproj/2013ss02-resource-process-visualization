@@ -26,39 +26,107 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.MasterData.Company;
+import de.osramos.reprovis.handler.Registry;
 
 public class FactoryBean extends HierarchieElementBean {
 
-	public FactoryBean(int id) throws HierarchieException {
-		super(id);
+	public FactoryBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
+		super(id, parent, registry);
 
-		
+		initName();
+		initCountry();
+		initGPSLatitude();
+		initGPSLongitude();
+		initCity();
+		initCompany();
+		initCarModels();
+		initSizeOfStaff();
+		initUPSServers();
+		initUPSSystems();
+		initUPSProvider();
+		initSizeOfStaffDate();
+		initVehiclesPerDay();
+		initVehiclesPerYear();
+		initMap();
+
 		try {
-			name = FactoryDAO.getName(id);
-			country = FactoryDAO.getCountry(id);
-			city = FactoryDAO.getCity(id);
-			gpsLatitude = FactoryDAO.getGpsLatitude(id);
-			gpsLongitude = FactoryDAO.getGpsLongitude(id);
-			company = FactoryDAO.getCompany(id);
-			carModels = FactoryDAO.getCarModels(id);
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
-			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
-			upsSystems = FactoryDAO.getUPSSystems(id);
-			upsProvider = FactoryDAO.getUPSProvider(id);
-			this.aggreagationStrategie = FactoryDAO.getAggreagationStrategie(id);
-		} catch (DatabaseException e) {
-			
-			throw new HierarchieException("Element does not exist");
+
+			this.aggreagationStrategie = FactoryDAO
+					.getAggreagationStrategie(id);
 
 		} catch (IOException e) {
 
 			throw new HierarchieException("Element does not exist");
 		}
+	}
+
+	private void initName() {
+		try {
+			name = FactoryDAO.getName(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			name = "N/A";
+		}
+		
+	}
+
+	private void initCountry() {
+		try {
+			country = FactoryDAO.getCountry(id);
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+			country = "N/A";
+		}
+		
+
+	}
+
+	private void initGPSLatitude() {
+		try {
+			gpsLatitude = FactoryDAO.getGpsLatitude(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			gpsLatitude = 0;
+		}
+		
+	}
+
+	private void initGPSLongitude() {
+		try {
+			gpsLongitude = FactoryDAO.getGpsLongitude(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			gpsLongitude = 0;
+		}
+		
+	}
+
+	private void initCity() {
+		try {
+			city = FactoryDAO.getCity(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			city = "N/A";
+		}
+		
+	}
+
+	private void initCompany() {
+		try {
+			company = FactoryDAO.getCompany(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			company = Company.Audi;
+		}
+		
 	}
 
 
@@ -70,11 +138,14 @@ public class FactoryBean extends HierarchieElementBean {
 	private Company company;
 	private String[] carModels;
 	private int sizeOfStaff;
-	private int numOfVehicles;
+	private int vehiclesPerYear;
 	private int upsServers;
 	private int upsSystems;
 	private String upsProvider;
 	private Date sizeOfStaffDate;
+	private int vehiclesPerDay;
+	private int upsClients;
+	private String map;
 
 	public String getName() {
 		return name;
@@ -99,112 +170,158 @@ public class FactoryBean extends HierarchieElementBean {
 	public Company getCompany() {
 		return company;
 	}
-	
+
 	public int getSizeOfStaff() {
+		return sizeOfStaff;
+	}
+
+	public void initSizeOfStaff() {
 		try {
 			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			sizeOfStaff = 0;
 		}
-		return sizeOfStaff;
+		
 	}
-	
+
 	public Date getSizeOfStaffDate() {
+		return sizeOfStaffDate;
+	}
+
+	public void initSizeOfStaffDate() {
 		try {
 			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			sizeOfStaffDate = null;
 		}
-		return sizeOfStaffDate;
+		
 	}
 
 	public int getVehiclesPerYear() {
-		try {
-			numOfVehicles = FactoryDAO.getVehiclesPerYear(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return numOfVehicles;
+		return vehiclesPerYear;
 	}
-	
-	public int getVehiclesPerDay(){
+
+	public void initVehiclesPerYear() {
 		try {
-			return FactoryDAO.getVehiclesPerDay(id);
+			vehiclesPerYear = FactoryDAO.getVehiclesPerYear(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			vehiclesPerYear = 0;
 		}
-		return 0;
+		
+	}
+
+	public int getVehiclesPerDay() {
+		return vehiclesPerDay;
+	}
+
+	public void initVehiclesPerDay() {
+		try {
+			vehiclesPerDay = FactoryDAO.getVehiclesPerDay(id);
+		} catch (DatabaseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			vehiclesPerDay = 0;
+		}
+		
 	}
 
 	public String[] getCarModels() {
+		return carModels;
+	}
+
+	public void initCarModels() {
 		try {
 			carModels = FactoryDAO.getCarModels(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			carModels = new String[] { "" };
 		}
-		return carModels;
+		
 	}
 
-
-	
 	public int getUPSSystems() {
+		return upsSystems;
+	}
+
+	public void initUPSSystems() {
 		try {
 			upsSystems = FactoryDAO.getUPSSystems(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			upsSystems = 0;
 		}
-		return upsSystems;
+		
 	}
 
 	public int getUPSServers() {
+		return upsServers;
+	}
+
+	public void initUPSServers() {
 		try {
 			upsServers = FactoryDAO.getUPSServers(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			upsServers = 0;
 		}
-		return upsServers;
+		
 	}
-	
+
 	public String getUPSProvider() {
+		return upsProvider;
+	}
+
+	public void initUPSProvider() {
 		try {
 			upsProvider = FactoryDAO.getUPSProvider(id);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			upsProvider = "";
 		}
-		return upsProvider;
+		
+	}
+
+	public void initUPSClients() {
+
+		upsClients = getNumOfLeafs(TestingDeviceBean.class);
 	}
 
 	public int getUPSClients() {
-		
+
 		return getNumOfLeafs(TestingDeviceBean.class);
 	}
-	
+
 	public String getMap() {
+		return map;
+	}
+
+	public void initMap() {
 		try {
-			return FactoryDAO.getMap(id);
+			map = FactoryDAO.getMap(id);
 		} catch (DatabaseException e) {
 			e.printStackTrace();
+			map = "Error";
 		}
-		return "Error";
+		
 	}
-	
+
 	@Override
 	protected void initChilds() {
 		try {
 			List<Integer> childIds = HallDAO.getHallIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				HallBean childBean = new HallBean(id);
-
-				childBean.setParent(this);
+				HallBean childBean = new HallBean(id, this, registry);
 
 				childs.add(childBean);
 			}
@@ -212,6 +329,12 @@ public class FactoryBean extends HierarchieElementBean {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	protected void initAttributes() {
+		initUPSClients();
+		
 	}
 
 }

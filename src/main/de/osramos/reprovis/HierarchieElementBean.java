@@ -39,13 +39,22 @@ public abstract class HierarchieElementBean {
 	protected Class cacheLevel;
 
 	protected AggreagationStrategie aggreagationStrategie;
+	
+	protected Registry registry;
+	
+	protected TrafficLight status;
 
-	public HierarchieElementBean(int id) throws HierarchieException{
+	public HierarchieElementBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
 
 		this.id = id;
-		try{
-		Registry.getRegistry().register(id, this);
-		}catch(Exception e){
+		this.parent = parent;
+		this.registry = registry;
+		
+		try {
+			registry.register(id, this);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 			throw new HierarchieException("could not register Element");
 		}
 
@@ -53,18 +62,26 @@ public abstract class HierarchieElementBean {
 		initChilds();
 
 	}
-	
-	
+
+
 	protected abstract void initChilds();
-	
-	protected void setParent(HierarchieElementBean parent) throws Exception {
 
-		this.parent = parent;
+	
+	protected void initAggregatedAttributes(){
+		
+		initAttributes();
+		initStatus();
+		
+		for (HierarchieElementBean c : childs){
+			initAggregatedAttributes();
+		}
+		
 	}
+	protected abstract void initAttributes();
 
-	
+
 	// Simple getters
-	
+
 	public int getId() {
 		return id;
 	}
@@ -76,26 +93,45 @@ public abstract class HierarchieElementBean {
 	public List<HierarchieElementBean> getChilds() {
 		return childs;
 	}
-	
-	
+
 	// Get Hierarchy Information
 
 	public TrafficLight getStatus() throws HierarchieException {
+		
+		if ( status == null){
+			try {
+				status = aggreagationStrategie.aggregate(this);
+				return status;
+			} catch (HierarchieException e) {
 
-		try {
-			return aggreagationStrategie.aggregate(this);
-		} catch (HierarchieException e) {
+			} catch (NullPointerException e) {
 
-		} catch (NullPointerException e){
-			
+			}
+
+			try {
+				status =  getDistinctStatus();
+				return status;
+			} catch (HierarchieException e) {
+			}
+			status = TrafficLight.grey;
+			return status;
+
+		} else {
+			return status;
 		}
 
+		
+	}
+	
+	public void initStatus(){
+		
 		try {
-			return getDistinctStatus();
+			getStatus();
 		} catch (HierarchieException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		throw new HierarchieException("Element has no status");
-
+		
 	}
 
 	public List<HierarchieElementBean> getChildsByClass(Class c) {
@@ -103,7 +139,6 @@ public abstract class HierarchieElementBean {
 		if (cacheLevel != null && cacheLevel.equals(c) && cache != null) {
 			return cache;
 		} else {
-			
 
 			List<HierarchieElementBean> l = getChilds();
 			if (l == null || l.isEmpty()) {
@@ -120,7 +155,7 @@ public abstract class HierarchieElementBean {
 				}
 				cache = ls;
 			}
-			
+
 			return cache;
 		}
 
@@ -130,9 +165,7 @@ public abstract class HierarchieElementBean {
 		throw new HierarchieException("Element has no distinct status");
 	}
 
-	
-
-public int getNumOfLeafs(Class LeafClass) {
+	public int getNumOfLeafs(Class LeafClass) {
 
 		List<HierarchieElementBean> l = getChilds();
 		if (l == null || l.isEmpty()) {

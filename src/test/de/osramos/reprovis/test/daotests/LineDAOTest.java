@@ -93,13 +93,4 @@ public class LineDAOTest {
 		LineDAO.getPath(-1);
 	}
 	
-	@Test
-	public void getParentTest() throws Exception{
-		assertEquals(LineDAO.getHall(3).getId(), 2);
-	}
-	
-	@Test (expected=DatabaseException.class)
-	public void parentForInvalidTest() throws DatabaseException, HierarchieException{
-		LineDAO.getHall(-1).getId();
-	}
 }

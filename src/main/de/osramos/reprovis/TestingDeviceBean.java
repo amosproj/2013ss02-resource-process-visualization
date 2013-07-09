@@ -30,12 +30,20 @@ import java.util.List;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.ConfigHandler;
+import de.osramos.reprovis.handler.Registry;
 
 public class TestingDeviceBean extends HierarchieElementBean {
 
-	public TestingDeviceBean(int id) throws HierarchieException {
+	public TestingDeviceBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
 
-		super(id);
+		super(id, parent, registry);
+		
+		initDescription();
+		initName();
+		initSerialnumber();
+		initTroublePeriod();
+		initType();
+		
 		try {
 			this.aggreagationStrategie = TestingDeviceDAO
 					.getAggreagationStrategie(id);
@@ -50,7 +58,6 @@ public class TestingDeviceBean extends HierarchieElementBean {
 		try {
 			int id = TestingDeviceDAO.createDevice(locationId);
 
-			ConfigHandler.reload();
 			return id;
 		} catch (Exception e) {
 			return -1;
@@ -62,13 +69,8 @@ public class TestingDeviceBean extends HierarchieElementBean {
 		try {
 			TestingDeviceDAO.deleteDevice(id);
 
-			
-			getParent().initChilds();
-			ConfigHandler.reload();
+		
 		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (HierarchieException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -82,9 +84,8 @@ public class TestingDeviceBean extends HierarchieElementBean {
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
 				ElectricalComponentBean childBean = new ElectricalComponentBean(
-						id);
+						id, this, registry);
 
-				childBean.setParent(this);
 
 				childs.add(childBean);
 			}
@@ -94,84 +95,81 @@ public class TestingDeviceBean extends HierarchieElementBean {
 
 	}
 
-	public String getSector() {
+	private String type;
+	private String serialnumber;
+	private Date troublePeriod;
+	private String description;
+	private String name;
+	
+	
+	public void initType() {
 		try {
-			return TestingDeviceDAO.getSector(id);
+			type = TestingDeviceDAO.getType(id);
 		} catch (DatabaseException e) {
-			return "N/A";
+			type = "N/A";
 		}
 	}
 
-	public String getType() {
+	public void initSerialnumber() {
 		try {
-			return TestingDeviceDAO.getType(id);
+			serialnumber = TestingDeviceDAO.getSerialnumber(id);
 		} catch (DatabaseException e) {
-			return "N/A";
+			serialnumber = "N/A";
 		}
+	}
+
+	public void initDescription() {
+		try {
+			description = TestingDeviceDAO.getDescription(id);
+		} catch (DatabaseException e) {
+			description = "N/A";
+		}
+	}
+
+
+	public void initName() {
+		try {
+			name = TestingDeviceDAO.getName(id);
+		} catch (DatabaseException e) {
+			name = "N/A";
+		}
+	}
+
+	public void initTroublePeriod() {
+		try {
+			troublePeriod = TestingDeviceDAO.getTroublePeriod(id);
+		} catch (DatabaseException e) {
+			troublePeriod = null;
+		}
+		
+	}
+	
+	
+	public String getType() {
+		return type;
 	}
 
 	public String getSerialnumber() {
-		try {
-			return TestingDeviceDAO.getSerialnumber(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
+		return serialnumber;
 	}
 
 	public String getDescription() {
-		try {
-			return TestingDeviceDAO.getDescription(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
+		return description;
 	}
 
-	public String getIpAddress() {
-		try {
-			return TestingDeviceDAO.getIpAddress(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
-	}
 
 	public String getName() {
-		try {
-			return TestingDeviceDAO.getName(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
-	}
-
-	public String getNetworkStatus() {
-		try {
-			return TestingDeviceDAO.getNetworkStatus(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
-	}
-
-	public String getMaintainanceInfo() {
-		try {
-			return TestingDeviceDAO.getMaintainanceInfo(id);
-		} catch (DatabaseException e) {
-			return "N/A";
-		}
-	}
-
-	public boolean isTestFailure() {
-		try {
-			return TestingDeviceDAO.getTestFailure(id);
-		} catch (DatabaseException e) {
-		}
-		return false;
+		return name;
 	}
 
 	public Date getTroublePeriod() {
-		try {
-			return TestingDeviceDAO.getTroublePeriod(id);
-		} catch (DatabaseException e) {
-		}
-		return null;
+		return troublePeriod;
+	}
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -57,8 +57,8 @@ public class GlobalBeanTest {
 		{
 			Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 
-			GlobalBean global1 = GlobalBean.getGlobal();
-			GlobalBean global2 = GlobalBean.getGlobal();
+			GlobalBean global1 = GlobalBean.getInstance();
+			GlobalBean global2 = GlobalBean.getInstance();
 
 			assertSame(global1, global2);
 		}
@@ -70,19 +70,19 @@ public class GlobalBeanTest {
 		GlobalBean.resetGlobal();
 		
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
-		GlobalBean global1 = GlobalBean.getGlobal();
+		GlobalBean global1 = GlobalBean.getInstance();
 		
 		GlobalBean.resetGlobal();
 		
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/WrongTestDataGlobal.sql");
-		GlobalBean global2 = GlobalBean.getGlobal();
+		GlobalBean global2 = GlobalBean.getInstance();
 
 		assertNotSame(global1, global2);
 	}
 
 	@Test
 	public void getParentTest() {
-		GlobalBean global = GlobalBean.getGlobal();
+		GlobalBean global = GlobalBean.getInstance();
 		Exception exception = null;
 
 		try {
@@ -99,7 +99,7 @@ public class GlobalBeanTest {
 			Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 
 			GlobalBean.resetGlobal();
-			GlobalBean global = GlobalBean.getGlobal();
+			GlobalBean global = GlobalBean.getInstance();
 			List<HierarchieElementBean> childs = global.getChilds();
 
 			assertNotNull(childs);
@@ -118,7 +118,7 @@ public class GlobalBeanTest {
 			GlobalBean.resetGlobal();
 			Setup.loadDBData("./de/osramos/reprovis/test/testdata/WrongTestDataGlobal.sql");
 
-			GlobalBean global = GlobalBean.getGlobal();
+			GlobalBean global = GlobalBean.getInstance();
 			List<HierarchieElementBean> childs = global.getChilds();
 
 			assertNotNull(childs);

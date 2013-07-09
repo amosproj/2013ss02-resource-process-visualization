@@ -54,13 +54,13 @@ int factoryID = factoryParent.getId();
 	"serialnumber": "<%= device.getSerialnumber() %>",
 	"category": "<%=device.getType()%>",
 	"description": "<%=device.getDescription()%>",
-	"ipaddress": "<%=device.getIpAddress()%>",
+<%-- 	"ipaddress": "<%=device.getIpAddress()%>",
 	"maintainanceinfo": "<%=device.getMaintainanceInfo()%>",
-	"networkstatus": "<%=device.getNetworkStatus()%>",
+	"networkstatus": "<%=device.getNetworkStatus()%>", --%>
 	"componentCount": "<%= device.getChilds().size() %>",
 	"troubleperiod": "<%= device.getTroublePeriod() %>",
-	"testfailure": <%= device.isTestFailure() %>,
-	"sector": "<%= device.getSector() %>",
+<%-- 	"testfailure": <%= device.isTestFailure() %>, --%>
+<%-- 	"sector": "<%= device.getSector() %>", --%>
 	"components": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean child: device.getChilds()){ %>
