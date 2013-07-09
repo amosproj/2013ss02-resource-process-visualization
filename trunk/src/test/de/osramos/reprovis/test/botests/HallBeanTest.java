@@ -57,7 +57,7 @@ public class HallBeanTest {
 	
 	@Test
 	public void notExistingHallTest() throws Exception {
-		HallBean hall = new HallBean(1);
+		HallBean hall = new HallBean(1, null, new Registry());
 
 		assertNotNull(hall.getChilds());
 		// TODO doesn't have a status without children.
@@ -71,13 +71,13 @@ public class HallBeanTest {
 
 	@Test
 	public void HallFactoryTest() throws Exception {
-		FactoryBean f = new FactoryBean(1);
+		FactoryBean f = new FactoryBean(1, null, new Registry());
 		assertEquals(2, f.getChilds().get(0).getId());
 	}
 
 	@Test
 	public void childTest() throws Exception {
-		HallBean hall = new HallBean(2);
+		HallBean hall = new HallBean(2, null, new Registry());
 		List<HierarchieElementBean> lines = hall.getChilds();
 		assertTrue(lines.size() > 0);
 		assertNotNull(lines.get(0));
@@ -98,7 +98,7 @@ public class HallBeanTest {
 	
 	@Test
 	public void getterTest() throws HierarchieException{
-		HallBean hall = new HallBean(2);
+		HallBean hall = new HallBean(2, null, new Registry());
 		assertEquals("H1", hall.getName());
 		assertEquals("Assembly+Finish", hall.getType());
 		assertEquals(351, hall.getSizeOfStaff());

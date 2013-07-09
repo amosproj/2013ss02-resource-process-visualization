@@ -53,7 +53,7 @@ public class LineBeanTest {
 
 	@Test
 	public void hierarchieTest(){
-		GlobalBean g = GlobalBean.getGlobal();
+		GlobalBean g = GlobalBean.getInstance();
 		HierarchieElementBean l = g.getChilds().get(0).getChilds().get(0).getChilds().get(0);
 		assertTrue(l.getClass().equals(LineBean.class));
 		assertTrue(!l.getClass().equals(HallBean.class));
@@ -61,28 +61,27 @@ public class LineBeanTest {
 
 	@Test
 	public void notExistingTest() throws HierarchieException{
-		LineBean l = new LineBean(-1);
+		LineBean l = new LineBean(-1, null, new Registry());
 		assertNotNull(l.getChilds());
 		assertNotNull(l.getName());
 		assertNotNull(l.getPath());
 		assertNotNull(l.getProductionCapacity());
 		assertNotNull(l.getProductionSeries());
-		assertNotNull(l.getType());
 	}
 	
 	@Test
 	public void parentTest() throws HierarchieException{
-		assertEquals(3, (new HallBean(2)).getChilds().get(0).getId());
+		assertEquals(3, (new HallBean(2, null, new Registry())).getChilds().get(0).getId());
 	}
 	
 	@Test
 	public void childTest() throws HierarchieException{
-		assertEquals(1, (new LineBean(3)).getChilds().size());
+		assertEquals(1, (new LineBean(3, null, new Registry())).getChilds().size());
 	}
 	
 	@Test
 	public void getterTest() throws HierarchieException{
-		LineBean line = new LineBean(3);
+		LineBean line = new LineBean(3, null, new Registry());
 		assertEquals("L1 Assembly", line.getName());
 		assertEquals("Series 3", line.getProductionSeries());
 		assertEquals(98, line.getProductionCapacity());

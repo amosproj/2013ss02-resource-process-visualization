@@ -69,13 +69,6 @@ int id = Integer.parseInt(request.getParameter("tdid"));
 		<tr><td class="keyCol">Description</td><td id="testingDeviceDescription"></td></tr>
 		<tr><td class="keyCol">Type</td><td id="testingDeviceCategory"></td></tr>
 		<tr><td class="keyCol">Serial number</td><td id="testingDeviceSerialnumber"></td></tr>
-<!-- 		<tr><td class="keyCol">IP Address</td><td id="testingDeviceIpAddress"></td></tr>
-		<tr><td class="keyCol">Network Status</td><td id="testingDeviceNetworkStatus"></td></tr> -->
-<!-- 		<tr><td class="keyCol">Maintainance Info</td><td id="testingDeviceMaintainanceInfo"></td></tr>
-		<tr><td class="keyCol">Components</td><td id="testingDevicesCountComponents"></td></tr>
-		<tr><td class="keyCol">Troubleperiod</td><td id="testingDevicesTroublePeriod"></td></tr>
-		<tr><td class="keyCol">Testfailure</td><td id="testingDevicesFailure"></td></tr> -->
-<!-- 		<tr><td class="keyCol">Sektor</td><td id="testingDevicesSector"></td></tr> -->
 	</table>
 </div>
 </div><br class="clear" />
@@ -92,16 +85,13 @@ $(document).ready(function() {
 	    $("#dynamicHeading").html("Testing Device: "+data.name);
 	    $("#testingDeviceName").html(data.name);
 	    $("#testingDeviceSerialnumber").html(data.serialnumber);
-	    $("#testingDeviceCategory").html(data.category);
+	    $("#testingDeviceCategory").html(data.category); 
 	    $("#testingDeviceDescription").html(data.description);
-	    $("#testingDeviceIpAddress").html(data.ipaddress);
-	    $("#testingDeviceMaintainanceInfo").html(data.maintainanceinfo);
-	    $("#testingDeviceNetworkStatus").html(data.networkstatus);
 	    $("#testingDeviceStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
 	    $("#testingDevicesCountComponents").html(data.componentCount);
 	    $("#testingDevicesTroublePeriod").html(data.troubleperiod);	
-	    $("#testingDevicesFailure").html("" + data.testfailure);	
-	    $("#testingDevicesSector").html(data.sector);	
+/* 	    $("#testingDevicesFailure").html("" + data.testfailure);	
+	    $("#testingDevicesSector").html(data.sector);	 */
 	});
 });
 </script>

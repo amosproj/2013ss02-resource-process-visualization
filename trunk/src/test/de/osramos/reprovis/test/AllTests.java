@@ -26,10 +26,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
-		de.osramos.reprovis.test.botests.BOTests.class,
-		de.osramos.reprovis.test.daotests.DAOTests.class,
-		de.osramos.reprovis.test.tools.ToolTests.class,
-		de.osramos.reprovis.test.cameltest.CamelTest.class,
+		de.osramos.reprovis.test.AllUnitTests.class,
 		de.osramos.reprovis.test.selenium.SeleniumTests.class
 })
 

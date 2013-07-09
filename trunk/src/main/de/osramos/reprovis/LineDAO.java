@@ -134,7 +134,7 @@ public class LineDAO {
 		}
 	}
 	
-	public static HallBean getHall(int id) throws DatabaseException, HierarchieException{
+/*	public static HallBean getHall(int id) throws DatabaseException, HierarchieException{
 		try {
 			DataSource db = DatabaseHandler.getDB();
 			Connection conn = db.getConnection();
@@ -142,15 +142,16 @@ public class LineDAO {
 			ResultSet res = stmt.executeQuery(
 					"SELECT parent FROM line WHERE id = " + id);
 			res.next();
-			HallBean hall = new HallBean(res.getInt(1));
+			//HallBean hall = new HallBean(res.getInt(1));
 			stmt.close();
 			conn.close();
-			return hall;
+			//return hall;
 		} catch (SQLException e) {
 			//e.printStackTrace();
 			throw new DatabaseException("DB access Failed");
 		}
-	}
+		return null;
+	}*/
 	
 	public static AggreagationStrategie getAggreagationStrategie(int id) throws IOException{
 		String propfile = "/../../config/line.properties";

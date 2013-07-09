@@ -44,7 +44,7 @@ public class FactoryServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		req.setAttribute("factories", GlobalBean.getGlobal().getChilds());
+		req.setAttribute("factories", GlobalBean.getInstance().getChilds());
 
 		getServletContext().getRequestDispatcher("/FactoryList.jsp").forward(
 				req, resp);
@@ -62,7 +62,7 @@ public class FactoryServlet extends HttpServlet {
 		if (id == null) {
 			/* req.setAttribute("factories", global.getFactories()); */
 
-			req.setAttribute("factories", GlobalBean.getGlobal().getChilds());
+			req.setAttribute("factories", GlobalBean.getInstance().getChilds());
 			getServletContext().getRequestDispatcher("/FactoryList.jsp")
 					.forward(req, resp);
 
@@ -73,7 +73,7 @@ public class FactoryServlet extends HttpServlet {
 			if (req.getParameter("getData") != null) {
 				// Call the data handler
 				req.setAttribute("factory",
-						Registry.getElementById(Integer.valueOf(id)));
+						GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/FactoryJSON.jsp")
 						.forward(req, resp);
 			}
@@ -81,7 +81,7 @@ public class FactoryServlet extends HttpServlet {
 			else {
 				// Call the view handler
 				req.setAttribute("factory",
-						Registry.getElementById(Integer.valueOf(id)));
+						GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/FactoryView.jsp")
 						.forward(req, resp);
 			}

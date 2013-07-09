@@ -62,11 +62,11 @@ public class UnregisterDevice implements Processor{
 
 
 		try {
-			GlobalBean.getGlobal();
+			GlobalBean.getInstance();
 			
 			int id = TestingDeviceDAO.getIdByNames(factory, hall, line, location, name);
 			
-			TestingDeviceBean d = (TestingDeviceBean ) Registry.getElementById(id);
+			TestingDeviceBean d = (TestingDeviceBean ) GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id));
 			d.delete();
 			
 		} catch (DatabaseException e) {

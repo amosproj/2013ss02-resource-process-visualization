@@ -25,9 +25,12 @@ import java.io.IOException;
 
 import java.util.Date;
 
+
+
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
 import de.osramos.reprovis.handler.MasterData.TrafficLight;
+import de.osramos.reprovis.handler.Registry;
 
 public class ElectricalComponentBean extends HierarchieElementBean {
 
@@ -37,10 +40,21 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	private String troubleOccurrenceSite;
 	private String sector;
 	private String shiftResponsibility;
+	private String name;
+	private String value;
 
-	public ElectricalComponentBean(int id) throws HierarchieException {
+	public ElectricalComponentBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
 
-		super(id);
+		super(id, parent, registry);
+		
+		initCategory();
+		initName();
+		initSector();
+		initSerialnumber();
+		initShiftResponsibility();
+		initTroubeOccurrenceTime();
+		initTroubleOccurrenceSite();
+		initValue();
 
 		try {
 			this.aggreagationStrategie = ElectricalComponentDAO.getAggreagationStrategie(id);
@@ -57,78 +71,124 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 
 	}
 	
+	public void initName(){
+		try {
+			name = ElectricalComponentDAO.getName(id);
+		} catch (DatabaseException e) {
+			name = "N/A";
+		}
+		
+	}
+	
+	public void initValue(){
+		try {
+			value = ElectricalComponentDAO.getValue(id);
+		} catch (DatabaseException e) {
+			value = "N/A";
+		}
+		
+	}
+	
+
+	public void initShiftResponsibility() {
+		try {
+		shiftResponsibility = ElectricalComponentDAO
+					.getShiftResponsibility(id);
+		} catch (DatabaseException e) {
+			shiftResponsibility = "N/A";
+		}
+		
+	}
+
+
+
+	public void initSector() {
+		try {
+			sector = ElectricalComponentDAO.getSector(id);
+		} catch (DatabaseException e) {
+			sector = "N/A";
+		}
+		
+	}
+
+
+	public void initTroubleOccurrenceSite() {
+		try {
+			troubleOccurrenceSite = ElectricalComponentDAO
+					.getTroubleOccurrenceSite(id);
+		} catch (DatabaseException e) {
+			troubleOccurrenceSite = "N/A";
+		}
+		
+	}
+
+	public void initTroubeOccurrenceTime() {
+		try {
+			troubeOccurrenceTime = ElectricalComponentDAO
+					.getTroubeOccurrenceTime(id);
+		} catch (DatabaseException e) {
+			troubeOccurrenceTime = null;
+		}
+		
+	}
+
+
+	public void initCategory() {
+		try {
+			category = ElectricalComponentDAO.getCategory(id);
+		} catch (DatabaseException e) {
+			category = "N/A";
+		}
+		
+	}
+
+
+	public void initSerialnumber() {
+		try {
+			serialnumber = ElectricalComponentDAO.getSerialnumber(id);
+		} catch (DatabaseException e) {
+			serialnumber = "N/A";
+		}
+		
+	}
+	
 	
 	public String getName(){
-		try {
-			return ElectricalComponentDAO.getName(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return name;
 	}
 	
 	public String getValue(){
-		try {
-			return ElectricalComponentDAO.getValue(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return value;
 	}
 	
 
 	public String getShiftResponsibility() {
-		try {
-		return ElectricalComponentDAO
-					.getShiftResponsibility(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return shiftResponsibility;
 	}
 
 
 
 	public String getSector() {
-		try {
-			return ElectricalComponentDAO.getSector(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return sector;
 	}
 
 
 	public String getTroubleOccurrenceSite() {
-		try {
-			return ElectricalComponentDAO
-					.getTroubleOccurrenceSite(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return troubleOccurrenceSite;
 	}
 
 	public Date getTroubeOccurrenceTime() {
-		try {
-			return ElectricalComponentDAO
-					.getTroubeOccurrenceTime(id);
-		} catch (DatabaseException e) {
-		}
-		return null;
+		return troubeOccurrenceTime;
 	}
 
 
 	public String getCategory() {
-		try {
-			return ElectricalComponentDAO.getCategory(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return category;
 	}
 
 
 	public String getSerialnumber() {
-		try {
-			return ElectricalComponentDAO.getSerialnumber(id);
-		} catch (DatabaseException e) {
-		}
-		return "N/A";
+		return serialnumber;
 	}
 
 	
@@ -141,6 +201,12 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		}
 		return TrafficLight.grey;
 
+	}
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

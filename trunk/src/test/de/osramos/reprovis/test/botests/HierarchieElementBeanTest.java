@@ -138,7 +138,7 @@ public class HierarchieElementBeanTest {
 class TestHierarchieElementBean extends HierarchieElementBean {
 
 	public TestHierarchieElementBean(int id) throws HierarchieException {
-		super(id);
+		super(id, null, new Registry());
 	}
 
 	@Override
@@ -147,6 +147,12 @@ class TestHierarchieElementBean extends HierarchieElementBean {
 	
 	public void setChilds(List<HierarchieElementBean> childs) {
 		this.childs = childs;
+	}
+
+	@Override
+	protected void initAttributes() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

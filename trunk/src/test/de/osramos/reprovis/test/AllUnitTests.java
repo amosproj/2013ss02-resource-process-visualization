@@ -19,31 +19,20 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+package de.osramos.reprovis.test;
 
-package de.osramos.reprovis.test.tools;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-import org.junit.Test;
+@RunWith(Suite.class)
+@Suite.SuiteClasses({ 
+		de.osramos.reprovis.test.botests.BOTests.class,
+		de.osramos.reprovis.test.daotests.DAOTests.class,
+		de.osramos.reprovis.test.tools.ToolTests.class,
+		de.osramos.reprovis.test.cameltest.CamelTest.class,
+})
 
 
-import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.handler.MasterData;
-import de.osramos.reprovis.handler.Registry;
-import static org.junit.Assert.*;
-
-public class RegistryTest {
-	
-	@Test
-	public void RegistyTest(){
-		GlobalBean global = GlobalBean.getInstance();
-		assertNotNull(global);
-		Registry r = Registry.getRegistry();
-		assertNotNull(r);
-	}
-	
-	@Test
-	public void ConfigTest(){
-		String c = MasterData.getConfigFile();
-		assertNotNull(c);
-	}
+public class AllUnitTests {
 
 }

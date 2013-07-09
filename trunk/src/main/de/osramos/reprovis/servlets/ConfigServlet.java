@@ -41,6 +41,7 @@ public class ConfigServlet extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		
 		ConfigHandler.InitApplication();
 	}
 
@@ -50,12 +51,6 @@ public class ConfigServlet extends HttpServlet {
 
 		ConfigHandler.reload();
 		
-/*		if (req.getHeader("reload").equals("true")) {
-			
-		} else {
-
-			ConfigHandler.InitApplication();
-		}*/
 		resp.getOutputStream().println("Application initialized");
 
 	}

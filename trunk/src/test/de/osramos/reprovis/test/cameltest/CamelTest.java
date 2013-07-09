@@ -44,6 +44,7 @@ import de.osramos.reprovis.connectivity.RegisterDevice;
 import de.osramos.reprovis.connectivity.UnregisterDevice;
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
+import de.osramos.reprovis.handler.Registry;
 import de.osramos.reprovis.test.testhelper.Setup;
 
 public class CamelTest extends CamelTestSupport  {
@@ -223,7 +224,7 @@ public class CamelTest extends CamelTestSupport  {
 		
 
 		int id = TestingDeviceDAO.getIdByNames("Ingolstadt", "H1", "L1 Assembly", "Lo1", "Test");
-		TestingDeviceBean device = new TestingDeviceBean(id);
+		TestingDeviceBean device = new TestingDeviceBean(id, null, new Registry());
 		assertTrue(device.getName().equals("Test"));
 		assertEquals(3, device.getChilds().size());
 		
@@ -271,7 +272,7 @@ public class CamelTest extends CamelTestSupport  {
 		fail.assertIsSatisfied();
 		
 
-		LocationBean locationBean = new LocationBean(4);
+		LocationBean locationBean = new LocationBean(4, null, new Registry());
 		assertEquals(0, locationBean.getChilds().size());
 	}
 }

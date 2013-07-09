@@ -66,7 +66,7 @@ public class FactoryBeanTest {
 		Setup.loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 		
 		{
-			FactoryBean b = new FactoryBean(1);
+			FactoryBean b = new FactoryBean(1, null, new Registry());
 			List<HierarchieElementBean> childs = b.getChilds();
 			assertNotNull(childs);
 			assertTrue(childs.size() == 1);
@@ -80,22 +80,15 @@ public class FactoryBeanTest {
 	public void constructorTest() throws HierarchieException{
 		
 		{
-			FactoryBean factoryBean = new FactoryBean(1);
+			FactoryBean factoryBean = new FactoryBean(1, null, new Registry());
 			assertNotNull(factoryBean);
 		}
 		
 		
+		
 		{
-			HierarchieException e = null;
-			FactoryBean factoryBean = null;
-			try {
-				factoryBean = new FactoryBean(-1);
-			} catch (HierarchieException ex) {
-				e = ex;
-			}
-
-			assertNotNull(e);
-			assertNull(factoryBean);
+			FactoryBean factoryBean = new FactoryBean(-1, null, new Registry());
+			assertNotNull(factoryBean);
 		}
 	}
 	
@@ -103,7 +96,7 @@ public class FactoryBeanTest {
 	@Test
 	public void getterTest() throws Exception {
 
-		FactoryBean f = new FactoryBean(FactoryDAO.getFactoryIds(0).get(0));
+		FactoryBean f = new FactoryBean(FactoryDAO.getFactoryIds(0).get(0), null, new Registry());
 		String[] carModels = f.getCarModels();
 		String city = f.getCity();
 		Company company = f.getCompany();

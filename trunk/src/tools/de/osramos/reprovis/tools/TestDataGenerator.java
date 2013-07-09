@@ -183,8 +183,7 @@ public class TestDataGenerator {
 				+ "	series character varying(50) NOT NULL DEFAULT '',\n"
 				+ "	capacity integer NOT NULL DEFAULT 0,\n"
 				+ "	path character varying(50) NOT NULL DEFAULT '',\n" 
-				+ "	parent integer REFERENCES hall(id) ON DELETE CASCADE,\n"
-				+ "	map TEXT NOT NULL DEFAULT ''\n"
+				+ "	parent integer REFERENCES hall(id) ON DELETE CASCADE\n"
 				+ ");\n" +
 
 				"CREATE TABLE location (\n" 
@@ -693,9 +692,9 @@ public class TestDataGenerator {
 			// status
 			String status = MasterData.TrafficLight.red.name();
 			double rand = Math.random();
-			if (rand > 0.1d) {
+			if (rand > 0.3d) {
 				status = MasterData.TrafficLight.green.name();
-			} else if (rand > 0.05d) {
+			} else if (rand > 0.1d) {
 				status = MasterData.TrafficLight.yellow.name();
 			}
 			st.append(", \'");

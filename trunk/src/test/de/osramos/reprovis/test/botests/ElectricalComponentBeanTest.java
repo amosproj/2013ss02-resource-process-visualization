@@ -62,7 +62,7 @@ public class ElectricalComponentBeanTest {
 
 	@Test
 	public void notExistingTest() throws HierarchieException{
-		ElectricalComponentBean b = new ElectricalComponentBean(-1);
+		ElectricalComponentBean b = new ElectricalComponentBean(-1, null, new Registry());
 		assertNotNull(b);
 		assertNull(b.getChilds());
 		assertNotNull(b.getName());
@@ -78,7 +78,7 @@ public class ElectricalComponentBeanTest {
 	@Test
 	public void parentTest() throws HierarchieException{
 		boolean existing[] = {false, false, false};
-		List<HierarchieElementBean> children = (new TestingDeviceBean(5)).getChilds();
+		List<HierarchieElementBean> children = (new TestingDeviceBean(5, null, new Registry())).getChilds();
 		for(HierarchieElementBean h : children){
 			switch(h.getId()){
 			case 6:
@@ -97,7 +97,7 @@ public class ElectricalComponentBeanTest {
 	
 	@Test
 	public void getterTest() throws Exception{
-		ElectricalComponentBean eb = new ElectricalComponentBean(6);
+		ElectricalComponentBean eb = new ElectricalComponentBean(6, null, new Registry());
 		assertEquals("Tests", eb.getName());
 		assertEquals("Ok", eb.getValue());
 		assertEquals("B", eb.getSector());

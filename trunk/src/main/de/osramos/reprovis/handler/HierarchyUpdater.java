@@ -19,31 +19,52 @@
  * <http://www.gnu.org/licenses/>.
  */
 
+package de.osramos.reprovis.handler;
 
-package de.osramos.reprovis.test.tools;
-
-import org.junit.Test;
-
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 
 import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.handler.MasterData;
-import de.osramos.reprovis.handler.Registry;
-import static org.junit.Assert.*;
 
-public class RegistryTest {
-	
-	@Test
-	public void RegistyTest(){
-		GlobalBean global = GlobalBean.getInstance();
-		assertNotNull(global);
-		Registry r = Registry.getRegistry();
-		assertNotNull(r);
-	}
-	
-	@Test
-	public void ConfigTest(){
-		String c = MasterData.getConfigFile();
-		assertNotNull(c);
+
+public class HierarchyUpdater extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2828661200619431891L;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+		
+		new Thread(new Updater()).start();
+
 	}
 
+	private class Updater implements Runnable {
+
+		@Override
+		public void run() {
+
+			while (true) {
+
+				try {
+					System.out.println("Computing new Global");
+					
+					GlobalBean global = GlobalBean.createInstance();
+					
+					GlobalBean.setInstance(global);
+					
+					Thread.sleep(5000);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+
+		}
+	}
 }
