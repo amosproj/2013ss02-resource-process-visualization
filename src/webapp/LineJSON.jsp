@@ -55,7 +55,8 @@ int factoryID = factoryParent.getId();
 		{
 			"id": <%= loc.getId() %>,
 			"name": "<%= loc.getName() %>",
-			"status": "<%= loc.getStatus() %>"
+			"status": "<%= loc.getStatus() %>",
+			"description": "<%= loc.getDescription()%>"
 		}
 		<% } %> 
 	],

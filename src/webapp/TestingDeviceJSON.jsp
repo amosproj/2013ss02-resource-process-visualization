@@ -17,6 +17,7 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 
+<%@page import="java.util.GregorianCalendar"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="de.osramos.reprovis.FactoryBean"%>
@@ -71,7 +72,7 @@ int factoryID = factoryParent.getId();
 				"name": "<%= component.getName() %>",
 				"status": "<%= component.getStatus() %>",
 				"category": "<%= component.getCategory() %>",
-				"troublePeriod": "<%= component.getTroubeOccurrenceTime() %>",
+				"troublePeriod": "<%= component.getPeriod() %>",
 				"sector": "<%= component.getSector() %>"
 			}
 		<% } %>

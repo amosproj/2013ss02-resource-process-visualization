@@ -24,8 +24,7 @@ package de.osramos.reprovis;
 import java.io.IOException;
 
 import java.util.Date;
-
-
+import java.util.GregorianCalendar;
 
 import de.osramos.reprovis.exception.DatabaseException;
 import de.osramos.reprovis.exception.HierarchieException;
@@ -43,10 +42,11 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	private String name;
 	private String value;
 
-	public ElectricalComponentBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
+	public ElectricalComponentBean(int id, HierarchieElementBean parent,
+			Registry registry) throws HierarchieException {
 
 		super(id, parent, registry);
-		
+
 		initCategory();
 		initName();
 		initSector();
@@ -57,7 +57,8 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		initValue();
 
 		try {
-			this.aggreagationStrategie = ElectricalComponentDAO.getAggreagationStrategie(id);
+			this.aggreagationStrategie = ElectricalComponentDAO
+					.getAggreagationStrategie(id);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -70,37 +71,63 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		childs = null;
 
 	}
-	
-	public void initName(){
+
+	public String getPeriod() {
+
+		try {
+			if (getStatus().equals(TrafficLight.green)) {
+				return "no trouble found";
+			} else {
+				int time = (int) ((new GregorianCalendar().getTime().getTime() - getTroubeOccurrenceTime()
+						.getTime()) / 1000 / 60);
+				if (time < 0) {
+					return "0 minutes";
+				} else if (time < 60) {
+					return "" + time + " minutes";
+				} else if (time < 60 * 24) {
+					time = time / 60;
+					return "" + time + " hours";
+				} else {
+					time = time / 24;
+					return "" + time + " days";
+				}
+
+			}
+		} catch (HierarchieException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "N/A";
+	}
+
+	public void initName() {
 		try {
 			name = ElectricalComponentDAO.getName(id);
 		} catch (DatabaseException e) {
 			name = "N/A";
 		}
-		
+
 	}
-	
-	public void initValue(){
+
+	public void initValue() {
 		try {
 			value = ElectricalComponentDAO.getValue(id);
 		} catch (DatabaseException e) {
 			value = "N/A";
 		}
-		
+
 	}
-	
 
 	public void initShiftResponsibility() {
 		try {
-		shiftResponsibility = ElectricalComponentDAO
+			shiftResponsibility = ElectricalComponentDAO
 					.getShiftResponsibility(id);
 		} catch (DatabaseException e) {
 			shiftResponsibility = "N/A";
 		}
-		
+
 	}
-
-
 
 	public void initSector() {
 		try {
@@ -108,9 +135,8 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			sector = "N/A";
 		}
-		
-	}
 
+	}
 
 	public void initTroubleOccurrenceSite() {
 		try {
@@ -119,7 +145,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			troubleOccurrenceSite = "N/A";
 		}
-		
+
 	}
 
 	public void initTroubeOccurrenceTime() {
@@ -129,9 +155,8 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			troubeOccurrenceTime = null;
 		}
-		
-	}
 
+	}
 
 	public void initCategory() {
 		try {
@@ -139,9 +164,8 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			category = "N/A";
 		}
-		
-	}
 
+	}
 
 	public void initSerialnumber() {
 		try {
@@ -149,29 +173,24 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		} catch (DatabaseException e) {
 			serialnumber = "N/A";
 		}
-		
+
 	}
-	
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public String getValue(){
+
+	public String getValue() {
 		return value;
 	}
-	
 
 	public String getShiftResponsibility() {
 		return shiftResponsibility;
 	}
 
-
-
 	public String getSector() {
 		return sector;
 	}
-
 
 	public String getTroubleOccurrenceSite() {
 		return troubleOccurrenceSite;
@@ -181,20 +200,17 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 		return troubeOccurrenceTime;
 	}
 
-
 	public String getCategory() {
 		return category;
 	}
-
 
 	public String getSerialnumber() {
 		return serialnumber;
 	}
 
-	
 	@Override
 	public TrafficLight getDistinctStatus() {
-		
+
 		try {
 			return ElectricalComponentDAO.getStatus(id);
 		} catch (DatabaseException e) {
@@ -206,11 +222,7 @@ public class ElectricalComponentBean extends HierarchieElementBean {
 	@Override
 	protected void initAttributes() {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-	
-
-	
 
 }

@@ -28,8 +28,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Random;
 
 import de.osramos.reprovis.handler.MasterData;
@@ -51,9 +54,15 @@ public class TestDataGenerator {
 
 	private static int numOfHalls = 2;
 	private static int numOfLines = 3;
-	private static int numOfLocations = 8;
-	private static int numOfDevices = 10;
+	private static int numOfLocations = 4;
+	private static int numOfDevices = 6;
 	private static int numOfComponents = 3;
+	
+	private static List<Integer> bigFactories = new ArrayList<Integer>(){{add(1); add(2); add(5);}};
+	private static int bigNumOfLocations = 10;
+	private static int bigNumOfDevices = 10;
+	
+	
 
 	private static String path = "./src/resources/config/init.sql";
 
@@ -397,12 +406,12 @@ public class TestDataGenerator {
 
 			out.write(st.toString());
 
-			initLines(id, name);
+			initLines(id, name, factoryId);
 		}
 
 	}
 
-	private static void initLines(int hallId, String name) throws IOException {
+	private static void initLines(int hallId, String name, int factoryId) throws IOException {
 
 		String[] paths = new String[3];
 		//paths[0] = "m 74.509956,5.35737 33.928574,0 0,62.14286 -33.928574,0 z";
@@ -460,12 +469,12 @@ public class TestDataGenerator {
 			// 352.24158,86.109936 0,1.03125 -74.75,0 0,44.437504 74.75,0
 			// 0,54.03125 72.21875,0 0,-99.500004 -72.21875,0 z', 10);
 
-			initLocations(id);
+			initLocations(id, factoryId);
 		}
 
 	}
 
-	private static void initLocations(int lineId) throws IOException {
+	private static void initLocations(int lineId, int factoryId) throws IOException {
 
 		String[] description = { "motor", "ABS", "multimedia", "security",
 				"transmission" };
@@ -473,8 +482,15 @@ public class TestDataGenerator {
 		String[] firstname = { "Hans", "Peter", "Robert", "Sarah", "Franziska" };
 		String[] lastname = { "Mueller", "Schmitt", "Meier", "Schulze",
 				"Merkel" };
+		
+		
+		int n = numOfLocations;
+		
+		if ( bigFactories.contains(factoryId)){
+			n = bigNumOfLocations;
+		}
 
-		for (int i = 0; i < numOfLocations; i++) {
+		for (int i = 0; i < n; i++) {
 			int id = id();
 
 			// INSERT INTO location VALUES (1010, 'BZD', 101);
@@ -514,12 +530,12 @@ public class TestDataGenerator {
 
 			out.write(st.toString());
 
-			initDevices(id);
+			initDevices(id, factoryId);
 		}
 
 	}
 
-	private static void initDevices(int locationId) throws IOException {
+	private static void initDevices(int locationId, int factoryId) throws IOException {
 
 		String[] categories = { "UPS Printer", "UPS Printer", "UPS MFTD2X",
 				"UPS MFT Cradle" };
@@ -530,9 +546,14 @@ public class TestDataGenerator {
 		String[] networkstatus = {"reachable", "N/A"};
 		String[] ipaddress = {"10.xxx.xxx.xxx", "N/A"};
 		
+		int n = numOfDevices;
 		
+		if ( bigFactories.contains(factoryId)){
+			n = bigNumOfDevices;
+		}
 
-		for (int i = 0; i < numOfDevices; i++) {
+
+		for (int i = 0; i < n; i++) {
 
 			int id = id();
 
@@ -692,10 +713,12 @@ public class TestDataGenerator {
 			// status
 			String status = MasterData.TrafficLight.red.name();
 			double rand = Math.random();
-			if (rand > 0.3d) {
+			if (rand > 0.20d) {
 				status = MasterData.TrafficLight.green.name();
 			} else if (rand > 0.1d) {
 				status = MasterData.TrafficLight.yellow.name();
+			} else if (rand > 0.03d){
+				status = MasterData.TrafficLight.grey.name();
 			}
 			st.append(", \'");
 			st.append(status);

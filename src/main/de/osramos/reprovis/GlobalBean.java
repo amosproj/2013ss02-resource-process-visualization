@@ -49,7 +49,7 @@ public class GlobalBean extends HierarchieElementBean {
 		try {
 			Registry r = new Registry();
 			global = new GlobalBean(0, r);
-			//global.initAggregatedAttributes();
+			// global.initAggregatedAttributes();
 			return global;
 		} catch (HierarchieException e) {
 			e.printStackTrace();
@@ -63,8 +63,11 @@ public class GlobalBean extends HierarchieElementBean {
 	}
 
 	public static void resetGlobal() {
-		instance = null;
-		getInstance();
+
+		synchronized (lock) {
+			instance = null;
+			getInstance();
+		}
 	}
 
 	public static void setInstance(GlobalBean global) {

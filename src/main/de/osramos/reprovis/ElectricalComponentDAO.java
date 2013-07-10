@@ -66,6 +66,10 @@ public class ElectricalComponentDAO extends HierarchieElementDAO {
 
 	public static Date getTroubeOccurrenceTime(int id) throws DatabaseException {
 		Timestamp t = (Timestamp) getAttribute(id, "troubleoccurrencetime");
+		
+		if (t == null){
+			return null;
+		}
 
 		return new Date(t.getTime());
 	}

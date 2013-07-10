@@ -42,6 +42,7 @@
 		<tr><td>Status</td><td><%= MasterData.getTrafficDescription(component.getStatus()) %></td></tr>
 		<tr><td>Value</td><td><%= component.getValue() %></td></tr>
 		<tr><td>Last Status Change</td><td><%= component.getTroubeOccurrenceTime() %></td></tr>
+		<tr><td>Trouble Period</td><td><%= component.getPeriod() %></td></tr>
 	</table>
 </div>
 

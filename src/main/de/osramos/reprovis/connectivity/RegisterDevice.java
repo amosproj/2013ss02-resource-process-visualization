@@ -30,11 +30,9 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import de.osramos.reprovis.LocationBean;
+
 import de.osramos.reprovis.LocationDAO;
 import de.osramos.reprovis.TestingDeviceBean;
 import de.osramos.reprovis.TestingDeviceDAO;

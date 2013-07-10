@@ -53,6 +53,7 @@ public class HierarchyUpdater extends HttpServlet {
 				try {
 					System.out.println("Computing new Global");
 					
+					
 					GlobalBean global = GlobalBean.createInstance();
 					
 					GlobalBean.setInstance(global);
