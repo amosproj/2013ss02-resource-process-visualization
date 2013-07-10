@@ -76,7 +76,7 @@ public class Registry {
 		return (HierarchieElementBean) reg.get(id);
 	}
 	
-	private int nextId= 1000000;
+	private static int nextId= 1000000;
 	
 	public int getNewId(){
 		

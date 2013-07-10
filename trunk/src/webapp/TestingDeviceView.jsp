@@ -81,6 +81,8 @@ $(document).ready(function() {
 		
 		elementList = new AMOSList("#componentlist", data.components, 'component');
 		elementList.sortBy("status", [2, 1, 0, -1]);
+		elementList.hide("category");
+		elementList.hide("sector");
 		
 	    $("#dynamicHeading").html("Testing Device: "+data.name);
 	    $("#testingDeviceName").html(data.name);

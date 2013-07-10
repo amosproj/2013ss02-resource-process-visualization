@@ -83,7 +83,7 @@
 		<servlet-class>de.osramos.reprovis.servlets.HallServlet</servlet-class>
 	</servlet>
 
-	<servlet>
+<!-- 	<servlet>
 		<servlet-name>testStatusProviderServlet</servlet-name>
 		<servlet-class>de.osramos.reprovis.status.TestStatusProvider</servlet-class>
 		<load-on-startup>5</load-on-startup>
@@ -93,7 +93,7 @@
 		<servlet-name>testStatusProviderServlet</servlet-name>
 		<url-pattern>/status</url-pattern>
 	</servlet-mapping>
-
+ -->
 	<servlet-mapping>
 		<servlet-name>hallServlet</servlet-name>
 		<url-pattern>/hall</url-pattern>
