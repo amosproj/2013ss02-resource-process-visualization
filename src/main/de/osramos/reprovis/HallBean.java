@@ -21,130 +21,35 @@
 
 package de.osramos.reprovis;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.exception.HierarchieException;
-import de.osramos.reprovis.handler.Registry;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public class HallBean extends HierarchieElementBean {
 
-	
-
-	public HallBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
-		super(id, parent, registry);
-		
-		initMap();
-		initName();
-		initPath();
-		initProductionCapacity();
-		initSizeOfStaff();
-		initType();
-		initUpsServer();
-		initVehicles();
-
-		try {
-			this.aggreagationStrategie = HallDAO.getAggreagationStrategie(id);
-		}  catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	private String map;
 	private String name;
-	private String path;
-	private int productionCapacity;
 	private int sizeOfStaff;
-	private String type;
-	private int upsClients;
-	private int upsServers;
-	private String vehicles;
-	
-	public void initName() {
-		try {
-			name = HallDAO.getName(id);
-		} catch (DatabaseException e) {
-			name = "Error";
-		}
+	private int productionCapacity;
+	private String path;
+
+	public HallBean(int id) {
+		super(id);
+		/*
+		 * try { Context ctx = new InitialContext();
+		 * ctx.bind("de.osramos/reprovis/factory/"+id, this); } catch
+		 * (NamingException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+
+		name = HallDAO.getName(id);
+		sizeOfStaff = HallDAO.getSizeOfStaff(id);
+		productionCapacity = HallDAO.getProductionCapacity();
+		path = HallDAO.getPath(id);
 	}
 
-	public void initPath() {
-		try {
-			path = HallDAO.getPath(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-			path = "Error";
-		}
-		
-	}
-
-	public void initVehicles() {
-		try {
-			vehicles = HallDAO.getVehicles(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			vehicles = "Error";
-		}
-		
-	}
-	
-	public void initSizeOfStaff() {
-		try {
-			sizeOfStaff = HallDAO.getSizeOfStaff(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			sizeOfStaff = 0;
-		}
-		
-	}
-
-	public void initProductionCapacity() {
-		try {
-			productionCapacity = HallDAO.getProductionCapacity(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			productionCapacity = 0;
-		}
-		 
-	}
-
-	public void initUpsServer() {
-		try {
-			upsServers = HallDAO.getUpsServers(id);
-		} catch (DatabaseException e) {
-			upsServers = -1;
-		}
-	}
-
-	public void initType() {
-		try {
-			type = HallDAO.getType(id);
-		} catch (DatabaseException e) {
-			type = "Error";
-		}
-	}
-
-	public void initUPSClients() {
-		//TODO
-	}
-	
-	public void initMap() {
-		try {
-			map = HallDAO.getMap(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-			map = "Error";
-		}
-		
-	}
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -153,37 +58,13 @@ public class HallBean extends HierarchieElementBean {
 		return path;
 	}
 
-	public String getVehicles() {
-		return vehicles;
-	}
-	
 	public int getSizeOfStaff() {
-
 		return sizeOfStaff;
 	}
 
 	public int getProductionCapacity() {
-	
 		return productionCapacity;
 	}
-
-	public int getUpsServer() {
-		return upsServers;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public int getUPSClients() {
-		return getNumOfLeafs(TestingDeviceBean.class);
-	}
-	
-	public String getMap() {
-		return map;
-	}
-	
-	
 
 	@Override
 	protected void initChilds() {
@@ -191,7 +72,9 @@ public class HallBean extends HierarchieElementBean {
 			List<Integer> childIds = LineDAO.getLineIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				LineBean childBean = new LineBean(id, this, registry);
+				LineBean childBean = new LineBean(id);
+
+				childBean.setParent(this);
 
 				childs.add(childBean);
 			}
@@ -200,11 +83,21 @@ public class HallBean extends HierarchieElementBean {
 
 	}
 
-	@Override
-	protected void initAttributes() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	/*
+	 * public FactoryBean getFactory(){ return HallDAO.getFactory(id); }
+	 * 
+	 * public TrafficLight getStatus(){ return HallDAO.getStatus(id); }
+	 * 
+	 * public List<LineBean> getLines(){
+	 * 
+	 * List<Integer> idList = LineDAO.getLineIds(id); List<LineBean> lineList =
+	 * new ArrayList<LineBean>();
+	 * 
+	 * for(int id : idList){ lineList.add(new LineBean(id)); }
+	 * 
+	 * return lineList;
+	 * 
+	 * }
+	 */
 
 }

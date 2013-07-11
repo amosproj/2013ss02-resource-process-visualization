@@ -1,33 +1,12 @@
-/*
- * Copyright (c) 2013 by Martin Gumbrecht, Christian Muehlroth, 
- *						Jan-Philipp Stauffert, Kathrin Koenig, Yao Guo 
- *
- * This file is part of the Resource Process Visualization application.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public
- * License along with this program. If not, see
- * <http://www.gnu.org/licenses/>.
- */
-
 package de.osramos.reprovis;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import de.osramos.reprovis.exception.HierarchieException;
-import de.osramos.reprovis.handler.Registry;
-import de.osramos.reprovis.handler.MasterData.TrafficLight;
-import de.osramos.reprovis.statusaggregation.AggreagationStrategie;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import de.osramos.reprovis.MasterData.TrafficLight;
 
 public abstract class HierarchieElementBean {
 
@@ -35,52 +14,41 @@ public abstract class HierarchieElementBean {
 	protected List<HierarchieElementBean> childs;
 	protected HierarchieElementBean parent;
 
-	protected List<HierarchieElementBean> cache;
-	protected Class cacheLevel;
-
-	protected AggreagationStrategie aggreagationStrategie;
+	public HierarchieElementBean(int id)  {
+		
+/*		try {*/
+			this.id = id;
+		/*	Context ctx = new InitialContext();
+			ctx.bind("de.osramos/reprovis/HierarchieElement" +id, this);*/
+/*		} catch (NamingException e1) {
+			throw new Exception("could not bind to registry");
+		}*/
 	
-	protected Registry registry;
+			Registry.getRegistry().reg.put(id, this);
+		
+			initChilds();
 	
-	protected TrafficLight status;
+	
+	}
+	
+	public static HierarchieElementBean getElementById(int id){
+		
+/*		try {
+			Context ctx = new InitialContext();
+			return (HierarchieElementBean) ctx.lookup("de.osramos/reprovis/HierarchieElement/"+id);
+		} catch (NamingException e) {
+			return null;
+		}	*/
+		return (HierarchieElementBean) Registry.getRegistry().lookup(id);
+	}
 
-	public HierarchieElementBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
+	protected void setParent(HierarchieElementBean parent) throws Exception {
+	/*	if (parent != null) {
+			throw new Exception("Element already initialized.");
+		}*/
 
-		this.id = id;
 		this.parent = parent;
-		this.registry = registry;
-		
-		try {
-			registry.register(id, this);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new HierarchieException("could not register Element");
-		}
-
-		childs = new ArrayList<HierarchieElementBean>();
-		initChilds();
-
 	}
-
-
-	protected abstract void initChilds();
-
-	
-	protected void initAggregatedAttributes(){
-		
-		initAttributes();
-		initStatus();
-		
-		for (HierarchieElementBean c : childs){
-			initAggregatedAttributes();
-		}
-		
-	}
-	protected abstract void initAttributes();
-
-
-	// Simple getters
 
 	public int getId() {
 		return id;
@@ -94,70 +62,41 @@ public abstract class HierarchieElementBean {
 		return childs;
 	}
 
-	// Get Hierarchy Information
-
 	public TrafficLight getStatus() throws HierarchieException {
-		
-		if ( status == null){
-			try {
-				status = aggreagationStrategie.aggregate(this);
-				return status;
-			} catch (HierarchieException e) {
 
-			} catch (NullPointerException e) {
-
-			}
-
-			try {
-				status =  getDistinctStatus();
-				return status;
-			} catch (HierarchieException e) {
-			}
-			status = TrafficLight.grey;
-			return status;
-
-		} else {
-			return status;
-		}
-
-		
-	}
-	
-	public void initStatus(){
-		
 		try {
-			getStatus();
-		} catch (HierarchieException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return computeMinimalStatus();
+		} catch (Exception e1) {
 		}
-		
+		try {
+			return getDistinctStatus();
+		} catch (Exception e) {
+		}
+		throw new HierarchieException("Element has no status");
 	}
 
-	public List<HierarchieElementBean> getChildsByClass(Class c) {
+	protected TrafficLight computeMinimalStatus() throws HierarchieException {
 
-		if (cacheLevel != null && cacheLevel.equals(c) && cache != null) {
-			return cache;
-		} else {
-
-			List<HierarchieElementBean> l = getChilds();
-			if (l == null || l.isEmpty()) {
-				return new ArrayList<HierarchieElementBean>();
-			}
-
-			cacheLevel = c;
-			if (l.get(0).getClass().equals(c)) {
-				cache = l;
-			} else {
-				List<HierarchieElementBean> ls = new ArrayList<HierarchieElementBean>();
-				for (HierarchieElementBean h : l) {
-					ls.addAll(h.getChildsByClass(c));
-				}
-				cache = ls;
-			}
-
-			return cache;
+		TrafficLight status = TrafficLight.green;
+		double rand = Math.random();
+		if(rand > 0.5)return TrafficLight.green;
+		else if(rand > 0.25)return TrafficLight.yellow;
+		else if(rand >= 0)return TrafficLight.red;
+		if (childs == null){
+			return status;
+			//throw new HierarchieException("no child Elements");
 		}
+		for (HierarchieElementBean child : childs) {
+			// aggregate to worst status
+			if (status == TrafficLight.green) {
+				status = child.getStatus();
+			} else if (status == TrafficLight.yellow) {
+				if (child.getStatus() == TrafficLight.red) {
+					status = TrafficLight.red;
+				}
+			}
+		}
+		return status;
 
 	}
 
@@ -165,20 +104,6 @@ public abstract class HierarchieElementBean {
 		throw new HierarchieException("Element has no distinct status");
 	}
 
-	public int getNumOfLeafs(Class LeafClass) {
+	protected abstract void initChilds();
 
-		List<HierarchieElementBean> l = getChilds();
-		if (l == null || l.isEmpty()) {
-			return 0;
-		} else if (getChilds().get(0).getClass() == LeafClass) {
-			return l.size();
-		} else {
-			int num = 0;
-			for (HierarchieElementBean child : l) {
-				num += child.getNumOfLeafs(LeafClass);
-			}
-
-			return num;
-		}
-	}
 }

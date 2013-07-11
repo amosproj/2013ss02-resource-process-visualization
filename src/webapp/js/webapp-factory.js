@@ -30,7 +30,6 @@ Factory = {
 			
 			success: function(response, textStatus, jqXHR){
                 callback.call(this, fID, response);
-                return true;
 			},
 	
 			error: function(jqXHR, textStatus, errorThrown){

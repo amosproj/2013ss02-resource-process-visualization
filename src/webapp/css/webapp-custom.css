@@ -21,6 +21,8 @@
 
 body {
 	overflow-x: hidden;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,59 +33,30 @@ h1, h2, h3, h4, h5, h6 {
 	height: 400px;
 }
 
-#canvas:after {
-	clear: both;
-}
-
 #dataLayerContent {
 	height: 100%;
 }
 
-#dynamicHeading {
-	margin-top: 0;
-	padding-top: 0;
+#SVGPlanHolder {
+	border-right: 1px solid #cdcdcd;
 }
 
-#breadCrumbNavi {
+#SVGPlan {
 	width: 100%;
-	height: 20px;
-	padding-bottom: 10px;
-}
-
-#SVGPlan, #svgCanvas {
-	width: 100%;
-	height: 300px;
+	height: 340px;
 }
 
 #SVGPlan path {
 	stroke: black;
 }
 
-#SVGPlan .statusHallOk:hover,
-#SVGPlan .statusHallWarning:hover,
-#SVGPlan .statusHallCritical:hover{
+#SVGPlan path:hover{
 	cursor: pointer;
 }
 
 #informationBlock {
 	height: 100%;
 	overflow-y: scroll;
-	float: right;
-}
-
-#SVGPlanHolder {
-	height: 100%;
-}
-
-#locationPlan,
-#locationDevices,
-#testingDeviceComponents {
-	height: 88%;
-	overflow-y: scroll;
-}
-
-#addBlocks {
-	clear: both;
 }
 
 .companyImgSmall, .flagImgSmall {
@@ -131,10 +104,6 @@ h1, h2, h3, h4, h5, h6 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
 }
 
-.statusIconUnknown {
-	background: #BBBBBB;
-}
-
 .statusHallOk {
 	fill: darkgreen;
 }
@@ -147,41 +116,10 @@ h1, h2, h3, h4, h5, h6 {
 	fill: darkred;
 }
 
-.statusHallUnknown {
-	fill: #BBBBBB;
-}
-
 .clear {
 	clear: both;
 }
 
 .textUnderline {
 	text-decoration: underline;
-}
-
-#filterModalBody td input{
-	margin: auto;
-}
-
-#addColumn {
-	position: absolute;
-	right: 1em;
-	top: 1em;
-	z-index: 1;
-}
-
-#testListColumnAdd,
-#devicelistColumnAdd,
-#componentlistColumnAdd {
-	position: absolute;
-	right: 1em;
-	top: 3em;
-}
-
-.table tbody tr.info > td {
-	background: #dddddd;
-}
-
-.table-hover tbody tr.info:hover > td {
-	background: #eeeeee;
 }

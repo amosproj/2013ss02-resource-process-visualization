@@ -20,9 +20,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="de.osramos.reprovis.HallBean" %>
 <%@ page import="de.osramos.reprovis.LineBean" %>
+<%@ page import="de.osramos.reprovis.TestData" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
 <%@ page import="java.util.List" %>
-<%@ page import="de.osramos.reprovis.handler.MasterData" %>
+<%@ page import="de.osramos.reprovis.MasterData" %>
 
 <%
 LineBean line = (LineBean)request.getAttribute("line");
@@ -41,12 +42,7 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <div id="SVGPlanHolder" class="span7">
 	<h3 id="dynamicHeading"></h3>
 	<div id="locationPlan">
-		<div class="dropdown">
-		    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="addColumn">+</a>
-		    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="testListColumnAdd">
-		    </ul>
-	    </div>
-		<table id="testList" class="table table-striped table-hover">
+		<table id="locationList" class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>Status</th>
@@ -59,11 +55,12 @@ int id = Integer.parseInt(request.getParameter("lid"));
 </div>
 
 <div id="informationBlock" class="span4">
+	<a href="javascript:showGlobalMap()">Go back to global view</a>
 	<table id="lineDetails" class="table table-striped table-hover">
-		<tr><td class="keyCol">Status</td><td id="lineStatus"></td></tr>
-		<tr><td class="keyCol">Name</td><td id="lineName"></td></tr>
-	<!-- 	<tr><td class="keyCol">Production Capacity</td><td id="lineProductionCapacity"></td></tr>
-		<tr><td class="keyCol">Production Series</td><td id="lineProductionSeries"></td></tr> -->
+		<tr><td>Status</td><td id="lineStatus"></td></tr>
+		<tr><td>Name</td><td id="lineName"></td></tr>
+		<tr><td>Production Capacity</td><td id="lineProductionCapacity"></td></tr>
+		<tr><td>Production Series</td><td id="lineProductionSeries"></td></tr>
 	</table>
 </div>
 </div><br class="clear" />
@@ -71,22 +68,38 @@ int id = Integer.parseInt(request.getParameter("lid"));
 <script type="text/javascript">
 $(document).ready(function() {
 	Line.getData(<%= id %>, function(a, data) {
-		// Create hierarchical navigation first
-		$("#breadCrumbNavi").html(GlobalHierarchyHandler.Navigation.createBreadcrumb(data.parent));
-		
-		elementList = new AMOSList("#testList", data.locations, 'location');
-		elementList.sortBy("name");
-		elementList.sortBy("status", [2, 1, 0, -1]);
-		elementList.hide("description");
+		for(var i = 0; i < data.locations.length; ++i) {
+			var rowClass = "";
+			
+			switch(data.locations[i].status) {
+				case "green": rowClass = "success"; break;
+				case "yellow": rowClass = "warning"; break;
+				case "red": default: rowClass = "error"; break;
+			}
+			
+			var sElm = $("<td></td>")
+					.html("<div class=\""+getStatusClass(data.locations[i].status)+"\"></div>");
+			
+			var lElm = $("<td></td>")
+					.html("Location "+data.locations[i].id);
+			
+			var rElm = $("<tr></tr>")
+					.attr("class", rowClass)					
+	    			.attr("onclick", 'GlobalHierarchyHandler.hierarchyZoom(\'location\', '+data.locations[i].id+')')
+					.append(sElm)
+					.append(lElm);
+			
+			$("#locationList tbody").append(rElm);
+		}		
 		
 	    // Insert static data
 	    // @TODO: Later possible pull some data in real-time (e.g. vehicles?)
 	    //		  That is why the DOM architecture has been chosen like this(!)
-	    $("#dynamicHeading").html("Assembly Line: "+data.name);
+	    $("#dynamicHeading").html("Assembly Line: "+data.name+" (ID: <%= id %>)");
 	    $("#lineName").html(data.name);
 	    $("#lineStatus").html("<div class='"+getStatusClass(data.status)+"'></div>");
-	    $("#lineProductionCapacity").html("" + data.capacity + " units");
-	    $("#lineProductionSeries").html(data.series);
+	    $("#lineProductionCapacity").html("192817 units");
+	    $("#lineProductionSeries").html("Production Series 1, Production Series 2, Production Series 3, ...");
 	});
 });
 </script>

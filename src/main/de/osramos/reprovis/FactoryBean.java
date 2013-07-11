@@ -21,131 +21,53 @@
 
 package de.osramos.reprovis;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import de.osramos.reprovis.exception.DatabaseException;
-import de.osramos.reprovis.exception.HierarchieException;
-import de.osramos.reprovis.handler.MasterData.Company;
-import de.osramos.reprovis.handler.Registry;
+import javax.naming.InitialContext;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import de.osramos.reprovis.MasterData.Company;
+import de.osramos.reprovis.MasterData.TrafficLight;
 
 public class FactoryBean extends HierarchieElementBean {
 
-	public FactoryBean(int id, HierarchieElementBean parent, Registry registry) throws HierarchieException {
-		super(id, parent, registry);
-
-		initName();
-		initCountry();
-		initGPSLatitude();
-		initGPSLongitude();
-		initCity();
-		initCompany();
-		initCarModels();
-		initSizeOfStaff();
-		initUPSServers();
-		initUPSSystems();
-		initUPSProvider();
-		initSizeOfStaffDate();
-		initVehiclesPerDay();
-		initVehiclesPerYear();
-		initMap();
-
-		try {
-
-			this.aggreagationStrategie = FactoryDAO
-					.getAggreagationStrategie(id);
-
-		} catch (IOException e) {
-
-			throw new HierarchieException("Element does not exist");
-		}
+	public FactoryBean(int id) {
+		super(id);
+		name = FactoryDAO.getName(id);
+		country = FactoryDAO.getCountry(id);
+		/* city = FactoryDAO.getCity(id); */
+		gpsLatitude = FactoryDAO.getGpsLatitude(id);
+		gpsLongitude = FactoryDAO.getGpsLongitude(id);
+		company = FactoryDAO.getCompany(id);
+		carModels = FactoryDAO.getCarModels(id);
+		sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
+		numOfVehicles = FactoryDAO.getNumOfVehicles(id);
 	}
 
-	private void initName() {
-		try {
-			name = FactoryDAO.getName(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			name = "N/A";
-		}
-		
-	}
+	/*
+	 * public static FactoryBean getElementById(int id){ try { Context ctx = new
+	 * InitialContext(); return (FactoryBean)
+	 * ctx.lookup("de.osramos/reprovis/HierarchieElement/"+id); } catch
+	 * (NamingException e) { return null; }
+	 * 
+	 * return (FactoryBean) GlobalBean.getElementById(id); }
+	 */
 
-	private void initCountry() {
-		try {
-			country = FactoryDAO.getCountry(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-			country = "N/A";
-		}
-		
-
-	}
-
-	private void initGPSLatitude() {
-		try {
-			gpsLatitude = FactoryDAO.getGpsLatitude(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			gpsLatitude = 0;
-		}
-		
-	}
-
-	private void initGPSLongitude() {
-		try {
-			gpsLongitude = FactoryDAO.getGpsLongitude(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			gpsLongitude = 0;
-		}
-		
-	}
-
-	private void initCity() {
-		try {
-			city = FactoryDAO.getCity(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			city = "N/A";
-		}
-		
-	}
-
-	private void initCompany() {
-		try {
-			company = FactoryDAO.getCompany(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			company = Company.Audi;
-		}
-		
-	}
-
-
+	//private int id;
 	private String name;
 	private String country;
 	private double gpsLatitude;
 	private double gpsLongitude;
-	private String city;
+	/* private String city; */
 	private Company company;
+	private GlobalBean parent;
 	private String[] carModels;
 	private int sizeOfStaff;
-	private int vehiclesPerYear;
-	private int upsServers;
-	private int upsSystems;
-	private String upsProvider;
-	private Date sizeOfStaffDate;
-	private int vehiclesPerDay;
-	private int upsClients;
-	private String map;
+	private int numOfVehicles;
 
 	public String getName() {
 		return name;
@@ -155,9 +77,21 @@ public class FactoryBean extends HierarchieElementBean {
 		return country;
 	}
 
-	public String getCity() {
-		return city;
+	public int getSizeOfStaff() {
+		return sizeOfStaff;
 	}
+
+	public int getNumOfVehicles() {
+		return numOfVehicles;
+	}
+
+	public String[] getCarModels() {
+		return carModels;
+	}
+
+	/*
+	 * public String getCity(){ return city; }
+	 */
 
 	public double getGpsLatitude() {
 		return gpsLatitude;
@@ -171,149 +105,50 @@ public class FactoryBean extends HierarchieElementBean {
 		return company;
 	}
 
-	public int getSizeOfStaff() {
-		return sizeOfStaff;
-	}
+	/*
+	 * public GlobalBean getParent(){ return GlobalBean.getGlobal(); }
+	 */
 
-	public void initSizeOfStaff() {
-		try {
-			sizeOfStaff = FactoryDAO.getSizeOfStaff(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			sizeOfStaff = 0;
-		}
-		
-	}
+	/*public int getId() {
+		return id;
+	}*/
 
-	public Date getSizeOfStaffDate() {
-		return sizeOfStaffDate;
-	}
+	/*
+	 * public FactoryBean(int id){
+	 * 
+	 * GlobalBean.getGlobal().reg.put(id, this); try { Context ctx = new
+	 * InitialContext(); ctx.bind("de.osramos/reprovis/HierarchieElement/"+id,
+	 * this); } catch (NamingException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } this.id = id;
+	 * 
+	 * }
+	 */
 
-	public void initSizeOfStaffDate() {
-		try {
-			sizeOfStaffDate = FactoryDAO.getSizeOfStaffDate(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			sizeOfStaffDate = null;
-		}
-		
-	}
+	/*
+	 * public TrafficLight getStatus() throws Exception{
+	 * List<HierarchieElementBean> halls = getChilds();
+	 * 
+	 * TrafficLight status = TrafficLight.green;
+	 * 
+	 * for(HierarchieElementBean hall: halls){ // aggregate to worst status if (
+	 * status == TrafficLight.green){ try { status = hall.getStatus(); } catch
+	 * (Exception e) { // TODO Auto-generated catch block e.printStackTrace(); }
+	 * } else if (status == TrafficLight.yellow){ try { if (hall.getStatus() ==
+	 * TrafficLight.red){ status = TrafficLight.red; } } catch (Exception e) {
+	 * // TODO Auto-generated catch block e.printStackTrace(); } } } return
+	 * status; }
+	 */
 
-	public int getVehiclesPerYear() {
-		return vehiclesPerYear;
-	}
-
-	public void initVehiclesPerYear() {
-		try {
-			vehiclesPerYear = FactoryDAO.getVehiclesPerYear(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			vehiclesPerYear = 0;
-		}
-		
-	}
-
-	public int getVehiclesPerDay() {
-		return vehiclesPerDay;
-	}
-
-	public void initVehiclesPerDay() {
-		try {
-			vehiclesPerDay = FactoryDAO.getVehiclesPerDay(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			vehiclesPerDay = 0;
-		}
-		
-	}
-
-	public String[] getCarModels() {
-		return carModels;
-	}
-
-	public void initCarModels() {
-		try {
-			carModels = FactoryDAO.getCarModels(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			carModels = new String[] { "" };
-		}
-		
-	}
-
-	public int getUPSSystems() {
-		return upsSystems;
-	}
-
-	public void initUPSSystems() {
-		try {
-			upsSystems = FactoryDAO.getUPSSystems(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			upsSystems = 0;
-		}
-		
-	}
-
-	public int getUPSServers() {
-		return upsServers;
-	}
-
-	public void initUPSServers() {
-		try {
-			upsServers = FactoryDAO.getUPSServers(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			upsServers = 0;
-		}
-		
-	}
-
-	public String getUPSProvider() {
-		return upsProvider;
-	}
-
-	public void initUPSProvider() {
-		try {
-			upsProvider = FactoryDAO.getUPSProvider(id);
-		} catch (DatabaseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			upsProvider = "";
-		}
-		
-	}
-
-	public void initUPSClients() {
-
-		upsClients = getNumOfLeafs(TestingDeviceBean.class);
-	}
-
-	public int getUPSClients() {
-
-		return getNumOfLeafs(TestingDeviceBean.class);
-	}
-
-	public String getMap() {
-		return map;
-	}
-
-	public void initMap() {
-		try {
-			map = FactoryDAO.getMap(id);
-		} catch (DatabaseException e) {
-			e.printStackTrace();
-			map = "Error";
-		}
-		
-	}
+	/*
+	 * public List<HierarchieElementBean> getChilds() throws Exception{
+	 * 
+	 * List<Integer> hallIds = HallDAO.getHallIds(id);
+	 * List<HierarchieElementBean> halls = new
+	 * ArrayList<HierarchieElementBean>();
+	 * 
+	 * for(int hallId : hallIds){ halls.add(new HallBean(hallId)); } return
+	 * halls; }
+	 */
 
 	@Override
 	protected void initChilds() {
@@ -321,20 +156,15 @@ public class FactoryBean extends HierarchieElementBean {
 			List<Integer> childIds = HallDAO.getHallIds(id);
 			childs = new ArrayList<HierarchieElementBean>();
 			for (int id : childIds) {
-				HallBean childBean = new HallBean(id, this, registry);
+				HallBean childBean = new HallBean(id);
+
+				childBean.setParent(this);
 
 				childs.add(childBean);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
-	}
-
-	@Override
-	protected void initAttributes() {
-		initUPSClients();
-		
 	}
 
 }

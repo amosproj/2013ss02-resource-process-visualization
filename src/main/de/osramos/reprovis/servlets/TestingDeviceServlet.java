@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import de.osramos.reprovis.GlobalBean;
-import de.osramos.reprovis.handler.Registry;
 
 public class TestingDeviceServlet extends HttpServlet {
 
@@ -46,13 +45,13 @@ public class TestingDeviceServlet extends HttpServlet {
 		} else {
 			if(req.getParameter("getData") != null) {
 				// Call the data handler
-				req.setAttribute("device", GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
+				req.setAttribute("device", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/TestingDeviceJSON.jsp").forward(req, resp);
 			}
 			
 			else {
 				// Call the view handler
-				req.setAttribute("tdid", GlobalBean.getInstance().getRegistry().lookup(Integer.valueOf(id)));
+				req.setAttribute("tdid", GlobalBean.getElementById(Integer.valueOf(id)));
 				getServletContext().getRequestDispatcher("/TestingDeviceView.jsp").forward(req, resp);
 			}
 		}

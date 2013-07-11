@@ -17,51 +17,17 @@
  License along with this program. If not, see
  http://www.gnu.org/licenses/ --%>
 
-<%@page import="java.util.GregorianCalendar"%>
+<%@page import="de.osramos.reprovis.ElectricalComponentBean"%>
 <%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ page import="de.osramos.reprovis.HierarchieElementBean"%>
-<%@ page import="de.osramos.reprovis.FactoryBean"%>
-<%@ page import="de.osramos.reprovis.HallBean"%>
-<%@ page import="de.osramos.reprovis.LineBean" %>
-<%@ page import="de.osramos.reprovis.LocationBean"%>
-<%@ page import="de.osramos.reprovis.TestingDeviceBean"%>
-<%@ page import="de.osramos.reprovis.ElectricalComponentBean"%>
-<%@ page import="de.osramos.reprovis.handler.MasterData" %>
+<%@ page import="de.osramos.reprovis.TestingDeviceBean" %>
+<%@ page import="de.osramos.reprovis.MasterData" %>
 <%@ page import="java.util.List" %>
-<%
-
-TestingDeviceBean device = (TestingDeviceBean)request.getAttribute("device");
-
-// @TODO: Dynamically create the hierarchy
-// For now, the hierarchy here is inserted manually
-// This crashes as soon as the hierarchy structure will be altered
-// Therefore it must be generated automatically in future.
-// Due to time constraints, it is currently hardcoded in here.
-LocationBean locParent = (LocationBean)device.getParent();
-int locationID = locParent.getId();
-
-LineBean lineParent = (LineBean)locParent.getParent();
-int lineID = lineParent.getId();
-
-HallBean hallParent = (HallBean)lineParent.getParent();
-int hallID = hallParent.getId();
-
-FactoryBean factoryParent = (FactoryBean)hallParent.getParent();
-int factoryID = factoryParent.getId(); 
-%>
+<% TestingDeviceBean device = (TestingDeviceBean)request.getAttribute("device"); %>
 {
-	"name": "<%= device.getName() %>",
+	"name": "Testing Device <%= device.getId() %>",
 	"status": "<%= device.getStatus() %>",
-	"serialnumber": "<%= device.getSerialnumber() %>",
-	"category": "<%=device.getType()%>",
-	"description": "<%=device.getDescription()%>",
-<%-- 	"ipaddress": "<%=device.getIpAddress()%>",
-	"maintainanceinfo": "<%=device.getMaintainanceInfo()%>",
-	"networkstatus": "<%=device.getNetworkStatus()%>", --%>
-	"componentCount": "<%= device.getChilds().size() %>",
-	"troubleperiod": "<%= device.getTroublePeriod() %>",
-<%-- 	"testfailure": <%= device.isTestFailure() %>, --%>
-<%-- 	"sector": "<%= device.getSector() %>", --%>
+	"componentCount": "167",
 	"components": [
 		<% boolean first = true; %>
 		<% for(HierarchieElementBean child: device.getChilds()){ %>
@@ -69,38 +35,12 @@ int factoryID = factoryParent.getId();
 		<% if(!first){out.print(","); }else first = false; %>
 			{
 				"id": <%= component.getId() %>,
-				"name": "<%= component.getName() %>",
+				"name": "Testing Device <%= component.getId() %>",
 				"status": "<%= component.getStatus() %>",
 				"category": "<%= component.getCategory() %>",
-				"troublePeriod": "<%= component.getPeriod() %>",
+				"troublePeriod": "<%= component.getTroubeOccurrenceTime() %>",
 				"sector": "<%= component.getSector() %>"
 			}
 		<% } %>
-	],
-	"parent": {
-		"id": "<%= device.getId() %>",
-		"name": "<%= device.getName() %>",
-		"type": "testingDevice",
-		"parent": {
-			"id" : "<%= locationID %>",
-			"name": "<%= locParent.getName() %>",
-			"type": "location",
-			"parent": {
-				"id": "<%= lineID %>",
-				"name": "<%= lineParent.getName() %>",
-				"type": "line",
-				"parent": {
-					"id": "<%= hallID %>",
-					"name": "<%= hallParent.getName() %>",
-					"type": "hall",
-					"parent": {
-						"id": "<%= factoryID %>",
-						"name": "<%= factoryParent.getName() %>",
-						"type": "factory",
-						"parent": "null"
-					}
-				}
-			}
-		}
-	}
+	]
 }
