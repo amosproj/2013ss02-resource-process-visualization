@@ -100,9 +100,10 @@ public class Setup {
 		setUpTestDS();
 		loadDBData("./de/osramos/reprovis/test/testdata/TestData.sql");
 		WebDriver driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		NavigateTo.config(driver);
-		NavigateTo.config(driver);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+/*		NavigateTo.config(driver);
+		NavigateTo.config(driver);*/
+		//Thread.sleep(20000);
 		driver.quit();
 	}
 	

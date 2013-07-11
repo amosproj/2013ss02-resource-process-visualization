@@ -14,7 +14,7 @@ public class NavigateTo {
 	
 	public static synchronized void waitForAjaxLoad() throws Exception{
 		// the ajax part has half a second time to load
-		NavigateTo.class.wait(1000);
+		NavigateTo.class.wait(2000);
 	}
 	
 	public static void global(WebDriver driver){
